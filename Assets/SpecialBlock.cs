@@ -1,10 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
-public class ActivatedBlock : MonoBehaviour
+public class SpecialBlock : MonoBehaviour
 {
     public Material material4;
     public Material material3;
@@ -26,10 +24,64 @@ public class ActivatedBlock : MonoBehaviour
     GameObject player;
     public GameObject question;
 
+    //Powerup:
+
+    public GameObject powerup1;
+    public GameObject powerup2;
+
+    public int choice = -1;
+    private GameObject chosenPower = null;
+
+
+    //private void Start()
+    //{
+    //    gameObject.tag = "SpecialQuestion";
+
+    //    // Find parent & components
+
+    //    parentBlock = transform.parent.gameObject;
+
+    //    rend = parentBlock.GetComponent<MeshRenderer>();
+    //    rb = parentBlock.GetComponent<Rigidbody>();
+
+    //    highlight = parentBlock.transform.GetChild(1).gameObject;
+
+    //    // Parent settings
+
+    //    rb.isKinematic = true;
+
+    //    Material[] materials = rend.materials;
+    //    materials[0] = activeMaterial;
+    //    rend.materials = materials;
+
+    //    parentBlock.transform.Translate(Vector3.up * .15f);
+
+    //    // Add powerup
+
+    //    int choice = Random.Range(0, 2);
+
+    //    switch (choice)
+    //    {
+    //        case 0:
+    //            chosenPower = powerup1;
+    //            break;
+
+    //        case 1:
+    //            chosenPower = powerup2;
+    //            break;
+
+    //    }
+
+    //    setUpPowerUp(chosenPower);
+    //}
 
 
     private void OnEnable()
     {
+        gameObject.tag = "SpecialQuestion";
+
+        // Find parent & components
+
         parentBlock = transform.parent.gameObject;
 
         rend = parentBlock.GetComponent<MeshRenderer>();
@@ -37,7 +89,7 @@ public class ActivatedBlock : MonoBehaviour
 
         highlight = parentBlock.transform.GetChild(1).gameObject;
 
-        //Physics.IgnoreCollision(parentBlock.GetComponent<BoxCollider>(), highlight.GetComponent<CapsuleCollider>());
+        // Parent settings
 
         rb.isKinematic = true;
 
@@ -45,9 +97,57 @@ public class ActivatedBlock : MonoBehaviour
         materials[0] = activeMaterial;
         rend.materials = materials;
 
-        gameObject.tag = "Question";
-
         parentBlock.transform.Translate(Vector3.up * .15f);
+
+        // Add powerup
+
+        switch (choice)
+        {
+            case 0:
+                chosenPower = powerup1;
+                break;
+
+            case 1:
+                chosenPower = powerup2;
+                break;
+
+            default:
+                break;
+
+        }
+
+        setUpPowerUp(chosenPower);
+
+    }
+
+    void setUpPowerUp(GameObject powerup)
+    {
+        // Set parent
+        powerup.transform.parent = parentBlock.transform;
+
+        // Adjust position
+        powerup.transform.position = parentBlock.transform.position;
+        powerup.transform.Translate(new Vector3(0, 1.5f, 0));
+
+        powerup.GetComponent<Rigidbody>().isKinematic = true;
+
+        // Activate
+        powerup.SetActive(true);
+    }
+
+    void givePowerUp(GameObject powerup)
+    {
+        powerup.GetComponent<Rigidbody>().isKinematic = false;
+        powerup.GetComponent<CapsuleCollider>().enabled = true;
+
+        powerup.transform.parent = null;
+    }
+
+    void removePowerUp(GameObject powerup)
+    {
+        powerup.SetActive(false);
+
+        powerup.transform.parent = null;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -77,7 +177,9 @@ public class ActivatedBlock : MonoBehaviour
 
             Physics.IgnoreCollision(player.GetComponent<CharacterController>(), highlight.GetComponent<CapsuleCollider>(), true);
             Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), highlight.GetComponent<CapsuleCollider>(), true);
+            Physics.IgnoreCollision(chosenPower.GetComponent<CapsuleCollider>(), highlight.GetComponent<CapsuleCollider>(), true);
             
+
 
             highlight.GetComponent<CapsuleCollider>().enabled = true;
 
@@ -93,7 +195,7 @@ public class ActivatedBlock : MonoBehaviour
         int counter = 5;
 
         question.GetComponent<DoQuestion>().correct = null;
-        question.GetComponent<DoQuestion>().pointsAwardable = true;
+        question.GetComponent<DoQuestion>().pointsAwardable = false;
         question.SetActive(true);
 
         while (counter > 0)
@@ -109,18 +211,21 @@ public class ActivatedBlock : MonoBehaviour
             if (question.GetComponent<DoQuestion>().correct == true)
             {
                 player.GetComponent<Movement>().moveable = true;
+
                 question.SetActive(false);
 
+                givePowerUp(chosenPower);
+
                 StartCoroutine("HighlightFadeOut");
-             
             }
 
             else if (question.GetComponent<DoQuestion>().correct == false)
             {
+                removePowerUp(chosenPower);
+
                 StartCoroutine("HighlightFadeOut");
 
                 dropBlock();
-
                 yield return new WaitForSeconds(1);
 
                 print("Gone");
@@ -130,7 +235,7 @@ public class ActivatedBlock : MonoBehaviour
                 break;
             }
 
-                switch (counter)
+            switch (counter)
             {
                 case 4:
                     materials[0] = material4;
@@ -152,6 +257,7 @@ public class ActivatedBlock : MonoBehaviour
 
                     if (question.GetComponent<DoQuestion>().correct == null)
                     {
+                        removePowerUp(chosenPower);
                         StartCoroutine("HighlightFadeOut");
                     }
 
@@ -161,7 +267,7 @@ public class ActivatedBlock : MonoBehaviour
                     print("Gone");
 
                     Destroy(transform.parent.gameObject);
-                    
+
                     break;
             }
 
@@ -222,7 +328,7 @@ public class ActivatedBlock : MonoBehaviour
             rend.materials = materials;
 
             parentBlock.transform.Translate(Vector3.down * .15f);
-           
+
         }
     }
 }

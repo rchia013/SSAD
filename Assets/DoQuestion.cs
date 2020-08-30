@@ -12,10 +12,14 @@ public class DoQuestion : MonoBehaviour
     public Button b3;
     public Button b4;
 
+    public bool pointsAwardable;
     public bool? correct = null;
 
     Image background;
     Color originalColor;
+
+    public TextMeshProUGUI points;
+    GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +27,7 @@ public class DoQuestion : MonoBehaviour
         // HARD CODED!!!
 
         originalColor = new Color(0, 0, 0, (29 / 255));
-
+        
         b1.onClick.AddListener(Correct);
         b2.onClick.AddListener(Wrong);
         b3.onClick.AddListener(Wrong);
@@ -31,6 +35,8 @@ public class DoQuestion : MonoBehaviour
 
         background = gameObject.GetComponent<Image>();
         background.color = originalColor;
+
+        player = GameObject.FindWithTag("Player");
     }
 
     private void OnEnable()
@@ -41,6 +47,11 @@ public class DoQuestion : MonoBehaviour
     void Correct()
     {
         print("Correct");
+        if (pointsAwardable)
+            player.GetComponent<Movement>().points += 1;
+
+        points.SetText("Points: " + player.GetComponent<Movement>().points.ToString());
+
         gameObject.SetActive(false);
 
         correct = true;
@@ -49,6 +60,11 @@ public class DoQuestion : MonoBehaviour
     void Wrong()
     {
         print("Wrong");
+
+        if (pointsAwardable)
+            player.GetComponent<Movement>().points -= 1;
+
+        points.SetText("Points: " + player.GetComponent<Movement>().points.ToString());
 
         correct = false;
 

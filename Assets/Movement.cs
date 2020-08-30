@@ -40,6 +40,10 @@ public class Movement : MonoBehaviour
     public GameObject question;
     public TextMeshProUGUI countdown;
 
+    // POINTS:
+
+    public int points;
+
     
 
     private void Start()
@@ -48,6 +52,8 @@ public class Movement : MonoBehaviour
         trail.Pause();
 
         animator.enabled = false;
+
+        points = 0;
 
         controller = GetComponent<CharacterController>();
 
