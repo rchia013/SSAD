@@ -222,7 +222,6 @@ public class ActivatedBlock : MonoBehaviour
             rend.materials = materials;
 
             parentBlock.transform.Translate(Vector3.down * .15f);
-           
         }
     }
 }

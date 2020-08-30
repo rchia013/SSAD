@@ -47,8 +47,6 @@ public class SpeedBoost : MonoBehaviour
     void ResetPowerUp()
     {
         gameObject.SetActive(false);
-
-        GetComponent<Collider>().enabled = true;
         transform.localScale = originalScale;
         
     }
