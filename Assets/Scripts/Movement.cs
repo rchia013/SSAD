@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     // START COUNTDOWN:
 
     bool start = true;
+    Vector3 respawnPoint;
 
     // GENERAL MOVEMENT:
 
@@ -56,6 +57,8 @@ public class Movement : MonoBehaviour
         points = 0;
 
         controller = GetComponent<CharacterController>();
+
+        respawnPoint = transform.position;
 
         StartCoroutine("Countdown");
 
@@ -108,7 +111,7 @@ public class Movement : MonoBehaviour
     {
         if (transform.position.y < respawnThreshold)
         {
-            transform.position = new Vector3(3, 3f, 10);
+            transform.position = respawnPoint;
             moveable = false;
             trail.Stop();
             animator.enabled = false;
