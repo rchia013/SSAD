@@ -11,11 +11,14 @@ public class RedOnClick : MonoBehaviour
     public float duration = 4f;
     bool used = false;
 
+    public int playerIndex;
 
     Vector3 originalScale;
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        string playerTag = "Player" + playerIndex;
+        player = GameObject.FindGameObjectWithTag(playerTag);
+
         image = gameObject.GetComponent<Image>();
     }
 

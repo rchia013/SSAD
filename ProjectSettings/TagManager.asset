@@ -8,6 +8,10 @@ TagManager:
   - SpecialQuestion
   - PointSystem
   - BottleSIze
+  - Player1
+  - Player2
+  - Player3
+  - Player4
   layers:
   - Default
   - TransparentFX

@@ -11,7 +11,11 @@ public class ActivatedBlock : MonoBehaviour
     public Material material2;
     public Material material1;
 
-    public Material activeMaterial;
+    public Material activeMaterial1;
+    public Material activeMaterial2;
+    public Material activeMaterial3;
+    public Material activeMaterial4;
+
     public Material originalMaterial;
 
     GameObject parentBlock;
@@ -22,6 +26,8 @@ public class ActivatedBlock : MonoBehaviour
 
     public bool blockActivated = false;
     bool questionActivated = false;
+    public int playerIndex;
+    string playerTag;
 
     GameObject player;
     public GameObject question;
@@ -37,22 +43,38 @@ public class ActivatedBlock : MonoBehaviour
 
         highlight = parentBlock.transform.GetChild(1).gameObject;
 
-        //Physics.IgnoreCollision(parentBlock.GetComponent<BoxCollider>(), highlight.GetComponent<CapsuleCollider>());
-
         rb.isKinematic = true;
 
         Material[] materials = rend.materials;
-        materials[0] = activeMaterial;
+
+        switch (playerIndex)
+        {
+            case 1:
+                materials[0] = activeMaterial1;
+                break;
+            case 2:
+                materials[0] = activeMaterial2;
+                break;
+            case 3:
+                materials[0] = activeMaterial3;
+                break;
+            case 4:
+                materials[0] = activeMaterial4;
+                break;
+
+        }
         rend.materials = materials;
 
         gameObject.tag = "Question";
+
+        playerTag = "Player" + playerIndex;
 
         parentBlock.transform.Translate(Vector3.up * .15f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" & !questionActivated & blockActivated)
+        if (other.gameObject.tag == playerTag & !questionActivated & blockActivated)
         {
             print("Touch & Give Q");
 
@@ -94,6 +116,7 @@ public class ActivatedBlock : MonoBehaviour
 
         question.GetComponent<DoQuestion>().correct = null;
         question.GetComponent<DoQuestion>().pointsAwardable = true;
+        question.GetComponent<DoQuestion>().playerTag = playerTag;
         question.SetActive(true);
 
         while (counter > 0)

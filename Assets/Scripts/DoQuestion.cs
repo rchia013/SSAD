@@ -20,6 +20,7 @@ public class DoQuestion : MonoBehaviour
 
     public TextMeshProUGUI points;
     GameObject player;
+    public string playerTag;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +37,7 @@ public class DoQuestion : MonoBehaviour
         background = gameObject.GetComponent<Image>();
         background.color = originalColor;
 
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag(playerTag);
     }
 
     private void OnEnable()

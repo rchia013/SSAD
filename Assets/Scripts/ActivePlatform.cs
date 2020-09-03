@@ -7,7 +7,10 @@ public class ActivePlatform : MonoBehaviour
     // Active Block Generation Parameters:
 
     public int cooldownAB = 10;
-    bool putActiveBlock = true;
+    bool putActiveBlock1 = true;
+    bool putActiveBlock2 = true;
+    bool putActiveBlock3 = true;
+    bool putActiveBlock4 = true;
 
     public int cooldownSB = 20;
     bool putSpecialBlock = true;
@@ -25,8 +28,17 @@ public class ActivePlatform : MonoBehaviour
 
     ActivatedBlock ABscript = null;
 
-    public int curNum = -1;
-    public int prevNum = -1;
+    public int curNum1 = -1;
+    public int prevNum1 = -1;
+
+    public int curNum2 = -1;
+    public int prevNum2 = -1;
+
+    public int curNum3 = -1;
+    public int prevNum3 = -1;
+
+    public int curNum4 = -1;
+    public int prevNum4 = -1;
 
     SpecialBlock power0Script = null;
     SpecialBlock power1Script = null;
@@ -38,7 +50,10 @@ public class ActivePlatform : MonoBehaviour
 
     // Player:
 
-    private GameObject player;
+    private GameObject player1;
+    private GameObject player2;
+    private GameObject player3;
+    private GameObject player4;
 
 
 
@@ -52,44 +67,178 @@ public class ActivePlatform : MonoBehaviour
             blocks.Add(i, transform.GetChild(i).gameObject);
         }
 
-        player = GameObject.FindWithTag("Player");
+        player1 = GameObject.FindWithTag("Player1");
+        player2 = GameObject.FindWithTag("Player2");
+        player3 = GameObject.FindWithTag("Player3");
+        player4 = GameObject.FindWithTag("Player4");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (blocks.ContainsKey(prevNum))
+        if (blocks.ContainsKey(prevNum1))
         {
-            if (blocks[prevNum] == null)
+            if (blocks[prevNum1] == null)
             {
                 // Remove destroyed blocks
 
-                blocks.Remove(prevNum);
+                blocks.Remove(prevNum1);
                 print("Deleted");
             }
         }
 
-        if (putActiveBlock && blocks.Count > totalNumBlocks / 4 && player.GetComponent<Movement>().moveable)
+        if (blocks.ContainsKey(prevNum2))
         {
-            if (blocks.ContainsKey(prevNum))
+            if (blocks[prevNum2] == null)
+            {
+                // Remove destroyed blocks
+
+                blocks.Remove(prevNum2);
+                print("Deleted");
+            }
+        }
+
+        if (blocks.ContainsKey(prevNum3))
+        {
+            if (blocks[prevNum3] == null)
+            {
+                // Remove destroyed blocks
+
+                blocks.Remove(prevNum3);
+                print("Deleted");
+            }
+        }
+
+        if (blocks.ContainsKey(prevNum4))
+        {
+            if (blocks[prevNum4] == null)
+            {
+                // Remove destroyed blocks
+
+                blocks.Remove(prevNum4);
+                print("Deleted");
+            }
+        }
+
+
+
+        if (player1 != null && putActiveBlock1 && blocks.Count > totalNumBlocks / 4 && player1.GetComponent<Movement>().moveable)
+        {
+            if (blocks.ContainsKey(prevNum1))
             {
                 ABscript.blockActivated = false;
+                ABscript.playerIndex = 0;
                 ABscript.enabled = false;
             }
 
-            curNum = -1;
+            curNum1= -1;
             int temp;
 
-            while (curNum == -1)
+            while (curNum1 == -1)
             {
                 temp = Random.Range(0, totalNumBlocks);
 
-                if (blocks.ContainsKey(temp) && temp != prevNum && temp != power1Num && temp != power0Num)
+                if (blocks.ContainsKey(temp)
+                    && temp != prevNum1
+                    && temp != prevNum2 && temp != curNum2
+                    && temp != prevNum3 && temp != curNum3
+                    && temp != prevNum4 && temp != curNum4
+                    && temp != power1Num && temp != power0Num)
                 {
-                    curNum = temp;
+                    curNum1 = temp;
 
-                    ActivateBlock(blocks[curNum]);
+                    ActivateBlock(blocks[curNum1],1);
+                }
+            }
+        }
+
+        if (player2 != null && putActiveBlock2 && blocks.Count > totalNumBlocks / 4 && player2.GetComponent<Movement>().moveable)
+        {
+            if (blocks.ContainsKey(prevNum2))
+            {
+                ABscript.blockActivated = false;
+                ABscript.playerIndex = 0;
+                ABscript.enabled = false;
+            }
+
+            curNum2 = -1;
+            int temp;
+
+            while (curNum2 == -1)
+            {
+                temp = Random.Range(0, totalNumBlocks);
+
+                if (blocks.ContainsKey(temp)
+                    && temp != prevNum2
+                    && temp != prevNum1 && temp != curNum1
+                    && temp != prevNum3 && temp != curNum3
+                    && temp != prevNum4 && temp != curNum4
+                    && temp != power1Num && temp != power0Num)
+                {
+                    curNum2 = temp;
+
+                    ActivateBlock(blocks[curNum2], 2);
+                }
+            }
+        }
+
+        if (player3 != null && putActiveBlock3 && blocks.Count > totalNumBlocks / 4 && player3.GetComponent<Movement>().moveable)
+        {
+            if (blocks.ContainsKey(prevNum3))
+            {
+                ABscript.blockActivated = false;
+                ABscript.playerIndex = 0;
+                ABscript.enabled = false;
+            }
+
+            curNum3 = -1;
+            int temp;
+
+            while (curNum3 == -1)
+            {
+                temp = Random.Range(0, totalNumBlocks);
+
+                if (blocks.ContainsKey(temp)
+                    && temp != prevNum3
+                    && temp != prevNum1 && temp != curNum1
+                    && temp != prevNum2 && temp != curNum2
+                    && temp != prevNum4 && temp != curNum4
+                    && temp != power1Num && temp != power0Num)
+                {
+                    curNum3 = temp;
+
+                    ActivateBlock(blocks[curNum3], 3);
+                }
+            }
+        }
+
+        if (player4 != null && putActiveBlock4 && blocks.Count > totalNumBlocks / 4 && player4.GetComponent<Movement>().moveable)
+        {
+            if (blocks.ContainsKey(prevNum4))
+            {
+                ABscript.blockActivated = false;
+                ABscript.playerIndex = 0;
+                ABscript.enabled = false;
+            }
+
+            curNum4 = -1;
+            int temp;
+
+            while (curNum4 == -1)
+            {
+                temp = Random.Range(0, totalNumBlocks);
+
+                if (blocks.ContainsKey(temp)
+                    && temp != prevNum4
+                    && temp != prevNum1 && temp != curNum1
+                    && temp != prevNum2 && temp != curNum2
+                    && temp != prevNum3 && temp != curNum3
+                    && temp != power1Num && temp != power0Num)
+                {
+                    curNum4 = temp;
+
+                    ActivateBlock(blocks[curNum4], 4);
                 }
             }
         }
@@ -105,7 +254,12 @@ public class ActivePlatform : MonoBehaviour
             {
                 temp = Random.Range(0, totalNumBlocks);
 
-                if (blocks.ContainsKey(temp) && temp != prevNum && temp != curNum)
+                if (blocks.ContainsKey(temp)
+                    && temp != prevNum1 && temp != curNum1
+                    && temp != prevNum2 && temp != curNum2
+                    && temp != prevNum3 && temp != curNum3
+                    && temp != prevNum4 && temp != curNum4
+                    && temp != power1Num && temp != power0Num)
                 {
                     newSpecNum = temp;
 
@@ -120,20 +274,38 @@ public class ActivePlatform : MonoBehaviour
     }
 
 
-    void ActivateBlock(GameObject block)
+    void ActivateBlock(GameObject block, int playerNum)
     {
         // Activate Block
 
         ABscript = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
+        ABscript.playerIndex = playerNum;
         ABscript.enabled = true;
 
         ABscript.blockActivated = true;
 
         // Cooldown
 
-        putActiveBlock = false;
+        switch (playerNum)
+        {
+            case 1:
+                putActiveBlock1 = false;
+                break;
 
-        StartCoroutine("CooldownAB");
+            case 2:
+                putActiveBlock2 = false;
+                break;
+
+            case 3:
+                putActiveBlock3 = false;
+                break;
+
+            case 4:
+                putActiveBlock4 = false;
+                break;
+        }
+
+        StartCoroutine(CooldownAB(playerNum));
 
     }
 
@@ -217,7 +389,7 @@ public class ActivePlatform : MonoBehaviour
         }
     }
 
-    IEnumerator CooldownAB()
+    IEnumerator CooldownAB(int playerNum)
     {
         int counter = cooldownAB;
 
@@ -230,8 +402,28 @@ public class ActivePlatform : MonoBehaviour
 
             if (counter < 1)
             {
-                prevNum = curNum;
-                putActiveBlock = true;
+                switch (playerNum)
+                {
+                    case 1:
+                        prevNum1 = curNum1;
+                        putActiveBlock1 = true;
+                        break;
+
+                    case 2:
+                        prevNum2 = curNum2;
+                        putActiveBlock2 = true;
+                        break;
+
+                    case 3:
+                        prevNum3 = curNum3;
+                        putActiveBlock3 = true;
+                        break;
+
+                    case 4:
+                        prevNum4 = curNum4;
+                        putActiveBlock4 = true;
+                        break;
+                }
             }
         }
     }

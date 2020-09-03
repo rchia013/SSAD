@@ -610,9 +610,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &64079828
 MeshRenderer:
@@ -682,6 +686,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -750,9 +755,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &66215679
 MeshRenderer:
@@ -822,6 +831,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -985,9 +995,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &76389164
 MeshRenderer:
@@ -1057,6 +1071,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -1755,9 +1770,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &145432772
 MeshRenderer:
@@ -1827,6 +1846,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -2105,9 +2125,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &147372611
 MeshRenderer:
@@ -2177,6 +2201,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -2306,8 +2331,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownAB: 10
   cooldownSB: 20
-  curNum: -1
-  prevNum: -1
+  curNum1: -1
+  prevNum1: -1
+  curNum2: -1
+  prevNum2: -1
+  curNum3: -1
+  prevNum3: -1
+  curNum4: -1
+  prevNum4: -1
 --- !u!1 &152548061
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,6 +2453,88 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152548061}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &156494086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 156494087}
+  - component: {fileID: 156494088}
+  m_Layer: 0
+  m_Name: Cross_Simple_Icons_UI (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &156494087
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156494086}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0.0000000037252903, w: 0.7071068}
+  m_LocalPosition: {x: 1, y: 0.50999975, z: -5}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_Children: []
+  m_Father: {fileID: 807911159}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!212 &156494088
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156494086}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 5a439fff18a35334ca3d76dc7446532d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.53, y: 2.54}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &172221755
 GameObject:
   m_ObjectHideFlags: 0
@@ -3136,7 +3249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010690109084, guid: 7cafb89b5a0f61f479d0a748962abbbc, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4000010690109084, guid: 7cafb89b5a0f61f479d0a748962abbbc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3863,9 +3976,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &253701647
 MeshRenderer:
@@ -3935,6 +4052,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -3948,15 +4066,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100070, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 100070, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Player4
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3964,7 +4082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3984,7 +4102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4100,9 +4218,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &266636218
 MeshRenderer:
@@ -4172,6 +4294,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -4227,7 +4350,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0e258dd63d1704c3da2516d1792fa4d6, type: 2}
+  - {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4624,9 +4747,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &313060282
 MeshRenderer:
@@ -4696,6 +4823,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -4940,14 +5068,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340136746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 5.3, z: 3.06}
+  m_LocalPosition: {x: 4, y: 5.3, z: 2.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1440825142}
   - {fileID: 1077081922}
   - {fileID: 983138519}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &345884574
 GameObject:
@@ -5013,9 +5141,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &345884578
 MeshRenderer:
@@ -5085,6 +5217,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -5153,9 +5286,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &354007208
 MeshRenderer:
@@ -5225,6 +5362,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -5731,9 +5869,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &382332956
 MeshRenderer:
@@ -5803,6 +5945,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -5852,7 +5995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013828724138, guid: 11e31a2ebb4e6e246bcf8c0ba034a031, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4000013828724138, guid: 11e31a2ebb4e6e246bcf8c0ba034a031, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6218,6 +6361,88 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396353857}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &402790198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 402790199}
+  - component: {fileID: 402790200}
+  m_Layer: 0
+  m_Name: Cross_Simple_Icons_UI (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &402790199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402790198}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0.0000000037252903, w: 0.7071068}
+  m_LocalPosition: {x: 3, y: 0.5099993, z: -3}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_Children: []
+  m_Father: {fileID: 807911159}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!212 &402790200
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402790198}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 5a439fff18a35334ca3d76dc7446532d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.53, y: 2.54}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &438023729
 GameObject:
   m_ObjectHideFlags: 0
@@ -6282,9 +6507,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &438023733
 MeshRenderer:
@@ -6354,6 +6583,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -6422,9 +6652,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &446698069
 MeshRenderer:
@@ -6494,6 +6728,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -6642,6 +6877,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -6711,9 +6947,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!65 &450956165
 BoxCollider:
@@ -7116,9 +7356,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &476846283
 MeshRenderer:
@@ -7188,6 +7432,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -7352,9 +7597,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &479838919
 MeshRenderer:
@@ -7424,6 +7673,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -7606,9 +7856,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &491951534
 MeshRenderer:
@@ -7678,6 +7932,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -7746,9 +8001,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &542451170
 MeshRenderer:
@@ -7818,6 +8077,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -8210,9 +8470,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &573350264
 MeshRenderer:
@@ -8282,10 +8546,93 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
   choice: -1
+--- !u!1 &576440545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 576440546}
+  - component: {fileID: 576440547}
+  m_Layer: 0
+  m_Name: Cross_Simple_Icons_UI (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &576440546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576440545}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0.0000000037252903, w: 0.7071068}
+  m_LocalPosition: {x: 1, y: 0.5099993, z: -3}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_Children: []
+  m_Father: {fileID: 807911159}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!212 &576440547
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576440545}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 5a439fff18a35334ca3d76dc7446532d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.53, y: 2.54}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &579675882
 GameObject:
   m_ObjectHideFlags: 0
@@ -8854,9 +9201,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &610895232
 MeshRenderer:
@@ -8926,6 +9277,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -9026,6 +9378,7 @@ MonoBehaviour:
   b4: {fileID: 1274219801}
   pointsAwardable: 0
   points: {fileID: 1463815847}
+  playerTag: 
 --- !u!1 &613843353
 GameObject:
   m_ObjectHideFlags: 0
@@ -9090,9 +9443,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &613843357
 MeshRenderer:
@@ -9162,6 +9519,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -9560,9 +9918,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &632847481
 MeshRenderer:
@@ -9632,6 +9994,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -15621,9 +15984,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &712027198
 MeshRenderer:
@@ -15693,6 +16060,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -15761,9 +16129,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &725587770
 MeshRenderer:
@@ -15833,6 +16205,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -16373,9 +16746,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &771947549
 MeshRenderer:
@@ -16445,6 +16822,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -16696,6 +17074,10 @@ Transform:
   - {fileID: 700961442}
   - {fileID: 1746843006}
   - {fileID: 199167790}
+  - {fileID: 1182663768}
+  - {fileID: 576440546}
+  - {fileID: 402790199}
+  - {fileID: 156494087}
   m_Father: {fileID: 175246802}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17018,9 +17400,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &859206320
 MeshRenderer:
@@ -17090,6 +17476,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -17158,9 +17545,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &860797666
 MeshRenderer:
@@ -17230,6 +17621,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -17298,9 +17690,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &867370321
 MeshRenderer:
@@ -17370,6 +17766,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -17762,9 +18159,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &881754285
 MeshRenderer:
@@ -17834,6 +18235,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -17998,9 +18400,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &891912674
 MeshRenderer:
@@ -18070,6 +18476,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -18177,9 +18584,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &902884696
 MeshRenderer:
@@ -18249,6 +18660,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -19541,8 +19953,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.23020642, y: -0.000000037441282, z: 0.000000008857109, w: 0.97314185}
-  m_LocalPosition: {x: 3, y: 5.3, z: 3.06}
+  m_LocalRotation: {x: 0.23020642, y: 0.000000037441282, z: -0.000000008857109, w: 0.97314185}
+  m_LocalPosition: {x: 4, y: 5.3, z: 2.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -19838,9 +20250,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &971842788
 MeshRenderer:
@@ -19910,6 +20326,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -20285,7 +20702,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983138517}
-  m_LocalRotation: {x: 0.21251433, y: -8.923706e-10, z: 0.00000004092946, w: 0.977158}
+  m_LocalRotation: {x: 0.21251433, y: -0.000000017705725, z: 0.000000044586063, w: 0.977158}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -20357,9 +20774,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &988428054
 MeshRenderer:
@@ -20429,6 +20850,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -21259,9 +21681,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1043219243
 MeshRenderer:
@@ -21331,6 +21757,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -21399,9 +21826,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1044620767
 MeshRenderer:
@@ -21471,6 +21902,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -21731,9 +22163,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1055851083
 MeshRenderer:
@@ -21803,6 +22239,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -22273,7 +22710,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077081920}
-  m_LocalRotation: {x: 0.23020644, y: -0.00000002309532, z: 0.000000022921432, w: 0.97314185}
+  m_LocalRotation: {x: 0.23020644, y: 0.000000014345962, z: 0.000000014064322, w: 0.97314185}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -22585,9 +23022,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1093718230
 MeshRenderer:
@@ -22657,6 +23098,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -22725,9 +23167,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1103560309
 MeshRenderer:
@@ -22797,6 +23243,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -22865,9 +23312,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1104634879
 MeshRenderer:
@@ -22937,6 +23388,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -23005,9 +23457,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1109983081
 MeshRenderer:
@@ -23077,6 +23533,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -23241,9 +23698,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1141372718
 MeshRenderer:
@@ -23313,6 +23774,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -23495,9 +23957,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1157815995
 MeshRenderer:
@@ -23567,6 +24033,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -23856,12 +24323,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182663766}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 3, y: 1.509, z: 10}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0.0000000037252903, w: 0.7071068}
+  m_LocalPosition: {x: 3, y: 0.50999975, z: -5}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 807911159}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1191070967
 GameObject:
@@ -23927,9 +24394,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1191070971
 MeshRenderer:
@@ -23999,6 +24470,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -24601,9 +25073,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1245413191
 MeshRenderer:
@@ -24673,6 +25149,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -25701,9 +26178,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1353018577
 MeshRenderer:
@@ -25773,6 +26254,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -25955,9 +26437,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1356013339
 MeshRenderer:
@@ -26027,6 +26513,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -26209,9 +26696,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1377630449
 MeshRenderer:
@@ -26281,6 +26772,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -27155,9 +27647,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1460956377
 MeshRenderer:
@@ -27227,6 +27723,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -27547,9 +28044,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1480489059
 MeshRenderer:
@@ -27619,6 +28120,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -27801,9 +28303,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1492148891
 MeshRenderer:
@@ -27873,6 +28379,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -27941,9 +28448,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1495537483
 MeshRenderer:
@@ -28013,6 +28524,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -28489,9 +29001,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1524387566
 MeshRenderer:
@@ -28561,6 +29077,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -28857,9 +29374,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1539533716
 MeshRenderer:
@@ -28929,6 +29450,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -30494,9 +31016,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1677524799
 MeshRenderer:
@@ -30566,6 +31092,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -30634,9 +31161,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1689828813
 MeshRenderer:
@@ -30706,6 +31237,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -31100,9 +31632,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1700819077
 MeshRenderer:
@@ -31172,6 +31708,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -31335,9 +31872,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1702376194
 MeshRenderer:
@@ -31407,6 +31948,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -31475,9 +32017,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1709851924
 MeshRenderer:
@@ -31547,6 +32093,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -31615,9 +32162,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1714424990
 MeshRenderer:
@@ -31687,6 +32238,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -31763,10 +32315,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.19519967
-  m_Height: 0.7432461
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.6, z: 0.1}
+  m_Radius: 0.39607516
+  m_Height: 0.7921504
+  m_Direction: 1
+  m_Center: {x: -0.09459106, y: 0.8434235, z: 0.09311565}
 --- !u!54 &1720389821
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31809,6 +32361,35 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 255591835}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1720389825
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720389816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6567329, y: 1.1065845, z: 0.6388031}
+  m_Center: {x: -2.849606e-10, y: 0.85206497, z: 0.092643365}
+--- !u!114 &1720389826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720389816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22a7d2150b4804f6482b6b64fd8be81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player4: {fileID: 2100000, guid: f2f281a6d8e790b40b79e6f697cbf013, type: 2}
+  player3: {fileID: 2100000, guid: e8023272c1d068247b10eefed548753f, type: 2}
+  player2: {fileID: 2100000, guid: 0e258dd63d1704c3da2516d1792fa4d6, type: 2}
+  player1: {fileID: 2100000, guid: 72b2f4d3cd89dcb4c98be936d350fb58, type: 2}
 --- !u!1 &1723811023
 GameObject:
   m_ObjectHideFlags: 0
@@ -31905,7 +32486,7 @@ Transform:
   m_LocalScale: {x: 50, y: 1, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1723811028
 BoxCollider:
@@ -32324,9 +32905,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1738641567
 MeshRenderer:
@@ -32396,6 +32981,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -32979,9 +33565,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1762579721
 MeshRenderer:
@@ -33051,6 +33641,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -33233,9 +33824,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1794966934
 MeshRenderer:
@@ -33305,6 +33900,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -33487,9 +34083,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1839025652
 MeshRenderer:
@@ -33559,6 +34159,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -34195,9 +34796,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1900705400
 MeshRenderer:
@@ -34267,6 +34872,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -34565,9 +35171,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1929533665
 MeshRenderer:
@@ -34637,6 +35247,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -34705,9 +35316,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1933683565
 MeshRenderer:
@@ -34777,6 +35392,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -34845,9 +35461,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1936921765
 MeshRenderer:
@@ -34917,6 +35537,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -34985,9 +35606,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1938960584
 MeshRenderer:
@@ -35057,6 +35682,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -35209,7 +35835,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0e258dd63d1704c3da2516d1792fa4d6, type: 2}
+  - {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -35399,9 +36025,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1967988842
 MeshRenderer:
@@ -35471,6 +36101,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -35539,9 +36170,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &1970408529
 MeshRenderer:
@@ -35611,6 +36246,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -36005,9 +36641,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &2011314876
 MeshRenderer:
@@ -36077,6 +36717,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -36145,9 +36786,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &2050189882
 MeshRenderer:
@@ -36217,6 +36862,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -36381,9 +37027,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &2058953610
 MeshRenderer:
@@ -36453,6 +37103,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -36485,7 +37136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063786864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0000002, y: 0.000000059604645, z: -6}
+  m_LocalPosition: {x: 2, y: 0, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 450956160}
@@ -36635,9 +37286,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &2065900911
 MeshRenderer:
@@ -36707,6 +37362,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -36967,9 +37623,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &2091795400
 MeshRenderer:
@@ -37039,6 +37699,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -37107,9 +37768,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &2092863345
 MeshRenderer:
@@ -37179,6 +37844,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -37247,9 +37913,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &2102863209
 MeshRenderer:
@@ -37319,6 +37989,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -37793,9 +38464,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &2129394678
 MeshRenderer:
@@ -37865,6 +38540,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -37933,9 +38609,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &2131293052
 MeshRenderer:
@@ -38005,6 +38685,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}
@@ -38073,9 +38754,13 @@ MonoBehaviour:
   material3: {fileID: 2100000, guid: b5ab000787c754761955da272af2f2d5, type: 2}
   material2: {fileID: 2100000, guid: 1f5657ff54ede433d85554c119fe4b58, type: 2}
   material1: {fileID: 2100000, guid: ae6ad1c5935794c7a88626362941de7f, type: 2}
-  activeMaterial: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial1: {fileID: 2100000, guid: e68da7533f62043fabbf815597e816ad, type: 2}
+  activeMaterial2: {fileID: 2100000, guid: 01bef5fced0ae8c4cae89abf94dd6241, type: 2}
+  activeMaterial3: {fileID: 2100000, guid: 03e940cbc9058a44886f84ab458822c1, type: 2}
+  activeMaterial4: {fileID: 2100000, guid: 95c5b6f7709144c9194892a9e89b1f3c, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerIndex: 0
   question: {fileID: 613180315}
 --- !u!23 &2135359683
 MeshRenderer:
@@ -38145,6 +38830,7 @@ MonoBehaviour:
   activeMaterial: {fileID: 2100000, guid: c47a60466f6ed4d04928623e1eb39775, type: 2}
   originalMaterial: {fileID: 2100000, guid: eba0a6e9dc9844d07a9cbee0457021ad, type: 2}
   blockActivated: 0
+  playerTag: 
   question: {fileID: 613180315}
   powerup1: {fileID: 385079889}
   powerup2: {fileID: 812739204}

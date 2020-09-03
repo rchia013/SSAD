@@ -22,6 +22,7 @@ public class SpecialBlock : MonoBehaviour
     bool questionActivated = false;
 
     GameObject player;
+    public string playerTag;
     public GameObject question;
 
     //Powerup:
@@ -133,6 +134,7 @@ public class SpecialBlock : MonoBehaviour
 
         // Activate
         powerup.SetActive(true);
+        powerup.GetComponent<PickUp>().enabled = true;
     }
 
     void givePowerUp(GameObject powerup)
@@ -152,11 +154,12 @@ public class SpecialBlock : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" & !questionActivated & blockActivated)
+        if ((other.gameObject.tag == "Player1" | other.gameObject.tag == "Player2"| other.gameObject.tag == "Player3"| other.gameObject.tag == "Player4") & !questionActivated & blockActivated)
         {
             print("Touch & Give Q");
 
             player = other.gameObject;
+            playerTag = player.tag;
 
             // 1. Move Block
 
@@ -196,6 +199,7 @@ public class SpecialBlock : MonoBehaviour
 
         question.GetComponent<DoQuestion>().correct = null;
         question.GetComponent<DoQuestion>().pointsAwardable = false;
+        question.GetComponent<DoQuestion>().playerTag = playerTag;
         question.SetActive(true);
 
         while (counter > 0)

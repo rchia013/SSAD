@@ -12,7 +12,7 @@ public class GreenOnClick : MonoBehaviour
     private GameObject player;
     private float _currentScale = InitScale;
     private const float TargetScale = 1.4f;
-    private const float InitScale = 1f;
+    private const float InitScale = .75f;
     private const int FramesCount = 100;
     private const float AnimationTimeSeconds = 1;
     private float _deltaTime = AnimationTimeSeconds / FramesCount;
@@ -20,12 +20,15 @@ public class GreenOnClick : MonoBehaviour
     private bool _upScale = true;
     public float duration = 4f;
 
+    public int playerIndex;
+
     bool used = false;
 
     Vector3 originalScale;
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        string playerTag = "Player" + playerIndex;
+        player = GameObject.FindGameObjectWithTag(playerTag);
         image = gameObject.GetComponent<Image>();
     }
 
@@ -70,7 +73,7 @@ public class GreenOnClick : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
 
-        while (!_upScale)
+        while (!_upScale )
         {
             _currentScale -= _dx;
             if (_currentScale < InitScale)
