@@ -7,6 +7,7 @@ TagManager:
   - Question
   - SpecialQuestion
   - PointSystem
+  - BottleSIze
   layers:
   - Default
   - TransparentFX

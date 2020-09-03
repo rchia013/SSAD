@@ -4838,7 +4838,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fb276041f4776ba4ca924be1e46d1148, type: 2}
+  - {fileID: 2100000, guid: c8db1f013b036ef4a945932c2223850c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4890,7 +4890,7 @@ GameObject:
   - component: {fileID: 4000013828724138}
   m_Layer: 0
   m_Name: Bottle_Endurance
-  m_TagString: Untagged
+  m_TagString: BottleSIze
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
