@@ -10,6 +10,8 @@ public class GreenOnClick : MonoBehaviour
     private Image image;
     
     private GameObject player;
+    private Collider coll;
+
     private float _currentScale = InitScale;
     private const float TargetScale = 1.4f;
     private const float InitScale = .75f;
@@ -29,6 +31,7 @@ public class GreenOnClick : MonoBehaviour
     {
         string playerTag = "Player" + playerIndex;
         player = GameObject.FindGameObjectWithTag(playerTag);
+        coll = player.GetComponent<BoxCollider>();
         image = gameObject.GetComponent<Image>();
     }
 
@@ -66,6 +69,7 @@ public class GreenOnClick : MonoBehaviour
                 _currentScale = TargetScale;
             }
             player.transform.localScale = Vector3.one * _currentScale;
+            coll.transform.localScale = Vector3.one * _currentScale;
             yield return new WaitForSeconds(_deltaTime);
         }
 
@@ -82,6 +86,7 @@ public class GreenOnClick : MonoBehaviour
                 _currentScale = InitScale;
             }
             player.transform.localScale = Vector3.one * _currentScale;
+            coll.transform.localScale = Vector3.one * _currentScale;
             yield return new WaitForSeconds(_deltaTime);
         }
         print("Shrink Finish");
