@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+// using System.Diagnostics;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class ActivePlatform : MonoBehaviour
+public class ActivePlatform : MonoBehaviourPunCallbacks
 {
     // Active Block Generation Parameters:
 
@@ -45,6 +48,11 @@ public class ActivePlatform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        foreach(Player player in PhotonNetwork.PlayerList)
+        {
+            Debug.Log(player.NickName);
+        }
+        Debug.Log(PhotonNetwork.PlayerList);
         totalNumBlocks = transform.childCount;
 
         for (int i = 0; i < totalNumBlocks; i++)

@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/PhotonMultiplayer/Scenes/CodeMatchmakingMenuDemo.unity
+    guid: 386f199e3a545c64ba7660cf92b88a63
+  - enabled: 0
+    path: Assets/PhotonMultiplayer/Scenes/CustomMatchmakingMenuDemo.unity
+    guid: a380b7a186bbdb54694f105b632f9929
+  - enabled: 0
+    path: Assets/PhotonMultiplayer/Scenes/QuickStartMenuDemo.unity
+    guid: 92806f5f00ec82442ba19c5d2b728f73
+  - enabled: 0
+    path: Assets/PhotonMultiplayer/Scenes/MultiplayerSceneDemo.unity
+    guid: 76f886f87e72893499518037dd09b879
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
