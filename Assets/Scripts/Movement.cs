@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Photon.Pun;
+using System;
 
 public class Movement : MonoBehaviour
 {
@@ -22,9 +24,9 @@ public class Movement : MonoBehaviour
     //JUMP:
 
     bool jumping = false; 
-    public float maxJump;
+    public float maxJump = 0.6f;
     float curJump;
-    public float jumpInc;
+    public float jumpInc = 0.075f;
 
     // ANIMATION:
 
@@ -35,7 +37,7 @@ public class Movement : MonoBehaviour
     // RESPAWN:
 
     public bool moveable = false;
-    public float respawnThreshold;
+    public float respawnThreshold = -2.05f;
 
     public GameObject uiObject;
     public GameObject question;
@@ -45,10 +47,19 @@ public class Movement : MonoBehaviour
 
     public int points;
 
-    
+    private PhotonView PV; //added this
+
 
     private void Start()
     {
+        // added this
+        Debug.Log("HII");
+        PV = GetComponent<PhotonView>();
+        uiObject = GameSetUp.GS.uiObject;
+        question = GameSetUp.GS.question;
+        countdown = GameSetUp.GS.countdown;
+        animator = GetComponent<Animator>();
+
         uiObject.SetActive(true);
         trail.Pause();
 
@@ -67,41 +78,43 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (moveable)
-        { 
-
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
-
-            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-            if (direction.magnitude >= 0.1f)
-            {
-                animator.enabled = true;
-                trail.Play();
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-                controller.Move(direction * speed * Time.deltaTime);
-            }
-
-            else
-            {
-                trail.Stop();
-                animator.PlayInFixedTime("Move", -1, freeze);
-                //animator.enabled = false;
-
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
+        if (PV.IsMine) //added this
+        {
+            if (moveable)
             {
 
-                if (IsGrounded())
+                float horizontal = Input.GetAxisRaw("Horizontal");
+                float vertical = Input.GetAxisRaw("Vertical");
+
+                Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+                if (direction.magnitude >= 0.1f)
                 {
-                    jumping = true;
+                    animator.enabled = true;
+                    trail.Play();
+                    float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+
+                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+                    controller.Move(direction * speed * Time.deltaTime);
+                }
+
+                else
+                {
+                    trail.Stop();
+                    animator.PlayInFixedTime("Move", -1, freeze);
+                    //animator.enabled = false;
+
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+
+                    if (IsGrounded())
+                    {
+                        jumping = true;
+                    }
                 }
             }
         }

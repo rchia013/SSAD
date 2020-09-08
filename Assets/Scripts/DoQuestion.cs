@@ -38,6 +38,8 @@ public class DoQuestion : MonoBehaviour
         background.color = originalColor;
 
         player = GameObject.FindWithTag(playerTag);
+        player = GameObject.FindWithTag("Player");
+        // player = GameSetUp.GS.player;
     }
 
     private void OnEnable()
