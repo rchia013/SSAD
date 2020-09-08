@@ -5,9 +5,9 @@ using TMPro;
 using UnityEngine.UI;
 using Photon.Pun;
 using System;
+using Photon.Realtime;
 
-public class Movement : MonoBehaviour
-{
+public class Movement : MonoBehaviourPunCallbacks { 
 
     // START COUNTDOWN:
 
@@ -60,6 +60,8 @@ public class Movement : MonoBehaviour
         countdown = GameSetUp.GS.countdown;
         animator = GetComponent<Animator>();
 
+        PV.RPC("playerTagger", RpcTarget.All, gameObject.tag);
+
         uiObject.SetActive(true);
         trail.Pause();
 
@@ -73,6 +75,12 @@ public class Movement : MonoBehaviour
 
         StartCoroutine("Countdown");
 
+    }
+
+    [PunRPC]
+    void playerTagger(string text)
+    {
+        this.tag = text;
     }
 
     // Update is called once per frame
