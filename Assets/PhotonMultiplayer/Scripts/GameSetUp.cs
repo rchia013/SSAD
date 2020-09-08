@@ -6,8 +6,6 @@ using UnityEngine.UI;
 using Photon.Pun;
 using System;
 using System.IO;
-
-
 public class GameSetUp : MonoBehaviourPunCallbacks
 {
     public static GameSetUp GS;
@@ -21,6 +19,8 @@ public class GameSetUp : MonoBehaviourPunCallbacks
     public TextMeshProUGUI countdown;
 
     public GameObject player;
+
+    public GameObject slot;
 
     
     private void OnEnable()
@@ -37,6 +37,9 @@ public class GameSetUp : MonoBehaviourPunCallbacks
         spawnIndex = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % 4;
         Debug.Log(spawnIndex);
         Debug.Log(spawnPoints[spawnIndex].transform.position);
-        player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player"), spawnPoints[spawnIndex].transform.position, Quaternion.identity);
+        player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player111"), spawnPoints[spawnIndex].transform.position, Quaternion.identity);
+        Debug.Log(PhotonNetwork.LocalPlayer.ActorNumber);
+        player.gameObject.tag = "Player" + (spawnIndex+1);
+        Debug.Log(player.gameObject.tag);
     }
 }

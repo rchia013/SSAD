@@ -16,6 +16,7 @@ public class PlayerMarkerSet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(gameObject.transform.GetChild(2));
         rend1 = gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>();
         rend2 = gameObject.transform.GetChild(3).gameObject.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>();
 
