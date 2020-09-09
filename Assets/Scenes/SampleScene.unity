@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 63205324}
   - component: {fileID: 63205326}
   - component: {fileID: 63205325}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Countdown Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,6 +767,7 @@ MonoBehaviour:
   countdown: {fileID: 63205325}
   player: {fileID: 0}
   slot: {fileID: 448378529}
+  playerCam: {fileID: 0}
 --- !u!4 &129097302
 Transform:
   m_ObjectHideFlags: 0
@@ -2392,7 +2393,7 @@ GameObject:
   - component: {fileID: 448378533}
   - component: {fileID: 448378532}
   - component: {fileID: 448378531}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Slot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3127,7 +3128,7 @@ GameObject:
   - component: {fileID: 586984595}
   - component: {fileID: 586984594}
   - component: {fileID: 586984593}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3325,7 +3326,7 @@ GameObject:
   - component: {fileID: 613180318}
   - component: {fileID: 613180317}
   - component: {fileID: 613180319}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Question Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3422,7 +3423,7 @@ GameObject:
   - component: {fileID: 618748327}
   - component: {fileID: 618748326}
   - component: {fileID: 618748325}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4656,7 +4657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 899650347}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5784,7 +5785,7 @@ GameObject:
   - component: {fileID: 1061229512}
   - component: {fileID: 1061229514}
   - component: {fileID: 1061229513}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Gameplay Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6087,7 +6088,7 @@ GameObject:
   - component: {fileID: 1274219803}
   - component: {fileID: 1274219802}
   - component: {fileID: 1274219801}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Button (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6711,7 +6712,7 @@ GameObject:
   - component: {fileID: 1463815848}
   - component: {fileID: 1463815847}
   - component: {fileID: 1463815849}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6867,7 +6868,7 @@ GameObject:
   - component: {fileID: 1498763237}
   - component: {fileID: 1498763236}
   - component: {fileID: 1498763235}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7112,7 +7113,7 @@ GameObject:
   - component: {fileID: 1574081103}
   - component: {fileID: 1574081105}
   - component: {fileID: 1574081104}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7341,7 +7342,7 @@ GameObject:
   - component: {fileID: 1617149002}
   - component: {fileID: 1617149004}
   - component: {fileID: 1617149003}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Question Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7476,7 +7477,7 @@ GameObject:
   - component: {fileID: 1625831259}
   - component: {fileID: 1625831258}
   - component: {fileID: 1625831257}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7691,7 +7692,7 @@ GameObject:
   - component: {fileID: 1691054944}
   - component: {fileID: 1691054946}
   - component: {fileID: 1691054945}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8837,7 +8838,7 @@ GameObject:
   - component: {fileID: 1892740301}
   - component: {fileID: 1892740300}
   - component: {fileID: 1892740302}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Countdown Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8954,7 +8955,7 @@ GameObject:
   - component: {fileID: 1924162180}
   - component: {fileID: 1924162182}
   - component: {fileID: 1924162181}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9458,7 +9459,7 @@ GameObject:
   - component: {fileID: 2003350750}
   - component: {fileID: 2003350752}
   - component: {fileID: 2003350751}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10596,6 +10597,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080846999814300678, guid: 5f14b418830a36f48b478f44c6ea0e87,
+        type: 3}
+      propertyPath: viewIdField
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f14b418830a36f48b478f44c6ea0e87, type: 3}

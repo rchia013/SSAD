@@ -13,7 +13,8 @@ public class DoQuestion : MonoBehaviour
     public Button b4;
 
     public bool pointsAwardable;
-    public bool? correct = null;
+    public bool answered = false; 
+    public bool correct = false;
 
     Image background;
     Color originalColor;
@@ -38,8 +39,6 @@ public class DoQuestion : MonoBehaviour
         background.color = originalColor;
 
         player = GameObject.FindWithTag(playerTag);
-        // player = GameObject.FindWithTag("Player");
-        // player = GameSetUp.GS.player;
     }
 
     private void OnEnable()
@@ -57,6 +56,7 @@ public class DoQuestion : MonoBehaviour
 
         gameObject.SetActive(false);
 
+        answered = true;
         correct = true;
     }
 
@@ -69,6 +69,7 @@ public class DoQuestion : MonoBehaviour
 
         points.SetText("Points: " + player.GetComponent<Movement>().points.ToString());
 
+        answered = true;
         correct = false;
 
         StartCoroutine("FailBGChange");

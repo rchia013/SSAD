@@ -52,25 +52,17 @@ public class Movement : MonoBehaviourPunCallbacks {
     public int points;
 
     private PhotonView PV; //added this
-    public GameObject cam;
 
     private void Start()
     {
         // added this
         Debug.Log("HII");
         PV = GetComponent<PhotonView>();
+
         uiObject = GameSetUp.GS.uiObject;
         question = GameSetUp.GS.question;
+        question.gameObject.tag = "Q" + (playerIndex+1);
         countdown = GameSetUp.GS.countdown;
-/*
-
-
-        GameObject curCam = Instantiate(cam);
-        curCam.GetComponent<CameraFollow>().setTarget(gameObject.transform);
-        curCam.GetComponent<CameraFollow>().playerTag = gameObject.tag;
-*/
-
-
 
         animator = GetComponent<Animator>();
 
