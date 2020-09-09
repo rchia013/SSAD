@@ -7,7 +7,11 @@ using Photon.Pun;
 using System;
 using Photon.Realtime;
 
-public class Movement : MonoBehaviourPunCallbacks { 
+public class Movement : MonoBehaviourPunCallbacks {
+
+    //ID
+
+    public int playerIndex;
 
     // START COUNTDOWN:
 
@@ -48,9 +52,7 @@ public class Movement : MonoBehaviourPunCallbacks {
     public int points;
 
     private PhotonView PV; //added this
-
     public GameObject cam;
-
 
     private void Start()
     {
@@ -60,22 +62,27 @@ public class Movement : MonoBehaviourPunCallbacks {
         uiObject = GameSetUp.GS.uiObject;
         question = GameSetUp.GS.question;
         countdown = GameSetUp.GS.countdown;
-        animator = GetComponent<Animator>();
+/*
 
-
-        uiObject.SetActive(true);
-        trail.Pause();
 
         GameObject curCam = Instantiate(cam);
         curCam.GetComponent<CameraFollow>().setTarget(gameObject.transform);
+        curCam.GetComponent<CameraFollow>().playerTag = gameObject.tag;
+*/
 
 
+
+        animator = GetComponent<Animator>();
+
+        PV.RPC("playerTagger", RpcTarget.All, gameObject.tag);
+
+        uiObject.SetActive(true);
+        trail.Pause();
 
         animator.enabled = false;
 
         points = 0;
 
-        PV.RPC("playerTagger", RpcTarget.All, gameObject.tag);
         controller = GetComponent<CharacterController>();
 
         respawnPoint = transform.position;
@@ -134,6 +141,7 @@ public class Movement : MonoBehaviourPunCallbacks {
             }
         }
     }
+
 
     void FixedUpdate()
     {

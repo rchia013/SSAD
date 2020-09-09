@@ -21,6 +21,7 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
     public GameObject player;
     public GameObject slot;
+    public GameObject playerCam;
 
     
     private void OnEnable()
@@ -33,13 +34,19 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        Debug.Log("HERRE");
-        Debug.Log(PhotonNetwork.LocalPlayer.ActorNumber);
         spawnIndex = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % 4;
-        Debug.Log(spawnIndex);
-        Debug.Log(spawnPoints[spawnIndex].transform.position);
+
+        // Player
+
         player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player111"), spawnPoints[spawnIndex].transform.position, Quaternion.identity);
 
+        // Camera
+
+        playerCam = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Main Camera"), Vector3.zero, Quaternion.Euler(26.618f, 0f, 0f));
+        playerCam.GetComponent<Camera>().enabled = true;
+        playerCam.GetComponent<CameraFollow>().setTarget(player);
+
+        // Panels
 
         player.gameObject.tag = "Player" + (spawnIndex+1);
         Debug.Log(player.gameObject.tag);

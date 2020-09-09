@@ -767,7 +767,6 @@ MonoBehaviour:
   countdown: {fileID: 63205325}
   player: {fileID: 0}
   slot: {fileID: 448378529}
-  cam: {fileID: 7275421718267125205, guid: 5f14b418830a36f48b478f44c6ea0e87, type: 3}
 --- !u!4 &129097302
 Transform:
   m_ObjectHideFlags: 0
@@ -10592,6 +10591,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 7275421718267125205, guid: 5f14b418830a36f48b478f44c6ea0e87,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f14b418830a36f48b478f44c6ea0e87, type: 3}

@@ -476,8 +476,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             yield return new WaitForSeconds(1);
             counter--;
 
-            print(counter);
-
             if (counter < 1)
             {
                 switch (playerNum)
@@ -518,8 +516,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                 yield return new WaitForSeconds(1);
                 counter--;
 
-                print(counter);
-
                 if (counter < 1)
                 {
                     putSpecialBlock = true;
@@ -534,8 +530,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             {
                 yield return new WaitForSeconds(1);
                 counter--;
-
-                print(counter);
 
                 if (counter < 1)
                 {

@@ -5143,6 +5143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d726ca225f74a6db68b38146858347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIndex: 0
   speed: 4
   turnSmoothTime: 0.05
   controller: {fileID: 905288912}
