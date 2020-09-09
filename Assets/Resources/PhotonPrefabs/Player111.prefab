@@ -5156,6 +5156,7 @@ MonoBehaviour:
   question: {fileID: 0}
   countdown: {fileID: 0}
   points: 0
+  cam: {fileID: 7275421718267125205, guid: 5f14b418830a36f48b478f44c6ea0e87, type: 3}
 --- !u!114 &1400802411
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -41,9 +41,6 @@ public class GameSetUp : MonoBehaviourPunCallbacks
         player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player111"), spawnPoints[spawnIndex].transform.position, Quaternion.identity);
 
 
-        //Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
-
-
         player.gameObject.tag = "Player" + (spawnIndex+1);
         Debug.Log(player.gameObject.tag);
     }

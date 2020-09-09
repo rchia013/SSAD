@@ -49,6 +49,8 @@ public class Movement : MonoBehaviourPunCallbacks {
 
     private PhotonView PV; //added this
 
+    public GameObject cam;
+
 
     private void Start()
     {
@@ -63,7 +65,12 @@ public class Movement : MonoBehaviourPunCallbacks {
 
         uiObject.SetActive(true);
         trail.Pause();
-        Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
+
+        GameObject curCam = Instantiate(cam);
+        curCam.GetComponent<CameraFollow>().setTarget(gameObject.transform);
+
+
+
         animator.enabled = false;
 
         points = 0;
