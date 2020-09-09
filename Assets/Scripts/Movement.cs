@@ -63,7 +63,7 @@ public class Movement : MonoBehaviourPunCallbacks {
 
         uiObject.SetActive(true);
         trail.Pause();
-
+        Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
         animator.enabled = false;
 
         points = 0;

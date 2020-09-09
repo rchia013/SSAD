@@ -20,7 +20,6 @@ public class GameSetUp : MonoBehaviourPunCallbacks
     public TextMeshProUGUI countdown;
 
     public GameObject player;
-
     public GameObject slot;
 
     
@@ -40,6 +39,11 @@ public class GameSetUp : MonoBehaviourPunCallbacks
         Debug.Log(spawnIndex);
         Debug.Log(spawnPoints[spawnIndex].transform.position);
         player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player111"), spawnPoints[spawnIndex].transform.position, Quaternion.identity);
+
+
+        //Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
+
+
         player.gameObject.tag = "Player" + (spawnIndex+1);
         Debug.Log(player.gameObject.tag);
     }
