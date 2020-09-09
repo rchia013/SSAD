@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class SpecialBlock : MonoBehaviour
 {
@@ -32,6 +33,9 @@ public class SpecialBlock : MonoBehaviour
 
     public int choice = -1;
     private GameObject chosenPower = null;
+
+    
+    PhotonView PV;
 
 
     //private void Start()
@@ -229,7 +233,7 @@ public class SpecialBlock : MonoBehaviour
 
                 StartCoroutine("HighlightFadeOut");
 
-                dropBlock();
+                PV.RPC("dropBlock", RpcTarget.All);
                 yield return new WaitForSeconds(1);
 
                 print("Gone");
@@ -265,7 +269,7 @@ public class SpecialBlock : MonoBehaviour
                         StartCoroutine("HighlightFadeOut");
                     }
 
-                    dropBlock();
+                    PV.RPC("dropBlock", RpcTarget.All);
                     yield return new WaitForSeconds(1);
 
                     print("Gone");
@@ -309,6 +313,7 @@ public class SpecialBlock : MonoBehaviour
         }
     }
 
+    [PunRPC]
     void dropBlock()
     {
         Physics.IgnoreCollision(player.GetComponent<CharacterController>(), highlight.GetComponent<CapsuleCollider>(), false);
@@ -318,6 +323,7 @@ public class SpecialBlock : MonoBehaviour
 
         rb.isKinematic = false;
     }
+
 
 
 

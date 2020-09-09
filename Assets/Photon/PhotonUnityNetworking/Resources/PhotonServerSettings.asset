@@ -40,6 +40,8 @@ MonoBehaviour:
   - ActivateBlock
   - SpecialBlock
   - DeactivateBlock
+  - dropBlock
+  - startBlock
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

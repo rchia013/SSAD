@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class ActivatedBlock : MonoBehaviour
 {
@@ -32,10 +33,13 @@ public class ActivatedBlock : MonoBehaviour
     GameObject player;
     public GameObject question;
 
+    PhotonView PV;
+
 
 
     private void OnEnable()
     {
+        PV = GetComponent<PhotonView>();
         parentBlock = transform.parent.gameObject;
 
         rend = parentBlock.GetComponent<MeshRenderer>();
@@ -80,28 +84,26 @@ public class ActivatedBlock : MonoBehaviour
 
             player = other.gameObject;
 
-            // 1. Move Block
+            // 1. Start Block
+
+            // a. Move Parent
 
             parentBlock.transform.Translate(Vector3.down * 0.1f);
             questionActivated = true;
 
-
-            // 2. Restrict Player
-
-            player.GetComponent<Movement>().moveable = false;
-
-
-
-            // 3. Activate Highlight
+            // b. Activate Highlight
 
             highlight.GetComponent<MeshRenderer>().enabled = true;
             StartCoroutine("HighlightFadeIn");
 
             Physics.IgnoreCollision(player.GetComponent<CharacterController>(), highlight.GetComponent<CapsuleCollider>(), true);
             Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), highlight.GetComponent<CapsuleCollider>(), true);
-            
 
             highlight.GetComponent<CapsuleCollider>().enabled = true;
+
+            // 2. Restrict Player
+
+            player.GetComponent<Movement>().moveable = false;
 
             // 4. Start Question
 
@@ -142,14 +144,13 @@ public class ActivatedBlock : MonoBehaviour
             {
                 StartCoroutine("HighlightFadeOut");
 
-                dropBlock();
+                PV.RPC("dropBlock", RpcTarget.All);
 
                 yield return new WaitForSeconds(1);
 
                 print("Gone");
 
                 Destroy(transform.parent.gameObject);
-
                 break;
             }
 
@@ -178,13 +179,13 @@ public class ActivatedBlock : MonoBehaviour
                         StartCoroutine("HighlightFadeOut");
                     }
 
-                    dropBlock();
+                    PV.RPC("dropBlock", RpcTarget.All);
+
                     yield return new WaitForSeconds(1);
 
                     print("Gone");
 
                     Destroy(transform.parent.gameObject);
-                    
                     break;
             }
 
@@ -222,6 +223,7 @@ public class ActivatedBlock : MonoBehaviour
         }
     }
 
+    [PunRPC]
     void dropBlock()
     {
         Physics.IgnoreCollision(player.GetComponent<CharacterController>(), highlight.GetComponent<CapsuleCollider>(), false);
