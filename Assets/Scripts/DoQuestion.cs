@@ -19,7 +19,6 @@ public class DoQuestion : MonoBehaviour
     Image background;
     Color originalColor;
 
-    public TextMeshProUGUI points;
     GameObject player;
     public string playerTag;
 
@@ -43,16 +42,15 @@ public class DoQuestion : MonoBehaviour
 
     private void OnEnable()
     {
-        background.color = originalColor;
+        background = gameObject.GetComponent<Image>();
+        background.color = new Color(0, 0, 0, (29 / 255));
     }
 
     void Correct()
     {
         print("Correct");
         if (pointsAwardable)
-            player.GetComponent<Movement>().points += 1;
-
-        points.SetText("Points: " + player.GetComponent<Movement>().points.ToString());
+            player.GetComponent<Movement>().ChangePoints(3);
 
         gameObject.SetActive(false);
 
@@ -65,9 +63,7 @@ public class DoQuestion : MonoBehaviour
         print("Wrong");
 
         if (pointsAwardable)
-            player.GetComponent<Movement>().points -= 1;
-
-        points.SetText("Points: " + player.GetComponent<Movement>().points.ToString());
+            player.GetComponent<Movement>().ChangePoints(-3);
 
         answered = true;
         correct = false;

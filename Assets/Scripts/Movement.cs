@@ -50,6 +50,7 @@ public class Movement : MonoBehaviourPunCallbacks {
     // POINTS:
 
     public int points;
+    TextMeshProUGUI pointsUI;
 
     private PhotonView PV; //added this
 
@@ -59,9 +60,9 @@ public class Movement : MonoBehaviourPunCallbacks {
         Debug.Log("HII");
         PV = GetComponent<PhotonView>();
 
+
+        pointsUI = GameSetUp.GS.points;
         uiObject = GameSetUp.GS.uiObject;
-        question = GameSetUp.GS.question;
-        question.gameObject.tag = "Q" + (playerIndex+1);
         countdown = GameSetUp.GS.countdown;
 
         animator = GetComponent<Animator>();
@@ -219,5 +220,12 @@ public class Movement : MonoBehaviourPunCallbacks {
         {
             return false;
         }
+    }
+
+    public void ChangePoints(int x)
+    {
+        points += x;
+
+        pointsUI.SetText("Points: " + points.ToString());
     }
 }

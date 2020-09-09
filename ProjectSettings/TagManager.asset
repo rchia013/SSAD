@@ -18,6 +18,7 @@ TagManager:
   - Q2
   - Q3
   - Q4
+  - Canvas
   layers:
   - Default
   - TransparentFX
