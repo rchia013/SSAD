@@ -225,7 +225,6 @@ public class Movement : MonoBehaviourPunCallbacks {
     public void ChangePoints(int x)
     {
         points += x;
-
         pointsUI.SetText("Points: " + points.ToString());
     }
 }
