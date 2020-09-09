@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 public class ActivePlatform : MonoBehaviour
@@ -55,6 +57,8 @@ public class ActivePlatform : MonoBehaviour
     private GameObject player3;
     private GameObject player4;
 
+    private PhotonView photonView;
+
 
 
     // Start is called before the first frame update
@@ -72,6 +76,7 @@ public class ActivePlatform : MonoBehaviour
         player3 = GameObject.FindWithTag("Player3");
         player4 = GameObject.FindWithTag("Player4");
 
+        photonView = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
@@ -148,7 +153,8 @@ public class ActivePlatform : MonoBehaviour
                 {
                     curNum1 = temp;
 
-                    ActivateBlock(blocks[curNum1],1);
+                    photonView.RPC("ActivateBlock", RpcTarget.All, curNum1, 1);
+                    // ActivateBlock(blocks[curNum1],1);
                 }
             }
         }
@@ -178,7 +184,8 @@ public class ActivePlatform : MonoBehaviour
                 {
                     curNum2 = temp;
 
-                    ActivateBlock(blocks[curNum2], 2);
+                    photonView.RPC("ActivateBlock", RpcTarget.All, curNum2, 2);
+                    // ActivateBlock(blocks[curNum2], 2);
                 }
             }
         }
@@ -208,7 +215,8 @@ public class ActivePlatform : MonoBehaviour
                 {
                     curNum3 = temp;
 
-                    ActivateBlock(blocks[curNum3], 3);
+                    photonView.RPC("ActivateBlock", RpcTarget.All, curNum3, 3);
+                    // ActivateBlock(blocks[curNum3], 3);
                 }
             }
         }
@@ -238,7 +246,8 @@ public class ActivePlatform : MonoBehaviour
                 {
                     curNum4 = temp;
 
-                    ActivateBlock(blocks[curNum4], 4);
+                    photonView.RPC("ActivateBlock", RpcTarget.All, curNum4, 4);
+                    // ActivateBlock(blocks[curNum4], 4);
                 }
             }
         }
@@ -263,7 +272,8 @@ public class ActivePlatform : MonoBehaviour
                 {
                     newSpecNum = temp;
 
-                    SpecialBlock(blocks[newSpecNum], newSpecNum);
+                    photonView.RPC("SpecialBlock", RpcTarget.All, newSpecNum);
+                    // SpecialBlock(blocks[newSpecNum], newSpecNum);
 
                     print("Chosen SB");
                 }
@@ -273,11 +283,11 @@ public class ActivePlatform : MonoBehaviour
         }
     }
 
-
-    void ActivateBlock(GameObject block, int playerNum)
+    [PunRPC]
+    void ActivateBlock(int blockNum, int playerNum)
     {
         // Activate Block
-
+        GameObject block = blocks[blockNum];
         ABscript = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
         ABscript.playerIndex = playerNum;
         ABscript.enabled = true;
@@ -309,8 +319,10 @@ public class ActivePlatform : MonoBehaviour
 
     }
 
-    void SpecialBlock(GameObject block, int index)
+    [PunRPC]
+    void SpecialBlock(int index) 
     {
+        GameObject block = blocks[index];
         if (!power0used && !power1used)
         {
             powerChoice = Random.Range(0, 2);

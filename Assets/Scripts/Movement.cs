@@ -60,7 +60,6 @@ public class Movement : MonoBehaviourPunCallbacks {
         countdown = GameSetUp.GS.countdown;
         animator = GetComponent<Animator>();
 
-        PV.RPC("playerTagger", RpcTarget.All, gameObject.tag);
 
         uiObject.SetActive(true);
         trail.Pause();
@@ -69,6 +68,7 @@ public class Movement : MonoBehaviourPunCallbacks {
 
         points = 0;
 
+        PV.RPC("playerTagger", RpcTarget.All, gameObject.tag);
         controller = GetComponent<CharacterController>();
 
         respawnPoint = transform.position;
