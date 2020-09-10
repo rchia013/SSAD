@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class ActivePlatform : MonoBehaviour
+public class ActivePlatform : MonoBehaviourPunCallbacks
 {
     // Active Block Generation Parameters:
 
@@ -26,7 +27,10 @@ public class ActivePlatform : MonoBehaviour
 
     // Current Records
 
-    ActivatedBlock ABscript = null;
+    ActivatedBlock ABscript1 = null;
+    ActivatedBlock ABscript2 = null;
+    ActivatedBlock ABscript3 = null;
+    ActivatedBlock ABscript4 = null;
 
     public int curNum1 = -1;
     public int prevNum1 = -1;
@@ -55,11 +59,14 @@ public class ActivePlatform : MonoBehaviour
     private GameObject player3;
     private GameObject player4;
 
+    private PhotonView PV;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        PV = GetComponent<PhotonView>();
+
         totalNumBlocks = transform.childCount;
 
         for (int i = 0; i < totalNumBlocks; i++)
@@ -73,6 +80,22 @@ public class ActivePlatform : MonoBehaviour
         player4 = GameObject.FindWithTag("Player4");
 
     }
+    /*
+        private void OnEnable()
+        {
+            print("ENABLE");
+            totalNumBlocks = transform.childCount;
+
+            for (int i = 0; i < totalNumBlocks; i++)
+            {
+                blocks.Add(i, transform.GetChild(i).gameObject);
+            }
+
+            player1 = GameObject.FindWithTag("Player1");
+            player2 = GameObject.FindWithTag("Player2");
+            player3 = GameObject.FindWithTag("Player3");
+            player4 = GameObject.FindWithTag("Player4");
+        }*/
 
     // Update is called once per frame
     void Update()
@@ -121,18 +144,14 @@ public class ActivePlatform : MonoBehaviour
             }
         }
 
-
-
         if (player1 != null && putActiveBlock1 && blocks.Count > totalNumBlocks / 4 && player1.GetComponent<Movement>().moveable)
         {
             if (blocks.ContainsKey(prevNum1))
             {
-                ABscript.blockActivated = false;
-                ABscript.playerIndex = 0;
-                ABscript.enabled = false;
+                PV.RPC("DeactivateBlock", RpcTarget.All, 1);
             }
 
-            curNum1= -1;
+            curNum1 = -1;
             int temp;
 
             while (curNum1 == -1)
@@ -148,7 +167,8 @@ public class ActivePlatform : MonoBehaviour
                 {
                     curNum1 = temp;
 
-                    ActivateBlock(blocks[curNum1],1);
+                    PV.RPC("ActivateBlock", RpcTarget.All, curNum1, 1);
+                    /*                    ActivateBlock(blocks[curNum1],1);*/
                 }
             }
         }
@@ -157,9 +177,7 @@ public class ActivePlatform : MonoBehaviour
         {
             if (blocks.ContainsKey(prevNum2))
             {
-                ABscript.blockActivated = false;
-                ABscript.playerIndex = 0;
-                ABscript.enabled = false;
+                PV.RPC("DeactivateBlock", RpcTarget.All, 2);
             }
 
             curNum2 = -1;
@@ -178,7 +196,8 @@ public class ActivePlatform : MonoBehaviour
                 {
                     curNum2 = temp;
 
-                    ActivateBlock(blocks[curNum2], 2);
+                    PV.RPC("ActivateBlock", RpcTarget.All, curNum2, 2);
+                    /*ActivateBlock(blocks[curNum2], 2);*/
                 }
             }
         }
@@ -187,9 +206,7 @@ public class ActivePlatform : MonoBehaviour
         {
             if (blocks.ContainsKey(prevNum3))
             {
-                ABscript.blockActivated = false;
-                ABscript.playerIndex = 0;
-                ABscript.enabled = false;
+                PV.RPC("DeactivateBlock", RpcTarget.All, 3);
             }
 
             curNum3 = -1;
@@ -208,7 +225,8 @@ public class ActivePlatform : MonoBehaviour
                 {
                     curNum3 = temp;
 
-                    ActivateBlock(blocks[curNum3], 3);
+                    PV.RPC("ActivateBlock", RpcTarget.All, curNum3, 3);
+                    /*                    ActivateBlock(blocks[curNum3], 3);*/
                 }
             }
         }
@@ -217,9 +235,7 @@ public class ActivePlatform : MonoBehaviour
         {
             if (blocks.ContainsKey(prevNum4))
             {
-                ABscript.blockActivated = false;
-                ABscript.playerIndex = 0;
-                ABscript.enabled = false;
+                PV.RPC("DeactivateBlock", RpcTarget.All, 4);
             }
 
             curNum4 = -1;
@@ -238,7 +254,8 @@ public class ActivePlatform : MonoBehaviour
                 {
                     curNum4 = temp;
 
-                    ActivateBlock(blocks[curNum4], 4);
+                    PV.RPC("ActivateBlock", RpcTarget.All, curNum4, 4);
+                    /*ActivateBlock(blocks[curNum4], 4);*/
                 }
             }
         }
@@ -263,7 +280,23 @@ public class ActivePlatform : MonoBehaviour
                 {
                     newSpecNum = temp;
 
-                    SpecialBlock(blocks[newSpecNum], newSpecNum);
+                    int powerChoice = -1;
+
+                    if (!power0used && !power1used)
+                    {
+                        powerChoice = Random.Range(0, 2);
+                    }
+                    else
+                    {
+                        if (power0used)
+                            powerChoice = 1;
+
+                        else if (power1used)
+                            powerChoice = 0;
+                    }
+
+                    PV.RPC("SpecialBlock", RpcTarget.All, newSpecNum, powerChoice);
+                    /*                    SpecialBlock(blocks[newSpecNum], newSpecNum);*/
 
                     print("Chosen SB");
                 }
@@ -273,16 +306,45 @@ public class ActivePlatform : MonoBehaviour
         }
     }
 
-
-    void ActivateBlock(GameObject block, int playerNum)
+    [PunRPC]
+    void ActivateBlock(int blockIndex, int playerNum)
     {
+        GameObject block = blocks[blockIndex];
+
         // Activate Block
 
-        ABscript = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
-        ABscript.playerIndex = playerNum;
-        ABscript.enabled = true;
+        switch (playerNum)
+        {
+            case 1:
 
-        ABscript.blockActivated = true;
+                ABscript1 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
+                ABscript1.playerIndex = playerNum;
+                ABscript1.enabled = true;
+
+                ABscript1.blockActivated = true;
+                break;
+            case 2:
+                ABscript2 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
+                ABscript2.playerIndex = playerNum;
+                ABscript2.enabled = true;
+
+                ABscript2.blockActivated = true;
+                break;
+            case 3:
+                ABscript3 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
+                ABscript3.playerIndex = playerNum;
+                ABscript3.enabled = true;
+
+                ABscript3.blockActivated = true;
+                break;
+            case 4:
+                ABscript4 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
+                ABscript4.playerIndex = playerNum;
+                ABscript4.enabled = true;
+
+                ABscript4.blockActivated = true;
+                break;
+        }
 
         // Cooldown
 
@@ -309,20 +371,10 @@ public class ActivePlatform : MonoBehaviour
 
     }
 
-    void SpecialBlock(GameObject block, int index)
+    [PunRPC]
+    void SpecialBlock(int blockIndex, int powerChoice)
     {
-        if (!power0used && !power1used)
-        {
-            powerChoice = Random.Range(0, 2);
-        }
-        else
-        {
-            if (power0used)
-                powerChoice = 1;
-
-            else if (power1used)
-                powerChoice = 0;
-        }
+        GameObject block = blocks[blockIndex];
 
         if (powerChoice == 0)
         {
@@ -331,7 +383,7 @@ public class ActivePlatform : MonoBehaviour
             power0Script.blockActivated = true;
             power0Script.enabled = true;
 
-            power0Num = index;
+            power0Num = blockIndex;
             power0used = true;
         }
         else if (powerChoice == 1)
@@ -341,10 +393,9 @@ public class ActivePlatform : MonoBehaviour
             power1Script.blockActivated = true;
             power1Script.enabled = true;
 
-            power1Num = index;
+            power1Num = blockIndex;
             power1used = true;
         }
-
 
         if (powerChoice != -1)
         {
@@ -356,6 +407,33 @@ public class ActivePlatform : MonoBehaviour
 
             StartCoroutine(CooldownSB(true));
         }
+    }
+
+    [PunRPC]
+
+    void DeactivateBlock(int playerNum)
+    {
+        ActivatedBlock curABScript = null;
+
+        switch (playerNum)
+        {
+            case 1:
+                curABScript = ABscript1;
+                break;
+            case 2:
+                curABScript = ABscript2;
+                break;
+            case 3:
+                curABScript = ABscript3;
+                break;
+            case 4:
+                curABScript = ABscript4;
+                break;
+        }
+
+        curABScript.blockActivated = false;
+        curABScript.playerIndex = 0;
+        curABScript.enabled = false;
     }
 
     private void FixedUpdate()
@@ -398,8 +476,6 @@ public class ActivePlatform : MonoBehaviour
             yield return new WaitForSeconds(1);
             counter--;
 
-            print(counter);
-
             if (counter < 1)
             {
                 switch (playerNum)
@@ -440,8 +516,6 @@ public class ActivePlatform : MonoBehaviour
                 yield return new WaitForSeconds(1);
                 counter--;
 
-                print(counter);
-
                 if (counter < 1)
                 {
                     putSpecialBlock = true;
@@ -456,8 +530,6 @@ public class ActivePlatform : MonoBehaviour
             {
                 yield return new WaitForSeconds(1);
                 counter--;
-
-                print(counter);
 
                 if (counter < 1)
                 {
@@ -478,6 +550,6 @@ public class ActivePlatform : MonoBehaviour
             }
         }
 
-        
+
     }
 }

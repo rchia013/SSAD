@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class SpecialBlock : MonoBehaviour
+public class SpecialBlock : MonoBehaviourPunCallbacks
 {
     public Material material4;
     public Material material3;
@@ -23,7 +24,7 @@ public class SpecialBlock : MonoBehaviour
 
     GameObject player;
     public string playerTag;
-    public GameObject question;
+    GameObject question;
 
     //Powerup:
 
@@ -33,52 +34,12 @@ public class SpecialBlock : MonoBehaviour
     public int choice = -1;
     private GameObject chosenPower = null;
 
-
-    //private void Start()
-    //{
-    //    gameObject.tag = "SpecialQuestion";
-
-    //    // Find parent & components
-
-    //    parentBlock = transform.parent.gameObject;
-
-    //    rend = parentBlock.GetComponent<MeshRenderer>();
-    //    rb = parentBlock.GetComponent<Rigidbody>();
-
-    //    highlight = parentBlock.transform.GetChild(1).gameObject;
-
-    //    // Parent settings
-
-    //    rb.isKinematic = true;
-
-    //    Material[] materials = rend.materials;
-    //    materials[0] = activeMaterial;
-    //    rend.materials = materials;
-
-    //    parentBlock.transform.Translate(Vector3.up * .15f);
-
-    //    // Add powerup
-
-    //    int choice = Random.Range(0, 2);
-
-    //    switch (choice)
-    //    {
-    //        case 0:
-    //            chosenPower = powerup1;
-    //            break;
-
-    //        case 1:
-    //            chosenPower = powerup2;
-    //            break;
-
-    //    }
-
-    //    setUpPowerUp(chosenPower);
-    //}
-
+    
+    PhotonView PV;
 
     private void OnEnable()
     {
+        PV = GetComponent<PhotonView>();
         gameObject.tag = "SpecialQuestion";
 
         // Find parent & components
@@ -160,6 +121,7 @@ public class SpecialBlock : MonoBehaviour
 
             player = other.gameObject;
             playerTag = player.tag;
+            question = player.GetComponent<Movement>().question;
 
             // 1. Move Block
 
@@ -172,7 +134,6 @@ public class SpecialBlock : MonoBehaviour
             player.GetComponent<Movement>().moveable = false;
 
 
-
             // 3. Activate Highlight
 
             highlight.GetComponent<MeshRenderer>().enabled = true;
@@ -181,7 +142,7 @@ public class SpecialBlock : MonoBehaviour
             Physics.IgnoreCollision(player.GetComponent<CharacterController>(), highlight.GetComponent<CapsuleCollider>(), true);
             Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), highlight.GetComponent<CapsuleCollider>(), true);
             Physics.IgnoreCollision(chosenPower.GetComponent<CapsuleCollider>(), highlight.GetComponent<CapsuleCollider>(), true);
-            
+
 
 
             highlight.GetComponent<CapsuleCollider>().enabled = true;
@@ -197,7 +158,8 @@ public class SpecialBlock : MonoBehaviour
         // Determines Question Time
         int counter = 5;
 
-        question.GetComponent<DoQuestion>().correct = null;
+        question.GetComponent<DoQuestion>().answered = false;
+        question.GetComponent<DoQuestion>().correct = false;
         question.GetComponent<DoQuestion>().pointsAwardable = false;
         question.GetComponent<DoQuestion>().playerTag = playerTag;
         question.SetActive(true);
@@ -212,7 +174,7 @@ public class SpecialBlock : MonoBehaviour
 
             // Case 1: 
 
-            if (question.GetComponent<DoQuestion>().correct == true)
+            if (question.GetComponent<DoQuestion>().answered == true && question.GetComponent<DoQuestion>().correct == true)
             {
                 player.GetComponent<Movement>().moveable = true;
 
@@ -223,13 +185,11 @@ public class SpecialBlock : MonoBehaviour
                 StartCoroutine("HighlightFadeOut");
             }
 
-            else if (question.GetComponent<DoQuestion>().correct == false)
+            else if (question.GetComponent<DoQuestion>().answered == true && question.GetComponent<DoQuestion>().correct == false)
             {
-                removePowerUp(chosenPower);
-
                 StartCoroutine("HighlightFadeOut");
 
-                dropBlock();
+                PV.RPC("dropSpecBlock", RpcTarget.All);
                 yield return new WaitForSeconds(1);
 
                 print("Gone");
@@ -259,13 +219,13 @@ public class SpecialBlock : MonoBehaviour
 
                 case 0:
 
-                    if (question.GetComponent<DoQuestion>().correct == null)
+                    if (question.GetComponent<DoQuestion>().answered == false)
                     {
                         removePowerUp(chosenPower);
                         StartCoroutine("HighlightFadeOut");
                     }
 
-                    dropBlock();
+                    PV.RPC("dropSpecBlock", RpcTarget.All);
                     yield return new WaitForSeconds(1);
 
                     print("Gone");
@@ -309,7 +269,8 @@ public class SpecialBlock : MonoBehaviour
         }
     }
 
-    void dropBlock()
+    [PunRPC]
+    void dropSpecBlock()
     {
         Physics.IgnoreCollision(player.GetComponent<CharacterController>(), highlight.GetComponent<CapsuleCollider>(), false);
         Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), highlight.GetComponent<CapsuleCollider>(), false);
@@ -317,22 +278,7 @@ public class SpecialBlock : MonoBehaviour
         highlight.GetComponent<CapsuleCollider>().enabled = false;
 
         rb.isKinematic = false;
-    }
 
-
-
-    private void OnDisable()
-    {
-        gameObject.tag = "Untagged";
-
-        if (rb.isKinematic)
-        {
-            Material[] materials = rend.materials;
-            materials[0] = originalMaterial;
-            rend.materials = materials;
-
-            parentBlock.transform.Translate(Vector3.down * .15f);
-
-        }
+        removePowerUp(chosenPower);
     }
 }

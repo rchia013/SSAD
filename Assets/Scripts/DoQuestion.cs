@@ -13,12 +13,12 @@ public class DoQuestion : MonoBehaviour
     public Button b4;
 
     public bool pointsAwardable;
-    public bool? correct = null;
+    public bool answered = false; 
+    public bool correct = false;
 
     Image background;
     Color originalColor;
 
-    public TextMeshProUGUI points;
     GameObject player;
     public string playerTag;
 
@@ -38,25 +38,23 @@ public class DoQuestion : MonoBehaviour
         background.color = originalColor;
 
         player = GameObject.FindWithTag(playerTag);
-        // player = GameObject.FindWithTag("Player");
-        // player = GameSetUp.GS.player;
     }
 
     private void OnEnable()
     {
-        background.color = originalColor;
+        background = gameObject.GetComponent<Image>();
+        background.color = new Color(0, 0, 0, (29 / 255));
     }
 
     void Correct()
     {
         print("Correct");
         if (pointsAwardable)
-            player.GetComponent<Movement>().points += 1;
-
-        points.SetText("Points: " + player.GetComponent<Movement>().points.ToString());
+            player.GetComponent<Movement>().ChangePoints(3);
 
         gameObject.SetActive(false);
 
+        answered = true;
         correct = true;
     }
 
@@ -65,10 +63,9 @@ public class DoQuestion : MonoBehaviour
         print("Wrong");
 
         if (pointsAwardable)
-            player.GetComponent<Movement>().points -= 1;
+            player.GetComponent<Movement>().ChangePoints(-3);
 
-        points.SetText("Points: " + player.GetComponent<Movement>().points.ToString());
-
+        answered = true;
         correct = false;
 
         StartCoroutine("FailBGChange");

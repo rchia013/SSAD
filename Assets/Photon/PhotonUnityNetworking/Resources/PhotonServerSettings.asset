@@ -37,6 +37,14 @@ MonoBehaviour:
   - DestroyRpc
   - RPC_SendTimer
   - playerTagger
+  - ActivateBlock
+  - SpecialBlock
+  - DeactivateBlock
+  - dropBlock
+  - startBlock
+  - dropSpecBlock
+  - Use
+  - powerSize
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class ActivatedBlock : MonoBehaviour
+public class ActivatedBlock : MonoBehaviourPunCallbacks
 {
     public Material material4;
     public Material material3;
@@ -30,12 +31,15 @@ public class ActivatedBlock : MonoBehaviour
     string playerTag;
 
     GameObject player;
-    public GameObject question;
+    GameObject question;
+
+    PhotonView PV;
 
 
 
     private void OnEnable()
     {
+        PV = GetComponent<PhotonView>();
         parentBlock = transform.parent.gameObject;
 
         rend = parentBlock.GetComponent<MeshRenderer>();
@@ -79,29 +83,28 @@ public class ActivatedBlock : MonoBehaviour
             print("Touch & Give Q");
 
             player = other.gameObject;
+            question = player.GetComponent<Movement>().question;
 
-            // 1. Move Block
+            // 1. Start Block
+
+            // a. Move Parent
 
             parentBlock.transform.Translate(Vector3.down * 0.1f);
             questionActivated = true;
 
-
-            // 2. Restrict Player
-
-            player.GetComponent<Movement>().moveable = false;
-
-
-
-            // 3. Activate Highlight
+            // b. Activate Highlight
 
             highlight.GetComponent<MeshRenderer>().enabled = true;
             StartCoroutine("HighlightFadeIn");
 
             Physics.IgnoreCollision(player.GetComponent<CharacterController>(), highlight.GetComponent<CapsuleCollider>(), true);
             Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), highlight.GetComponent<CapsuleCollider>(), true);
-            
 
             highlight.GetComponent<CapsuleCollider>().enabled = true;
+
+            // 2. Restrict Player
+
+            player.GetComponent<Movement>().moveable = false;
 
             // 4. Start Question
 
@@ -114,7 +117,8 @@ public class ActivatedBlock : MonoBehaviour
         // Determines Question Time
         int counter = 5;
 
-        question.GetComponent<DoQuestion>().correct = null;
+        question.GetComponent<DoQuestion>().answered = false;
+        question.GetComponent<DoQuestion>().correct = false;
         question.GetComponent<DoQuestion>().pointsAwardable = true;
         question.GetComponent<DoQuestion>().playerTag = playerTag;
         question.SetActive(true);
@@ -129,7 +133,7 @@ public class ActivatedBlock : MonoBehaviour
 
             // Case 1: 
 
-            if (question.GetComponent<DoQuestion>().correct == true)
+            if (question.GetComponent<DoQuestion>().answered == true && question.GetComponent<DoQuestion>().correct == true)
             {
                 player.GetComponent<Movement>().moveable = true;
                 question.SetActive(false);
@@ -138,18 +142,17 @@ public class ActivatedBlock : MonoBehaviour
              
             }
 
-            else if (question.GetComponent<DoQuestion>().correct == false)
+            else if (question.GetComponent<DoQuestion>().answered == true && question.GetComponent<DoQuestion>().correct == false)
             {
                 StartCoroutine("HighlightFadeOut");
 
-                dropBlock();
+                PV.RPC("dropBlock", RpcTarget.All);
 
                 yield return new WaitForSeconds(1);
 
                 print("Gone");
 
                 Destroy(transform.parent.gameObject);
-
                 break;
             }
 
@@ -173,18 +176,18 @@ public class ActivatedBlock : MonoBehaviour
 
                 case 0:
 
-                    if (question.GetComponent<DoQuestion>().correct == null)
+                    if (question.GetComponent<DoQuestion>().answered == false)
                     {
                         StartCoroutine("HighlightFadeOut");
                     }
 
-                    dropBlock();
+                    PV.RPC("dropBlock", RpcTarget.All);
+
                     yield return new WaitForSeconds(1);
 
                     print("Gone");
 
                     Destroy(transform.parent.gameObject);
-                    
                     break;
             }
 
@@ -222,6 +225,7 @@ public class ActivatedBlock : MonoBehaviour
         }
     }
 
+    [PunRPC]
     void dropBlock()
     {
         Physics.IgnoreCollision(player.GetComponent<CharacterController>(), highlight.GetComponent<CapsuleCollider>(), false);

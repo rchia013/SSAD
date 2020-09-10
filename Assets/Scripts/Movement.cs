@@ -7,7 +7,11 @@ using Photon.Pun;
 using System;
 using Photon.Realtime;
 
-public class Movement : MonoBehaviourPunCallbacks { 
+public class Movement : MonoBehaviourPunCallbacks {
+
+    //ID
+
+    public int playerIndex;
 
     // START COUNTDOWN:
 
@@ -46,18 +50,21 @@ public class Movement : MonoBehaviourPunCallbacks {
     // POINTS:
 
     public int points;
+    TextMeshProUGUI pointsUI;
 
     private PhotonView PV; //added this
-
 
     private void Start()
     {
         // added this
         Debug.Log("HII");
         PV = GetComponent<PhotonView>();
+
+
+        pointsUI = GameSetUp.GS.points;
         uiObject = GameSetUp.GS.uiObject;
-        question = GameSetUp.GS.question;
         countdown = GameSetUp.GS.countdown;
+
         animator = GetComponent<Animator>();
 
         PV.RPC("playerTagger", RpcTarget.All, gameObject.tag);
@@ -127,6 +134,7 @@ public class Movement : MonoBehaviourPunCallbacks {
             }
         }
     }
+
 
     void FixedUpdate()
     {
@@ -212,5 +220,11 @@ public class Movement : MonoBehaviourPunCallbacks {
         {
             return false;
         }
+    }
+
+    public void ChangePoints(int x)
+    {
+        points += x;
+        pointsUI.SetText("Points: " + points.ToString());
     }
 }
