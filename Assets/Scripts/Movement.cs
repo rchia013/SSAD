@@ -50,9 +50,11 @@ public class Movement : MonoBehaviourPunCallbacks {
     // POINTS:
 
     public int points;
-    TextMeshProUGUI pointsUI;
+    // TextMeshProUGUI pointsUI;
+    TextMeshProUGUI[] pointsUIList;
+    // int[] pointsList;
 
-    private PhotonView PV; //added this
+    public PhotonView PV; //added this
 
     private void Start()
     {
@@ -60,8 +62,12 @@ public class Movement : MonoBehaviourPunCallbacks {
         Debug.Log("HII");
         PV = GetComponent<PhotonView>();
 
+        // pointsUI = GameSetUp.GS.points;
+        pointsUIList = GameSetUp.GS.pointsUIList;
+        points = 0;
+        // pointsList = GameSetUp.GS.pointsList;
+        // pointsList[playerIndex] = 0;
 
-        pointsUI = GameSetUp.GS.points;
         uiObject = GameSetUp.GS.uiObject;
         countdown = GameSetUp.GS.countdown;
 
@@ -73,8 +79,6 @@ public class Movement : MonoBehaviourPunCallbacks {
         trail.Pause();
 
         animator.enabled = false;
-
-        points = 0;
 
         controller = GetComponent<CharacterController>();
 
@@ -222,9 +226,14 @@ public class Movement : MonoBehaviourPunCallbacks {
         }
     }
 
-    public void ChangePoints(int x)
+    [PunRPC]
+    public void ChangePoints(int playerIndex, int x)
     {
+        // Debug.Log(pointsList);
+        Debug.Log(playerIndex);
+        // pointsList[playerIndex] += x;
         points += x;
-        pointsUI.SetText("Points: " + points.ToString());
+        pointsUIList[playerIndex].SetText("Points: " + points.ToString());
+        // pointsUI.SetText("Points: " + points.ToString());
     }
 }

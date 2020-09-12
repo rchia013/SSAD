@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using Photon.Pun;
 
 public class DoQuestion : MonoBehaviour
 {
@@ -21,6 +21,8 @@ public class DoQuestion : MonoBehaviour
 
     GameObject player;
     public string playerTag;
+    int playerIndex;
+    private PhotonView PV;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +39,10 @@ public class DoQuestion : MonoBehaviour
         background = gameObject.GetComponent<Image>();
         background.color = originalColor;
 
-        player = GameObject.FindWithTag(playerTag);
+        // player = GameObject.FindWithTag(playerTag);
+        player = GameSetUp.GS.player;
+        playerIndex = GameSetUp.GS.playerIndex;
+        PV = player.GetComponent<Movement>().PV;
     }
 
     private void OnEnable()
@@ -50,8 +55,11 @@ public class DoQuestion : MonoBehaviour
     {
         print("Correct");
         if (pointsAwardable)
-            player.GetComponent<Movement>().ChangePoints(3);
-
+        {
+            Debug.Log("Points"+ playerIndex);
+            PV.RPC("ChangePoints", RpcTarget.All, playerIndex, 3);
+            // player.GetComponent<Movement>().ChangePoints(playerIndex, 3);
+        }
         gameObject.SetActive(false);
 
         answered = true;
@@ -63,7 +71,11 @@ public class DoQuestion : MonoBehaviour
         print("Wrong");
 
         if (pointsAwardable)
-            player.GetComponent<Movement>().ChangePoints(-3);
+        {
+            Debug.Log(playerIndex);
+            PV.RPC("ChangePoints", RpcTarget.All, playerIndex, -3);
+            // player.GetComponent<Movement>().ChangePoints(playerIndex, -3);
+        }
 
         answered = true;
         correct = false;
