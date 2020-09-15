@@ -118,20 +118,17 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     public void OpenJoinPanel()
     {
-        Debug.Log("HERYERYER");
         joinPanel.SetActive(true);
     }
     
     public void OnCodeInputChanged(string code)
     {
-        Debug.Log("HIIIIIIII");
         Debug.Log(code);
         joinCode = code;
     }
 
     public void JoinRoomOnClick()
     {
-        Debug.Log("HIHIIIHIHIHI");
         Debug.Log(joinCode);
         PhotonNetwork.JoinRoom(joinCode);
     }

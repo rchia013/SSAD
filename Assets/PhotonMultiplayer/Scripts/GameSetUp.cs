@@ -13,17 +13,22 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
     public Transform[] spawnPoints;
 
-    private int spawnIndex;
+    public int playerIndex;
 
-    public TextMeshProUGUI points;
     public GameObject uiObject;
     public TextMeshProUGUI countdown;
 
     public GameObject player;
     public GameObject slot;
     public GameObject playerCam;
-    GameObject question;
 
+    public TextMeshProUGUI[] pointsUIList;
+
+    // public TextMeshProUGUI pointsUI;
+
+    // public int[] pointsList = new int[4];
+
+    GameObject question;
     
     private void OnEnable()
     {
@@ -35,11 +40,11 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        spawnIndex = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % 4;
+        playerIndex = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % 4;
 
         // Player
 
-        player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player111"), spawnPoints[spawnIndex].transform.position, Quaternion.identity);
+        player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player111"), spawnPoints[playerIndex].transform.position, Quaternion.identity);
 
         // Camera
 
@@ -51,14 +56,16 @@ public class GameSetUp : MonoBehaviourPunCallbacks
         GameObject canvas = GameObject.FindWithTag("Canvas");
 
         question = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Question"), canvas.transform.position, Quaternion.identity);
-        question.GetComponent<DoQuestion>().tag = "Q" + (spawnIndex + 1);
+        question.GetComponent<DoQuestion>().tag = "Q" + (playerIndex + 1);
         question.transform.SetParent(canvas.transform);
         question.SetActive(false);
 
         player.GetComponent<Movement>().question = question.gameObject;
 
+        player.gameObject.tag = "Player" + (playerIndex+1);
 
-        player.gameObject.tag = "Player" + (spawnIndex+1);
+        // points = pointsUIList[playerIndex];
+
         Debug.Log(player.gameObject.tag);
     }
 }
