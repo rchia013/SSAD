@@ -5070,6 +5070,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!65 &2120753396557998064
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054544760026472249}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7161237, y: 0.6553944, z: 1.2962179}
+  m_Center: {x: -0.031030532, y: 0.0000000024786901, z: 0.64811033}
 --- !u!54 &905288916
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5226,19 +5239,6 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
---- !u!65 &2120753396557998064
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054544760026472249}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7161237, y: 0.6553944, z: 1.2962179}
-  m_Center: {x: -0.031030532, y: 0.0000000024786901, z: 0.64811033}
 --- !u!1001 &2054544760026503577
 PrefabInstance:
   m_ObjectHideFlags: 0

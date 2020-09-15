@@ -4,9 +4,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Photon.Pun;
+using System.Linq;
 
 public class DoQuestion : MonoBehaviour
 {
+    public TextMeshProUGUI description;
+
+    Button[] buttons = new Button[4];
+
     public Button b1;
     public Button b2;
     public Button b3;
@@ -24,25 +29,73 @@ public class DoQuestion : MonoBehaviour
     int playerIndex;
     private PhotonView PV;
 
+
+    public QuestionManager QM;
+    private Question question;
+
     // Start is called before the first frame update
     void Start()
     {
-        // HARD CODED!!!
+        // Color Setup
 
         originalColor = new Color(0, 0, 0, (29 / 255));
-        
-        b1.onClick.AddListener(Correct);
-        b2.onClick.AddListener(Wrong);
-        b3.onClick.AddListener(Wrong);
-        b4.onClick.AddListener(Wrong);
 
-        background = gameObject.GetComponent<Image>();
-        background.color = originalColor;
+        // Player Information
 
         // player = GameObject.FindWithTag(playerTag);
         player = GameSetUp.GS.player;
         playerIndex = GameSetUp.GS.playerIndex;
         PV = player.GetComponent<Movement>().PV;
+
+        // Setup Question;
+
+        question = getQuestion();
+
+        // Setup Buttons
+
+        buttons[0] = b1;
+        buttons[1] = b2;
+        buttons[2] = b3;
+        buttons[3] = b4;
+
+        setupUI(question);
+
+        background = gameObject.GetComponent<Image>();
+        background.color = originalColor;
+
+    }
+
+    private Question getQuestion()
+    {
+        Question cur = QM.getRandomQuestion(playerIndex);
+        return cur;
+
+    }
+
+
+    private void setupUI(Question question)
+    {
+        description.SetText(question.Description);
+
+        Dictionary<string, bool> Options = question.Options;
+
+        var OptionDescriptions = Options.Keys.ToList();
+
+        var answer = Options.FirstOrDefault(x => x.Value == true).Key;
+
+        for (int i = 0; i < 4; i++)
+        {
+            buttons[i].transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(OptionDescriptions[i]);
+
+            if (OptionDescriptions[i] == answer)
+            {
+                buttons[i].onClick.AddListener(Correct);
+            }
+            else
+            {
+                buttons[i].onClick.AddListener(Wrong);
+            }
+        }
     }
 
     private void OnEnable()

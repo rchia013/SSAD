@@ -894,6 +894,7 @@ GameObject:
   m_Component:
   - component: {fileID: 129097302}
   - component: {fileID: 129097301}
+  - component: {fileID: 129097303}
   m_Layer: 0
   m_Name: GameSetUpController
   m_TagString: Untagged
@@ -927,7 +928,6 @@ MonoBehaviour:
   - {fileID: 1090041687}
   - {fileID: 25203444}
   - {fileID: 261825728}
-  points: {fileID: 0}
 --- !u!4 &129097302
 Transform:
   m_ObjectHideFlags: 0
@@ -942,6 +942,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &129097303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129097300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97164eb8332364281a623951596f01c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questions: []
 --- !u!1 &145432768
 GameObject:
   m_ObjectHideFlags: 0
