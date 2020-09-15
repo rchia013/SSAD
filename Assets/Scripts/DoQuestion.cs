@@ -58,6 +58,8 @@ public class DoQuestion : MonoBehaviour
 
         setupUI(question);
 
+        b1.onClick.AddListener(Correct);
+
         background = gameObject.GetComponent<Image>();
         background.color = originalColor;
 
@@ -65,13 +67,14 @@ public class DoQuestion : MonoBehaviour
 
     private Question getQuestion()
     {
-        return QuestionManager.QM.getRandomQuestion(playerIndex);
+        //return QuestionManager.QM.getRandomQuestion(playerIndex);
+        return null;
     }
 
 
     private void setupUI(Question question)
     {
-        description.SetText(question.Description);
+        /*description.SetText(question.Description);
 
         Dictionary<string, bool> Options = question.Options;
 
@@ -91,7 +94,7 @@ public class DoQuestion : MonoBehaviour
             {
                 buttons[i].onClick.AddListener(Wrong);
             }
-        }
+        }*/
     }
 
     private void OnEnable()

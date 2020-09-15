@@ -38,6 +38,9 @@ public class Movement : MonoBehaviourPunCallbacks {
     float freeze = 1.4f;
     public ParticleSystem trail;
 
+    public ParticleSystem speedEffect;
+    public ParticleSystem sizeEffect;
+
     // RESPAWN:
 
     public bool moveable = false;
@@ -77,6 +80,8 @@ public class Movement : MonoBehaviourPunCallbacks {
 
         uiObject.SetActive(true);
         trail.Pause();
+        speedEffect.Pause();
+        sizeEffect.Pause();
 
         animator.enabled = false;
 
@@ -110,7 +115,7 @@ public class Movement : MonoBehaviourPunCallbacks {
                 if (direction.magnitude >= 0.1f)
                 {
                     animator.enabled = true;
-                    trail.Play();
+                    PV.RPC("enableAnimation", RpcTarget.All, true);
                     float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
                     float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
@@ -121,9 +126,7 @@ public class Movement : MonoBehaviourPunCallbacks {
 
                 else
                 {
-                    trail.Stop();
-                    animator.PlayInFixedTime("Move", -1, freeze);
-                    //animator.enabled = false;
+                    PV.RPC("enableAnimation", RpcTarget.All, false);
 
                 }
 
@@ -235,5 +238,56 @@ public class Movement : MonoBehaviourPunCallbacks {
         points += x;
         pointsUIList[playerIndex].SetText("Points: " + points.ToString());
         // pointsUI.SetText("Points: " + points.ToString());
+    }
+    
+    [PunRPC]
+    private void enableAnimation(bool enable)
+    {
+        if (enable)
+        {
+            trail.Play();
+        }
+        else
+        {
+            trail.Stop();
+            animator.PlayInFixedTime("Move", -1, freeze);
+        }
+    }
+
+    public void boostSpeed(bool enable)
+    {
+        PV.RPC("doBoostSpeed", RpcTarget.All, enable);
+    }
+
+    public void boostSize(bool enable)
+    {
+        PV.RPC("doBoostSize", RpcTarget.All, enable);
+    }
+
+    [PunRPC]
+    public void doBoostSpeed(bool enable)
+    {
+        if (enable)
+        {
+            speedEffect.Play();
+        }
+        else
+        {
+            speedEffect.Stop();
+        }
+    }
+
+    [PunRPC]
+    public void doBoostSize(bool enable)
+    {
+        if (enable)
+        {
+            sizeEffect.Play();
+        }
+        else
+        {
+            sizeEffect.Stop();
+        }
+        
     }
 }

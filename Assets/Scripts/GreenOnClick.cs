@@ -59,6 +59,8 @@ public class GreenOnClick : MonoBehaviour
     {
         Movement stats = player.GetComponent<Movement>();
 
+        stats.boostSize(true);
+
         while (_upScale)
         {
             stats.speed = 2;
@@ -72,6 +74,8 @@ public class GreenOnClick : MonoBehaviour
             coll.transform.localScale = Vector3.one * _currentScale;
             yield return new WaitForSeconds(_deltaTime);
         }
+
+        stats.boostSize(false);
 
 
         yield return new WaitForSeconds(duration);

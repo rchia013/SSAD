@@ -46,6 +46,9 @@ MonoBehaviour:
   - Use
   - powerSize
   - ChangePoints
+  - doBoostSize
+  - doBoostSpeed
+  - enableAnimation
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -48,10 +48,12 @@ public class RedOnClick : MonoBehaviour
     {
         Movement stats = player.GetComponent<Movement>();
         stats.speed += speedIncrease;
+        stats.boostSpeed(true);
 
         yield return new WaitForSeconds(duration);
 
         stats.speed -= speedIncrease;
+        stats.boostSpeed(false);
 
         Destroy(gameObject);
     }
