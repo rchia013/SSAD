@@ -17,6 +17,7 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
     public GameObject uiObject;
     public TextMeshProUGUI countdown;
+    
 
     public GameObject player;
     public GameObject slot;

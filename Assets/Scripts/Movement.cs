@@ -17,6 +17,7 @@ public class Movement : MonoBehaviourPunCallbacks {
 
     bool start = true;
     Vector3 respawnPoint;
+    public TextMeshProUGUI timer;
 
     // GENERAL MOVEMENT:
 

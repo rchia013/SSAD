@@ -5157,6 +5157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 0
+  timer: {fileID: 0}
   speed: 4
   turnSmoothTime: 0.05
   controller: {fileID: 905288912}
