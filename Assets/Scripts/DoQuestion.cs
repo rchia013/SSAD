@@ -29,8 +29,6 @@ public class DoQuestion : MonoBehaviour
     int playerIndex;
     private PhotonView PV;
 
-
-    public QuestionManager QM;
     private Question question;
 
     // Start is called before the first frame update
@@ -67,9 +65,7 @@ public class DoQuestion : MonoBehaviour
 
     private Question getQuestion()
     {
-        Question cur = QM.getRandomQuestion(playerIndex);
-        return cur;
-
+        return QuestionManager.QM.getRandomQuestion(playerIndex);
     }
 
 
