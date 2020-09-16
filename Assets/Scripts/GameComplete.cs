@@ -37,6 +37,8 @@ public class GameComplete : MonoBehaviour
 
         QM = gameObject.GetComponent<QuestionManager>();
 
+        ResultsPage = GameObject.FindWithTag("GameOver");
+
         // Create Records
 
         createRecords();

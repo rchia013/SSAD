@@ -7,7 +7,7 @@ public class HighscoreTable : MonoBehaviour
 {
     private Transform entryContainer;
     private Transform entryTemplate;
-    float templateHeight = 70f;
+    float templateHeight = 55f;
     string rankString;
 
     private void Awake()

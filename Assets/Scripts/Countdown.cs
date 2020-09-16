@@ -13,7 +13,7 @@ public class Countdown : MonoBehaviour
 {
 
     float currentTime = 0f;
-    float startingTime = 3.49999f;
+    float startingTime = 50.49999f;
     float totalTime;
     double minutes;
     string min;
@@ -66,13 +66,10 @@ public class Countdown : MonoBehaviour
             }
             else if (currentTime <= 0)
             {
-                countdown.rectTransform.position = new Vector3(470, 280, 0);
-                countdown.fontSize = 70;
+                countdown.fontSize = 60;
                 countdown.text = "Game Over";
                 countdown.color = Color.red;
                 countdown.fontStyle = FontStyles.Bold;
-
-                
                 
                 // End Game Sequence
 
