@@ -20,6 +20,7 @@ TagManager:
   - Q4
   - Canvas
   - GameTimer
+  - GameOver
   layers:
   - Default
   - TransparentFX

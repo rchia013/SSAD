@@ -13,7 +13,7 @@ public class Countdown : MonoBehaviour
 {
 
     float currentTime = 0f;
-    float startingTime = 25.49999f;
+    float startingTime = 3.49999f;
     float totalTime;
     double minutes;
     string min;
@@ -29,6 +29,8 @@ public class Countdown : MonoBehaviour
 
 
     [SerializeField] TextMeshProUGUI countdown;
+    public GameObject highScoreTable;
+
 
     private void Start()
     {
@@ -36,6 +38,7 @@ public class Countdown : MonoBehaviour
         currentTime = startingTime;
         countdown.text = timeToString(currentTime);
         bool start = false;
+        
 
         GameController = GameObject.FindWithTag("GameController");
     }
@@ -63,10 +66,14 @@ public class Countdown : MonoBehaviour
             }
             else if (currentTime <= 0)
             {
+                countdown.rectTransform.position = new Vector3(470, 280, 0);
+                countdown.fontSize = 70;
                 countdown.text = "Game Over";
                 countdown.color = Color.red;
                 countdown.fontStyle = FontStyles.Bold;
 
+                
+                
                 // End Game Sequence
 
                 StartCoroutine(EndGame());
@@ -81,11 +88,16 @@ public class Countdown : MonoBehaviour
         start = true;
     }
 
+
+
     IEnumerator EndGame()
     {
         stopMoving();
+
        
         yield return new WaitForSeconds(2);
+        Destroy(countdown);
+        highScoreTable.SetActive(true);
 
         GameController.GetComponent<GameComplete>().enabled = true;
         //PhotonNetwork.LeaveRoom();
@@ -139,6 +151,12 @@ public class Countdown : MonoBehaviour
         player3.GetComponent<Movement>().moveable = false;
         player4.GetComponent<Movement>().moveable = false;*/
     }   
+
+    public void endGame()
+    {
+        highScoreTable.SetActive(false);
+        PhotonNetwork.LeaveRoom();
+    }
 }
 
   
