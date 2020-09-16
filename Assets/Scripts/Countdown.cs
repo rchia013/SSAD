@@ -19,6 +19,8 @@ public class Countdown : MonoBehaviour
     float seconds;
     bool start;
 
+    GameObject GameController;
+
 
     [SerializeField] TextMeshProUGUI countdown;
 
@@ -28,7 +30,8 @@ public class Countdown : MonoBehaviour
         currentTime = startingTime;
         countdown.text = timeToString(currentTime);
         bool start = false;
-     
+
+        GameController = GameObject.FindWithTag("GameController");
     }
 
     private void Update()
@@ -57,8 +60,8 @@ public class Countdown : MonoBehaviour
                 countdown.text = timeToString(currentTime);
                 countdown.color = Color.red;
                 countdown.fontStyle = FontStyles.Bold;
-                PhotonNetwork.LeaveRoom();
-                //PhotonNetwork.Disconnect();
+
+                GameController.GetComponent<GameComplete>().enabled = true;
             }
 
         }

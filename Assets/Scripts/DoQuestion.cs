@@ -30,6 +30,7 @@ public class DoQuestion : MonoBehaviour
     private PhotonView PV;
 
     private Question question;
+    private int response;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +41,6 @@ public class DoQuestion : MonoBehaviour
 
         // Player Information
 
-        // player = GameObject.FindWithTag(playerTag);
         player = GameSetUp.GS.player;
         playerIndex = GameSetUp.GS.playerIndex;
         PV = player.GetComponent<Movement>().PV;
@@ -58,7 +58,13 @@ public class DoQuestion : MonoBehaviour
 
         setupUI(question);
 
-        b1.onClick.AddListener(Correct);
+        // Hard-coded
+        b1.onClick.AddListener(Correct(1));
+        b2.onClick.AddListener(Correct(2));
+        b3.onClick.AddListener(Correct(3));
+        b4.onClick.AddListener(Correct(4));
+
+        //
 
         background = gameObject.GetComponent<Image>();
         background.color = originalColor;
@@ -88,11 +94,11 @@ public class DoQuestion : MonoBehaviour
 
             if (OptionDescriptions[i] == answer)
             {
-                buttons[i].onClick.AddListener(Correct);
+                buttons[i].onClick.AddListener(Correct(i));
             }
             else
             {
-                buttons[i].onClick.AddListener(Wrong);
+                buttons[i].onClick.AddListener(Wrong(i));
             }
         }*/
     }
@@ -103,14 +109,16 @@ public class DoQuestion : MonoBehaviour
         background.color = new Color(0, 0, 0, (29 / 255));
     }
 
-    void Correct()
+    void Correct(int index)
     {
         print("Correct");
+        response = index;
+        recordResponse();
+
         if (pointsAwardable)
         {
             Debug.Log("Points"+ playerIndex);
             PV.RPC("ChangePoints", RpcTarget.All, playerIndex, 3);
-            // player.GetComponent<Movement>().ChangePoints(playerIndex, 3);
         }
         gameObject.SetActive(false);
 
@@ -118,15 +126,16 @@ public class DoQuestion : MonoBehaviour
         correct = true;
     }
 
-    void Wrong()
+    void Wrong(int index)
     {
         print("Wrong");
+        response = index;
+        recordResponse();
 
         if (pointsAwardable)
         {
             Debug.Log(playerIndex);
             PV.RPC("ChangePoints", RpcTarget.All, playerIndex, -3);
-            // player.GetComponent<Movement>().ChangePoints(playerIndex, -3);
         }
 
         answered = true;
@@ -147,5 +156,10 @@ public class DoQuestion : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    void recordResponse()
+    {
+        QuestionManager.QM.recordResponse(playerIndex, question.ID, response);
     }
 }

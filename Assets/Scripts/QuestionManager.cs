@@ -7,6 +7,9 @@ public class QuestionManager : MonoBehaviour
 {
     public static QuestionManager QM;
 
+    public int Category;
+    public int Difficulty;
+
     Dictionary<int, int> P1 = new Dictionary<int, int>();
     Dictionary<int, int> P2 = new Dictionary<int, int>();
     Dictionary<int, int> P3 = new Dictionary<int, int>();
@@ -17,6 +20,10 @@ public class QuestionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Initialize settings:
+
+        // PseudoCode: Get Category and Difficulty from Whichever manager;
+        // PseudoCode: Create URL from below to collect correct collection of questions:
 
         print("Before Question");
 
@@ -29,12 +36,6 @@ public class QuestionManager : MonoBehaviour
 
             print("Added Question");
         });
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public Question getRandomQuestion(int playerIndex)
@@ -88,6 +89,29 @@ public class QuestionManager : MonoBehaviour
                 P4.Add(questionNum, response);
                 break;
         }
+    }
+
+    public Dictionary<int, int> getResponses(int playerIndex)
+    {
+        switch (playerIndex)
+        {
+            case 1:
+                return P1;
+                break;
+
+            case 2:
+                return P2;
+                break;
+
+            case 3:
+                return P3;
+                break;
+
+            case 4:
+                return P4;
+                break;
+        }
+        return null;
     }
 
 }

@@ -80,23 +80,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
         player4 = GameObject.FindWithTag("Player4");
 
     }
-    /*
-        private void OnEnable()
-        {
-            print("ENABLE");
-            totalNumBlocks = transform.childCount;
-
-            for (int i = 0; i < totalNumBlocks; i++)
-            {
-                blocks.Add(i, transform.GetChild(i).gameObject);
-            }
-
-            player1 = GameObject.FindWithTag("Player1");
-            player2 = GameObject.FindWithTag("Player2");
-            player3 = GameObject.FindWithTag("Player3");
-            player4 = GameObject.FindWithTag("Player4");
-        }*/
-
+    
     // Update is called once per frame
     void Update()
     {
