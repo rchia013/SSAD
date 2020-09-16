@@ -8,7 +8,7 @@ public class Countdown : MonoBehaviour
 {
 
     float currentTime = 0f;
-    float startingTime = 75.49999f;
+    float startingTime = 15.49999f;
     float totalTime;
     float minutes;
     string min;
@@ -46,11 +46,14 @@ public class Countdown : MonoBehaviour
                 
                 countdown.text = timeToString(currentTime);
                 countdown.color = Color.red;
+
+                countdown.fontSize = getFontSize(currentTime);
             }
             else if (currentTime <= 0)
             {
                 countdown.text = timeToString(currentTime);
                 countdown.color = Color.red;
+                countdown.fontStyle = FontStyles.Bold;
             }
 
         }
@@ -86,5 +89,12 @@ public class Countdown : MonoBehaviour
             return "GAME OVER";
         }
         return "GAME OVER";
+    }
+
+    int getFontSize(float time)
+    {
+        float perc = time % 1;
+
+        return (int)Mathf.Lerp(40, 50, perc);
     }
 }
