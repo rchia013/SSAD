@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using System;
+using Photon.Pun;
+using System;
+using Photon.Realtime;
 public class Countdown : MonoBehaviour
 {
 
     float currentTime = 0f;
-    float startingTime = 15.49999f;
+    float startingTime = 10.49999f;
     float totalTime;
-    float minutes;
+    double minutes;
     string min;
     string sec;
     float seconds;
@@ -54,6 +57,8 @@ public class Countdown : MonoBehaviour
                 countdown.text = timeToString(currentTime);
                 countdown.color = Color.red;
                 countdown.fontStyle = FontStyles.Bold;
+                PhotonNetwork.LeaveRoom();
+                //PhotonNetwork.Disconnect();
             }
 
         }
@@ -69,7 +74,7 @@ public class Countdown : MonoBehaviour
     {
         if (currentTime > 60)
         {
-            minutes = currentTime / 60;
+            minutes = Math.Floor(currentTime / 60);
             min = minutes.ToString("0");
             seconds = currentTime % 60;
             sec = seconds.ToString("00");
