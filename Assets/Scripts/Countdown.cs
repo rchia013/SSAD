@@ -8,7 +8,7 @@ public class Countdown : MonoBehaviour
 {
 
     float currentTime = 0f;
-    float startingTime = 15.5f;
+    float startingTime = 75.49999f;
     float totalTime;
     float minutes;
     string min;
@@ -23,6 +23,7 @@ public class Countdown : MonoBehaviour
     {
 
         currentTime = startingTime;
+        countdown.text = timeToString(currentTime);
         bool start = false;
      
     }
@@ -36,22 +37,19 @@ public class Countdown : MonoBehaviour
             if (currentTime >= 10)
             {
                 currentTime -= 1 * Time.deltaTime;
-                minutes = currentTime % 60;
-                min = minutes.ToString();
-                seconds = currentTime / 60;
-                sec = seconds.ToString();
-                
-                countdown.text = min +_ sec;
+
+                countdown.text = timeToString(currentTime);
             }
             else if (currentTime < 10 && currentTime > 0)
             {
                 currentTime -= 1 * Time.deltaTime;
-                countdown.text = currentTime.ToString("0.0");
+                
+                countdown.text = timeToString(currentTime);
                 countdown.color = Color.red;
             }
             else if (currentTime <= 0)
             {
-                currentTime = 0;
+                countdown.text = timeToString(currentTime);
                 countdown.color = Color.red;
             }
 
@@ -62,5 +60,31 @@ public class Countdown : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         start = true;
+    }
+
+    string timeToString(float time)
+    {
+        if (currentTime > 60)
+        {
+            minutes = currentTime / 60;
+            min = minutes.ToString("0");
+            seconds = currentTime % 60;
+            sec = seconds.ToString("00");
+
+            return (min + ":" + sec);
+        }
+        if (currentTime >= 10)
+        {
+            return currentTime.ToString("0");
+        }
+        else if (currentTime < 10 && currentTime > 0)
+        {
+            return currentTime.ToString("0.0");
+        }
+        else if (currentTime <= 0)
+        {
+            return "GAME OVER";
+        }
+        return "GAME OVER";
     }
 }
