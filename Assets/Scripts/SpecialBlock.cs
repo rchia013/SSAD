@@ -117,8 +117,6 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
     {
         if ((other.gameObject.tag == "Player1" | other.gameObject.tag == "Player2"| other.gameObject.tag == "Player3"| other.gameObject.tag == "Player4") & !questionActivated & blockActivated)
         {
-            print("Touch & Give Q");
-
             player = other.gameObject;
             playerTag = player.tag;
             question = player.GetComponent<Movement>().question;
@@ -162,6 +160,7 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
         question.GetComponent<DoQuestion>().correct = false;
         question.GetComponent<DoQuestion>().pointsAwardable = false;
         question.GetComponent<DoQuestion>().playerTag = playerTag;
+
         question.SetActive(true);
 
         while (counter > 0)

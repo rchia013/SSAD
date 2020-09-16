@@ -80,8 +80,6 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
     {
         if (other.gameObject.tag == playerTag & !questionActivated & blockActivated)
         {
-            print("Touch & Give Q");
-
             player = other.gameObject;
             question = player.GetComponent<Movement>().question;
 
@@ -121,6 +119,7 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
         question.GetComponent<DoQuestion>().correct = false;
         question.GetComponent<DoQuestion>().pointsAwardable = true;
         question.GetComponent<DoQuestion>().playerTag = playerTag;
+
         question.SetActive(true);
 
         while (counter > 0)
@@ -149,8 +148,6 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
                 PV.RPC("dropBlock", RpcTarget.All);
 
                 yield return new WaitForSeconds(1);
-
-                print("Gone");
 
                 Destroy(transform.parent.gameObject);
                 break;
@@ -184,8 +181,6 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
                     PV.RPC("dropBlock", RpcTarget.All);
 
                     yield return new WaitForSeconds(1);
-
-                    print("Gone");
 
                     Destroy(transform.parent.gameObject);
                     break;

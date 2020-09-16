@@ -93,7 +93,6 @@ public class GreenOnClick : MonoBehaviour
             coll.transform.localScale = Vector3.one * _currentScale;
             yield return new WaitForSeconds(_deltaTime);
         }
-        print("Shrink Finish");
         stats.speed += 2;
 
         Destroy(gameObject);

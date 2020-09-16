@@ -241,6 +241,11 @@ public class Movement : MonoBehaviourPunCallbacks {
         pointsUIList[playerIndex].SetText("Points: " + points.ToString());
         // pointsUI.SetText("Points: " + points.ToString());
     }
+
+    public int getPoints()
+    {
+        return points;
+    }
     
     [PunRPC]
     private void enableAnimation(bool enable)

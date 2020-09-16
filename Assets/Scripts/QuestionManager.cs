@@ -37,33 +37,35 @@ public class QuestionManager : MonoBehaviour
         //    print("Added Question");
         //});
 
-        Question test = new Question(1, 1, 1, "2 + 2 = ",
+        // HARD CODED!: TO BE UPDATED BY JOEY
+
+        Question test = new Question(0, 1, 1, "2 + 2 = ",
         new Dictionary<string, bool>(){
             {"4",true },
             {"5", false },
             {"6", false },
             {"7", false } });
 
-        Question test2 = new Question(2, 1, 1, "2 + 2 = ",
+        Question test2 = new Question(1, 1, 1, "2 + 3 = ",
         new Dictionary<string, bool>(){
-            {"4",true },
-            {"5", false },
+            {"4",false },
+            {"5", true },
             {"6", false },
             {"7", false } });
 
-        Question test3 = new Question(3, 1, 1, "2 + 2 = ",
+        Question test3 = new Question(2, 1, 1, "3 + 3 = ",
         new Dictionary<string, bool>(){
-            {"4",true },
+            {"4",false },
             {"5", false },
-            {"6", false },
+            {"6", true },
             {"7", false } });
 
-        Question test4 = new Question(4, 1, 1, "2 + 2 = ",
+        Question test4 = new Question(3, 1, 1, "3 + 4 = ",
         new Dictionary<string, bool>(){
-            {"4",true },
+            {"4",false },
             {"5", false },
             {"6", false },
-            {"7", false } });
+            {"7", true } });
 
         questions.Add(test);
         questions.Add(test2);
@@ -94,6 +96,13 @@ public class QuestionManager : MonoBehaviour
             case 3:
                 cur = P4;
                 break;
+        }
+
+        if (cur.Count == questions.Count)
+        {
+            print("NO MORE QUESTIONS!");
+
+            return null;
         }
 
         int temp = -1;
@@ -135,19 +144,15 @@ public class QuestionManager : MonoBehaviour
         {
             case 0:
                 return P1;
-                break;
 
             case 1:
                 return P2;
-                break;
 
             case 2:
                 return P3;
-                break;
 
             case 3:
                 return P4;
-                break;
         }
         return null;
     }

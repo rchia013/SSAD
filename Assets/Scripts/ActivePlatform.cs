@@ -91,7 +91,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                 // Remove destroyed blocks
 
                 blocks.Remove(prevNum1);
-                print("Deleted");
             }
         }
 
@@ -102,7 +101,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                 // Remove destroyed blocks
 
                 blocks.Remove(prevNum2);
-                print("Deleted");
             }
         }
 
@@ -113,7 +111,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                 // Remove destroyed blocks
 
                 blocks.Remove(prevNum3);
-                print("Deleted");
             }
         }
 
@@ -124,7 +121,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                 // Remove destroyed blocks
 
                 blocks.Remove(prevNum4);
-                print("Deleted");
             }
         }
 
@@ -280,9 +276,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                     }
 
                     PV.RPC("SpecialBlock", RpcTarget.All, newSpecNum, powerChoice);
-                    /*                    SpecialBlock(blocks[newSpecNum], newSpecNum);*/
-
-                    print("Chosen SB");
                 }
             }
 
@@ -386,9 +379,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             // Cooldown
 
             putSpecialBlock = false;
-
-            print("SB Active");
-
             StartCoroutine(CooldownSB(true));
         }
     }
@@ -431,8 +421,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                 blocks.Remove(power0Num);
                 StartCoroutine(CooldownSB(false));
                 power0used = false;
-
-                print("Power 0 Available");
             }
         }
 
@@ -445,8 +433,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                 blocks.Remove(power1Num);
                 StartCoroutine(CooldownSB(false));
                 power1used = false;
-
-                print("Power 1 Available");
             }
         }
     }

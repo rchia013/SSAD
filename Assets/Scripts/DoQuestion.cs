@@ -35,7 +35,9 @@ public class DoQuestion : MonoBehaviour
     private int response;
 
     // Start is called before the first frame update
-    void Start()
+
+
+    private void Start()
     {
         // Color Setup
 
@@ -47,28 +49,28 @@ public class DoQuestion : MonoBehaviour
         playerIndex = GameSetUp.GS.playerIndex;
         PV = player.GetComponent<Movement>().PV;
 
-        // Setup Question;
+        // Setup Question Manager;
 
         QM = GameObject.FindWithTag("GameController").GetComponent<QuestionManager>();
-        question = getQuestion();
-
-        // Setup Buttons
-
-        setupUI(question);
+        setupNewQuestion();
 
         background = gameObject.GetComponent<Image>();
+        background.color = originalColor;
+    }
+
+    private void OnEnable()
+    {
+        // Setup UI
+
+        setupNewQuestion();
+
         background.color = originalColor;
 
     }
 
-    private Question getQuestion()
+    private void setupNewQuestion()
     {
-        return QM.getRandomQuestion(playerIndex);
-    }
-
-
-    private void setupUI(Question question)
-    {
+        question = getQuestion();
 
         buttons[0] = b1;
         buttons[1] = b2;
@@ -98,21 +100,38 @@ public class DoQuestion : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    private void resetButtons()
     {
-        background = gameObject.GetComponent<Image>();
-        background.color = new Color(0, 0, 0, (29 / 255));
+        for (int i = 0; i < 4; i++)
+        {
+            buttons[i].onClick.RemoveAllListeners();
+        }
     }
+
+    private Question getQuestion()
+    {
+        if (QM != null)
+        {
+            return QM.getRandomQuestion(playerIndex);
+        }
+        else
+        {
+            return null;
+        }
+    }
+
 
     void Correct(int index)
     {
         print("Correct");
+        resetButtons();
+
         response = index;
         recordResponse();
 
         if (pointsAwardable)
         {
-            Debug.Log("Points"+ playerIndex);
+            Debug.Log("Points"+ 3);
             PV.RPC("ChangePoints", RpcTarget.All, playerIndex, 3);
         }
         gameObject.SetActive(false);
@@ -124,12 +143,14 @@ public class DoQuestion : MonoBehaviour
     void Wrong(int index)
     {
         print("Wrong");
+        resetButtons();
+
         response = index;
         recordResponse();
 
         if (pointsAwardable)
         {
-            Debug.Log(playerIndex);
+            Debug.Log("Points"+(-3));
             PV.RPC("ChangePoints", RpcTarget.All, playerIndex, -3);
         }
 
@@ -155,9 +176,6 @@ public class DoQuestion : MonoBehaviour
 
     void recordResponse()
     {
-        print(playerIndex);
-        
-        print(response);
-        //QM.recordResponse(playerIndex, question.ID, response);
+        QM.recordResponse(playerIndex, question.ID, response);
     }
 }

@@ -13,7 +13,7 @@ public class Countdown : MonoBehaviour
 {
 
     float currentTime = 0f;
-    float startingTime = 10.49999f;
+    float startingTime = 25.49999f;
     float totalTime;
     double minutes;
     string min;
@@ -67,12 +67,9 @@ public class Countdown : MonoBehaviour
                 countdown.color = Color.red;
                 countdown.fontStyle = FontStyles.Bold;
 
-                GameController.GetComponent<GameComplete>().enabled = true;
                 // End Game Sequence
 
-                stopMoving();
                 StartCoroutine(EndGame());
-                //PhotonNetwork.Disconnect();
             }
 
         }
@@ -86,8 +83,12 @@ public class Countdown : MonoBehaviour
 
     IEnumerator EndGame()
     {
+        stopMoving();
+       
         yield return new WaitForSeconds(2);
-        PhotonNetwork.LeaveRoom();
+
+        GameController.GetComponent<GameComplete>().enabled = true;
+        //PhotonNetwork.LeaveRoom();
     }
 
     string timeToString(float time)
@@ -133,7 +134,8 @@ public class Countdown : MonoBehaviour
         player4 = GameObject.FindWithTag("Player4");
 
         player1.GetComponent<Movement>().moveable = false;
-/*        player2.GetComponent<Movement>().moveable = false;
+
+/*      player2.GetComponent<Movement>().moveable = false;
         player3.GetComponent<Movement>().moveable = false;
         player4.GetComponent<Movement>().moveable = false;*/
     }   

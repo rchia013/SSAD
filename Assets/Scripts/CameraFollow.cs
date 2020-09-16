@@ -19,7 +19,6 @@ public class CameraFollow : MonoBehaviour
     public void setTarget(GameObject target)
     {
         playerTransform = target.transform;
-        print("helleefoe");
     }
 
     public bool compareTarget(string target)

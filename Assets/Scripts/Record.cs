@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Record : MonoBehaviour
+public class Record
 {
     public string DateTime
     {
@@ -56,10 +56,12 @@ public class Record : MonoBehaviour
     public Record(string datetime, int sessID, int diff, int cat, int playerID, int points, Dictionary<int, int> resp)
     {
         this.DateTime = datetime;
-        this.SessionID = SessionID;
-        this.StudentID = playerID;
+        this.SessionID = sessID;
         this.Difficulty = diff;
         this.Category = cat;
+
+
+        this.StudentID = playerID;
         this.Points = points;
         this.Responses = resp;
     }

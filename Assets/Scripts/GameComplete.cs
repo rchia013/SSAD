@@ -20,7 +20,7 @@ public class GameComplete : MonoBehaviour
     private GameObject ResultsPage;
 
     // Start is called before the first frame update
-    void onEnable()
+    void Start()
     {
         DateTime = null;
         SessionID = 1234;
@@ -56,10 +56,17 @@ public class GameComplete : MonoBehaviour
         {
             if (players[i] != null)
             {
-                Record cur = new Record(DateTime, SessionID,
-                    QM.Difficulty, QM.Category,
+
+                //Record cur = new Record("now", 123,
+                //    QM.Difficulty, QM.Category,
+                //    players[i].GetComponent<Movement>().playerID,
+                //    players[i].GetComponent<Movement>().points,
+                //    QM.getResponses(i));
+
+                Record cur = new Record("now", 123,
+                    0, 0,
                     players[i].GetComponent<Movement>().playerID,
-                    players[i].GetComponent<Movement>().points,
+                    players[i].GetComponent<Movement>().getPoints(),
                     QM.getResponses(i));
 
                 records.Add(cur);
@@ -69,7 +76,7 @@ public class GameComplete : MonoBehaviour
 
     void displayResults()
     {
-        //
+        // INSERT REUBEN CODE
     }
 
     void storeRecords()
@@ -77,13 +84,12 @@ public class GameComplete : MonoBehaviour
         for (int i = 0; i < records.Count; i++)
         {
             saveSingleRecord(records[i]);
-            print(records[i]);
         }
     }
 
     void saveSingleRecord(Record record)
     {
-        //
+        // WRITE TO FIREBASE
     }
 }
 
