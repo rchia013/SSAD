@@ -7,6 +7,8 @@ using System;
 using Photon.Pun;
 using System;
 using Photon.Realtime;
+
+
 public class Countdown : MonoBehaviour
 {
 
@@ -20,6 +22,10 @@ public class Countdown : MonoBehaviour
     bool start;
 
     GameObject GameController;
+    private GameObject player1;
+    private GameObject player2;
+    private GameObject player3;
+    private GameObject player4;
 
 
     [SerializeField] TextMeshProUGUI countdown;
@@ -49,7 +55,7 @@ public class Countdown : MonoBehaviour
             else if (currentTime < 10 && currentTime > 0)
             {
                 currentTime -= 1 * Time.deltaTime;
-                
+
                 countdown.text = timeToString(currentTime);
                 countdown.color = Color.red;
 
@@ -57,11 +63,16 @@ public class Countdown : MonoBehaviour
             }
             else if (currentTime <= 0)
             {
-                countdown.text = timeToString(currentTime);
+                countdown.text = "Game Over";
                 countdown.color = Color.red;
                 countdown.fontStyle = FontStyles.Bold;
 
                 GameController.GetComponent<GameComplete>().enabled = true;
+                // End Game Sequence
+
+                stopMoving();
+                StartCoroutine(EndGame());
+                //PhotonNetwork.Disconnect();
             }
 
         }
@@ -71,6 +82,12 @@ public class Countdown : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         start = true;
+    }
+
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(2);
+        PhotonNetwork.LeaveRoom();
     }
 
     string timeToString(float time)
@@ -92,7 +109,7 @@ public class Countdown : MonoBehaviour
         {
             return currentTime.ToString("0.0");
         }
-        else if (currentTime <= 0)
+        else if (currentTime == 0)
         {
             return "GAME OVER";
         }
@@ -105,4 +122,22 @@ public class Countdown : MonoBehaviour
 
         return (int)Mathf.Lerp(40, 50, perc);
     }
+
+    void stopMoving()
+    {
+
+
+        player1 = GameObject.FindWithTag("Player1");
+        player2 = GameObject.FindWithTag("Player2");
+        player3 = GameObject.FindWithTag("Player3");
+        player4 = GameObject.FindWithTag("Player4");
+
+        player1.GetComponent<Movement>().moveable = false;
+/*        player2.GetComponent<Movement>().moveable = false;
+        player3.GetComponent<Movement>().moveable = false;
+        player4.GetComponent<Movement>().moveable = false;*/
+    }   
 }
+
+  
+
