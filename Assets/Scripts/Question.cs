@@ -39,14 +39,13 @@ public class Question : MonoBehaviour
     //string Description public object MyProperty { get; set; }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        Options = new Dictionary<string, bool>();
-    }
 
-    // Update is called once per frame
-    void Update()
+    public Question(int id, int diff, int cat, string desc, Dictionary<string, bool> options)
     {
-        
+        this.ID = id;
+        this.Difficulty = diff;
+        this.Category = cat;
+        this.Description = desc;
+        this.Options = options;
     }
 }

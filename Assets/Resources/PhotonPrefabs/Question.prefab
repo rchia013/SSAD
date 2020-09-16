@@ -1165,7 +1165,7 @@ GameObject:
   - component: {fileID: 4700096824949613347}
   - component: {fileID: 311831377636459779}
   m_Layer: 0
-  m_Name: Question Panel
+  m_Name: Question
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1242,6 +1242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d8b08cf17544e959402fe8219801ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  description: {fileID: 866329534061001064}
   b1: {fileID: 866329534747921088}
   b2: {fileID: 866329534069813882}
   b3: {fileID: 866329535210085510}
@@ -1249,7 +1250,6 @@ MonoBehaviour:
   pointsAwardable: 0
   answered: 0
   correct: 0
-  points: {fileID: 0}
   playerTag: 
 --- !u!114 &4700096824949613347
 MonoBehaviour:

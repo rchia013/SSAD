@@ -895,9 +895,10 @@ GameObject:
   - component: {fileID: 129097302}
   - component: {fileID: 129097301}
   - component: {fileID: 129097303}
+  - component: {fileID: 129097304}
   m_Layer: 0
   m_Name: GameSetUpController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -955,6 +956,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questions: []
+--- !u!114 &129097304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129097300}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc818cac925ee4f52a8240472a400301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &145432768
 GameObject:
   m_ObjectHideFlags: 0
@@ -4788,8 +4801,8 @@ GameObject:
   - component: {fileID: 892800332}
   - component: {fileID: 892800331}
   m_Layer: 5
-  m_Name: Game Countdown
-  m_TagString: Untagged
+  m_Name: GameTimer
+  m_TagString: GameTimer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

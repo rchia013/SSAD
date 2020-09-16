@@ -29,6 +29,8 @@ public class DoQuestion : MonoBehaviour
     int playerIndex;
     private PhotonView PV;
 
+    private QuestionManager QM;
+
     private Question question;
     private int response;
 
@@ -47,24 +49,12 @@ public class DoQuestion : MonoBehaviour
 
         // Setup Question;
 
+        QM = GameObject.FindWithTag("GameController").GetComponent<QuestionManager>();
         question = getQuestion();
 
         // Setup Buttons
 
-        buttons[0] = b1;
-        buttons[1] = b2;
-        buttons[2] = b3;
-        buttons[3] = b4;
-
         setupUI(question);
-
-        // Hard-coded
-        b1.onClick.AddListener(Correct(1));
-        b2.onClick.AddListener(Correct(2));
-        b3.onClick.AddListener(Correct(3));
-        b4.onClick.AddListener(Correct(4));
-
-        //
 
         background = gameObject.GetComponent<Image>();
         background.color = originalColor;
@@ -73,14 +63,19 @@ public class DoQuestion : MonoBehaviour
 
     private Question getQuestion()
     {
-        //return QuestionManager.QM.getRandomQuestion(playerIndex);
-        return null;
+        return QM.getRandomQuestion(playerIndex);
     }
 
 
     private void setupUI(Question question)
     {
-        /*description.SetText(question.Description);
+
+        buttons[0] = b1;
+        buttons[1] = b2;
+        buttons[2] = b3;
+        buttons[3] = b4;
+
+        description.SetText(question.Description);
 
         Dictionary<string, bool> Options = question.Options;
 
@@ -94,13 +89,13 @@ public class DoQuestion : MonoBehaviour
 
             if (OptionDescriptions[i] == answer)
             {
-                buttons[i].onClick.AddListener(Correct(i));
+                buttons[i].onClick.AddListener(delegate {Correct(i);});
             }
             else
             {
-                buttons[i].onClick.AddListener(Wrong(i));
+                buttons[i].onClick.AddListener(delegate {Wrong(i);});
             }
-        }*/
+        }
     }
 
     private void OnEnable()
@@ -160,6 +155,9 @@ public class DoQuestion : MonoBehaviour
 
     void recordResponse()
     {
-        QuestionManager.QM.recordResponse(playerIndex, question.ID, response);
+        print(playerIndex);
+        
+        print(response);
+        //QM.recordResponse(playerIndex, question.ID, response);
     }
 }

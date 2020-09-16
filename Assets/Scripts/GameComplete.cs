@@ -15,8 +15,6 @@ public class GameComplete : MonoBehaviour
     private GameObject[] players = new GameObject[4];
     private List<Record> records = new List<Record>();
 
-    private 
-
     private QuestionManager QM;
 
     private GameObject ResultsPage;

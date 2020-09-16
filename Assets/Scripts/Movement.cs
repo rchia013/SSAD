@@ -12,6 +12,7 @@ public class Movement : MonoBehaviourPunCallbacks {
     //ID
 
     public int playerIndex;
+    public int playerID = 1;
 
     // START COUNTDOWN:
 

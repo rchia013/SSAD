@@ -25,17 +25,53 @@ public class QuestionManager : MonoBehaviour
         // PseudoCode: Get Category and Difficulty from Whichever manager;
         // PseudoCode: Create URL from below to collect correct collection of questions:
 
-        print("Before Question");
+        //print("Before Question");
 
-        RestClient.Get<Question>(url: "https://quizguyz.firebaseio.com/Questions/0/1/1.json").Then(onResolved: response =>
-        {
+        //RestClient.Get<Question>(url: "https://quizguyz.firebaseio.com/Questions/0/1/1.json").Then(onResolved: response =>
+        //{
 
-            print("Adding Question");
+        //    print("Adding Question");
 
-            questions.Add(response);
+        //    questions.Add(response);
 
-            print("Added Question");
-        });
+        //    print("Added Question");
+        //});
+
+        Question test = new Question(1, 1, 1, "2 + 2 = ",
+        new Dictionary<string, bool>(){
+            {"4",true },
+            {"5", false },
+            {"6", false },
+            {"7", false } });
+
+        Question test2 = new Question(2, 1, 1, "2 + 2 = ",
+        new Dictionary<string, bool>(){
+            {"4",true },
+            {"5", false },
+            {"6", false },
+            {"7", false } });
+
+        Question test3 = new Question(3, 1, 1, "2 + 2 = ",
+        new Dictionary<string, bool>(){
+            {"4",true },
+            {"5", false },
+            {"6", false },
+            {"7", false } });
+
+        Question test4 = new Question(4, 1, 1, "2 + 2 = ",
+        new Dictionary<string, bool>(){
+            {"4",true },
+            {"5", false },
+            {"6", false },
+            {"7", false } });
+
+        questions.Add(test);
+        questions.Add(test2);
+        questions.Add(test3);
+        questions.Add(test4);
+
+        print(questions.Count);
+
     }
 
     public Question getRandomQuestion(int playerIndex)
@@ -43,28 +79,30 @@ public class QuestionManager : MonoBehaviour
         Dictionary<int, int> cur = null;
         switch (playerIndex)
         {
-            case 1:
+            case 0:
                 cur = P1;
                 break;
 
-            case 2:
+            case 1:
                 cur = P2;
                 break;
 
-            case 3:
+            case 2:
                 cur = P3;
                 break;
 
-            case 4:
+            case 3:
                 cur = P4;
                 break;
         }
 
         int temp = -1;
 
-        while (temp == -1 && cur.ContainsKey(temp)) {
+        while (temp == -1 || cur.ContainsKey(temp)) {
             temp = Random.Range(0, questions.Count);
         }
+
+        print(temp);
 
         return questions[temp];
     }
@@ -73,19 +111,19 @@ public class QuestionManager : MonoBehaviour
     {
         switch (playerIndex)
         {
-            case 1:
+            case 0:
                 P1.Add(questionNum, response);
                 break;
 
-            case 2:
+            case 1:
                 P2.Add(questionNum, response);
                 break;
 
-            case 3:
+            case 2:
                 P3.Add(questionNum, response);
                 break;
 
-            case 4:
+            case 3:
                 P4.Add(questionNum, response);
                 break;
         }
@@ -95,19 +133,19 @@ public class QuestionManager : MonoBehaviour
     {
         switch (playerIndex)
         {
-            case 1:
+            case 0:
                 return P1;
                 break;
 
-            case 2:
+            case 1:
                 return P2;
                 break;
 
-            case 3:
+            case 2:
                 return P3;
                 break;
 
-            case 4:
+            case 3:
                 return P4;
                 break;
         }
