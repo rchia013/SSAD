@@ -12,7 +12,8 @@ public class Movement : MonoBehaviourPunCallbacks {
     //ID
 
     public int playerIndex;
-    public int playerID = 1;
+    public int playerID = 0;
+    public string playerName = "QuizGuy1";
 
     // START COUNTDOWN:
 
@@ -63,22 +64,19 @@ public class Movement : MonoBehaviourPunCallbacks {
 
     private void Start()
     {
-        // added this
-        Debug.Log("HII");
-        PV = GetComponent<PhotonView>();
 
-        // pointsUI = GameSetUp.GS.points;
+        // Photon:
+
+        PV = GetComponent<PhotonView>();
         pointsUIList = GameSetUp.GS.pointsUIList;
         points = 0;
-        // pointsList = GameSetUp.GS.pointsList;
-        // pointsList[playerIndex] = 0;
+        PV.RPC("playerTagger", RpcTarget.All, gameObject.tag);
+
+        //UI:
 
         uiObject = GameSetUp.GS.uiObject;
         countdown = GameSetUp.GS.countdown;
-
         animator = GetComponent<Animator>();
-
-        PV.RPC("playerTagger", RpcTarget.All, gameObject.tag);
 
         uiObject.SetActive(true);
         trail.Pause();
@@ -87,9 +85,13 @@ public class Movement : MonoBehaviourPunCallbacks {
 
         animator.enabled = false;
 
-        controller = GetComponent<CharacterController>();
 
+        // Player Settings:
+
+        controller = GetComponent<CharacterController>();
         respawnPoint = transform.position;
+
+        // Game Start:
 
         StartCoroutine("Countdown");
 
@@ -149,6 +151,8 @@ public class Movement : MonoBehaviourPunCallbacks {
     {
         if (transform.position.y < respawnThreshold)
         {
+            print("drop");
+
             transform.position = respawnPoint;
             moveable = false;
             trail.Stop();
@@ -193,6 +197,7 @@ public class Movement : MonoBehaviourPunCallbacks {
 
         while (counter > 0)
         {
+            moveable = false;
             yield return new WaitForSeconds(1);
        
             counter--;
@@ -234,12 +239,10 @@ public class Movement : MonoBehaviourPunCallbacks {
     [PunRPC]
     public void ChangePoints(int playerIndex, int x)
     {
-        // Debug.Log(pointsList);
         Debug.Log(playerIndex);
-        // pointsList[playerIndex] += x;
+   
         points += x;
         pointsUIList[playerIndex].SetText("Points: " + points.ToString());
-        // pointsUI.SetText("Points: " + points.ToString());
     }
 
     public int getPoints()

@@ -135,11 +135,18 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
 
             var materials = rend.materials;
 
+            bool moveableChanged = false;
+
             // Case 1: 
 
             if (question.GetComponent<DoQuestion>().answered == true && question.GetComponent<DoQuestion>().correct == true)
             {
-                player.GetComponent<Movement>().moveable = true;
+                if (!moveableChanged)
+                {
+                    player.GetComponent<Movement>().moveable = true;
+                    moveableChanged = true;
+                }
+
                 question.SetActive(false);
 
                 StartCoroutine("HighlightFadeOut");

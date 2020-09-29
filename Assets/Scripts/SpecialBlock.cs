@@ -163,6 +163,8 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
 
         int counter = Mathf.RoundToInt(GameObject.FindWithTag("GameController").GetComponent<QuestionManager>().getTimeLimit());
 
+        bool moveableChanged = false;
+
         while (counter > 0)
         {
             yield return new WaitForSeconds(1);
@@ -175,7 +177,11 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
 
             if (question.GetComponent<DoQuestion>().answered == true && question.GetComponent<DoQuestion>().correct == true)
             {
-                player.GetComponent<Movement>().moveable = true;
+                if (!moveableChanged)
+                {
+                    player.GetComponent<Movement>().moveable = true;
+                    moveableChanged = true;
+                }
 
                 question.SetActive(false);
 

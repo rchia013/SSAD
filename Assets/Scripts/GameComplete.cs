@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Proyecto26;
+using Newtonsoft.Json;
 
 public class GameComplete : MonoBehaviour
 {
@@ -12,86 +14,105 @@ public class GameComplete : MonoBehaviour
     private GameObject player3;
     private GameObject player4;
 
-    private GameObject[] players = new GameObject[4];
+    private List<GameObject> players = new List<GameObject>();
     private List<Record> records = new List<Record>();
 
     private QuestionManager QM;
 
-    private GameObject ResultsPage;
+    public GameObject ResultsPage;
 
     // Start is called before the first frame update
     void Start()
     {
+        //HARD CODED:
+
         DateTime = null;
         SessionID = 1234;
 
-        player1 = GameObject.FindWithTag("Player1");
-        player2 = GameObject.FindWithTag("Player2");
-        player3 = GameObject.FindWithTag("Player3");
-        player4 = GameObject.FindWithTag("Player4");
+        // End Gameplay
 
-        players[0] = player1;
-        players[1] = player2;
-        players[2] = player3;
-        players[3] = player4;
+        initializePlayers();
+        stopMoving();
 
         QM = gameObject.GetComponent<QuestionManager>();
-
-        ResultsPage = GameObject.FindWithTag("GameOver");
 
         // Create Records
 
         createRecords();
 
-        // Display UI
+        // Display Ranking UI
 
         displayResults();
-
-        // Store Records
-
-        storeRecords();
     }
 
-    void createRecords()
+    void initializePlayers()
     {
-        for (int i = 0; i < players.Length; i++)
+        for (int i = 1; i < 5; i++)
         {
-            if (players[i] != null)
+            GameObject curPlayer = GameObject.FindWithTag("Player"+i.ToString());
+
+            if (curPlayer != null)
             {
-
-                //Record cur = new Record("now", 123,
-                //    QM.Difficulty, QM.Category,
-                //    players[i].GetComponent<Movement>().playerID,
-                //    players[i].GetComponent<Movement>().points,
-                //    QM.getResponses(i));
-
-                Record cur = new Record("now", 123,
-                    0, 0,
-                    players[i].GetComponent<Movement>().playerID,
-                    players[i].GetComponent<Movement>().getPoints(),
-                    QM.getResponses(i));
-
-                records.Add(cur);
+                players.Add(curPlayer);
+            }
+            else
+            {
+                break;
             }
         }
     }
 
-    void displayResults()
+    void stopMoving()
     {
-        // INSERT REUBEN CODE
-    }
-
-    void storeRecords()
-    {
-        for (int i = 0; i < records.Count; i++)
+        for (int i = 0; i < players.Count; i++)
         {
-            saveSingleRecord(records[i]);
+            players[i].GetComponent<Movement>().moveable = false;
         }
     }
 
-    void saveSingleRecord(Record record)
+    void createRecords()
     {
-        // WRITE TO FIREBASE
+        for (int i = 0; i < players.Count; i++)
+        {
+            //Record cur = new Record("now", 123,
+            //    QM.Difficulty, QM.Category,
+            //    players[i].GetComponent<Movement>().playerName,
+            //    players[i].GetComponent<Movement>().points,
+            //    QM.getResponses(i));
+
+            Record cur = new Record("now", 123,
+                0, 0,
+                players[i].GetComponent<Movement>().playerName,
+                players[i].GetComponent<Movement>().getPoints(),
+                QM.getResponses(i));
+
+            records.Add(cur);
+
+            uploadRecord(players[i].GetComponent<Movement>().playerID, cur);
+        }
+    }
+
+    void uploadRecord(int playerID, Record record)
+    {
+        // PSEUDOCODE:
+
+        //// Retrive user entry
+        //// Cast user entry to user object type?
+        //// append record to user entry -> records
+        //// upload user entry to update existing one
+
+        //string urlString = "https://quizguyz.firebaseio.com/users/" + playerID.ToString();
+
+        //RestClient.Post(url: urlString, JsonConvert.SerializeObject(record));
+    }
+
+    void displayResults()
+    {
+        ResultsPage.GetComponent<HighscoreTable>().enabled = true;
+
+        ResultsPage.GetComponent<HighscoreTable>().endGameUpdateTable(records);
+
+        ResultsPage.SetActive(true);
     }
 }
 

@@ -28,7 +28,7 @@ public class Record
         private set;
     }
 
-    public int StudentID
+    public string playerName
     {
         get;
         private set;
@@ -40,7 +40,7 @@ public class Record
         private set;
     }
 
-    public Dictionary<int, int> Responses
+    public Dictionary<string, int> Responses
     {
         get;
         private set;
@@ -53,15 +53,14 @@ public class Record
     //string Description public object MyProperty { get; set; }
 
     // Start is called before the first frame update
-    public Record(string datetime, int sessID, int diff, int cat, int playerID, int points, Dictionary<int, int> resp)
+    public Record(string datetime, int sessID, int diff, int cat, string playerName, int points, Dictionary<string, int> resp)
     {
         this.DateTime = datetime;
         this.SessionID = sessID;
         this.Difficulty = diff;
         this.Category = cat;
 
-
-        this.StudentID = playerID;
+        this.playerName = playerName;
         this.Points = points;
         this.Responses = resp;
     }

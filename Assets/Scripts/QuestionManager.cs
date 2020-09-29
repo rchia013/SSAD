@@ -13,10 +13,10 @@ public class QuestionManager : MonoBehaviour
     public int Category;
     public int Difficulty;
 
-    Dictionary<int, int> P1 = new Dictionary<int, int>();
-    Dictionary<int, int> P2 = new Dictionary<int, int>();
-    Dictionary<int, int> P3 = new Dictionary<int, int>();
-    Dictionary<int, int> P4 = new Dictionary<int, int>();
+    Dictionary<string, int> P1 = new Dictionary<string, int>();
+    Dictionary<string, int> P2 = new Dictionary<string, int>();
+    Dictionary<string, int> P3 = new Dictionary<string, int>();
+    Dictionary<string, int> P4 = new Dictionary<string, int>();
 
     public List<Question> questions = new List<Question>();
 
@@ -46,7 +46,7 @@ public class QuestionManager : MonoBehaviour
 
     public Question getRandomQuestion(int playerIndex)
     {
-        Dictionary<int, int> cur = null;
+        Dictionary<string, int> cur = null;
         switch (playerIndex)
         {
             case 0:
@@ -73,19 +73,13 @@ public class QuestionManager : MonoBehaviour
             return null;
         }
 
+        int tempQid = -1;
         int temp = -1;
-        Dictionary<int, int>.KeyCollection key = cur.Keys;
 
-        while (temp == -1 || cur.ContainsKey(temp)) {
-            if (cur.ContainsKey(temp))
-            {
-                Dictionary<int, int>.KeyCollection keys = cur.Keys;
-            }
+        while (tempQid == -1 || cur.ContainsKey(tempQid.ToString())) {
             temp = UnityEngine.Random.Range(0, questions.Count);
-            print(temp);
+            tempQid = questions[temp].ID;
         }
-
-        print(temp);
 
         return questions[temp];
     }
@@ -95,24 +89,24 @@ public class QuestionManager : MonoBehaviour
         switch (playerIndex)
         {
             case 0:
-                P1.Add(questionNum-1, response);
+                P1.Add(questionNum.ToString(), response);
                 break;
 
             case 1:
-                P2.Add(questionNum-1, response);
+                P2.Add(questionNum.ToString(), response);
                 break;
 
             case 2:
-                P3.Add(questionNum-1, response);
+                P3.Add(questionNum.ToString(), response);
                 break;
 
             case 3:
-                P4.Add(questionNum-1, response);
+                P4.Add(questionNum.ToString(), response);
                 break;
         }
     }
 
-    public Dictionary<int, int> getResponses(int playerIndex)
+    public Dictionary<string, int> getResponses(int playerIndex)
     {
         switch (playerIndex)
         {

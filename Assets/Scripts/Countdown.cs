@@ -13,13 +13,13 @@ public class Countdown : MonoBehaviour
 {
 
     float currentTime = 0f;
-    float startingTime = 50.49999f;
+    float startingTime = 5.49999f;
     float totalTime;
     double minutes;
     string min;
     string sec;
     float seconds;
-    bool start;
+    bool started;
 
     GameObject GameController;
     private GameObject player1;
@@ -27,9 +27,10 @@ public class Countdown : MonoBehaviour
     private GameObject player3;
     private GameObject player4;
 
+    public Image bg;
+
 
     [SerializeField] TextMeshProUGUI countdown;
-    public GameObject highScoreTable;
 
 
     private void Start()
@@ -37,7 +38,7 @@ public class Countdown : MonoBehaviour
 
         currentTime = startingTime;
         countdown.text = timeToString(currentTime);
-        bool start = false;
+        bool started = false;
 
         GameController = GameObject.FindWithTag("GameController");
     }
@@ -46,7 +47,7 @@ public class Countdown : MonoBehaviour
     {
 
         StartCoroutine(Delay());
-        if (start)
+        if (started)
         {
             if (currentTime >= 10)
             {
@@ -72,7 +73,7 @@ public class Countdown : MonoBehaviour
                 
                 // End Game Sequence
 
-                StartCoroutine(EndGame());
+                StartCoroutine("EndGame");
             }
 
         }
@@ -81,23 +82,26 @@ public class Countdown : MonoBehaviour
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(3);
-        start = true;
+        started = true;
     }
-
-
 
     IEnumerator EndGame()
     {
-        stopMoving();
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / 5)
+        {
+            Color newColor = new Color(Mathf.Lerp(0.0f, 0.027f, t), Mathf.Lerp(0.0f, 0.306f, t), Mathf.Lerp(0.0f, 0.396f, t), Mathf.Lerp(0.0f, 1, t));
 
-       
-        yield return new WaitForSeconds(2);
+            bg.color = newColor;
+
+            yield return null;
+        }
+
         Destroy(countdown);
-        highScoreTable.SetActive(true);
 
         GameController.GetComponent<GameComplete>().enabled = true;
-        //PhotonNetwork.LeaveRoom();
     }
+
+
 
     string timeToString(float time)
     {
@@ -130,28 +134,6 @@ public class Countdown : MonoBehaviour
         float perc = time % 1;
 
         return (int)Mathf.Lerp(40, 50, perc);
-    }
-
-    void stopMoving()
-    {
-
-
-        player1 = GameObject.FindWithTag("Player1");
-        player2 = GameObject.FindWithTag("Player2");
-        player3 = GameObject.FindWithTag("Player3");
-        player4 = GameObject.FindWithTag("Player4");
-
-        player1.GetComponent<Movement>().moveable = false;
-
-/*      player2.GetComponent<Movement>().moveable = false;
-        player3.GetComponent<Movement>().moveable = false;
-        player4.GetComponent<Movement>().moveable = false;*/
-    }   
-
-    public void endGame()
-    {
-        highScoreTable.SetActive(false);
-        PhotonNetwork.LeaveRoom();
     }
 }
 
