@@ -10,6 +10,11 @@ public class HighscoreTable : MonoBehaviour
     float templateHeight = 55f;
     string rankString;
 
+    public void endGameUpdateTable()
+    {
+
+    }
+
     private void Awake()
     {
         entryContainer = transform.Find("HighScoreEntryContainer");
@@ -25,17 +30,6 @@ public class HighscoreTable : MonoBehaviour
             entryTransform.gameObject.SetActive(true);
 
             int rank = i + 1;
-/*            switch (rank)
-            {
-                default:
-                    rankString = rank + "th";break;
-                case 1:
-                    rankString = "1st"; break;
-                case 2:
-                    rankString = "2nd"; break;
-                case 3:
-                    rankString = "3rd"; break;
-            }*/
 
             entryTransform.Find("Rank").GetComponent<Text>().text = rank.ToString();
             int score = Random.Range(0, 100);
