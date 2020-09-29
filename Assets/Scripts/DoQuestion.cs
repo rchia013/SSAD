@@ -18,17 +18,24 @@ public class DoQuestion : MonoBehaviour
     public Button b3;
     public Button b4;
 
+    public Image CD;
+    public Image CDBG;
+
     public bool pointsAwardable;
     public bool answered = false; 
     public bool correct = false;
 
-    Image background;
+    public float timeLimit;
+    private float curTime;
+
+    public Image background;
     Color originalColor;
 
     GameObject player;
     public string playerTag;
     int playerIndex;
     private PhotonView PV;
+    
 
     private QuestionManager QM;
 
@@ -42,7 +49,7 @@ public class DoQuestion : MonoBehaviour
     {
         // Color Setup
 
-        originalColor = new Color(0, 0, 0, (29 / 255));
+        originalColor = background.color;
 
         // Player Information
 
@@ -53,10 +60,8 @@ public class DoQuestion : MonoBehaviour
         // Setup Question Manager;
 
         QM = GameObject.FindWithTag("GameController").GetComponent<QuestionManager>();
+        timeLimit = QM.getTimeLimit();
         setupNewQuestion();
-
-        background = gameObject.GetComponent<Image>();
-        background.color = originalColor;
     }
 
     private void OnEnable()
@@ -66,7 +71,6 @@ public class DoQuestion : MonoBehaviour
         setupNewQuestion();
 
         background.color = originalColor;
-
     }
 
     private void setupNewQuestion()
@@ -113,14 +117,8 @@ public class DoQuestion : MonoBehaviour
             }
             
         }
-    }
 
-    private void resetButtons()
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            buttons[i].onClick.RemoveAllListeners();
-        }
+        StartCoroutine("startCD");
     }
 
     private Question getQuestion()
@@ -135,21 +133,59 @@ public class DoQuestion : MonoBehaviour
         }
     }
 
+    IEnumerator startCD()
+    {
+        float percentage;
+
+        for (curTime = timeLimit; curTime > 0.0f; curTime -= Time.deltaTime)
+        {
+            percentage = curTime / timeLimit;
+
+            if (percentage > 0.667)
+            {
+                CD.color = Color.green;
+            }
+            else if (percentage > 0.333)
+            {
+                CD.color = Color.yellow;
+            }
+            else
+            {
+                CD.color = Color.red;
+            }
+
+            CD.fillAmount = percentage;
+            CDBG.fillAmount = percentage;
+            yield return null;
+        }
+
+        Unanswered();
+    }
+
+    private void resetButtons()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            buttons[i].onClick.RemoveAllListeners();
+        }
+    }
 
     void Correct(int index)
     {
         print("Correct");
         resetButtons();
 
+        StartCoroutine("Disappear");
+
         response = index;
         recordResponse();
 
         if (pointsAwardable)
         {
-            Debug.Log("Points"+ 3);
-            PV.RPC("ChangePoints", RpcTarget.All, playerIndex, 3);
+            int points = Mathf.RoundToInt(curTime + 0.49f);
+            Debug.Log("Points"+ points);
+            PV.RPC("ChangePoints", RpcTarget.All, playerIndex, points);
         }
-        gameObject.SetActive(false);
 
         answered = true;
         correct = true;
@@ -165,14 +201,30 @@ public class DoQuestion : MonoBehaviour
 
         if (pointsAwardable)
         {
-            Debug.Log("Points"+(-3));
-            PV.RPC("ChangePoints", RpcTarget.All, playerIndex, -3);
+            int points = Mathf.FloorToInt(timeLimit / 3) * (-1);
+            Debug.Log("Points"+(points));
+            PV.RPC("ChangePoints", RpcTarget.All, playerIndex, points);
         }
 
         answered = true;
         correct = false;
 
         StartCoroutine("FailBGChange");
+    }
+
+    void Unanswered()
+    {
+        print("Not Answered");
+        resetButtons();
+
+        response = -1;
+        recordResponse();
+
+        answered = false;
+        correct = false;
+
+        StartCoroutine("FailBGChange");
+
     }
 
     IEnumerator FailBGChange()
@@ -187,10 +239,33 @@ public class DoQuestion : MonoBehaviour
 
             yield return null;
         }
+
+        gameObject.SetActive(false);
+    }
+
+    IEnumerator Disappear()
+    {
+        print("Disappear");
+
+        Color color = background.color;
+
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / 0.75f)
+        {
+            Color newColor = new Color(Mathf.Lerp(color.r, 0.0f, t), Mathf.Lerp(color.g, 0.0f, t), Mathf.Lerp(color.b, 0.0f, t), Mathf.Lerp(color.a, 0.0f, t));
+
+            background.color = newColor;
+
+            yield return null;
+        }
+
+        gameObject.SetActive(false);
     }
 
     void recordResponse()
     {
+        print("Player = " + playerIndex);
+        print("Q = " + question.ID);
+        print("Resp = " + response);
         QM.recordResponse(playerIndex, question.ID, response);
     }
 }

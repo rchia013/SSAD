@@ -25,6 +25,9 @@ public class QuestionManager : MonoBehaviour
     {
         // Initialize settings:
 
+        Category = 0;
+        Difficulty = 1;
+
         // PseudoCode: Get Category and Difficulty from Whichever manager;
         // PseudoCode: Create URL from below to collect correct collection of questions:
 
@@ -126,6 +129,20 @@ public class QuestionManager : MonoBehaviour
                 return P4;
         }
         return null;
+    }
+
+    public float getTimeLimit()
+    {
+        switch (Difficulty)
+        {
+            case 1:
+                return 5.0f;
+            case 2:
+                return 7.0f;
+            case 3:
+                return 9.0f;
+        }
+        return 0.0f;
     }
 
 }

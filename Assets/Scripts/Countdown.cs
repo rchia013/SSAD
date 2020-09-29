@@ -38,7 +38,6 @@ public class Countdown : MonoBehaviour
         currentTime = startingTime;
         countdown.text = timeToString(currentTime);
         bool start = false;
-        
 
         GameController = GameObject.FindWithTag("GameController");
     }

@@ -153,8 +153,6 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
 
     IEnumerator Question()
     {
-        // Determines Question Time
-        int counter = 5;
 
         question.GetComponent<DoQuestion>().answered = false;
         question.GetComponent<DoQuestion>().correct = false;
@@ -162,6 +160,8 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
         question.GetComponent<DoQuestion>().playerTag = playerTag;
 
         question.SetActive(true);
+
+        int counter = Mathf.RoundToInt(GameObject.FindWithTag("GameController").GetComponent<QuestionManager>().getTimeLimit());
 
         while (counter > 0)
         {
