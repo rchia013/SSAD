@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using Photon.Pun;
 using System.Linq;
+using System;
 
 public class DoQuestion : MonoBehaviour
 {
@@ -77,26 +78,40 @@ public class DoQuestion : MonoBehaviour
         buttons[2] = b3;
         buttons[3] = b4;
 
+        while (question.Description == null)
+        {
+
+        }
         description.SetText(question.Description);
-
-        Dictionary<string, bool> Options = question.Options;
-
-        var OptionDescriptions = Options.Keys.ToList();
-
-        var answer = Options.FirstOrDefault(x => x.Value == true).Key;
+        string answer = question.Correct;
+        int correctOption = Int32.Parse(answer);
 
         for (int i = 0; i < 4; i++)
         {
-            buttons[i].transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(OptionDescriptions[i]);
-
-            if (OptionDescriptions[i] == answer)
+            switch (i)
             {
-                buttons[i].onClick.AddListener(delegate {Correct(i);});
+                case 0:
+                    buttons[i].transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(question.Options.one);
+                    break;
+                case 1:
+                    buttons[i].transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(question.Options.two);
+                    break;
+                case 2:
+                    buttons[i].transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(question.Options.three);
+                    break;
+                case 3:
+                    buttons[i].transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(question.Options.four);
+                    break;
+            }
+            if (correctOption == (i+1))
+            {
+                buttons[i].onClick.AddListener(delegate { Correct(i); });
             }
             else
             {
-                buttons[i].onClick.AddListener(delegate {Wrong(i);});
+                buttons[i].onClick.AddListener(delegate { Wrong(i); });
             }
+            
         }
     }
 

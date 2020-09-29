@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Proyecto26;
+using System;
+using System.Linq;
+using Newtonsoft.Json;
 
 public class QuestionManager : MonoBehaviour
 {
@@ -25,53 +28,15 @@ public class QuestionManager : MonoBehaviour
         // PseudoCode: Get Category and Difficulty from Whichever manager;
         // PseudoCode: Create URL from below to collect correct collection of questions:
 
-        //print("Before Question");
+        RestClient.Get(url: "https://quizguyz.firebaseio.com/Questions/0/1.json").Then(onResolved: response =>
+        {
+            print("Adding Question");
+            questions = JsonConvert.DeserializeObject<List<Question>>(response.Text);
 
-        //RestClient.Get<Question>(url: "https://quizguyz.firebaseio.com/Questions/0/1/1.json").Then(onResolved: response =>
-        //{
+            print("Added Question");
+        });
 
-        //    print("Adding Question");
-
-        //    questions.Add(response);
-
-        //    print("Added Question");
-        //});
-
-        // HARD CODED!: TO BE UPDATED BY JOEY
-
-        Question test = new Question(0, 1, 1, "2 + 2 = ",
-        new Dictionary<string, bool>(){
-            {"4",true },
-            {"5", false },
-            {"6", false },
-            {"7", false } });
-
-        Question test2 = new Question(1, 1, 1, "2 + 3 = ",
-        new Dictionary<string, bool>(){
-            {"4",false },
-            {"5", true },
-            {"6", false },
-            {"7", false } });
-
-        Question test3 = new Question(2, 1, 1, "3 + 3 = ",
-        new Dictionary<string, bool>(){
-            {"4",false },
-            {"5", false },
-            {"6", true },
-            {"7", false } });
-
-        Question test4 = new Question(3, 1, 1, "3 + 4 = ",
-        new Dictionary<string, bool>(){
-            {"4",false },
-            {"5", false },
-            {"6", false },
-            {"7", true } });
-
-        questions.Add(test);
-        questions.Add(test2);
-        questions.Add(test3);
-        questions.Add(test4);
-
+        print("QUESTIONS count");
         print(questions.Count);
 
     }
@@ -106,9 +71,15 @@ public class QuestionManager : MonoBehaviour
         }
 
         int temp = -1;
+        Dictionary<int, int>.KeyCollection key = cur.Keys;
 
         while (temp == -1 || cur.ContainsKey(temp)) {
-            temp = Random.Range(0, questions.Count);
+            if (cur.ContainsKey(temp))
+            {
+                Dictionary<int, int>.KeyCollection keys = cur.Keys;
+            }
+            temp = UnityEngine.Random.Range(0, questions.Count);
+            print(temp);
         }
 
         print(temp);
@@ -121,19 +92,19 @@ public class QuestionManager : MonoBehaviour
         switch (playerIndex)
         {
             case 0:
-                P1.Add(questionNum, response);
+                P1.Add(questionNum-1, response);
                 break;
 
             case 1:
-                P2.Add(questionNum, response);
+                P2.Add(questionNum-1, response);
                 break;
 
             case 2:
-                P3.Add(questionNum, response);
+                P3.Add(questionNum-1, response);
                 break;
 
             case 3:
-                P4.Add(questionNum, response);
+                P4.Add(questionNum-1, response);
                 break;
         }
     }

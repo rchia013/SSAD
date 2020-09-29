@@ -1,51 +1,54 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Question : MonoBehaviour
+[Serializable]
+
+public class Option
+{
+    public string one;
+    public string two;
+    public string three;
+    public string four;
+}
+public class Question
 {
 
-    public int ID
-    {
-        get;
-        private set;
-    }
-    public int Difficulty
-    {
-        get;
-        private set;
-    }
-    public int Category
-    {
-        get;
-        private set;
-    }
+    public int ID;
+    public int Difficulty;
+    public int Category;
+    public string Description;
+    public Option Options;
+    public string Correct;
 
-    public string Description
-    {
-        get;
-        private set;
-    }
+    //public int id
+    //{
+    //    get;
+    //    private set;
+    //}
+    //public int difficulty
+    //{
+    //    get;
+    //    private set;
+    //}
+    //public int category
+    //{
+    //    get;
+    //    private set;
+    //}
 
-    public Dictionary<string, bool> Options
-    {
-        get;
-        private set;
-    }
+    //public string description
+    //{
+    //    get;
+    //    private set;
+    //}
 
-    //int ID;
-    //int Difficulty;
-    //int Cateogory;
-    //string Description public object MyProperty { get; set; }
+    //public Dictionary<string, bool> options
+    //{
+    //    get;
+    //    private set;
+    //}
 
-    // Start is called before the first frame update
 
-    public Question(int id, int diff, int cat, string desc, Dictionary<string, bool> options)
-    {
-        this.ID = id;
-        this.Difficulty = diff;
-        this.Category = cat;
-        this.Description = desc;
-        this.Options = options;
-    }
 }
