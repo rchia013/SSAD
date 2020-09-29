@@ -82,11 +82,6 @@ public class DoQuestion : MonoBehaviour
         buttons[2] = b3;
         buttons[3] = b4;
 
-        //while (question.Description == null)
-        //{
-
-        //}
-
         description.SetText(question.Description);
         string answer = question.Correct;
         int correctOption = Int32.Parse(answer);

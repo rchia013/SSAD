@@ -126,6 +126,7 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
         print("TIMELIMIT");
         print(counter);
 
+        bool moveableChanged = false;
 
         while (counter > 0)
         {
@@ -134,8 +135,6 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
             counter--;
 
             var materials = rend.materials;
-
-            bool moveableChanged = false;
 
             // Case 1: 
 
