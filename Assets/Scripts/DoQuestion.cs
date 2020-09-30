@@ -64,6 +64,15 @@ public class DoQuestion : MonoBehaviour
         setupNewQuestion();
     }
 
+    private void Update()
+    {
+        if (QM.isEnded())
+        {
+            deactivateUI();
+            this.enabled = false;
+        }
+    }
+
     private void OnEnable()
     {
         // Setup UI
@@ -263,5 +272,11 @@ public class DoQuestion : MonoBehaviour
         print("Q = " + question.ID);
         print("Resp = " + response);
         QM.recordResponse(playerIndex, question.ID, response);
+    }
+
+    void deactivateUI()
+    {
+        //StartCoroutine("Disappear");
+        gameObject.SetActive(false);   
     }
 }

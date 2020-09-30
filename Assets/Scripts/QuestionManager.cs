@@ -13,6 +13,8 @@ public class QuestionManager : MonoBehaviour
     public int Category;
     public int Difficulty;
 
+    bool ended;
+
     Dictionary<string, int> P1 = new Dictionary<string, int>();
     Dictionary<string, int> P2 = new Dictionary<string, int>();
     Dictionary<string, int> P3 = new Dictionary<string, int>();
@@ -27,6 +29,8 @@ public class QuestionManager : MonoBehaviour
 
         Category = 0;
         Difficulty = 1;
+
+        ended = false;
 
         // PseudoCode: Get Category and Difficulty from Whichever manager;
         // PseudoCode: Create URL from below to collect correct collection of questions:
@@ -137,6 +141,16 @@ public class QuestionManager : MonoBehaviour
                 return 9.0f;
         }
         return 0.0f;
+    }
+
+    public void setEnded()
+    {
+        ended = true;
+    }
+
+    public bool isEnded()
+    {
+        return ended;
     }
 
 }

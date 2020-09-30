@@ -21,6 +21,7 @@ public class GameComplete : MonoBehaviour
     private QuestionManager QM;
 
     public GameObject ResultsPage;
+    public bool display = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,14 +37,21 @@ public class GameComplete : MonoBehaviour
         stopMoving();
 
         QM = gameObject.GetComponent<QuestionManager>();
+        QM.setEnded();
 
         // Create Records
 
         createRecords();
+    }
 
-        // Display Ranking UI
+    private void Update()
+    {
+        if (display)
+        {
+            // Display Ranking UI
 
-        displayResults();
+            displayResults();
+        }
     }
 
     void initializePlayers()

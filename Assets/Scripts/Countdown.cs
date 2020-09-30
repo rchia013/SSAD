@@ -94,7 +94,9 @@ public class Countdown : MonoBehaviour
     IEnumerator EndGame()
     {
         GameController.GetComponent<GameComplete>().stopMoving();
-        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / 5)
+        GameController.GetComponent<GameComplete>().enabled = true;
+
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / 4)
         {
             Color newColor = new Color(Mathf.Lerp(0.0f, 0.027f, t), Mathf.Lerp(0.0f, 0.306f, t), Mathf.Lerp(0.0f, 0.396f, t), Mathf.Lerp(0.0f, 1, t));
 
@@ -104,9 +106,8 @@ public class Countdown : MonoBehaviour
         }
 
         Destroy(countdown);
-
+        GameController.GetComponent<GameComplete>().display = true;
         print("END!GAME");
-        GameController.GetComponent<GameComplete>().enabled = true;
     }
 
 
