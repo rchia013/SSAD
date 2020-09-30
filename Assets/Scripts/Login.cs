@@ -24,6 +24,13 @@ public class Login : MonoBehaviour
     public TMP_InputField signUpUsername;
     public TMP_InputField signUpPassword;
 
+    public TextMeshProUGUI failLogin;
+
+    private void Start()
+    {
+        failLogin.enabled = false;
+    }
+
 
     // Apparently you need to have password length > 6 and cannot sign up with same email otherwise error
     public bool SignUpUser(string email, string name, string password)
@@ -75,9 +82,12 @@ public class Login : MonoBehaviour
         }
         else
         {
-            //do some UI Feedback
+            StartCoroutine("displayInvalidUser");
+
         }
     }
+
+
 
     public void signInButton()
     {
@@ -89,6 +99,7 @@ public class Login : MonoBehaviour
         else
         {
             //do some UI feedback
+            StartCoroutine("displayInvalidUser");
         }
     }
 
@@ -103,6 +114,13 @@ public class Login : MonoBehaviour
         });
         print(success);
         return success;
+    }
+
+    IEnumerator displayInvalidUser()
+    {
+        failLogin.enabled = true;
+        yield return new WaitForSeconds(1);
+        failLogin.enabled = false;
     }
 
     public void loadScene()
