@@ -32,8 +32,13 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
+        print("OnCOnnectedTO MASter");
         PhotonNetwork.AutomaticallySyncScene = true;
-        lobbyConnectButton.SetActive(true);
+      /*  lobbyConnectButton.SetActive(true);*/
+        mainPanel.SetActive(false);
+        lobbyPanel.SetActive(true);
+        PhotonNetwork.JoinLobby();
+        print("OnCOnnectedTO MASter");
 
         if (PlayerPrefs.HasKey("NickName"))
         {

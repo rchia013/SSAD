@@ -12,11 +12,6 @@ public class NetworkController : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public override void OnConnectedToMaster()
     {
