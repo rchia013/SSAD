@@ -13,6 +13,7 @@ public class GameComplete : MonoBehaviour
     private GameObject player2;
     private GameObject player3;
     private GameObject player4;
+    bool initialized = false;
 
     private List<GameObject> players = new List<GameObject>();
     private List<Record> records = new List<Record>();
@@ -47,25 +48,29 @@ public class GameComplete : MonoBehaviour
 
     void initializePlayers()
     {
-        for (int i = 1; i < 5; i++)
+        if (!initialized)
         {
-            GameObject curPlayer = GameObject.FindWithTag("Player"+i.ToString());
+            for (int i = 1; i < 5; i++)
+            {
+                GameObject curPlayer = GameObject.FindWithTag("Player" + i.ToString());
 
-            if (curPlayer != null)
-            {
-                players.Add(curPlayer);
+                if (curPlayer != null)
+                {
+                    players.Add(curPlayer);
+                }
+                else
+                {
+                    break;
+                }
             }
-            else
-            {
-                break;
-            }
+
+            print("Player List Size: " + players.Count);
+            initialized = true;
         }
     }
 
     public void stopMoving()
     {
-        
-        
             initializePlayers();
             for (int i = 0; i < players.Count; i++)
             {
@@ -112,6 +117,9 @@ public class GameComplete : MonoBehaviour
 
     void displayResults()
     {
+        print("display Results");
+        print(records.Count);
+
         ResultsPage.GetComponent<HighscoreTable>().enabled = true;
 
         ResultsPage.GetComponent<HighscoreTable>().endGameUpdateTable(records);

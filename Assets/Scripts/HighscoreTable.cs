@@ -24,6 +24,8 @@ public class HighscoreTable : MonoBehaviour
 
         for (int i = 0; i < SortedList.Count; i++)
         {
+            print("Entry"+(i+1));
+
             Transform entryTransform = Instantiate(entryTemplate, entryContainer);
             RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
             entryRectTransform.anchoredPosition = new Vector3(50, -templateHeight * i - 20, 0);

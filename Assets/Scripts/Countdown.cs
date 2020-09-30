@@ -20,6 +20,7 @@ public class Countdown : MonoBehaviour
     string sec;
     float seconds;
     bool started;
+    bool ended;
 
     GameObject GameController;
     private GameObject player1;
@@ -38,7 +39,9 @@ public class Countdown : MonoBehaviour
 
         currentTime = startingTime;
         countdown.text = timeToString(currentTime);
-        bool started = false;
+        started = false;
+        ended = false;
+        
 
         GameController = GameObject.FindWithTag("GameController");
     }
@@ -72,8 +75,11 @@ public class Countdown : MonoBehaviour
                 countdown.fontStyle = FontStyles.Bold;
                 
                 // End Game Sequence
-
-                StartCoroutine("EndGame");
+                if (!ended)
+                {
+                    StartCoroutine("EndGame");
+                    ended = true;
+                }
             }
 
         }
@@ -99,6 +105,7 @@ public class Countdown : MonoBehaviour
 
         Destroy(countdown);
 
+        print("END!GAME");
         GameController.GetComponent<GameComplete>().enabled = true;
     }
 
