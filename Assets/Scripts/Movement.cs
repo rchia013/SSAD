@@ -13,7 +13,7 @@ public class Movement : MonoBehaviourPunCallbacks {
 
     public int playerIndex;
     public int playerID = 0;
-    public string playerName = "QuizGuy1";
+    public string playerName;
 
     // START COUNTDOWN:
 
@@ -64,6 +64,8 @@ public class Movement : MonoBehaviourPunCallbacks {
 
     private void Start()
     {
+        playerName = "QuizGuy1";
+
 
         // Photon:
 

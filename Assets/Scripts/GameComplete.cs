@@ -97,6 +97,8 @@ public class GameComplete : MonoBehaviour
 
             records.Add(cur);
 
+            print(cur.playerName);
+
             uploadRecord(players[i].GetComponent<Movement>().playerID, cur);
         }
     }

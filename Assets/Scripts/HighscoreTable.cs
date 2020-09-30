@@ -31,6 +31,8 @@ public class HighscoreTable : MonoBehaviour
             entryRectTransform.anchoredPosition = new Vector3(50, -templateHeight * i - 20, 0);
             entryTransform.gameObject.SetActive(true);
 
+            print(SortedList[i].playerName);
+
             entryTransform.Find("Rank").GetComponent<TextMeshProUGUI>().text = (i+1).ToString();
             entryTransform.Find("Name").GetComponent<TextMeshProUGUI>().text = SortedList[i].playerName;
             entryTransform.Find("Points").GetComponent<TextMeshProUGUI>().text = SortedList[i].Points.ToString();
