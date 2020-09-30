@@ -62,12 +62,16 @@ public class GameComplete : MonoBehaviour
         }
     }
 
-    void stopMoving()
+    public void stopMoving()
     {
-        for (int i = 0; i < players.Count; i++)
-        {
-            players[i].GetComponent<Movement>().moveable = false;
-        }
+        
+        
+            initializePlayers();
+            for (int i = 0; i < players.Count; i++)
+            {
+                players[i].GetComponent<Movement>().moveable = false;
+            }
+        
     }
 
     void createRecords()
