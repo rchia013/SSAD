@@ -31,7 +31,7 @@ public class QuestionManager : MonoBehaviour
         // PseudoCode: Get Category and Difficulty from Whichever manager;
         // PseudoCode: Create URL from below to collect correct collection of questions:
 
-        RestClient.Get(url: "https://quizguyz.firebaseio.com/Questions/0/1.json").Then(onResolved: response =>
+        RestClient.Get(url: "https://quizguyz.firebaseio.com/Questions/Math/1.json").Then(onResolved: response =>
         {
             print("Adding Question");
             questions = JsonConvert.DeserializeObject<List<Question>>(response.Text);
