@@ -11,6 +11,14 @@ public class Option
     public string two;
     public string three;
     public string four;
+
+    public Option(string first, string second, string third, string fourth)
+    {
+        this.one = first;
+        this.two = second;
+        this.three = third;
+        this.four = fourth;
+    }
 }
 public class Question
 {
@@ -50,5 +58,13 @@ public class Question
     //    private set;
     //}
 
-
+    public Question(int id, int diff, int cat, string desc, Option opt, string corr)
+    {
+        this.ID = id;
+        this.Difficulty = diff;
+        this.Category = cat;
+        this.Description = desc;
+        this.Options = opt;
+        this.Correct = corr;
+    }
 }

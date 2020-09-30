@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Proyecto26;
 using Newtonsoft.Json;
+using UnityEditor;
 
 public class GameComplete : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class GameComplete : MonoBehaviour
     private GameObject player3;
     private GameObject player4;
     bool initialized = false;
+
+    public static string localID;
 
     private List<GameObject> players = new List<GameObject>();
     private List<Record> records = new List<Record>();
@@ -27,7 +30,7 @@ public class GameComplete : MonoBehaviour
     void Start()
     {
         //HARD CODED:
-
+        localID = Login.localid;
         DateTime = null;
         SessionID = 1234;
 
@@ -113,16 +116,11 @@ public class GameComplete : MonoBehaviour
 
     void uploadRecord(int playerID, Record record)
     {
-        // PSEUDOCODE:
 
-        //// Retrive user entry
-        //// Cast user entry to user object type?
-        //// append record to user entry -> records
-        //// upload user entry to update existing one
-
-        //string urlString = "https://quizguyz.firebaseio.com/users/" + playerID.ToString();
-
-        //RestClient.Post(url: urlString, JsonConvert.SerializeObject(record));
+        print("localID = " + localID);
+        string urlString = "https://quizguyz.firebaseio.com/Users/" + localID+"/Records.json";
+        RestClient.Post(url: urlString, JsonConvert.SerializeObject(record));
+        print("POSTED!!!!");
     }
 
     void displayResults()

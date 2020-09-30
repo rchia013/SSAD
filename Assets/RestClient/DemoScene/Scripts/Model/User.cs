@@ -1,25 +1,22 @@
 ﻿using System;
 
-namespace Models
+
+[Serializable]
+public class User
 {
-	[Serializable]
-	public class User
-	{
-		public int id;
+	public string username;
 
-		public string name;
+    public Record record;
 
-		public string username;
+    public string localid;
 
-		public string email;
-
-		public string phone;
-
-		public string website;
-
-		public override string ToString(){
-			return UnityEngine.JsonUtility.ToJson (this, true);
-		}
+	public override string ToString(){
+		return UnityEngine.JsonUtility.ToJson (this, true);
 	}
-}
 
+    public User(string name,  string localid)
+    {
+        this.username = name;
+        this.localid = localid;
+    }
+}

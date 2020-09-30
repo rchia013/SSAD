@@ -21,6 +21,7 @@ TagManager:
   - Canvas
   - GameTimer
   - GameOver
+  - EmailLogin
   layers:
   - Default
   - TransparentFX
