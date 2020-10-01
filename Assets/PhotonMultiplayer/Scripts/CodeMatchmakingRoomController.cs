@@ -17,7 +17,7 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
 
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
         {
-            gameObject.GetComponent<AvatarController>().addPlayer(PhotonNetwork.PlayerList[i].NickName);
+            gameObject.GetComponent<AvatarController>().addPlayer(PhotonNetwork.PlayerList[i].NickName, false);
         }
     }
 
@@ -25,7 +25,7 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
     {
         playerCount.text = PhotonNetwork.PlayerList.Length + " Players";
 
-        gameObject.GetComponent<AvatarController>().addPlayer(newPlayer.NickName);
+        gameObject.GetComponent<AvatarController>().addPlayer(newPlayer.NickName, true);
     }
     
     public override void OnPlayerLeftRoom(Player otherPlayer)

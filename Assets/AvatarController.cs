@@ -151,14 +151,16 @@ public class AvatarController : MonoBehaviour
     //    }
     //}
 
-    public void addPlayer(string newUsername)
+    public void addPlayer(string newUsername, bool selfSync)
     {
         playerList.Add(newUsername, -1);
 
         PV.RPC("updateTotalUI", RpcTarget.All);
 
-        PV.RPC("updateAvatar", RpcTarget.All, Login.currentUser.username, curSelection);
-        //PV.RPC("addP", RpcTarget.All, newUsername);
+        if (selfSync)
+        {
+            PV.RPC("updateAvatar", RpcTarget.All, Login.currentUser.username, curSelection);
+        }
     }
 
     [PunRPC]
