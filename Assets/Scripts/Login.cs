@@ -16,6 +16,9 @@ public class Login : MonoBehaviour
     public static string localid;
     public string idToken;
     public string username = null;
+    public bool? success = null;
+    public bool usernameGet = false; 
+    public bool displayFail = false;
     public static User currentUser;
 
     
@@ -24,14 +27,28 @@ public class Login : MonoBehaviour
     public TMP_InputField signUpEmail;
     public TMP_InputField signUpUsername;
     public TMP_InputField signUpPassword;
-
+    
     public TextMeshProUGUI failLogin;
 
     private void Start()
     {
-        failLogin.enabled = false;
-    }
 
+    }
+    private void Update()
+    {
+
+        if (success == true && usernameGet)
+        {
+
+            loadScene();
+
+        }
+        else if (success == false && !displayFail)
+        {
+            StartCoroutine("displayInvalidUser");
+            
+        }
+    }
 
     // Apparently you need to have password length > 6 and cannot sign up with same email otherwise error
     public bool SignUpUser(string email, string name, string password)
@@ -54,9 +71,9 @@ public class Login : MonoBehaviour
         return success;
     }
 
-/*    public bool SignInUser(string email, string password)
+
+    public void SignInUser(string email, string password)
     {
-        bool success = true;
         string userData = "{\"email\":\"" + email + "\", \"password\":\"" + password + "\"}";
         RestClient.Post(url: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" + AuthKey, userData).Then(onResolved: response =>
         {
@@ -64,36 +81,16 @@ public class Login : MonoBehaviour
             SignResponse r = JsonConvert.DeserializeObject<SignResponse>(response.Text);
             localid = r.localid;
             idToken = r.idToken;
-        }).Catch(error =>
-        {
-            Debug.Log(error);
-            success = false;
-        });
-
-        return success;
-    }*/
-
-    public bool SignInUser(string email, string password)
-    {
-        bool success = true;
-        string userData = "{\"email\":\"" + email + "\", \"password\":\"" + password + "\"}";
-        RestClient.Post(url: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" + AuthKey, userData).Then(onResolved: response =>
-        {
-            print(response.Text);
-            SignResponse r = JsonConvert.DeserializeObject<SignResponse>(response.Text);
-            localid = r.localid;
-            idToken = r.idToken;
+            success = true;
             getUsername(localid);
-            currentUser = new User(username, localid);
-
         }).Catch(error =>
         {
             Debug.Log(error);
+            print("Got error!!!");
             success = false;
         });
 
 
-        return success;
     }
 
     public void signUpButton()
@@ -104,27 +101,18 @@ public class Login : MonoBehaviour
         {
             loadScene();
         }
-        else
+/*        else
         {
             StartCoroutine("displayInvalidUser");
 
-        }
+        }*/
     }
 
 
 
     public void signInButton()
     {
-        bool loginSuccess = SignInUser(signInEmail.text, signInPassword.text);
-        if (localid!=null)
-        {
-            loadScene();
-        }
-        else
-        {
-            //do some UI feedback
-            StartCoroutine("displayInvalidUser");
-        }
+        SignInUser(signInEmail.text, signInPassword.text);  
     }
 
     private bool PostToDatabase()
@@ -142,31 +130,32 @@ public class Login : MonoBehaviour
 
     IEnumerator displayInvalidUser()
     {
-        failLogin.enabled = true;
+        displayFail = true;
+        failLogin.gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
-        failLogin.enabled = false;
+        failLogin.gameObject.SetActive(false);
+        displayFail = false;
+        success = null;
     }
 
     public void loadScene()
     {
-        while (currentUser.username == null)
-        {
-            //
-        }
-
-        SceneManager.LoadScene("CodeMatchMakingMenuDemo");
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void getUsername(string userid)
-    {
-        print("USERID!");
-        print(userid);
+    { 
+        print("USERID! = " + userid); 
         RestClient.Get(url: "https://quizguyz.firebaseio.com/Users/" + userid + ".json").Then(onResolved: response =>
         {
             User user = JsonConvert.DeserializeObject<User>(response.Text);
             username = user.username;
+            print("username = " + username);
+            currentUser = new User(username, localid);
+            usernameGet = true;
         });
-        print(username);
+        
     }
+
 
 }

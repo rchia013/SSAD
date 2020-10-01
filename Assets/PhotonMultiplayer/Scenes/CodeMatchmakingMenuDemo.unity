@@ -3217,8 +3217,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 89, y: -15}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 76.83, y: -9.15}
+  m_SizeDelta: {x: 222.17224, y: 60.65779}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &637015907
 MonoBehaviour:
@@ -3268,8 +3268,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3402,8 +3402,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3544,7 +3544,7 @@ GameObject:
   - component: {fileID: 718161711}
   - component: {fileID: 718161710}
   m_Layer: 5
-  m_Name: Create
+  m_Name: Create Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3567,8 +3567,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.4, y: -26.5}
-  m_SizeDelta: {x: 92.76785, y: 53}
+  m_AnchoredPosition: {x: -1.3, y: -23.4}
+  m_SizeDelta: {x: 155.224, y: 66.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &718161710
 MonoBehaviour:
@@ -5157,8 +5157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 72, y: -15}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 80.6, y: -18.7}
+  m_SizeDelta: {x: 281.77054, y: 74.17222}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1079074940
 MonoBehaviour:
@@ -5208,8 +5208,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5956,7 +5956,7 @@ GameObject:
   - component: {fileID: 1240463908}
   - component: {fileID: 1240463907}
   m_Layer: 5
-  m_Name: Join
+  m_Name: Join Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5979,8 +5979,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -86.099976}
-  m_SizeDelta: {x: 92, y: 53}
+  m_AnchoredPosition: {x: 0, y: -112.7}
+  m_SizeDelta: {x: 155, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1240463907
 MonoBehaviour:
@@ -7626,8 +7626,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 61.2}
-  m_SizeDelta: {x: 207, y: 40}
+  m_AnchoredPosition: {x: -4.87, y: 63.61}
+  m_SizeDelta: {x: 240.09662, y: 58.62242}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1546864819
 MonoBehaviour:
@@ -7751,15 +7751,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.69411767, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 10ebe7a8e14363545946d5a92ac0bcb0, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9727,7 +9727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1888692046
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9954,9 +9954,6 @@ MonoBehaviour:
   purple: {fileID: 1639911623}
   orange: {fileID: 436156935}
   confirm: {fileID: 254300600}
-  curUser:
-    username: 
-    localid: 
   curAvatar: {fileID: 1440682761}
 --- !u!1 &1992224907
 GameObject:
