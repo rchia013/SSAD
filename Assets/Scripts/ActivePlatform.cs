@@ -84,7 +84,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
 
         player4 = GameObject.FindWithTag("Player4");
 
-        PV.RPC("playerSetup", RpcTarget.All);
+        PV.RPC("findPlayers", RpcTarget.All);
     }
 
     [PunRPC]
