@@ -191,6 +191,8 @@ public class AvatarController : MonoBehaviour
             // Set Avatar:
 
             displayAvatar(Avatars[i], player.Value);
+
+            i++;
         }
     }
 
