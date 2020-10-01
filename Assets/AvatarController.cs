@@ -142,12 +142,6 @@ public class AvatarController : MonoBehaviour
 
     public void syncPlayerList()
     {
-        PV.RPC("syncPL", RpcTarget.All);
-    }
-
-    [PunRPC]
-    private void syncPL()
-    {
         if (isCreator)
         {
             foreach (KeyValuePair<string, int> player in playerList)
