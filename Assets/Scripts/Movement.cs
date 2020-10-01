@@ -98,7 +98,7 @@ public class Movement : MonoBehaviourPunCallbacks {
     }
 
     [PunRPC]
-    void playerSetup(string tag, int color, int index, string name)
+    void curPlayerSetup(string tag, int color, int index, string name)
     {
         this.tag = tag;
         this.colorIndex = color;

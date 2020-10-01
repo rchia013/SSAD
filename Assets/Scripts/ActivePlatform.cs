@@ -54,10 +54,10 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
 
     // Player:
 
-    private GameObject player1;
-    private GameObject player2;
-    private GameObject player3;
-    private GameObject player4;
+    public GameObject player1;
+    public GameObject player2;
+    public GameObject player3;
+    public GameObject player4;
 
     private List<GameObject> players = new List<GameObject>();
 
@@ -83,7 +83,34 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
         player3 = GameObject.FindWithTag("Player3");
 
         player4 = GameObject.FindWithTag("Player4");
+
+        PV.RPC("playerSetup", RpcTarget.All);
     }
+
+    [PunRPC]
+    void findPlayers()
+    {
+        switch (PhotonNetwork.LocalPlayer.ActorNumber)
+        {
+            case 1:
+                player1 = GameObject.FindWithTag("Player1");
+                break;
+
+            case 2:
+                player2 = GameObject.FindWithTag("Player2");
+                break;
+
+            case 3:
+                player3 = GameObject.FindWithTag("Player3");
+                break;
+
+            case 4:
+                player4 = GameObject.FindWithTag("Player4");
+                break;
+            
+        }
+    }
+    
     
     // Update is called once per frame
     void Update()
