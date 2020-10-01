@@ -163,7 +163,8 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             }
         }
 
-        if (player1 != null && putActiveBlock1 && blocks.Count > totalNumBlocks / 4 && player1.GetComponent<Movement>().moveable)
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && player1 != null &&
+            putActiveBlock1 && blocks.Count > totalNumBlocks / 4 && player1.GetComponent<Movement>().moveable)
         {
             if (blocks.ContainsKey(prevNum1))
             {
@@ -189,7 +190,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             }
         }
 
-        if (player2 != null && putActiveBlock2 && blocks.Count > totalNumBlocks / 4 && player2.GetComponent<Movement>().moveable)
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && player2 != null && putActiveBlock2 && blocks.Count > totalNumBlocks / 4 && player2.GetComponent<Movement>().moveable)
         {
             if (blocks.ContainsKey(prevNum2))
             {
@@ -215,7 +216,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             }
         }
 
-        if (player3 != null && putActiveBlock3 && blocks.Count > totalNumBlocks / 4 && player3.GetComponent<Movement>().moveable)
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 3 && player3 != null && putActiveBlock3 && blocks.Count > totalNumBlocks / 4 && player3.GetComponent<Movement>().moveable)
         {
             if (blocks.ContainsKey(prevNum3))
             {
@@ -241,7 +242,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             }
         }
 
-        if (player4 != null && putActiveBlock4 && blocks.Count > totalNumBlocks / 4 && player4.GetComponent<Movement>().moveable)
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 4 && player4 != null && putActiveBlock4 && blocks.Count > totalNumBlocks / 4 && player4.GetComponent<Movement>().moveable)
         {
             if (blocks.ContainsKey(prevNum4))
             {
@@ -268,7 +269,8 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             }
         }
 
-        if (putSpecialBlock && blocks.Count > totalNumBlocks / 4 && !(power0used && power1used) &&
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1 &&
+            putSpecialBlock && blocks.Count > totalNumBlocks / 4 && !(power0used && power1used) &&
             ((player1 != null && player1.GetComponent<Movement>().moveable) ||
             (player2 != null && player2.GetComponent<Movement>().moveable) ||
             (player3 != null && player3.GetComponent<Movement>().moveable) ||
