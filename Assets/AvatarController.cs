@@ -144,9 +144,9 @@ public class AvatarController : MonoBehaviour
     {
         if (isCreator)
         {
-            foreach (KeyValuePair<string, int> player in playerList)
+            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
             {
-                updateAvatar(player.Key, player.Value);
+                updateAvatar(PhotonNetwork.PlayerList[i].NickName, playerList[PhotonNetwork.PlayerList[i].NickName]);
             }
         }
     }
