@@ -85,5 +85,7 @@ public class GameSetUp : MonoBehaviourPunCallbacks
         player.GetComponent<Movement>().colorIndex = avatarSelection % 10;
 
         player.gameObject.tag = "Player" + (playerIndex + 1);
+
+        print(player.gameObject.tag);
     }
 }

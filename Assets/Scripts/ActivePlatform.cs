@@ -77,28 +77,12 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
         }
 
         player1 = GameObject.FindWithTag("Player1");
-        if (player1 != null)
-        {
-            players.Add(player1);
-        }
 
         player2 = GameObject.FindWithTag("Player2");
-        if (player2 != null)
-        {
-            players.Add(player2);
-        }
 
         player3 = GameObject.FindWithTag("Player3");
-        if (player3 != null)
-        {
-            players.Add(player3);
-        }
 
         player4 = GameObject.FindWithTag("Player4");
-        if (player4 != null)
-        {
-            players.Add(player4);
-        }
     }
     
     // Update is called once per frame
@@ -256,7 +240,11 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             }
         }
 
-        if (putSpecialBlock && blocks.Count > totalNumBlocks / 4 && !(power0used && power1used))
+        if (putSpecialBlock && blocks.Count > totalNumBlocks / 4 && !(power0used && power1used) &&
+            ((player1 != null && player1.GetComponent<Movement>().moveable) ||
+            (player2 != null && player2.GetComponent<Movement>().moveable) ||
+            (player3 != null && player3.GetComponent<Movement>().moveable) ||
+            (player4 != null && player4.GetComponent<Movement>().moveable)))
         {
 
             int newSpecNum = -1;
@@ -309,34 +297,36 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
         switch (playerNum)
         {
             case 1:
-
                 ABscript1 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript1.playerIndex = playerNum;
-                ABscript1.colorIndex = players[playerNum-1].GetComponent<Movement>().colorIndex;
+                ABscript1.colorIndex = player1.GetComponent<Movement>().colorIndex;
                 ABscript1.enabled = true;
 
                 ABscript1.blockActivated = true;
                 break;
+
             case 2:
                 ABscript2 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript2.playerIndex = playerNum;
-                ABscript2.colorIndex = players[playerNum - 1].GetComponent<Movement>().colorIndex;
+                ABscript2.colorIndex = player2.GetComponent<Movement>().colorIndex;
                 ABscript2.enabled = true;
 
                 ABscript2.blockActivated = true;
                 break;
+
             case 3:
                 ABscript3 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript3.playerIndex = playerNum;
-                ABscript3.colorIndex = players[playerNum - 1].GetComponent<Movement>().colorIndex;
+                ABscript3.colorIndex = player3.GetComponent<Movement>().colorIndex;
                 ABscript3.enabled = true;
 
                 ABscript3.blockActivated = true;
                 break;
+
             case 4:
                 ABscript4 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript4.playerIndex = playerNum;
-                ABscript4.colorIndex = players[playerNum - 1].GetComponent<Movement>().colorIndex;
+                ABscript4.colorIndex = player4.GetComponent<Movement>().colorIndex;
                 ABscript4.enabled = true;
 
                 ABscript4.blockActivated = true;
