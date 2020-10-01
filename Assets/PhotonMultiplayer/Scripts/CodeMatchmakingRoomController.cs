@@ -15,14 +15,13 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
     {
         playerCount.text = "Players: "+ PhotonNetwork.PlayerList.Length;
 
-        gameObject.GetComponent<AvatarController>().initializePlayerList();
-        gameObject.GetComponent<AvatarController>().addPlayer(PhotonNetwork.LocalPlayer.NickName);
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        {
 
-        //for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-        //{
+            gameObject.GetComponent<AvatarController>().addPlayer(PhotonNetwork.PlayerList[i].NickName);
+        }
 
-        //    gameObject.GetComponent<AvatarController>().addPlayer(PhotonNetwork.PlayerList[i].NickName);
-        //}
+        gameObject.GetComponent<AvatarController>().syncPlayerList();
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)

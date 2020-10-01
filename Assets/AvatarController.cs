@@ -140,15 +140,18 @@ public class AvatarController : MonoBehaviour
 
     //Handle change of Players:
 
-    public void initializePlayerList()
+    public void syncPlayerList()
     {
-        PV.RPC("intializePL", RpcTarget.All);
+        PV.RPC("syncPL", RpcTarget.All);
     }
 
     [PunRPC]
-    private void intializePL()
+    private void syncPL()
     {
-        playerList = playerList;
+        foreach (KeyValuePair<string, int> player in playerList)
+        {
+            updateAvatar(player.Key, player.Value);
+        }
     }
 
     public void addPlayer(string newUsername)
