@@ -62,6 +62,8 @@ public class AvatarController : MonoBehaviour
 
     private List<Button> buttons = new List<Button>();
 
+    private Dictionary<int, bool> colorTaken = new Dictionary<int, bool>();
+
     public Button confirm;
 
     //Store User (username) of p1-4 and Character selection:
@@ -175,7 +177,17 @@ public class AvatarController : MonoBehaviour
     [PunRPC]
     public void updateAvatar(string userName, int picIndex)
     {
+        if (playerList[userName] != -1)
+        {
+            int oldColorIndex = playerList[userName] % 10;
+            colorTaken[oldColorIndex] = false;
+
+        }
+
         playerList[userName] = picIndex;
+
+        int colorIndex = picIndex % 10;
+        colorTaken[colorIndex] = true;
 
         PV.RPC("updateTotalUI", RpcTarget.All);
     }
@@ -232,11 +244,18 @@ public class AvatarController : MonoBehaviour
 
     public void ConfirmCharacterOnClick()
     {
-        AvatarPanel.SetActive(false);
-        RoomPanel.SetActive(true);
+        if (colorTaken[curSelection % 10])
+        {
+            print("Color Taken!");
+        }
+        else
+        {
+            AvatarPanel.SetActive(false);
+            RoomPanel.SetActive(true);
 
 
-        PV.RPC("updateAvatar", RpcTarget.All, Login.currentUser.username, curSelection);
+            PV.RPC("updateAvatar", RpcTarget.All, Login.currentUser.username, curSelection);
+        }
     }
 
 
@@ -256,6 +275,8 @@ public class AvatarController : MonoBehaviour
             int index = i;
 
             buttons[i].onClick.AddListener(delegate { ColorClicked(index); });
+
+            colorTaken.Add(i, false);
         }
     }
 
