@@ -114,7 +114,7 @@ public class GameComplete : MonoBehaviour
         }
     }
 
-    void uploadRecord(int playerID, Record record)
+    void uploadRecord(string playerID, Record record)
     {
 
         print("localID = " + localID);

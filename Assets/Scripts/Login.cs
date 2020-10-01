@@ -16,6 +16,7 @@ public class Login : MonoBehaviour
     public static string localid;
     public string idToken;
     public string username;
+    public static User currentUser;
 
     
     public TMP_InputField signInEmail;
@@ -53,6 +54,25 @@ public class Login : MonoBehaviour
         return success;
     }
 
+/*    public bool SignInUser(string email, string password)
+    {
+        bool success = true;
+        string userData = "{\"email\":\"" + email + "\", \"password\":\"" + password + "\"}";
+        RestClient.Post(url: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" + AuthKey, userData).Then(onResolved: response =>
+        {
+            print(response.Text);
+            SignResponse r = JsonConvert.DeserializeObject<SignResponse>(response.Text);
+            localid = r.localid;
+            idToken = r.idToken;
+        }).Catch(error =>
+        {
+            Debug.Log(error);
+            success = false;
+        });
+
+        return success;
+    }*/
+
     public bool SignInUser(string email, string password)
     {
         bool success = true;
@@ -63,14 +83,15 @@ public class Login : MonoBehaviour
             SignResponse r = JsonConvert.DeserializeObject<SignResponse>(response.Text);
             localid = r.localid;
             idToken = r.idToken;
-            
+            getUsername(localid);
+            currentUser = new User(username, localid);
+
         }).Catch(error =>
         {
             Debug.Log(error);
             success = false;
         });
 
-        currentUser = new User(username, localid);
 
         return success;
     }
@@ -129,6 +150,17 @@ public class Login : MonoBehaviour
     public void loadScene()
     {
         SceneManager.LoadScene("CodeMatchMakingMenuDemo");
+    }
+
+    public void getUsername(string userid)
+    {
+        print("USERID!");
+        print(userid);
+        RestClient.Get(url: "https://quizguyz.firebaseio.com/Users/" + userid + ".json").Then(onResolved: response =>
+        {
+            User user = JsonConvert.DeserializeObject<User>(response.Text);
+            username = user.username;
+        });
     }
 
 }

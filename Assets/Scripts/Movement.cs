@@ -12,6 +12,7 @@ public class Movement : MonoBehaviourPunCallbacks {
     //ID
 
     public int playerIndex;
+    public string playerID;
     public string playerName;
     public int colorIndex;
 
