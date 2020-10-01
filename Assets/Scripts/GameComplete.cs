@@ -86,6 +86,7 @@ public class GameComplete : MonoBehaviour
             for (int i = 0; i < players.Count; i++)
             {
                 players[i].GetComponent<Movement>().moveable = false;
+          
             }
         
     }

@@ -108,6 +108,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     public void OnCodeInputChanged(string code)
     {
+        print("Code = " + code);
         joinCode = code;
     }
 
