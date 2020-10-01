@@ -6,9 +6,6 @@ using TMPro;
 
 public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
 {
-
-    [SerializeField]
-    private GameObject joinButton;
     [SerializeField]
     private TextMeshProUGUI playerCount;
     [SerializeField]

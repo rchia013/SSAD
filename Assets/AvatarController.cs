@@ -13,7 +13,7 @@ public class AvatarController : MonoBehaviour
 
     public int NumPlayers;
 
-    public bool isCreator;
+    public bool isCreator = false;
 
     public Button startButton;
     public Button cancelButton;
@@ -77,21 +77,12 @@ public class AvatarController : MonoBehaviour
     private bool charSelected = false;
 
     // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
     {
         // HARD CODED:
         NumPlayers = 3;//PhotonNetwork.CurrentRoom.MaxPlayers;
         //
-
-        if (isCreator)
-        {
-            startButton.gameObject.SetActive(true);
-            cancelButton.gameObject.SetActive(true);
-        }
-        else
-        {
-            leaveButton.gameObject.SetActive(true);
-        }
 
         if (NumPlayers >= 1)
         {
@@ -132,8 +123,15 @@ public class AvatarController : MonoBehaviour
 
     private void Update()
     {
-        //Resources.Load<Sprite>("Avatars/Unknown");
-        //Avatars[i].rectTransform.sizeDelta = new Vector2(10, 12);
+        if (isCreator)
+        {
+            startButton.gameObject.SetActive(true);
+            cancelButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            leaveButton.gameObject.SetActive(true);
+        }
     }
 
     //Handle change of Players:

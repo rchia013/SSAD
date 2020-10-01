@@ -2,6 +2,7 @@
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 {
@@ -22,13 +23,9 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject RoomPanel;
     [SerializeField]
-    private InputField codeDisplay;
+    private TextMeshProUGUI codeDisplay;
 
-    [SerializeField]
-    private InputField joinercodeDisplay;
 
-    [SerializeField]
-    private InputField codeInputField;
     private string joinCode;
     [SerializeField]
     private GameObject joinButton;
@@ -63,6 +60,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     {
         roomController.GetComponent<AvatarController>().isCreator = true;
         roomController.GetComponent<AvatarController>().enabled = true;
+        lobbyPanel.SetActive(false);
         RoomPanel.SetActive(true);
 
         Debug.Log("Creating room now");
@@ -116,8 +114,13 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     public void JoinRoomOnClick()
     {
         PhotonNetwork.JoinRoom(joinCode);
-        roomController.GetComponent<AvatarController>().isCreator = false;
+        //if (!roomController.GetComponent<AvatarController>().isCreator)
+        //{
+        //    roomController.GetComponent<AvatarController>().isCreator = false;
+        //}
         roomController.GetComponent<AvatarController>().enabled = true;
+
+        lobbyPanel.SetActive(false);
         RoomPanel.SetActive(true);
     }
 
