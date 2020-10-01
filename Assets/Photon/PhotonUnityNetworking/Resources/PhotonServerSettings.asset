@@ -49,6 +49,10 @@ MonoBehaviour:
   - doBoostSize
   - doBoostSpeed
   - enableAnimation
+  - addP
+  - removeP
+  - updateAvatar
+  - updateTotalUI
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
