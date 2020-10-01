@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro;
+using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class HighscoreTable : MonoBehaviour
 {
@@ -39,5 +41,9 @@ public class HighscoreTable : MonoBehaviour
         }
     }
 
-    //PhotonNetwork.LeaveRoom();
+    public void OnClickEnd()
+    {
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene("Main Menu");
+    }
 }

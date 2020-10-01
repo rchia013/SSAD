@@ -11,8 +11,6 @@ using Photon.Realtime;
 public class AvatarController : MonoBehaviour
 {
 
-    public int NumPlayers;
-
     public bool isCreator = false;
 
     public Button startButton;
@@ -69,6 +67,8 @@ public class AvatarController : MonoBehaviour
     //Store User (username) of p1-4 and Character selection:
 
     public static Dictionary<string, int> playerList = new Dictionary<string, int>();
+    public int maxPlayers = -1;
+    private bool platformsInitialized = false;
 
 
     // Current User Info:
@@ -82,42 +82,7 @@ public class AvatarController : MonoBehaviour
 
     private void OnEnable()
     {
-        // HARD CODED:
-        NumPlayers = 3;//PhotonNetwork.CurrentRoom.MaxPlayers;
-        //
-
         PV = GetComponent<PhotonView>();
-
-        if (NumPlayers >= 1)
-        {
-            platform1.gameObject.SetActive(true);
-            Avatars.Add(Avatar1);
-            Names.Add(Name1);
-        }
-        if (NumPlayers >= 2)
-        {
-            platform2.gameObject.SetActive(true);
-            Avatars.Add(Avatar2);
-            Names.Add(Name2);
-        }
-        if (NumPlayers >= 3)
-        {
-            platform3.gameObject.SetActive(true);
-            Avatars.Add(Avatar3);
-            Names.Add(Name3);
-        }
-        if (NumPlayers >= 4)
-        {
-            platform4.gameObject.SetActive(true);
-            Avatars.Add(Avatar4);
-            Names.Add(Name4);
-        }
-
-        for (int i = 0; i < Avatars.Count; i++)
-        {
-            Avatars[i].sprite = null;
-            Avatars[i].color = Color.clear;
-        }
 
         // Initialize Avatar Page:
 
@@ -136,20 +101,43 @@ public class AvatarController : MonoBehaviour
         {
             leaveButton.gameObject.SetActive(true);
         }
+
+        if (maxPlayers != -1 && !platformsInitialized)
+        {
+            if (maxPlayers >= 1)
+            {
+                platform1.gameObject.SetActive(true);
+                Avatars.Add(Avatar1);
+                Names.Add(Name1);
+            }
+            if (maxPlayers >= 2)
+            {
+                platform2.gameObject.SetActive(true);
+                Avatars.Add(Avatar2);
+                Names.Add(Name2);
+            }
+            if (maxPlayers >= 3)
+            {
+                platform3.gameObject.SetActive(true);
+                Avatars.Add(Avatar3);
+                Names.Add(Name3);
+            }
+            if (maxPlayers >= 4)
+            {
+                platform4.gameObject.SetActive(true);
+                Avatars.Add(Avatar4);
+                Names.Add(Name4);
+            }
+
+            //for (int i = 0; i < Avatars.Count; i++)
+            //{
+            //    Avatars[i].sprite = null;
+            //    Avatars[i].color = Color.clear;
+            //}
+        }
     }
 
     //Handle change of Players:
-
-    //public void syncPlayerList()
-    //{
-    //    if (isCreator)
-    //    {
-    //        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-    //        {
-    //            updateAvatar(PhotonNetwork.PlayerList[i].NickName, playerList[PhotonNetwork.PlayerList[i].NickName]);
-    //        }
-    //    }
-    //}
 
     public void addPlayer(string newUsername, bool selfSync)
     {
@@ -357,7 +345,6 @@ public class AvatarController : MonoBehaviour
                 }
             }
 
-            buttons[index].gameObject.GetComponent<ColorSelect>().outlineActive(true);
             curSelection += (index + 1);
             colorSelected = true;
         }
@@ -372,7 +359,6 @@ public class AvatarController : MonoBehaviour
                 }
             }
 
-            buttons[index].gameObject.GetComponent<ColorSelect>().outlineActive(false);
             curSelection -= (index + 1);
             colorSelected = false;
         }
