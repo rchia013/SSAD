@@ -85,13 +85,14 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
         Debug.Log("Creating room now");
         RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize };
+
         int roomCode = Random.Range(1000, 10000);
         roomName = roomCode.ToString();
 
         Debug.Log(roomName);
         PhotonNetwork.CreateRoom(roomName, roomOps);
 
-        codeDisplay.text = roomName;
+        codeDisplay.text = "Code: " + roomName;
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)

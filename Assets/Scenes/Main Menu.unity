@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19, y: -141}
+  m_AnchoredPosition: {x: 19, y: -98}
   m_SizeDelta: {x: 167.69644, y: 58.2641}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &40134131
@@ -785,7 +785,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: QUIZGUYS
+  m_text: QUIZGUYZ
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9af9daf82bf688d499702340956d3fee, type: 2}
   m_sharedMaterial: {fileID: -7281290936051742389, guid: 9af9daf82bf688d499702340956d3fee,
@@ -2001,7 +2001,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18, y: -34}
+  m_AnchoredPosition: {x: 18, y: -22}
   m_SizeDelta: {x: 230.11969, y: 61.226685}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1657284109
@@ -2593,7 +2593,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16, y: 71}
+  m_AnchoredPosition: {x: 16, y: 54}
   m_SizeDelta: {x: 167.69644, y: 58.2641}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2057967275

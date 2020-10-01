@@ -2,13 +2,15 @@
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
 {
+
     [SerializeField]
     private GameObject joinButton;
     [SerializeField]
-    private Text playerCount;
+    private TextMeshProUGUI playerCount;
     [SerializeField]
     private Text playerCount2;
     [SerializeField]
@@ -18,14 +20,17 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         joinButton.SetActive(false);
-        playerCount.text = PhotonNetwork.PlayerList.Length + " Players";
-        playerCount2.text = PhotonNetwork.PlayerList.Length + " Players";
+        playerCount.text = "Players: "+ PhotonNetwork.PlayerList.Length;
+        playerCount2.text = "Players: " + PhotonNetwork.PlayerList.Length;
+
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         playerCount.text = PhotonNetwork.PlayerList.Length + " Players";
         playerCount2.text = PhotonNetwork.PlayerList.Length + " Players";
+
+        //gameObject.GetComponent<AvatarController>().
     }
     // Start is called before the first frame update
     public override void OnPlayerLeftRoom(Player otherPlayer)
