@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerMarkerSet : MonoBehaviour
 {
 
-    public Material player4;
-    public Material player3;
-    public Material player2;
-    public Material player1;
+    public Material blue;
+    public Material pink;
+    public Material green;
+    public Material yellow;
+    public Material purple;
+    public Material orange;
 
     MeshRenderer rend1;
     MeshRenderer rend2;
@@ -25,23 +27,32 @@ public class PlayerMarkerSet : MonoBehaviour
 
         Material chosen = null;
 
-        switch (gameObject.tag)
+        switch (gameObject.GetComponent<Movement>().colorIndex)
         {
-            case "Player1":
-                chosen = player1;
+            case 1:
+                chosen = blue;
                 break;
 
-            case "Player2":
-                chosen = player2;
+            case 2:
+                chosen = pink;
                 break;
 
-            case "Player3":
-                chosen = player3;
+            case 3:
+                chosen = green;
                 break;
 
-            case "Player4":
-                chosen = player4;
+            case 4:
+                chosen = yellow;
                 break;
+
+            case 5:
+                chosen = purple;
+                break;
+
+            case 6:
+                chosen = orange;
+                break;
+
         }
 
         materials1[0] = chosen;

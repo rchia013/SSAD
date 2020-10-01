@@ -55,9 +55,9 @@ public class AvatarController : MonoBehaviour
 
     public Button confirm;
 
-    //Store User (id, name...) of p1-4 and Character selection:
+    //Store User (username) of p1-4 and Character selection:
 
-    private Dictionary<User, int> playerList = new Dictionary<User, int>();
+    public static Dictionary<string, int> playerList = new Dictionary<string, int>();
 
 
     // Current User Info:
@@ -109,13 +109,6 @@ public class AvatarController : MonoBehaviour
 
         InitializeButtons();
         InitializeToggles();
-        
-        // Hard Coded:
-
-        User quizguy1 = new User("QuizGuy1", "0");
-
-        addPlayer(quizguy1);
-        updateAvatar(quizguy1, 2);
     }
 
     private void Update()
@@ -126,25 +119,25 @@ public class AvatarController : MonoBehaviour
 
     //Handle change of Players:
 
-    void addPlayer(User user)
+    public void addPlayer(string newUsername)
     {
-        playerList.Add(user, -1);
+        playerList.Add(newUsername, -1);
 
         updateTotalUI();
     }
 
-    void removePlayer(User user)
+    public void removePlayer(string oldUsername)
     {
-        playerList.Remove(user);
+        playerList.Remove(oldUsername);
 
         updateTotalUI();
     }
 
     //Handle Change of Avatars:
 
-    public void updateAvatar(User user, int picIndex)
+    public void updateAvatar(string userName, int picIndex)
     {
-        playerList[user] = picIndex;
+        playerList[userName] = picIndex;
 
         updateTotalUI();
     }
@@ -156,44 +149,33 @@ public class AvatarController : MonoBehaviour
     {
         int i = 0;
 
-        foreach (KeyValuePair<User, int> player in playerList)
+        foreach (KeyValuePair<string, int> player in playerList)
         {
             // Set Name:
 
-            Names[i].SetText(player.Key.username);
+            Names[i].SetText(player.Key);
 
             // Set Avatar:
 
-            if (player.Value == -1)
-            {
-                Avatars[i].sprite = null;
-                Avatars[i].color = Color.clear;
-            }
-            else
-            {
-                Avatars[i].sprite = Resources.Load<Sprite>(findAvatarPath(player.Value));
-                Avatars[i].color = new Color(0.8f, 0.8f, 0.8f, 1);
-                Avatars[i].rectTransform.sizeDelta = new Vector2(15, 20);
-            }
-            i++;
+            displayAvatar(Avatars[i]);
         }
     }
 
-    void displayAvatar()
+    void displayAvatar(Image avatar)
     {
         String avatarPath = findAvatarPath(curSelection);
 
         if (avatarPath.Contains("Unknown"))
         {
-            curAvatar.rectTransform.sizeDelta = new Vector2(10, 12);
+            avatar.rectTransform.sizeDelta = new Vector2(10, 12);
         }
 
         else if (avatarPath.Contains("Mummy"))
         {
-            curAvatar.rectTransform.sizeDelta = new Vector2(15, 20);
+            avatar.rectTransform.sizeDelta = new Vector2(15, 20);
         }
 
-        curAvatar.sprite = Resources.Load<Sprite>(avatarPath);
+        avatar.sprite = Resources.Load<Sprite>(avatarPath);
     }
 
     // Page Navigation:
@@ -209,7 +191,7 @@ public class AvatarController : MonoBehaviour
         AvatarPanel.SetActive(false);
         RoomPanel.SetActive(true);
 
-        updateAvatar(curUser, curSelection);
+        updateAvatar(curUser.username, curSelection);
     }
 
 
@@ -277,7 +259,7 @@ public class AvatarController : MonoBehaviour
         }
 
         print(curSelection);
-        displayAvatar();
+        displayAvatar(curAvatar);
     }
 
     void ColorClicked(int index)
@@ -313,7 +295,7 @@ public class AvatarController : MonoBehaviour
         }
 
         print(curSelection);
-        displayAvatar();
+        displayAvatar(curAvatar);
     }
 
     private string findAvatarPath(int selection)

@@ -40,31 +40,33 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby();
         print("OnCOnnectedTO MASter");
 
-        if (PlayerPrefs.HasKey("NickName"))
-        {
-            if (PlayerPrefs.GetString("Nickname") == "")
-            {
-                PhotonNetwork.NickName = "Player " + Random.Range(0, 1000);
-            } 
-            else
-            {
-                PhotonNetwork.NickName = PlayerPrefs.GetString("NickName");
-            }
-        }
-        else
-        {
-            PhotonNetwork.NickName = "Player " + Random.Range(0, 1000);
-        }
-        playerNameInput.text = PhotonNetwork.NickName;
+        PhotonNetwork.NickName = Login.currentUser.username;
+
+        //if (PlayerPrefs.HasKey("NickName"))
+        //{
+        //    if (PlayerPrefs.GetString("Nickname") == "")
+        //    {
+        //        PhotonNetwork.NickName = "Player " + Random.Range(0, 1000);
+        //    } 
+        //    else
+        //    {
+        //        PhotonNetwork.NickName = PlayerPrefs.GetString("NickName");
+        //    }
+        //}
+        //else
+        //{
+        //    PhotonNetwork.NickName = "Player " + Random.Range(0, 1000);
+        //}
+        //playerNameInput.text = PhotonNetwork.NickName;
     }
 
-    public void PlayerNameUpdateInputChanged(string nameInput)
-    {
-        Debug.Log("HELLO");
-        Debug.Log(nameInput);
-        PhotonNetwork.NickName = nameInput;
-        PlayerPrefs.SetString("NickName", nameInput);
-    }
+    //public void PlayerNameUpdateInputChanged(string nameInput)
+    //{
+    //    Debug.Log("HELLO");
+    //    Debug.Log(nameInput);
+    //    PhotonNetwork.NickName = nameInput;
+    //    PlayerPrefs.SetString("NickName", nameInput);
+    //}
 
     public void JoinLobbyOnClick()
     {
@@ -85,6 +87,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
         Debug.Log("Creating room now");
         RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize };
+        roomOps.PublishUserId = true;
 
         int roomCode = Random.Range(1000, 10000);
         roomName = roomCode.ToString();
@@ -100,6 +103,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
         Debug.Log("Tried to create a new room but failed since same name");
 
         RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize };
+        roomOps.PublishUserId = true;
 
         int roomCode = Random.Range(1000, 10000);
         roomName = roomCode.ToString();

@@ -63,11 +63,14 @@ public class Login : MonoBehaviour
             SignResponse r = JsonConvert.DeserializeObject<SignResponse>(response.Text);
             localid = r.localid;
             idToken = r.idToken;
+            
         }).Catch(error =>
         {
             Debug.Log(error);
             success = false;
         });
+
+        currentUser = new User(username, localid);
 
         return success;
     }

@@ -14,7 +14,9 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
     [SerializeField]
     private Text playerCount2;
     [SerializeField]
-    private int multiplayerSceneIndex;
+    private int multiplayerSceneIndex = 1;
+
+    private User curUser = Login.currentUser;
 
 
     public override void OnJoinedRoom()
@@ -23,6 +25,10 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
         playerCount.text = "Players: "+ PhotonNetwork.PlayerList.Length;
         playerCount2.text = "Players: " + PhotonNetwork.PlayerList.Length;
 
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        {
+            gameObject.GetComponent<AvatarController>().addPlayer(PhotonNetwork.PlayerList[i].UserId);
+        }
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -30,16 +36,18 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
         playerCount.text = PhotonNetwork.PlayerList.Length + " Players";
         playerCount2.text = PhotonNetwork.PlayerList.Length + " Players";
 
-        //gameObject.GetComponent<AvatarController>().
+        gameObject.GetComponent<AvatarController>().addPlayer(newPlayer.UserId);
     }
-    // Start is called before the first frame update
+    
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         playerCount.text = PhotonNetwork.PlayerList.Length + " Players";
         playerCount2.text = PhotonNetwork.PlayerList.Length + " Players";
+
+        gameObject.GetComponent<AvatarController>().removePlayer(otherPlayer.UserId);
     }
 
-    // Update is called once per frame
+    
     public override void OnLeftRoom()
     {
         playerCount.text = "0 Players";
