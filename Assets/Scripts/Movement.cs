@@ -70,7 +70,7 @@ public class Movement : MonoBehaviourPunCallbacks {
         PV = GetComponent<PhotonView>();
         pointsUIList = GameSetUp.GS.pointsUIList;
         points = 0;
-        PV.RPC("playerTagger", RpcTarget.All, gameObject.tag);
+        PV.RPC("playerSetup", RpcTarget.All, gameObject.tag, colorIndex, playerIndex, playerName);
 
         //UI:
 
@@ -98,9 +98,13 @@ public class Movement : MonoBehaviourPunCallbacks {
     }
 
     [PunRPC]
-    void playerTagger(string text)
+    void playerSetup(string tag, int color, int index, string name)
     {
-        this.tag = text;
+        this.tag = tag;
+        this.colorIndex = color;
+        this.playerIndex = index;
+        this.playerName = name;
+
     }
 
     // Update is called once per frame
