@@ -80,6 +80,7 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
         // points = pointsUIList[playerIndex];
 
+        player.GetComponent<Movement>().playerName = curUserName;
         player.GetComponent<Movement>().question = question.gameObject;
         player.GetComponent<Movement>().colorIndex = avatarSelection % 10;
 

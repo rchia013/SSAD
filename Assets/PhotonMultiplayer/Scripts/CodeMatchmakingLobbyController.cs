@@ -14,16 +14,19 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     [SerializeField]
     private InputField playerNameInput;
 
+    public GameObject roomController;
+
     private string roomName;
     private int roomSize;
 
     [SerializeField]
-    private GameObject CreatePanel;
+    private GameObject RoomPanel;
     [SerializeField]
     private InputField codeDisplay;
 
     [SerializeField]
-    private GameObject joinPanel;
+    private InputField joinercodeDisplay;
+
     [SerializeField]
     private InputField codeInputField;
     private string joinCode;
@@ -32,41 +35,14 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        print("OnCOnnectedTO MASter");
         PhotonNetwork.AutomaticallySyncScene = true;
-      /*  lobbyConnectButton.SetActive(true);*/
+
         mainPanel.SetActive(false);
         lobbyPanel.SetActive(true);
         PhotonNetwork.JoinLobby();
-        print("OnCOnnectedTO MASter");
 
         PhotonNetwork.NickName = Login.currentUser.username;
-
-        //if (PlayerPrefs.HasKey("NickName"))
-        //{
-        //    if (PlayerPrefs.GetString("Nickname") == "")
-        //    {
-        //        PhotonNetwork.NickName = "Player " + Random.Range(0, 1000);
-        //    } 
-        //    else
-        //    {
-        //        PhotonNetwork.NickName = PlayerPrefs.GetString("NickName");
-        //    }
-        //}
-        //else
-        //{
-        //    PhotonNetwork.NickName = "Player " + Random.Range(0, 1000);
-        //}
-        //playerNameInput.text = PhotonNetwork.NickName;
     }
-
-    //public void PlayerNameUpdateInputChanged(string nameInput)
-    //{
-    //    Debug.Log("HELLO");
-    //    Debug.Log(nameInput);
-    //    PhotonNetwork.NickName = nameInput;
-    //    PlayerPrefs.SetString("NickName", nameInput);
-    //}
 
     public void JoinLobbyOnClick()
     {
@@ -74,6 +50,8 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(true);
         PhotonNetwork.JoinLobby();
     }
+
+    // CREATOR:
 
     public void OnRoomSizeInputChanged(string sizeIn)
     {
@@ -83,7 +61,9 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     public void CreateRoomOnClick()
     {
-        CreatePanel.SetActive(true);
+        roomController.GetComponent<AvatarController>().isCreator = true;
+        roomController.GetComponent<AvatarController>().enabled = true;
+        RoomPanel.SetActive(true);
 
         Debug.Log("Creating room now");
         RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize };
@@ -122,25 +102,23 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
             }
         }
         PhotonNetwork.LeaveRoom();
-        CreatePanel.SetActive(false);
+        RoomPanel.SetActive(false);
         joinButton.SetActive(true);
     }
 
-    public void OpenJoinPanel()
-    {
-        joinPanel.SetActive(true);
-    }
-    
+    // JOINERS:
+
     public void OnCodeInputChanged(string code)
     {
-        Debug.Log(code);
         joinCode = code;
     }
 
     public void JoinRoomOnClick()
     {
-        Debug.Log(joinCode);
         PhotonNetwork.JoinRoom(joinCode);
+        roomController.GetComponent<AvatarController>().isCreator = false;
+        roomController.GetComponent<AvatarController>().enabled = true;
+        RoomPanel.SetActive(true);
     }
 
     public void LeaveRoomOnClick()
@@ -153,9 +131,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
-        joinButton.SetActive(true);
-        joinPanel.SetActive(false);
-        codeInputField.text = "";
+        RoomPanel.SetActive(false);
     }
 
     public void MatchmakingCancelOnClick()

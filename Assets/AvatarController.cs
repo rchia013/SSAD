@@ -5,11 +5,20 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using System;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class AvatarController : MonoBehaviour
 {
 
     public int NumPlayers;
+
+    public bool isCreator;
+
+    public Button startButton;
+    public Button cancelButton;
+    public Button leaveButton;
+
 
     //Room Page:
 
@@ -71,10 +80,18 @@ public class AvatarController : MonoBehaviour
     void Start()
     {
         // HARD CODED:
-
-        print("Login Username: " + Login.currentUser.username);
-        NumPlayers = 3;
+        NumPlayers = 3;//PhotonNetwork.CurrentRoom.MaxPlayers;
         //
+
+        if (isCreator)
+        {
+            startButton.gameObject.SetActive(true);
+            cancelButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            leaveButton.gameObject.SetActive(true);
+        }
 
         if (NumPlayers >= 1)
         {
