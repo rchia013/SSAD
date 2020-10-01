@@ -76,6 +76,45 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             blocks.Add(i, transform.GetChild(i).gameObject);
         }
 
+        //player1 = GameObject.FindWithTag("Player1");
+
+        //player2 = GameObject.FindWithTag("Player2");
+
+        //player3 = GameObject.FindWithTag("Player3");
+
+        //player4 = GameObject.FindWithTag("Player4");
+
+        //PV.RPC("findPlayers", RpcTarget.All);
+    }
+
+    //[PunRPC]
+    //void findPlayers()
+    //{
+    //    switch (PhotonNetwork.LocalPlayer.ActorNumber)
+    //    {
+    //        case 1:
+    //            player1 = GameObject.FindWithTag("Player1");
+    //            break;
+
+    //        case 2:
+    //            player2 = GameObject.FindWithTag("Player2");
+    //            break;
+
+    //        case 3:
+    //            player3 = GameObject.FindWithTag("Player3");
+    //            break;
+
+    //        case 4:
+    //            player4 = GameObject.FindWithTag("Player4");
+    //            break;
+            
+    //    }
+    //}
+    
+    
+    // Update is called once per frame
+    void Update()
+    {
         player1 = GameObject.FindWithTag("Player1");
 
         player2 = GameObject.FindWithTag("Player2");
@@ -84,37 +123,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
 
         player4 = GameObject.FindWithTag("Player4");
 
-        PV.RPC("findPlayers", RpcTarget.All);
-    }
-
-    [PunRPC]
-    void findPlayers()
-    {
-        switch (PhotonNetwork.LocalPlayer.ActorNumber)
-        {
-            case 1:
-                player1 = GameObject.FindWithTag("Player1");
-                break;
-
-            case 2:
-                player2 = GameObject.FindWithTag("Player2");
-                break;
-
-            case 3:
-                player3 = GameObject.FindWithTag("Player3");
-                break;
-
-            case 4:
-                player4 = GameObject.FindWithTag("Player4");
-                break;
-            
-        }
-    }
-    
-    
-    // Update is called once per frame
-    void Update()
-    {
         if (blocks.ContainsKey(prevNum1))
         {
             if (blocks[prevNum1] == null)
