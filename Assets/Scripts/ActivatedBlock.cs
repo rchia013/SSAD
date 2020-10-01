@@ -28,6 +28,7 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
     public bool blockActivated = false;
     bool questionActivated = false;
     public int playerIndex;
+    public int colorIndex;
     string playerTag;
 
     GameObject player;
@@ -51,7 +52,7 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
 
         Material[] materials = rend.materials;
 
-        switch (playerIndex)
+        switch (colorIndex)
         {
             case 1:
                 materials[0] = activeMaterial1;

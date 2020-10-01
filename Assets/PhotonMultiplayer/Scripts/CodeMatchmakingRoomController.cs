@@ -14,9 +14,7 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
     [SerializeField]
     private Text playerCount2;
     [SerializeField]
-    private int multiplayerSceneIndex = 1;
-
-    private User curUser = Login.currentUser;
+    private int multiplayerSceneIndex;
 
 
     public override void OnJoinedRoom()
@@ -27,7 +25,7 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
 
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
         {
-            gameObject.GetComponent<AvatarController>().addPlayer(PhotonNetwork.PlayerList[i].UserId);
+            gameObject.GetComponent<AvatarController>().addPlayer(PhotonNetwork.PlayerList[i].NickName);
         }
     }
 
@@ -36,7 +34,7 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
         playerCount.text = PhotonNetwork.PlayerList.Length + " Players";
         playerCount2.text = PhotonNetwork.PlayerList.Length + " Players";
 
-        gameObject.GetComponent<AvatarController>().addPlayer(newPlayer.UserId);
+        gameObject.GetComponent<AvatarController>().addPlayer(newPlayer.NickName);
     }
     
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -44,7 +42,7 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
         playerCount.text = PhotonNetwork.PlayerList.Length + " Players";
         playerCount2.text = PhotonNetwork.PlayerList.Length + " Players";
 
-        gameObject.GetComponent<AvatarController>().removePlayer(otherPlayer.UserId);
+        gameObject.GetComponent<AvatarController>().removePlayer(otherPlayer.NickName);
     }
 
     

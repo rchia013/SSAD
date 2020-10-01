@@ -43,8 +43,10 @@ public class GameSetUp : MonoBehaviourPunCallbacks
     {
         playerIndex = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % 4;
 
-        string curUserName = PhotonNetwork.LocalPlayer.UserId;
+        string curUserName = PhotonNetwork.LocalPlayer.NickName;
         int avatarSelection = AvatarController.playerList[curUserName];
+
+        print("Avatar Selection:" + avatarSelection);
 
         // Player
 
@@ -62,11 +64,6 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
         player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", avatarPath), spawnPoints[playerIndex].transform.position, Quaternion.identity);
 
-        player.GetComponent<Movement>().question = question.gameObject;
-        player.GetComponent<Movement>().colorIndex = avatarSelection % 10;
-
-        player.gameObject.tag = "Player" + (playerIndex + 1);
-
         // Camera
 
         playerCam = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Main Camera"), Vector3.zero, Quaternion.Euler(26.618f, 0f, 0f));
@@ -82,5 +79,10 @@ public class GameSetUp : MonoBehaviourPunCallbacks
         question.SetActive(false);
 
         // points = pointsUIList[playerIndex];
+
+        player.GetComponent<Movement>().question = question.gameObject;
+        player.GetComponent<Movement>().colorIndex = avatarSelection % 10;
+
+        player.gameObject.tag = "Player" + (playerIndex + 1);
     }
 }

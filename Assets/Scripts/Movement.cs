@@ -65,9 +65,6 @@ public class Movement : MonoBehaviourPunCallbacks {
 
     private void Start()
     {
-        playerName = "QuizGuy1";
-
-
         // Photon:
 
         PV = GetComponent<PhotonView>();

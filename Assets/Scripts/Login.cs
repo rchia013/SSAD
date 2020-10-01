@@ -15,7 +15,7 @@ public class Login : MonoBehaviour
     private string databaseURL = "https://quizguyz.firebaseio.com/Users/";
     public static string localid;
     public string idToken;
-    public string username;
+    public string username = null;
     public static User currentUser;
 
     
@@ -149,6 +149,11 @@ public class Login : MonoBehaviour
 
     public void loadScene()
     {
+        while (currentUser.username == null)
+        {
+            //
+        }
+
         SceneManager.LoadScene("CodeMatchMakingMenuDemo");
     }
 
@@ -161,6 +166,7 @@ public class Login : MonoBehaviour
             User user = JsonConvert.DeserializeObject<User>(response.Text);
             username = user.username;
         });
+        print(username);
     }
 
 }

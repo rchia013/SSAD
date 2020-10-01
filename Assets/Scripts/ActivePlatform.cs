@@ -59,6 +59,8 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
     private GameObject player3;
     private GameObject player4;
 
+    private List<GameObject> players = new List<GameObject>();
+
     private PhotonView PV;
 
 
@@ -75,10 +77,28 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
         }
 
         player1 = GameObject.FindWithTag("Player1");
-        player2 = GameObject.FindWithTag("Player2");
-        player3 = GameObject.FindWithTag("Player3");
-        player4 = GameObject.FindWithTag("Player4");
+        if (player1 != null)
+        {
+            players.Add(player1);
+        }
 
+        player2 = GameObject.FindWithTag("Player2");
+        if (player2 != null)
+        {
+            players.Add(player2);
+        }
+
+        player3 = GameObject.FindWithTag("Player3");
+        if (player3 != null)
+        {
+            players.Add(player3);
+        }
+
+        player4 = GameObject.FindWithTag("Player4");
+        if (player4 != null)
+        {
+            players.Add(player4);
+        }
     }
     
     // Update is called once per frame
@@ -148,7 +168,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                     curNum1 = temp;
 
                     PV.RPC("ActivateBlock", RpcTarget.All, curNum1, 1);
-                    /*                    ActivateBlock(blocks[curNum1],1);*/
                 }
             }
         }
@@ -177,7 +196,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                     curNum2 = temp;
 
                     PV.RPC("ActivateBlock", RpcTarget.All, curNum2, 2);
-                    /*ActivateBlock(blocks[curNum2], 2);*/
                 }
             }
         }
@@ -206,7 +224,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                     curNum3 = temp;
 
                     PV.RPC("ActivateBlock", RpcTarget.All, curNum3, 3);
-                    /*                    ActivateBlock(blocks[curNum3], 3);*/
                 }
             }
         }
@@ -235,7 +252,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                     curNum4 = temp;
 
                     PV.RPC("ActivateBlock", RpcTarget.All, curNum4, 4);
-                    /*ActivateBlock(blocks[curNum4], 4);*/
                 }
             }
         }
@@ -296,6 +312,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
 
                 ABscript1 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript1.playerIndex = playerNum;
+                ABscript1.colorIndex = players[playerNum-1].GetComponent<Movement>().colorIndex;
                 ABscript1.enabled = true;
 
                 ABscript1.blockActivated = true;
@@ -303,6 +320,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             case 2:
                 ABscript2 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript2.playerIndex = playerNum;
+                ABscript2.colorIndex = players[playerNum - 1].GetComponent<Movement>().colorIndex;
                 ABscript2.enabled = true;
 
                 ABscript2.blockActivated = true;
@@ -310,6 +328,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             case 3:
                 ABscript3 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript3.playerIndex = playerNum;
+                ABscript3.colorIndex = players[playerNum - 1].GetComponent<Movement>().colorIndex;
                 ABscript3.enabled = true;
 
                 ABscript3.blockActivated = true;
@@ -317,6 +336,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             case 4:
                 ABscript4 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript4.playerIndex = playerNum;
+                ABscript4.colorIndex = players[playerNum - 1].GetComponent<Movement>().colorIndex;
                 ABscript4.enabled = true;
 
                 ABscript4.blockActivated = true;

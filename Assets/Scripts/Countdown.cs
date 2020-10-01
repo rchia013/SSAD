@@ -13,7 +13,7 @@ public class Countdown : MonoBehaviour
 {
 
     float currentTime = 0f;
-    float startingTime = 5.49999f;
+    float startingTime = 125.49999f;
     float totalTime;
     double minutes;
     string min;
@@ -56,6 +56,7 @@ public class Countdown : MonoBehaviour
             {
                 currentTime -= 1 * Time.deltaTime;
 
+                countdown.color = Color.white;
                 countdown.text = timeToString(currentTime);
             }
             else if (currentTime < 10 && currentTime > 0)

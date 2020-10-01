@@ -61,7 +61,7 @@ public class AvatarController : MonoBehaviour
 
 
     // Current User Info:
-    public User curUser;
+
     private int curSelection;
     public Image curAvatar;
     private bool colorSelected = false;
@@ -71,6 +71,8 @@ public class AvatarController : MonoBehaviour
     void Start()
     {
         // HARD CODED:
+
+        print("Login Username: " + Login.currentUser.username);
         NumPlayers = 3;
         //
 
@@ -157,22 +159,25 @@ public class AvatarController : MonoBehaviour
 
             // Set Avatar:
 
-            displayAvatar(Avatars[i]);
+            displayAvatar(Avatars[i], player.Value);
         }
     }
 
-    void displayAvatar(Image avatar)
+    void displayAvatar(Image avatar, int selection)
     {
-        String avatarPath = findAvatarPath(curSelection);
+        String avatarPath = findAvatarPath(selection);
 
         if (avatarPath.Contains("Unknown"))
         {
             avatar.rectTransform.sizeDelta = new Vector2(10, 12);
+            avatar.color = Color.white;
         }
 
         else if (avatarPath.Contains("Mummy"))
         {
             avatar.rectTransform.sizeDelta = new Vector2(15, 20);
+            avatar.color = new Color(0.8f, 0.8f, 0.8f);
+
         }
 
         avatar.sprite = Resources.Load<Sprite>(avatarPath);
@@ -191,7 +196,7 @@ public class AvatarController : MonoBehaviour
         AvatarPanel.SetActive(false);
         RoomPanel.SetActive(true);
 
-        updateAvatar(curUser.username, curSelection);
+        updateAvatar(Login.currentUser.username, curSelection);
     }
 
 
@@ -259,7 +264,7 @@ public class AvatarController : MonoBehaviour
         }
 
         print(curSelection);
-        displayAvatar(curAvatar);
+        displayAvatar(curAvatar, curSelection);
     }
 
     void ColorClicked(int index)
@@ -295,11 +300,16 @@ public class AvatarController : MonoBehaviour
         }
 
         print(curSelection);
-        displayAvatar(curAvatar);
+        displayAvatar(curAvatar, curSelection);
     }
 
     private string findAvatarPath(int selection)
     {
+        if (selection == -1)
+        {
+            return "Avatars/Unknown";
+        }
+
         int chosenCharacter = -1;
         int chosenColor = -1;
 

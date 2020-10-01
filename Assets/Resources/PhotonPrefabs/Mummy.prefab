@@ -5203,10 +5203,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a7d2150b4804f6482b6b64fd8be81f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blue: {fileID: 0}
-  pink: {fileID: 0}
-  green: {fileID: 0}
-  yellow: {fileID: 0}
+  blue: {fileID: 2100000, guid: 72b2f4d3cd89dcb4c98be936d350fb58, type: 2}
+  pink: {fileID: 2100000, guid: 0e258dd63d1704c3da2516d1792fa4d6, type: 2}
+  green: {fileID: 2100000, guid: e8023272c1d068247b10eefed548753f, type: 2}
+  yellow: {fileID: 2100000, guid: f2f281a6d8e790b40b79e6f697cbf013, type: 2}
   purple: {fileID: 0}
   orange: {fileID: 0}
 --- !u!114 &5409580518386944105
@@ -5705,6 +5705,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
+--- !u!4 &2054544760026366811 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400066, guid: 3353e4f866c39d043a315b41717c9bb7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2054544760026503577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2054544760026472249 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 3353e4f866c39d043a315b41717c9bb7,
@@ -5720,12 +5726,6 @@ Animator:
 --- !u!4 &2054544760026366815 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400070, guid: 3353e4f866c39d043a315b41717c9bb7,
-    type: 3}
-  m_PrefabInstance: {fileID: 2054544760026503577}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2054544760026366811 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400066, guid: 3353e4f866c39d043a315b41717c9bb7,
     type: 3}
   m_PrefabInstance: {fileID: 2054544760026503577}
   m_PrefabAsset: {fileID: 0}
