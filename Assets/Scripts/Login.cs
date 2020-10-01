@@ -13,9 +13,10 @@ public class Login : MonoBehaviour
 
     private string AuthKey = "AIzaSyBHzLV-p9Uw1iMVKdjPgg-50LoqtxOwvoM";
     private string databaseURL = "https://quizguyz.firebaseio.com/Users/";
-    public static string localid;
+    public string localid;
     public string idToken;
     public string username;
+    public static User currentUser;
 
     
     public TMP_InputField signInEmail;
@@ -30,7 +31,6 @@ public class Login : MonoBehaviour
     {
         failLogin.enabled = false;
     }
-
 
     // Apparently you need to have password length > 6 and cannot sign up with same email otherwise error
     public bool SignUpUser(string email, string name, string password)
@@ -106,8 +106,8 @@ public class Login : MonoBehaviour
     private bool PostToDatabase()
     {
         bool success = true;
-        User user = new User(username, localid);
-        RestClient.Put(url: "https://quizguyz.firebaseio.com/Users/"  + localid + ".json", user).Then(onResolved:response => {
+        currentUser = new User(username, localid);
+        RestClient.Put(url: "https://quizguyz.firebaseio.com/Users/"  + localid + ".json", currentUser).Then(onResolved:response => {
         }).Catch(error => {
             Debug.Log(error);
             success = false;

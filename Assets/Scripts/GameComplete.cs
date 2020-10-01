@@ -30,7 +30,7 @@ public class GameComplete : MonoBehaviour
     void Start()
     {
         //HARD CODED:
-        localID = Login.localid;
+        /*localID = Login.localid;*/
         DateTime = null;
         SessionID = 1234;
 
