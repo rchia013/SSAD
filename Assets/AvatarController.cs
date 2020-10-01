@@ -76,13 +76,15 @@ public class AvatarController : MonoBehaviour
     private bool colorSelected = false;
     private bool charSelected = false;
 
-    // Start is called before the first frame update
+    public PhotonView PV;
 
     private void OnEnable()
     {
         // HARD CODED:
         NumPlayers = 3;//PhotonNetwork.CurrentRoom.MaxPlayers;
         //
+
+        PV = GetComponent<PhotonView>();
 
         if (NumPlayers >= 1)
         {
@@ -138,30 +140,44 @@ public class AvatarController : MonoBehaviour
 
     public void addPlayer(string newUsername)
     {
+        PV.RPC("addP", RpcTarget.All, newUsername);
+    }
+
+    [PunRPC]
+    private void addP(string newUsername)
+    {
         playerList.Add(newUsername, -1);
 
-        updateTotalUI();
+        PV.RPC("updateTotalUI", RpcTarget.All);
     }
 
     public void removePlayer(string oldUsername)
     {
+        PV.RPC("removeP", RpcTarget.All, oldUsername);
+    }
+
+    [PunRPC]
+    private void removeP(string oldUsername)
+    {
         playerList.Remove(oldUsername);
 
-        updateTotalUI();
+        PV.RPC("updateTotalUI", RpcTarget.All);
     }
 
     //Handle Change of Avatars:
 
+    [PunRPC]
     public void updateAvatar(string userName, int picIndex)
     {
         playerList[userName] = picIndex;
 
-        updateTotalUI();
+        PV.RPC("updateTotalUI", RpcTarget.All);
     }
 
 
     //Handle any state Change to UI:
 
+    [PunRPC]
     void updateTotalUI()
     {
         int i = 0;
@@ -211,7 +227,8 @@ public class AvatarController : MonoBehaviour
         AvatarPanel.SetActive(false);
         RoomPanel.SetActive(true);
 
-        updateAvatar(Login.currentUser.username, curSelection);
+
+        PV.RPC("updateAvatar", RpcTarget.All, Login.currentUser.username, curSelection);
     }
 
 
