@@ -140,6 +140,17 @@ public class AvatarController : MonoBehaviour
 
     //Handle change of Players:
 
+    public void initializePlayerList()
+    {
+        PV.RPC("intializePL", RpcTarget.All);
+    }
+
+    [PunRPC]
+    private void intializePL()
+    {
+        playerList = playerList;
+    }
+
     public void addPlayer(string newUsername)
     {
         playerList.Add(newUsername, -1);

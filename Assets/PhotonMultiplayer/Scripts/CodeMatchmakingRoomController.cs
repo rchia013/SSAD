@@ -15,10 +15,14 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
     {
         playerCount.text = "Players: "+ PhotonNetwork.PlayerList.Length;
 
-        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-        {
-            gameObject.GetComponent<AvatarController>().addPlayer(PhotonNetwork.PlayerList[i].NickName);
-        }
+        gameObject.GetComponent<AvatarController>().initializePlayerList();
+        gameObject.GetComponent<AvatarController>().addPlayer(PhotonNetwork.LocalPlayer.NickName);
+
+        //for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        //{
+
+        //    gameObject.GetComponent<AvatarController>().addPlayer(PhotonNetwork.PlayerList[i].NickName);
+        //}
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -49,6 +53,15 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
 
     public void StartGameOnClick()
     {
+        for (int i = 0; i < AvatarController.playerList.Count; i++)
+        {
+            if (AvatarController.playerList[PhotonNetwork.PlayerList[i].NickName] == -1)
+            {
+                print("Everyone must Choose!");
+                return;
+            }
+        }
+
         PhotonNetwork.LoadLevel(multiplayerSceneIndex);
     }
 }
