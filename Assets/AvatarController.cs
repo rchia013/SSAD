@@ -148,9 +148,12 @@ public class AvatarController : MonoBehaviour
     [PunRPC]
     private void syncPL()
     {
-        foreach (KeyValuePair<string, int> player in playerList)
+        if (isCreator)
         {
-            updateAvatar(player.Key, player.Value);
+            foreach (KeyValuePair<string, int> player in playerList)
+            {
+                updateAvatar(player.Key, player.Value);
+            }
         }
     }
 
