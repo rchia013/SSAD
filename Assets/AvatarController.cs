@@ -140,7 +140,10 @@ public class AvatarController : MonoBehaviour
 
     public void addPlayer(string newUsername)
     {
-        PV.RPC("addP", RpcTarget.All, newUsername);
+        playerList.Add(newUsername, -1);
+
+        PV.RPC("updateTotalUI", RpcTarget.All);
+        //PV.RPC("addP", RpcTarget.All, newUsername);
     }
 
     [PunRPC]
@@ -153,7 +156,10 @@ public class AvatarController : MonoBehaviour
 
     public void removePlayer(string oldUsername)
     {
-        PV.RPC("removeP", RpcTarget.All, oldUsername);
+        playerList.Remove(oldUsername);
+
+        PV.RPC("updateTotalUI", RpcTarget.All);
+        //PV.RPC("removeP", RpcTarget.All, oldUsername);
     }
 
     [PunRPC]
