@@ -70,7 +70,7 @@ public class Movement : MonoBehaviourPunCallbacks {
         PV = GetComponent<PhotonView>();
         pointsUIList = GameSetUp.GS.pointsUIList;
         points = 0;
-        PV.RPC("playerSetup", RpcTarget.All, gameObject.tag, colorIndex, playerIndex, playerName);
+        PV.RPC("curPlayerSetup", RpcTarget.All, gameObject.tag, colorIndex, playerIndex, playerName);
 
         //UI:
 
