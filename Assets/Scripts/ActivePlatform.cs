@@ -184,9 +184,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                     && temp != prevNum4 && temp != curNum4
                     && temp != power1Num && temp != power0Num)
                 {
-                    curNum1 = temp;
-
-                    PV.RPC("ActivateBlock", RpcTarget.All, curNum1, 1);
+                    PV.RPC("ActivateBlock", RpcTarget.All, temp, 1);
                 }
             }
         }
@@ -212,9 +210,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                     && temp != prevNum4 && temp != curNum4
                     && temp != power1Num && temp != power0Num)
                 {
-                    curNum2 = temp;
-
-                    PV.RPC("ActivateBlock", RpcTarget.All, curNum2, 2);
+                    PV.RPC("ActivateBlock", RpcTarget.All, temp, 2);
                 }
             }
         }
@@ -240,9 +236,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                     && temp != prevNum4 && temp != curNum4
                     && temp != power1Num && temp != power0Num)
                 {
-                    curNum3 = temp;
-
-                    PV.RPC("ActivateBlock", RpcTarget.All, curNum3, 3);
+                    PV.RPC("ActivateBlock", RpcTarget.All, temp, 3);
                 }
             }
         }
@@ -268,9 +262,8 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                     && temp != prevNum3 && temp != curNum3
                     && temp != power1Num && temp != power0Num)
                 {
-                    curNum4 = temp;
 
-                    PV.RPC("ActivateBlock", RpcTarget.All, curNum4, 4);
+                    PV.RPC("ActivateBlock", RpcTarget.All, temp, 4);
                 }
             }
         }
@@ -325,6 +318,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
     [PunRPC]
     void ActivateBlock(int blockIndex, int playerNum)
     {
+
         GameObject block = blocks[blockIndex];
 
         // Activate Block
@@ -332,6 +326,8 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
         switch (playerNum)
         {
             case 1:
+                curNum1 = blockIndex;
+
                 ABscript1 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript1.playerIndex = playerNum;
                 ABscript1.colorIndex = player1.GetComponent<Movement>().colorIndex;
@@ -341,6 +337,8 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                 break;
 
             case 2:
+                curNum2 = blockIndex;
+
                 ABscript2 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript2.playerIndex = playerNum;
                 ABscript2.colorIndex = player2.GetComponent<Movement>().colorIndex;
@@ -350,6 +348,8 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                 break;
 
             case 3:
+                curNum3 = blockIndex;
+
                 ABscript3 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript3.playerIndex = playerNum;
                 ABscript3.colorIndex = player3.GetComponent<Movement>().colorIndex;
@@ -359,6 +359,8 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                 break;
 
             case 4:
+                curNum4 = blockIndex;
+
                 ABscript4 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript4.playerIndex = playerNum;
                 ABscript4.colorIndex = player4.GetComponent<Movement>().colorIndex;
