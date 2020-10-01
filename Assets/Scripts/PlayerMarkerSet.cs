@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerMarkerSet : MonoBehaviour
 {
@@ -15,10 +16,20 @@ public class PlayerMarkerSet : MonoBehaviour
     MeshRenderer rend1;
     MeshRenderer rend2;
 
+    PhotonView PV;
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(gameObject.transform.GetChild(2));
+        PV = GetComponent<PhotonView>();
+
+        PV.RPC("setColor", RpcTarget.All);
+    }
+
+
+    [PunRPC]
+    private void setColor()
+    {
         rend1 = gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>();
         rend2 = gameObject.transform.GetChild(3).gameObject.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>();
 
@@ -60,6 +71,5 @@ public class PlayerMarkerSet : MonoBehaviour
 
         rend1.materials = materials1;
         rend2.materials = materials2;
-
     }
 }
