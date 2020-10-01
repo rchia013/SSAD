@@ -19,8 +19,6 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
         {
             gameObject.GetComponent<AvatarController>().addPlayer(PhotonNetwork.PlayerList[i].NickName);
         }
-
-        gameObject.GetComponent<AvatarController>().syncPlayerList();
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)

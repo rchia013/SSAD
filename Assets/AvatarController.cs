@@ -140,22 +140,24 @@ public class AvatarController : MonoBehaviour
 
     //Handle change of Players:
 
-    public void syncPlayerList()
-    {
-        if (isCreator)
-        {
-            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-            {
-                updateAvatar(PhotonNetwork.PlayerList[i].NickName, playerList[PhotonNetwork.PlayerList[i].NickName]);
-            }
-        }
-    }
+    //public void syncPlayerList()
+    //{
+    //    if (isCreator)
+    //    {
+    //        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+    //        {
+    //            updateAvatar(PhotonNetwork.PlayerList[i].NickName, playerList[PhotonNetwork.PlayerList[i].NickName]);
+    //        }
+    //    }
+    //}
 
     public void addPlayer(string newUsername)
     {
         playerList.Add(newUsername, -1);
 
         PV.RPC("updateTotalUI", RpcTarget.All);
+
+        PV.RPC("updateAvatar", RpcTarget.All, Login.currentUser.username, curSelection);
         //PV.RPC("addP", RpcTarget.All, newUsername);
     }
 
@@ -165,6 +167,8 @@ public class AvatarController : MonoBehaviour
         playerList.Add(newUsername, -1);
 
         PV.RPC("updateTotalUI", RpcTarget.All);
+
+
     }
 
     public void removePlayer(string oldUsername)
