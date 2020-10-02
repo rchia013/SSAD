@@ -19,6 +19,7 @@ public class Login : MonoBehaviour
     public bool? success = null;
     public bool usernameGet = false; 
     public bool displayFail = false;
+    public bool? signUpSuccess = null;
     public static User currentUser;
 
     
@@ -36,39 +37,33 @@ public class Login : MonoBehaviour
     }
     private void Update()
     {
-
+        //print("signupsuccess in update = " + signUpSuccess);
         if (success == true && usernameGet)
         {
-
             loadScene();
-
         }
         else if (success == false && !displayFail)
         {
             StartCoroutine("displayInvalidUser");
-            
         }
     }
 
     // Apparently you need to have password length > 6 and cannot sign up with same email otherwise error
-    public bool SignUpUser(string email, string name, string password)
+    public void SignUpUser(string email, string name, string password)
     {
-        bool success = true;
         string userData = "{\"email\":\""+ email +"\", \"password\":\""+password+"\"}";
         RestClient.Post(url: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=" + AuthKey, userData).Then(onResolved: response =>
          {
-             print(response.Text);
              SignResponse r = JsonConvert.DeserializeObject<SignResponse>(response.Text);
              localid = r.localid;
              idToken = r.idToken;
              username = name;
-             success = PostToDatabase();
+             PostToDatabase();
          }).Catch(error =>
         {
-            Debug.Log(error);
-            success = false;
+            Debug.Log("error=" + error);
+            signUpSuccess = false;
         });
-        return success;
     }
 
 
@@ -77,7 +72,7 @@ public class Login : MonoBehaviour
         string userData = "{\"email\":\"" + email + "\", \"password\":\"" + password + "\"}";
         RestClient.Post(url: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" + AuthKey, userData).Then(onResolved: response =>
         {
-            print(response.Text);
+            //print(response.Text);
             SignResponse r = JsonConvert.DeserializeObject<SignResponse>(response.Text);
             localid = r.localid;
             idToken = r.idToken;
@@ -86,7 +81,6 @@ public class Login : MonoBehaviour
         }).Catch(error =>
         {
             Debug.Log(error);
-            print("Got error!!!");
             success = false;
         });
 
@@ -95,17 +89,7 @@ public class Login : MonoBehaviour
 
     public void signUpButton()
     {
-        bool signUpSuccess = SignUpUser(signUpEmail.text, signUpUsername.text, signUpPassword.text);
-        print(signUpSuccess);
-        if (localid!=null)
-        {
-            loadScene();
-        }
-/*        else
-        {
-            StartCoroutine("displayInvalidUser");
-
-        }*/
+        SignUpUser(signUpEmail.text, signUpUsername.text, signUpPassword.text);
     }
 
 
@@ -115,17 +99,16 @@ public class Login : MonoBehaviour
         SignInUser(signInEmail.text, signInPassword.text);  
     }
 
-    private bool PostToDatabase()
+    private void PostToDatabase()
     {
-        bool success = true;
         User user = new User(username, localid);
         RestClient.Put(url: "https://quizguyz.firebaseio.com/Users/"  + localid + ".json", user).Then(onResolved:response => {
+            currentUser = user;
+            loadScene();
         }).Catch(error => {
             Debug.Log(error);
-            success = false;
+            signUpSuccess = false;
         });
-        print(success);
-        return success;
     }
 
     IEnumerator displayInvalidUser()
@@ -153,9 +136,6 @@ public class Login : MonoBehaviour
             print("username = " + username);
             currentUser = new User(username, localid);
             usernameGet = true;
-        });
-        
+        });     
     }
-
-
 }
