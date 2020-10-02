@@ -21,6 +21,7 @@ public class Login : MonoBehaviour
     public bool displayFail = false;
     public bool? signUpSuccess = null;
     public static User currentUser;
+    public static bool? emailInUse = null;
 
     
     public TMP_InputField signInEmail;
@@ -31,10 +32,7 @@ public class Login : MonoBehaviour
     
     public TextMeshProUGUI failLogin;
 
-    private void Start()
-    {
 
-    }
     private void Update()
     {
         //print("signupsuccess in update = " + signUpSuccess);
@@ -62,6 +60,7 @@ public class Login : MonoBehaviour
          }).Catch(error =>
         {
             Debug.Log("error=" + error);
+            emailInUse = true;
             signUpSuccess = false;
         });
     }
@@ -120,6 +119,7 @@ public class Login : MonoBehaviour
         displayFail = false;
         success = null;
     }
+
 
     public void loadScene()
     {
