@@ -86,7 +86,6 @@ public class AvatarController : MonoBehaviour
 
         // Initialize Avatar Page:
 
-<<<<<<< Updated upstream:Assets/AvatarController.cs
         InitializeButtons();
         InitializeToggles();
     }
@@ -94,34 +93,6 @@ public class AvatarController : MonoBehaviour
     private void Update()
     {
         if (isCreator)
-=======
-        if (NumPlayers >= 1)
-        {
-<<<<<<< Updated upstream:Assets/AvatarController.cs
-            platform1.gameObject.SetActive(true);
-            Avatars.Add(Avatar1);
-            Names.Add(Name1);
-=======
-            startButton.gameObject.SetActive(true);
-            cancelButton.gameObject.SetActive(true);
-            leaveButton.gameObject.SetActive(false);
-
->>>>>>> Stashed changes:Assets/Scripts/AvatarController.cs
-        }
-        if (NumPlayers >= 2)
-        {
-<<<<<<< Updated upstream:Assets/AvatarController.cs
-            platform2.gameObject.SetActive(true);
-            Avatars.Add(Avatar2);
-            Names.Add(Name2);
-=======
-            startButton.gameObject.SetActive(false);
-            cancelButton.gameObject.SetActive(false);
-            leaveButton.gameObject.SetActive(true);
->>>>>>> Stashed changes:Assets/Scripts/AvatarController.cs
-        }
-        if (NumPlayers >= 3)
->>>>>>> Stashed changes:Assets/Scripts/AvatarController.cs
         {
             startButton.gameObject.SetActive(true);
             cancelButton.gameObject.SetActive(true);
@@ -278,15 +249,7 @@ public class AvatarController : MonoBehaviour
 
     public void ConfirmCharacterOnClick()
     {
-<<<<<<< Updated upstream:Assets/AvatarController.cs
         if (colorTaken[curSelection % 10])
-=======
-<<<<<<< Updated upstream:Assets/AvatarController.cs
-        AvatarPanel.SetActive(false);
-        RoomPanel.SetActive(true);
-=======
-        if (colorTaken[curSelection % 10] && ((curSelection % 10) != (playerList[Login.currentUser.username] % 10) ))
->>>>>>> Stashed changes:Assets/Scripts/AvatarController.cs
         {
             print("Color Taken!");
         }
@@ -294,10 +257,6 @@ public class AvatarController : MonoBehaviour
         {
             AvatarPanel.SetActive(false);
             RoomPanel.SetActive(true);
-<<<<<<< Updated upstream:Assets/AvatarController.cs
-=======
->>>>>>> Stashed changes:Assets/Scripts/AvatarController.cs
->>>>>>> Stashed changes:Assets/Scripts/AvatarController.cs
 
 
             PV.RPC("updateAvatar", RpcTarget.All, Login.currentUser.username, curSelection);
@@ -369,6 +328,8 @@ public class AvatarController : MonoBehaviour
             curSelection -= (index * 10);
             charSelected = false;
         }
+
+        print(curSelection);
         displayAvatar(curAvatar, curSelection);
     }
 
@@ -401,6 +362,8 @@ public class AvatarController : MonoBehaviour
             curSelection -= (index + 1);
             colorSelected = false;
         }
+
+        print(curSelection);
         displayAvatar(curAvatar, curSelection);
     }
 

@@ -11,37 +11,6 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
     [SerializeField]
     private int multiplayerSceneIndex;
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
-    public Button startButton;
-
-    public void Update()
-    {
-        startButton.interactable = readyToStart();
-    }
-
-    private bool readyToStart()
-    {
-        for (int i = 0; i < AvatarController.playerList.Count; i++)
-        {
-            if (AvatarController.playerList[PhotonNetwork.PlayerList[i].NickName] == -1)
-            {
-                return false;
-            }
-        }
-
-        if (MapController.mapIndex == -1)
-        {
-            return false;
-        }
-
-        return true;
-    }
->>>>>>> Stashed changes
-
->>>>>>> Stashed changes
     public override void OnJoinedRoom()
     {
         playerCount.text = "Players: "+ PhotonNetwork.PlayerList.Length;

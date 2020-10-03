@@ -31,11 +31,6 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject joinButton;
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
     public Button Create;
     public Button Join;
 
@@ -49,11 +44,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     private List<Button> buttonsCat = new List<Button>();
     private bool catChosen = false;
-<<<<<<< Updated upstream
     private int cat;
-=======
-    public static int cat;
->>>>>>> Stashed changes
 
     public Button easy;
     public Button medium;
@@ -61,11 +52,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     private List<Button> buttonsDiff = new List<Button>();
     private bool diffChosen = false;
-<<<<<<< Updated upstream
     private int diff;
-=======
-    public static int diff;
->>>>>>> Stashed changes
 
     private void Start()
     {
@@ -181,10 +168,6 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
 
 
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.AutomaticallySyncScene = true;

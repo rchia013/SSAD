@@ -48,7 +48,7 @@ public class Movement : MonoBehaviourPunCallbacks {
     // RESPAWN:
 
     public bool moveable = false;
-    public float respawnThreshold;
+    public float respawnThreshold = -2.05f;
 
     public GameObject uiObject;
     public GameObject question;
@@ -90,7 +90,6 @@ public class Movement : MonoBehaviourPunCallbacks {
 
         controller = GetComponent<CharacterController>();
         respawnPoint = transform.position;
-        respawnThreshold = respawnPoint.y - 3;
 
         // Game Start:
 

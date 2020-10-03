@@ -41,22 +41,9 @@ public class HighscoreTable : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
     public void OnClickEnd()
     {
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene("Main Menu");
     }
-=======
-<<<<<<< Updated upstream
-    //PhotonNetwork.LeaveRoom();
-=======
-    public void OnClickEnd()
-    {
-        PhotonNetwork.LeaveRoom();
-        PhotonNetwork.Disconnect();
-        SceneManager.LoadScene("Main Menu");
-    }
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 }
