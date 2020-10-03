@@ -11,7 +11,16 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 {
     public static GameSetUp GS;
 
-    public Transform[] spawnPoints;
+    public GameObject canvas;
+
+    public GameObject ArenaCon;
+    public int mapIndex;
+
+    public Transform[] spawnPoints1;
+    public Transform[] spawnPoints2;
+    public Transform[] spawnPoints3;
+    public Transform[] spawnPoints4;
+
 
     public int playerIndex;
 
@@ -41,6 +50,10 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        mapIndex = MapController.mapIndex;
+
+        ArenaCon.GetComponent<ArenaController>().setUpMap(mapIndex);
+
         playerIndex = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % 4;
 
         string curUserName = PhotonNetwork.LocalPlayer.NickName;
@@ -62,6 +75,28 @@ public class GameSetUp : MonoBehaviourPunCallbacks
                 break;
         }
 
+        Transform[] spawnPoints = null;
+
+        switch (mapIndex)
+        {
+            case 0:
+                spawnPoints = spawnPoints1;
+                break;
+
+            case 1:
+                spawnPoints = spawnPoints2;
+                break;
+
+            case 2:
+                spawnPoints = spawnPoints3;
+                break;
+
+            case 3:
+                spawnPoints = spawnPoints4;
+                break;
+        }
+
+        
         player = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", avatarPath), spawnPoints[playerIndex].transform.position, Quaternion.identity);
 
         // Camera
@@ -71,7 +106,6 @@ public class GameSetUp : MonoBehaviourPunCallbacks
         playerCam.GetComponent<CameraFollow>().setTarget(player);
 
         // Panels
-        GameObject canvas = GameObject.FindWithTag("Canvas");
 
         question = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Question"), canvas.transform.position, Quaternion.identity);
         question.GetComponent<DoQuestion>().tag = "Q" + (playerIndex + 1);
@@ -84,6 +118,7 @@ public class GameSetUp : MonoBehaviourPunCallbacks
         player.GetComponent<Movement>().question = question.gameObject;
         player.GetComponent<Movement>().colorIndex = avatarSelection % 10;
 
+        
         player.gameObject.tag = "Player" + (playerIndex + 1);
 
         print(player.gameObject.tag);

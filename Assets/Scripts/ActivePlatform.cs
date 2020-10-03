@@ -75,6 +75,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
         {
             blocks.Add(i, transform.GetChild(i).gameObject);
         }
+<<<<<<< Updated upstream
 
         //player1 = GameObject.FindWithTag("Player1");
 
@@ -82,9 +83,19 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
 
         //player3 = GameObject.FindWithTag("Player3");
 
+<<<<<<< Updated upstream
         //player4 = GameObject.FindWithTag("Player4");
 
         //PV.RPC("findPlayers", RpcTarget.All);
+=======
+        player4 = GameObject.FindWithTag("Player4");
+        if (player4 != null)
+        {
+            players.Add(player4);
+        }
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     }
 
     //[PunRPC]
