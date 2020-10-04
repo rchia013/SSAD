@@ -44,6 +44,7 @@ public class HighscoreTable : MonoBehaviour
     public void OnClickEnd()
     {
         PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
         SceneManager.LoadScene("Main Menu");
     }
 }

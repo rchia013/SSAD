@@ -27,15 +27,37 @@ public class QuestionManager : MonoBehaviour
     {
         // Initialize settings:
 
-        Category = 0;
-        Difficulty = 1;
+        Category = CodeMatchmakingLobbyController.cat;
+        Difficulty = CodeMatchmakingLobbyController.diff;
 
         ended = false;
+
+        string QuestionUrl = "https://quizguyz.firebaseio.com/Questions/";
+
+        switch (Category)
+        {
+            case 0:
+                QuestionUrl += "Math/";
+                break;
+            case 1:
+                QuestionUrl += "Science/";
+                break;
+            case 2:
+                QuestionUrl += "Geography/";
+                break;
+            case 3:
+                QuestionUrl += "General/";
+                break;
+
+        }
+
+        QuestionUrl += (Difficulty).ToString();
+        QuestionUrl += ".json";
 
         // PseudoCode: Get Category and Difficulty from Whichever manager;
         // PseudoCode: Create URL from below to collect correct collection of questions:
 
-        RestClient.Get(url: "https://quizguyz.firebaseio.com/Questions/Math/1.json").Then(onResolved: response =>
+        RestClient.Get(url: QuestionUrl).Then(onResolved: response =>
         {
             print("Adding Question");
             questions = JsonConvert.DeserializeObject<List<Question>>(response.Text);
