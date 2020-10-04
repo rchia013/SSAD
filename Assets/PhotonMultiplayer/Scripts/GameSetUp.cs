@@ -86,9 +86,18 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
         switch (avatarSelection / 10)
         {
-            case 0:
+            case 1:
                 avatarPath = "Mummy";
                 break;
+
+            case 2:
+                avatarPath = "Astronaut";
+                break;
+
+            case 3:
+                avatarPath = "//";
+                break;
+
 
             default:
                 break;

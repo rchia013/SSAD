@@ -56,7 +56,7 @@ public class AvatarController : MonoBehaviour
     public Button green;
     public Button yellow;
     public Button purple;
-    public Button orange;
+    public Button brown;
 
     private List<Button> buttons = new List<Button>();
 
@@ -228,7 +228,7 @@ public class AvatarController : MonoBehaviour
 
         else if (avatarPath.Contains("Mummy"))
         {
-            avatar.rectTransform.sizeDelta = new Vector2(15, 20);
+            avatar.rectTransform.sizeDelta = new Vector2(15, 18);
             avatar.color = new Color(0.8f, 0.8f, 0.8f);
 
         }
@@ -246,6 +246,8 @@ public class AvatarController : MonoBehaviour
 
     public void ConfirmCharacterOnClick()
     {
+        print(curSelection);
+
         if (colorTaken[curSelection % 10] && ((curSelection % 10) != (playerList[Login.currentUser.username] % 10)))
         {
             print("Color Taken!");
@@ -270,7 +272,9 @@ public class AvatarController : MonoBehaviour
         buttons.Add(green);
         buttons.Add(yellow);
         buttons.Add(purple);
-        buttons.Add(orange);
+        buttons.Add(brown);
+
+        print("Num Buttons: " + buttons.Count);
 
         for (int i = 0; i < buttons.Count; i++)
         {
@@ -278,7 +282,7 @@ public class AvatarController : MonoBehaviour
 
             buttons[i].onClick.AddListener(delegate { ColorClicked(index); });
 
-            colorTaken.Add(i, false);
+            colorTaken.Add((i+1), false);
         }
     }
 
@@ -309,7 +313,7 @@ public class AvatarController : MonoBehaviour
                     toggles[i].interactable = false;
                 }
             }
-            curSelection += (index * 10);
+            curSelection += ((index + 1) * 10);
             charSelected = true;
         }
 
@@ -322,7 +326,7 @@ public class AvatarController : MonoBehaviour
                     toggles[i].interactable = true;
                 }
             }
-            curSelection -= (index * 10);
+            curSelection -= ((index+1) * 10);
             charSelected = false;
         }
         displayAvatar(curAvatar, curSelection);
@@ -357,6 +361,8 @@ public class AvatarController : MonoBehaviour
             curSelection -= (index + 1);
             colorSelected = false;
         }
+        print(curSelection);
+
         displayAvatar(curAvatar, curSelection);
     }
 
@@ -377,15 +383,15 @@ public class AvatarController : MonoBehaviour
 
         switch (chosenCharacter)
         {
-            case 0:
+            case 1:
                 avatarPath += "Mummy_";
                 break;
 
-            case 1:
+            case 2:
                 avatarPath += "/////1";
                 break;
 
-            case 2:
+            case 3:
                 avatarPath += "/////2";
                 break;
 
@@ -416,7 +422,7 @@ public class AvatarController : MonoBehaviour
                 break;
 
             case 6:
-                avatarPath += "Orange";
+                avatarPath += "Brown";
                 break;
 
             default:

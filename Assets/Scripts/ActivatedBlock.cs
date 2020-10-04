@@ -7,17 +7,9 @@ using Photon.Pun;
 
 public class ActivatedBlock : MonoBehaviourPunCallbacks
 {
-    public Material material4;
-    public Material material3;
-    public Material material2;
-    public Material material1;
-
-    public Material activeMaterial1;
-    public Material activeMaterial2;
-    public Material activeMaterial3;
-    public Material activeMaterial4;
-
     public Material originalMaterial;
+
+    TileColorController TCC;
 
     GameObject parentBlock;
     GameObject highlight;
@@ -42,6 +34,7 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
     {
         PV = GetComponent<PhotonView>();
         parentBlock = transform.parent.gameObject;
+        TCC = parentBlock.transform.parent.gameObject.GetComponent<TileColorController>();
 
         rend = parentBlock.GetComponent<MeshRenderer>();
         rb = parentBlock.GetComponent<Rigidbody>();
@@ -52,22 +45,8 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
 
         Material[] materials = rend.materials;
 
-        switch (colorIndex)
-        {
-            case 1:
-                materials[0] = activeMaterial1;
-                break;
-            case 2:
-                materials[0] = activeMaterial2;
-                break;
-            case 3:
-                materials[0] = activeMaterial3;
-                break;
-            case 4:
-                materials[0] = activeMaterial4;
-                break;
+        materials[0] = TCC.getTileMaterial(colorIndex);
 
-        }
         rend.materials = materials;
 
         gameObject.tag = "Question";
@@ -165,40 +144,29 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
                 break;
             }
 
-                switch (counter)
+            if (counter > 4)
             {
-                case 4:
-                    materials[0] = material4;
-                    break;
-
-                case 3:
-                    materials[0] = material3;
-                    break;
-
-                case 2:
-                    materials[0] = material2;
-                    break;
-
-                case 1:
-                    materials[0] = material1;
-                    break;
-
-                case 0:
-
-                    if (question.GetComponent<DoQuestion>().answered == false)
-                    {
-                        StartCoroutine("HighlightFadeOut");
-                    }
-
-                    PV.RPC("dropBlock", RpcTarget.All);
-
-                    yield return new WaitForSeconds(1);
-
-                    Destroy(transform.parent.gameObject);
-                    break;
+                //
             }
+            else if (counter > 0)
+            {
+                materials[0] = TCC.getCountdownMaterial(counter);
+                rend.materials = materials;
+            }
+            else
+            {
+                if (question.GetComponent<DoQuestion>().answered == false)
+                {
+                    StartCoroutine("HighlightFadeOut");
+                }
 
-            rend.materials = materials;
+                PV.RPC("dropBlock", RpcTarget.All);
+
+                yield return new WaitForSeconds(1);
+
+                Destroy(transform.parent.gameObject);
+                break;
+            }
         }
     }
 

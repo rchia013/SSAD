@@ -11,7 +11,7 @@ public class PlayerMarkerSet : MonoBehaviour
     public Material green;
     public Material yellow;
     public Material purple;
-    public Material orange;
+    public Material brown;
 
     MeshRenderer rend1;
     MeshRenderer rend2;
@@ -61,7 +61,7 @@ public class PlayerMarkerSet : MonoBehaviour
                 break;
 
             case 6:
-                chosen = orange;
+                chosen = brown;
                 break;
 
         }

@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0e744b43af2b44d61a053d448708ec0c, type: 2}
+  - {fileID: 2100000, guid: f2f281a6d8e790b40b79e6f697cbf013, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -141,7 +141,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0e744b43af2b44d61a053d448708ec0c, type: 2}
+  - {fileID: 2100000, guid: f2f281a6d8e790b40b79e6f697cbf013, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5070,19 +5070,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!65 &2120753396557998064
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054544760026472249}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7161237, y: 0.6553944, z: 1.2962179}
-  m_Center: {x: -0.031030532, y: 0.0000000024786901, z: 0.64811033}
 --- !u!54 &905288916
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5207,8 +5194,8 @@ MonoBehaviour:
   pink: {fileID: 2100000, guid: 0e258dd63d1704c3da2516d1792fa4d6, type: 2}
   green: {fileID: 2100000, guid: e8023272c1d068247b10eefed548753f, type: 2}
   yellow: {fileID: 2100000, guid: f2f281a6d8e790b40b79e6f697cbf013, type: 2}
-  purple: {fileID: 0}
-  orange: {fileID: 0}
+  purple: {fileID: 2100000, guid: f35d116c04bfb4e56b4eba3db1691253, type: 2}
+  brown: {fileID: 2100000, guid: 2aff7a57200fb46c8b70a76485356469, type: 2}
 --- !u!114 &5409580518386944105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5247,6 +5234,19 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
+--- !u!65 &2120753396557998064
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054544760026472249}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7161237, y: 0.6553944, z: 1.2962179}
+  m_Center: {x: -0.031030532, y: 0.0000000024786901, z: 0.64811033}
 --- !u!1001 &384706616060966983
 PrefabInstance:
   m_ObjectHideFlags: 0
