@@ -18,13 +18,29 @@ public class MapController : MonoBehaviour
     public GameObject MapPanel;
     public GameObject RoomPanel;
 
+    public Button ConfirmMap;
+
     public Image MapDisplay;
     public Image MapBorder;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         InitializeToggles();
+    }
+
+    private void Update()
+    {
+        if (mapSelected)
+        {
+            ConfirmMap.interactable = true;
+        }
+        else
+        {
+            ConfirmMap.interactable = false;
+        }
     }
 
     private void InitializeToggles()
