@@ -44,7 +44,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     private List<Button> buttonsCat = new List<Button>();
     private bool catChosen = false;
-    private int cat;
+    public static int cat;
 
     public Button easy;
     public Button medium;
@@ -52,7 +52,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     private List<Button> buttonsDiff = new List<Button>();
     private bool diffChosen = false;
-    private int diff;
+    public static int diff;
 
     private void Start()
     {

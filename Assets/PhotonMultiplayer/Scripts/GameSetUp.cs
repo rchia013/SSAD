@@ -11,7 +11,15 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 {
     public static GameSetUp GS;
 
-    public Transform[] spawnPoints;
+    public GameObject canvas;
+
+    public GameObject ArenaCon;
+    public int mapIndex;
+
+    public Transform[] spawnPoints1;
+    public Transform[] spawnPoints2;
+    public Transform[] spawnPoints3;
+    public Transform[] spawnPoints4;
 
     public int playerIndex;
 
@@ -25,10 +33,6 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
     public TextMeshProUGUI[] pointsUIList;
 
-    // public TextMeshProUGUI pointsUI;
-
-    // public int[] pointsList = new int[4];
-
     GameObject question;
     
     private void OnEnable()
@@ -41,12 +45,40 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        mapIndex = MapController.mapIndex;
+
+        ArenaCon.GetComponent<ArenaController>().setUpMap(mapIndex);
+
         playerIndex = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % 4;
 
         string curUserName = PhotonNetwork.LocalPlayer.NickName;
         int avatarSelection = AvatarController.playerList[curUserName];
 
         print("Avatar Selection:" + avatarSelection);
+
+
+
+        Transform[] spawnPoints = null;
+
+        switch (mapIndex)
+        {
+            case 0:
+                spawnPoints = spawnPoints1;
+                break;
+
+            case 1:
+                spawnPoints = spawnPoints2;
+                break;
+
+            case 2:
+                spawnPoints = spawnPoints3;
+                break;
+
+            case 3:
+                spawnPoints = spawnPoints4;
+                break;
+        }
+
 
         // Player
 
@@ -71,7 +103,6 @@ public class GameSetUp : MonoBehaviourPunCallbacks
         playerCam.GetComponent<CameraFollow>().setTarget(player);
 
         // Panels
-        GameObject canvas = GameObject.FindWithTag("Canvas");
 
         question = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Question"), canvas.transform.position, Quaternion.identity);
         question.GetComponent<DoQuestion>().tag = "Q" + (playerIndex + 1);
