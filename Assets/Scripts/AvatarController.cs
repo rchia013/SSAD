@@ -132,6 +132,15 @@ public class AvatarController : MonoBehaviour
                 Names.Add(Name4);
             }
         }
+
+        if (selectionValid(curSelection))
+        {
+            confirm.interactable = true;
+        }
+        else
+        {
+            confirm.interactable = false;
+        }
     }
 
     //Handle change of Players:
@@ -242,6 +251,11 @@ public class AvatarController : MonoBehaviour
     {
         RoomPanel.SetActive(false);
         AvatarPanel.SetActive(true);
+
+        if (!selectionValid(curSelection))
+        {
+            updateAvailableColors();
+        }
     }
 
     public void ConfirmCharacterOnClick()
@@ -300,6 +314,21 @@ public class AvatarController : MonoBehaviour
         }
     }
 
+    private void updateAvailableColors()
+    {
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            if (colorTaken[i + 1] && ((curSelection % 10) != (i+1)))
+            {
+                buttons[i].interactable = false;
+            }
+            else
+            {
+                buttons[i].interactable = true;
+            }
+        }
+    }
+
     //Button/Toggle Handling (Color + Character):
 
     void CharClicked(int index)
@@ -350,13 +379,7 @@ public class AvatarController : MonoBehaviour
 
         else
         {
-            for (int i = 0; i < buttons.Count; i++)
-            {
-                if (i != index)
-                {
-                    buttons[i].interactable = true;
-                }
-            }
+            updateAvailableColors();
 
             curSelection -= (index + 1);
             colorSelected = false;
@@ -430,5 +453,17 @@ public class AvatarController : MonoBehaviour
         }
 
         return avatarPath;
-    } 
+    }
+
+    private bool selectionValid(int sel)
+    {
+        if ((sel/10)>=1 && (sel % 10) >= 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

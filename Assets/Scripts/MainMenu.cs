@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject MenuPanel;
+    public GameObject ProfilePanel;
+    public GameObject LeaderboardPanel;
+
     public void playGame()
     {
         SceneManager.LoadScene("CodeMatchMakingMenuDemo");
@@ -14,5 +18,29 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
- 
+
+    public void OpenProfileOnClick()
+    {
+        MenuPanel.SetActive(false);
+        ProfilePanel.SetActive(true);
+    }
+
+    public void CloseProfileOnClick()
+    {
+        ProfilePanel.SetActive(false);
+        MenuPanel.SetActive(true);
+    }
+
+    public void OpenLeaderBoardeOnClick()
+    {
+        MenuPanel.SetActive(false);
+        LeaderboardPanel.SetActive(true);
+    }
+
+    public void CloseLeaderBoardOnClick()
+    {
+        LeaderboardPanel.SetActive(false);
+        MenuPanel.SetActive(true);
+    }
+
 }
