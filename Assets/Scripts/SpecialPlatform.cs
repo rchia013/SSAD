@@ -63,7 +63,7 @@ public class SpecialPlatform : MonoBehaviour
     //        }
     //    }
 
-    //    if (putActiveBlock && blocks.Count > totalNumBlocks / 4 && player.GetComponent<Movement>().moveable)
+    //    if (putActiveBlock && blocks.Count > totalNumBlocks / 4 && player.GetComponent<PlayerController>().moveable)
     //    {
     //        if (blocks.ContainsKey(prevNum))
     //        {

@@ -61,7 +61,7 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
         if (other.gameObject.tag == playerTag & !questionActivated & blockActivated)
         {
             player = other.gameObject;
-            question = player.GetComponent<Movement>().question;
+            question = player.GetComponent<PlayerController>().question;
 
             // 1. Start Block
 
@@ -82,7 +82,7 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
 
             // 2. Restrict Player
 
-            player.GetComponent<Movement>().moveable = false;
+            player.GetComponent<PlayerController>().moveable = false;
 
             // 4. Start Question
 
@@ -122,7 +122,7 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
             {
                 if (!moveableChanged)
                 {
-                    player.GetComponent<Movement>().moveable = true;
+                    player.GetComponent<PlayerController>().moveable = true;
                     moveableChanged = true;
                 }
 

@@ -130,7 +130,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
         }
 
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && player1 != null &&
-            putActiveBlock1 && blocks.Count > totalNumBlocks / 4 && player1.GetComponent<Movement>().moveable)
+            putActiveBlock1 && blocks.Count > totalNumBlocks / 4 && player1.GetComponent<PlayerController>().moveable)
         {
             if (blocks.ContainsKey(prevNum1))
             {
@@ -156,7 +156,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             }
         }
 
-        if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && player2 != null && putActiveBlock2 && blocks.Count > totalNumBlocks / 4 && player2.GetComponent<Movement>().moveable)
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && player2 != null && putActiveBlock2 && blocks.Count > totalNumBlocks / 4 && player2.GetComponent<PlayerController>().moveable)
         {
             if (blocks.ContainsKey(prevNum2))
             {
@@ -182,7 +182,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             }
         }
 
-        if (PhotonNetwork.LocalPlayer.ActorNumber == 3 && player3 != null && putActiveBlock3 && blocks.Count > totalNumBlocks / 4 && player3.GetComponent<Movement>().moveable)
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 3 && player3 != null && putActiveBlock3 && blocks.Count > totalNumBlocks / 4 && player3.GetComponent<PlayerController>().moveable)
         {
             if (blocks.ContainsKey(prevNum3))
             {
@@ -208,7 +208,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             }
         }
 
-        if (PhotonNetwork.LocalPlayer.ActorNumber == 4 && player4 != null && putActiveBlock4 && blocks.Count > totalNumBlocks / 4 && player4.GetComponent<Movement>().moveable)
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 4 && player4 != null && putActiveBlock4 && blocks.Count > totalNumBlocks / 4 && player4.GetComponent<PlayerController>().moveable)
         {
             if (blocks.ContainsKey(prevNum4))
             {
@@ -237,10 +237,10 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1 &&
             putSpecialBlock && blocks.Count > totalNumBlocks / 4 && !(power0used && power1used) &&
-            ((player1 != null && player1.GetComponent<Movement>().moveable) ||
-            (player2 != null && player2.GetComponent<Movement>().moveable) ||
-            (player3 != null && player3.GetComponent<Movement>().moveable) ||
-            (player4 != null && player4.GetComponent<Movement>().moveable)))
+            ((player1 != null && player1.GetComponent<PlayerController>().moveable) ||
+            (player2 != null && player2.GetComponent<PlayerController>().moveable) ||
+            (player3 != null && player3.GetComponent<PlayerController>().moveable) ||
+            (player4 != null && player4.GetComponent<PlayerController>().moveable)))
         {
 
             int newSpecNum = -1;
@@ -298,7 +298,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
 
                 ABscript1 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript1.playerIndex = playerNum;
-                ABscript1.colorIndex = player1.GetComponent<Movement>().colorIndex;
+                ABscript1.colorIndex = player1.GetComponent<PlayerController>().colorIndex;
                 ABscript1.enabled = true;
 
                 ABscript1.blockActivated = true;
@@ -309,7 +309,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
 
                 ABscript2 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript2.playerIndex = playerNum;
-                ABscript2.colorIndex = player2.GetComponent<Movement>().colorIndex;
+                ABscript2.colorIndex = player2.GetComponent<PlayerController>().colorIndex;
                 ABscript2.enabled = true;
 
                 ABscript2.blockActivated = true;
@@ -320,7 +320,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
 
                 ABscript3 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript3.playerIndex = playerNum;
-                ABscript3.colorIndex = player3.GetComponent<Movement>().colorIndex;
+                ABscript3.colorIndex = player3.GetComponent<PlayerController>().colorIndex;
                 ABscript3.enabled = true;
 
                 ABscript3.blockActivated = true;
@@ -331,7 +331,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
 
                 ABscript4 = block.transform.GetChild(0).gameObject.GetComponent<ActivatedBlock>();
                 ABscript4.playerIndex = playerNum;
-                ABscript4.colorIndex = player4.GetComponent<Movement>().colorIndex;
+                ABscript4.colorIndex = player4.GetComponent<PlayerController>().colorIndex;
                 ABscript4.enabled = true;
 
                 ABscript4.blockActivated = true;

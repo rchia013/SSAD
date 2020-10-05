@@ -85,7 +85,7 @@ public class GameComplete : MonoBehaviour
             initializePlayers();
             for (int i = 0; i < players.Count; i++)
             {
-                players[i].GetComponent<Movement>().moveable = false;
+                players[i].GetComponent<PlayerController>().moveable = false;
           
             }
         
@@ -97,21 +97,21 @@ public class GameComplete : MonoBehaviour
         {
             //Record cur = new Record("now", 123,
             //    QM.Difficulty, QM.Category,
-            //    players[i].GetComponent<Movement>().playerName,
-            //    players[i].GetComponent<Movement>().points,
+            //    players[i].GetComponent<PlayerController>().playerName,
+            //    players[i].GetComponent<PlayerController>().points,
             //    QM.getResponses(i));
 
             Record cur = new Record("now", 123,
                 0, 0,
-                players[i].GetComponent<Movement>().playerName,
-                players[i].GetComponent<Movement>().getPoints(),
+                players[i].GetComponent<PlayerController>().playerName,
+                players[i].GetComponent<PlayerController>().getPoints(),
                 QM.getResponses(i));
 
             records.Add(cur);
 
             print(cur.playerName);
 
-            uploadRecord(players[i].GetComponent<Movement>().playerID, cur);
+            uploadRecord(players[i].GetComponent<PlayerController>().playerID, cur);
         }
     }
 

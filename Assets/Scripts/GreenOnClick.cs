@@ -57,7 +57,7 @@ public class GreenOnClick : MonoBehaviour
 
     private IEnumerator PowerUp()
     {
-        Movement stats = player.GetComponent<Movement>();
+        PlayerController stats = player.GetComponent<PlayerController>();
 
         stats.boostSize(true);
 

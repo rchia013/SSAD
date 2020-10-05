@@ -46,7 +46,7 @@ public class RedOnClick : MonoBehaviour
 
     private IEnumerator PowerUp()
     {
-        Movement stats = player.GetComponent<Movement>();
+        PlayerController stats = player.GetComponent<PlayerController>();
         stats.speed += speedIncrease;
         stats.boostSpeed(true);
 

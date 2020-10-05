@@ -37,7 +37,7 @@ public class MummyMarkerSet : MonoBehaviour
 
         Material chosen = null;
 
-        switch (gameObject.GetComponent<Movement>().colorIndex)
+        switch (gameObject.GetComponent<PlayerController>().colorIndex)
         {
             case 1:
                 chosen = blue;

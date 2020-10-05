@@ -119,7 +119,7 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
         {
             player = other.gameObject;
             playerTag = player.tag;
-            question = player.GetComponent<Movement>().question;
+            question = player.GetComponent<PlayerController>().question;
 
             // 1. Move Block
 
@@ -129,7 +129,7 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
 
             // 2. Restrict Player
 
-            player.GetComponent<Movement>().moveable = false;
+            player.GetComponent<PlayerController>().moveable = false;
 
 
             // 3. Activate Highlight
@@ -179,7 +179,7 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
             {
                 if (!moveableChanged)
                 {
-                    player.GetComponent<Movement>().moveable = true;
+                    player.GetComponent<PlayerController>().moveable = true;
                     moveableChanged = true;
                 }
 

@@ -224,9 +224,6 @@ public class Movement : MonoBehaviourPunCallbacks {
     {
         moveable = true;
         uiObject.SetActive(false);
-
-        controller.Move(Vector3.down * 1.5f);
-
     }
 
     bool IsGrounded()
@@ -303,6 +300,5 @@ public class Movement : MonoBehaviourPunCallbacks {
         {
             sizeEffect.Stop();
         }
-        
     }
 }

@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     public float respawnThreshold;
 
     public GameObject uiObject;
-    //public GameObject question;
+    public GameObject question;
     public TextMeshProUGUI countdown;
 
     // POINTS:
@@ -68,18 +68,18 @@ public class PlayerController : MonoBehaviour
         // Photon:
 
         PV = GetComponent<PhotonView>();
-        //pointsUIList = GameSetUp.GS.pointsUIList;
+        pointsUIList = GameSetUp.GS.pointsUIList;
         points = 0;
-        //PV.RPC("curPlayerSetup", RpcTarget.All, gameObject.tag, colorIndex, playerIndex, playerName);
+        PV.RPC("curPlayerSetup", RpcTarget.All, gameObject.tag, colorIndex, playerIndex, playerName);
 
         //UI:
 
-        //uiObject = GameSetUp.GS.uiObject;
-        //countdown = GameSetUp.GS.countdown;
+        uiObject = GameSetUp.GS.uiObject;
+        countdown = GameSetUp.GS.countdown;
 
         uiObject.SetActive(true);
-        //speedEffect.Pause();
-        //sizeEffect.Pause();
+        speedEffect.Pause();
+        sizeEffect.Pause();
 
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
@@ -126,17 +126,10 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
-            if (!isGrounded && jumping)
+
+            if (true)
             {
-                anim.SetBool("isJumping", true);
-                print("Jumping animation");
-                jumping = false;
-            }
-            if (isGrounded)
-            {
-                anim.SetBool("isJumping", false);
                 anim.SetBool("isWalking", true);
-                anim.SetBool("isIdle", true);
             }
         }
         else
@@ -150,6 +143,15 @@ public class PlayerController : MonoBehaviour
     void Gravity()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if (isGrounded)
+        {
+            print("Grounded");
+        }
+        else
+        {
+            print("not grounded");
+        }
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -1f;
@@ -164,7 +166,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * 3f * gravity);
-            jumping = true;
         }
     }
 
@@ -260,5 +261,19 @@ public class PlayerController : MonoBehaviour
         {
             sizeEffect.Stop();
         }
+    }
+
+    [PunRPC]
+    public void ChangePoints(int playerIndex, int x)
+    {
+        Debug.Log(playerIndex);
+
+        points += x;
+        pointsUIList[playerIndex].SetText("Points: " + points.ToString());
+    }
+
+    public int getPoints()
+    {
+        return points;
     }
 }

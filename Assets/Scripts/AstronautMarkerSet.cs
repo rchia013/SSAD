@@ -21,20 +21,13 @@ public class AstronautMarkerSet : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
 
-        PV.RPC("setColor", RpcTarget.All);
-    }
-
-
-    [PunRPC]
-    private void setColor()
-    {
         rend1 = gameObject.transform.Find("Player").gameObject.GetComponent<SkinnedMeshRenderer>();
 
         Material[] materials1 = rend1.materials;
 
         Material chosen = null;
 
-        switch (gameObject.GetComponent<Movement>().colorIndex)
+        switch (gameObject.GetComponent<PlayerController>().colorIndex)
         {
             case 1:
                 chosen = blue;
@@ -62,7 +55,52 @@ public class AstronautMarkerSet : MonoBehaviour
 
         }
 
-        materials1[0] = chosen;
+        materials1[1] = chosen;
+
+        rend1.materials = materials1;
+
+        // PV.RPC("setColor", RpcTarget.All);
+    }
+
+
+    [PunRPC]
+    private void setColor()
+    {
+        rend1 = gameObject.transform.Find("Player").gameObject.GetComponent<SkinnedMeshRenderer>();
+
+        Material[] materials1 = rend1.materials;
+
+        Material chosen = null;
+
+        switch (gameObject.GetComponent<PlayerController>().colorIndex)
+        {
+            case 1:
+                chosen = blue;
+                break;
+
+            case 2:
+                chosen = pink;
+                break;
+
+            case 3:
+                chosen = green;
+                break;
+
+            case 4:
+                chosen = yellow;
+                break;
+
+            case 5:
+                chosen = purple;
+                break;
+
+            case 6:
+                chosen = brown;
+                break;
+
+        }
+
+        materials1[1] = chosen;
 
         rend1.materials = materials1;
     }

@@ -87,7 +87,7 @@ public class GameSetUp : MonoBehaviourPunCallbacks
         switch (avatarSelection / 10)
         {
             case 1:
-                avatarPath = "Mummy";
+                avatarPath = "Mummy 1";
                 break;
 
             case 2:
@@ -120,9 +120,9 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
         // points = pointsUIList[playerIndex];
 
-        player.GetComponent<Movement>().playerName = curUserName;
-        player.GetComponent<Movement>().question = question.gameObject;
-        player.GetComponent<Movement>().colorIndex = avatarSelection % 10;
+        player.GetComponent<PlayerController>().playerName = curUserName;
+        player.GetComponent<PlayerController>().question = question.gameObject;
+        player.GetComponent<PlayerController>().colorIndex = avatarSelection % 10;
 
         player.gameObject.tag = "Player" + (playerIndex + 1);
 
