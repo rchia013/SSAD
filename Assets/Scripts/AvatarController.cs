@@ -239,7 +239,11 @@ public class AvatarController : MonoBehaviour
         {
             avatar.rectTransform.sizeDelta = new Vector2(15, 18);
             avatar.color = new Color(0.8f, 0.8f, 0.8f);
-
+        }
+        else if (avatarPath.Contains("Astronaut"))
+        {
+            avatar.rectTransform.sizeDelta = new Vector2(17, 22);
+            avatar.color = new Color(0.92f, 0.92f, 0.92f);
         }
 
         avatar.sprite = Resources.Load<Sprite>(avatarPath);
@@ -411,11 +415,11 @@ public class AvatarController : MonoBehaviour
                 break;
 
             case 2:
-                avatarPath += "/////1";
+                avatarPath += "Astronaut_";
                 break;
 
             case 3:
-                avatarPath += "/////2";
+                avatarPath += "Knight_";
                 break;
 
             default:
