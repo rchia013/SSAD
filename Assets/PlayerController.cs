@@ -143,15 +143,6 @@ public class PlayerController : MonoBehaviour
     void Gravity()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        if (isGrounded)
-        {
-            print("Grounded");
-        }
-        else
-        {
-            print("not grounded");
-        }
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -1f;
@@ -165,7 +156,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * 3f * gravity);
+            print("Jump!");
+            velocity.y = Mathf.Sqrt(jumpHeight * 2f * gravity);
         }
     }
 

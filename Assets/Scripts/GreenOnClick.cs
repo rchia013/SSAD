@@ -12,13 +12,13 @@ public class GreenOnClick : MonoBehaviour
     private GameObject player;
     private Collider coll;
 
-    private float _currentScale = InitScale;
-    private const float TargetScale = 1.4f;
-    private const float InitScale = .75f;
+    private float _currentScale;
+    private float TargetScale;
+    private float InitScale;
     private const int FramesCount = 100;
     private const float AnimationTimeSeconds = 1;
     private float _deltaTime = AnimationTimeSeconds / FramesCount;
-    private float _dx = (TargetScale - InitScale) / FramesCount;
+    private float _dx;
     private bool _upScale = true;
     public float duration = 4f;
 
@@ -60,7 +60,11 @@ public class GreenOnClick : MonoBehaviour
         PlayerController stats = player.GetComponent<PlayerController>();
 
         stats.boostSize(true);
+        InitScale = player.transform.localScale.x;
+        TargetScale = InitScale * 2;
+        _currentScale = InitScale;
 
+        _dx = (TargetScale - InitScale) / FramesCount;
         while (_upScale)
         {
             stats.speed = 2;

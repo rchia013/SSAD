@@ -1588,8 +1588,8 @@ MonoBehaviour:
   controller: {fileID: 0}
   speed: 4
   turnSmoothTime: 0.1
-  gravity: 0
-  jumpHeight: 3
+  gravity: 9
+  jumpHeight: 1.5
   groundCheck: {fileID: 8575892552612877805}
   groundDistance: 0.4
   groundMask:
