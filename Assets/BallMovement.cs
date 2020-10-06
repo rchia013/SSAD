@@ -101,7 +101,8 @@ public class BallMovement : MonoBehaviour
         else
         {
             //anim.SetBool("Walk_Anim", false);
-           // anim.SetBool("Open_Anim", false);
+            // anim.SetBool("Open_Anim", false);
+            print("is not walking");
             anim.SetBool("isWalking", false);
         }
 

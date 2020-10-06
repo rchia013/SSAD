@@ -127,14 +127,13 @@ public class PlayerController : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
 
-            if (true)
-            {
+            if (isGrounded)
+            {  
                 anim.SetBool("isWalking", true);
             }
         }
         else
         {
-    
             anim.SetBool("isWalking", false);
         }
 
