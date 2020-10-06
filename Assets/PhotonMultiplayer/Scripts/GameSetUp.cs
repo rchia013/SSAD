@@ -95,7 +95,7 @@ public class GameSetUp : MonoBehaviourPunCallbacks
                 break;
 
             case 3:
-                avatarPath = "//";
+                avatarPath = "robotSphere 1";
                 break;
 
 
