@@ -138,10 +138,11 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
 
                 PV.RPC("dropBlock", RpcTarget.All);
 
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(3);
 
                 Destroy(transform.parent.gameObject);
-                break;
+
+                player.GetComponent<PlayerController>().moveable = true;
             }
 
             if (counter > 4)
@@ -162,9 +163,12 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
 
                 PV.RPC("dropBlock", RpcTarget.All);
 
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(3);
 
                 Destroy(transform.parent.gameObject);
+
+                player.GetComponent<PlayerController>().moveable = true;
+                
                 break;
             }
         }
