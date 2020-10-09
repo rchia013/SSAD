@@ -102,13 +102,6 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
         gameObject.GetComponent<AvatarController>().removePlayer(otherPlayer.NickName);
     }
 
-    
-    public override void OnLeftRoom()
-    {
-        gameObject.SetActive(false);
-        playerCount.text = "0 Players";
-    }
-
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         Debug.Log(message);
