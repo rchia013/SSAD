@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Login.unity
+    guid: 24e1317241ea2764c9d66249c91d8758
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: dd988f79c1cea5a4c9bdbe06d7a4417a
+  - enabled: 1
     path: Assets/PhotonMultiplayer/Scenes/CodeMatchmakingMenuDemo.unity
     guid: 386f199e3a545c64ba7660cf92b88a63
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
     path: Assets/PhotonMultiplayer/Scenes/CustomMatchmakingMenuDemo.unity
     guid: a380b7a186bbdb54694f105b632f9929
@@ -17,13 +26,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/PhotonMultiplayer/Scenes/MultiplayerSceneDemo.unity
     guid: 76f886f87e72893499518037dd09b879
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/Login.unity
-    guid: 24e1317241ea2764c9d66249c91d8758
-  - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
-    guid: dd988f79c1cea5a4c9bdbe06d7a4417a
   m_configObjects: {}

@@ -3,6 +3,7 @@ using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
 {
@@ -11,7 +12,19 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
     [SerializeField]
     private int multiplayerSceneIndex;
 
-    public Button startButton;
+    // Panels
+    [SerializeField]
+    private GameObject LobbyPanel;
+    [SerializeField]
+    private GameObject RoomPanel;
+
+    // Buttons
+    [SerializeField]
+    private Button startButton;
+    [SerializeField]
+    private Button cancelButton;
+    [SerializeField]
+    private Button leaveButton;
 
     public void Update()
     {
@@ -20,17 +33,22 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
 
     private bool readyToStart()
     {
-        for (int i = 0; i < AvatarController.playerList.Count; i++)
+        if (LobbySetUp.LS.playerList.Count == PhotonNetwork.PlayerList.Length)
         {
-            if (AvatarController.playerList[PhotonNetwork.PlayerList[i].NickName] == -1)
+            for (int i = 0; i < LobbySetUp.LS.playerList.Count; i++)
+            {
+                if (LobbySetUp.LS.playerList[PhotonNetwork.PlayerList[i].NickName] == -1)
+                {
+                    return false;
+                }
+            }
+
+            if (MapController.mapIndex == -1)
             {
                 return false;
             }
-        }
 
-        if (MapController.mapIndex == -1)
-        {
-            return false;
+            return true;
         }
 
         return true;
@@ -38,7 +56,31 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        print("Joined room");
+
+        GetComponent<AvatarController>().enabled = true;
+
+        LobbyPanel.SetActive(false);
+        RoomPanel.SetActive(true);
+
         playerCount.text = "Players: "+ PhotonNetwork.PlayerList.Length;
+
+        for (int i = 0; i < PhotonNetwork.CurrentRoom.MaxPlayers; i++)
+        {
+            LobbySetUp.LS.platforms[i].gameObject.SetActive(true);
+            LobbySetUp.LS.CurrentAvatars.Add(LobbySetUp.LS.Avatars[i]);
+            LobbySetUp.LS.CurrentNames.Add(LobbySetUp.LS.Names[i]);
+        }
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            startButton.gameObject.SetActive(true);
+            cancelButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            leaveButton.gameObject.SetActive(true);
+        }
 
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
         {
@@ -74,9 +116,9 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
 
     public void StartGameOnClick()
     {
-        for (int i = 0; i < AvatarController.playerList.Count; i++)
+        for (int i = 0; i < LobbySetUp.LS.playerList.Count; i++)
         {
-            if (AvatarController.playerList[PhotonNetwork.PlayerList[i].NickName] == -1)
+            if (LobbySetUp.LS.playerList[PhotonNetwork.PlayerList[i].NickName] == -1)
             {
                 print("Everyone must Choose!");
                 return;

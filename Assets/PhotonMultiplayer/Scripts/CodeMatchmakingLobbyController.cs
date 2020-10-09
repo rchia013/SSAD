@@ -7,33 +7,29 @@ using System.Collections.Generic;
 
 public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 {
-    [SerializeField]
-    private GameObject lobbyConnectButton;
-    [SerializeField]
-    private GameObject lobbyPanel;
-    [SerializeField]
-    private GameObject mainPanel;
-    [SerializeField]
-    private InputField playerNameInput;
-
     public GameObject roomController;
 
-    private string roomName;
-    private int roomSize = -1;
-
+    // Panels
+    [SerializeField]
+    private GameObject LobbyPanel;
+    [SerializeField]
+    private GameObject MainPanel;
     [SerializeField]
     private GameObject RoomPanel;
+
+    // Code display
     [SerializeField]
     private TextMeshProUGUI codeDisplay;
 
-
     private string joinCode = null;
+    private string roomName;
+    private int roomSize = -1;
+
+    // Buttons
     [SerializeField]
-    private GameObject joinButton;
-
-    public Button Create;
-    public Button Join;
-
+    private Button Join;
+    [SerializeField]
+    private Button Create;
 
     // UI:
 
@@ -56,7 +52,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        lobbyPanel.SetActive(false);
+        LobbyPanel.SetActive(false);
     }
 
     private void Update()
@@ -172,8 +168,8 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.AutomaticallySyncScene = true;
 
-        mainPanel.SetActive(false);
-        lobbyPanel.SetActive(true);
+        MainPanel.SetActive(false);
+        LobbyPanel.SetActive(true);
         InitializeButtons();
 
         PhotonNetwork.JoinLobby();
@@ -183,8 +179,8 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     public void JoinLobbyOnClick()
     {
-        mainPanel.SetActive(false);
-        lobbyPanel.SetActive(true);
+        MainPanel.SetActive(false);
+        LobbyPanel.SetActive(true);
         PhotonNetwork.JoinLobby();
     }
 
@@ -209,7 +205,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
         roomController.GetComponent<AvatarController>().maxPlayers = roomSize;
         roomController.GetComponent<AvatarController>().isCreator = true;
 
-        lobbyPanel.SetActive(false);
+        LobbyPanel.SetActive(false);
         RoomPanel.SetActive(true);
 
         Debug.Log(roomName);
@@ -243,7 +239,6 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
         }
         PhotonNetwork.LeaveRoom();
         RoomPanel.SetActive(false);
-        joinButton.SetActive(true);
     }
 
     // JOINERS:
@@ -261,10 +256,10 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
         //{
         //    roomController.GetComponent<AvatarController>().isCreator = false;
         //}
-        roomController.GetComponent<AvatarController>().enabled = true;
+        // roomController.GetComponent<AvatarController>().enabled = true;
 
-        lobbyPanel.SetActive(false);
-        RoomPanel.SetActive(true);
+        // lobbyPanel.SetActive(false);
+        // RoomPanel.SetActive(true);
     }
 
     public void LeaveRoomOnClick()
@@ -282,8 +277,8 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     public void MatchmakingCancelOnClick()
     {
-        mainPanel.SetActive(false);
-        lobbyPanel.SetActive(false);
+        MainPanel.SetActive(false);
+        LobbyPanel.SetActive(false);
         PhotonNetwork.LeaveLobby();
     }
 }

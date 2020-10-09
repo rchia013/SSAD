@@ -9828,6 +9828,66 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1079279894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1079279896}
+  - component: {fileID: 1079279895}
+  m_Layer: 0
+  m_Name: LobbySetUp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1079279895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079279894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c734ee9e4d897374895e0f18736c210b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platforms:
+  - {fileID: 322190497}
+  - {fileID: 1065932961}
+  - {fileID: 1992224909}
+  - {fileID: 148724312}
+  Avatars:
+  - {fileID: 1659842457}
+  - {fileID: 2074149580}
+  - {fileID: 1854141497}
+  - {fileID: 1275879853}
+  CurrentAvatars: []
+  Names:
+  - {fileID: 916417228}
+  - {fileID: 300742254}
+  - {fileID: 814805658}
+  - {fileID: 1821221019}
+  CurrentNames: []
+--- !u!4 &1079279896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079279894}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 447.8485, y: 203.9866, z: 213.22308}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1086721060
 GameObject:
   m_ObjectHideFlags: 0
@@ -10250,7 +10310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1166776030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10684,7 +10744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1204753157
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11532,7 +11592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1288549152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17295,8 +17355,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCount: {fileID: 355316353}
-  multiplayerSceneIndex: 1
+  multiplayerSceneIndex: 3
+  LobbyPanel: {fileID: 1888692045}
+  RoomPanel: {fileID: 1864255819}
   startButton: {fileID: 1166776031}
+  cancelButton: {fileID: 1204753158}
+  leaveButton: {fileID: 1288549152}
 --- !u!114 &1918783609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17310,21 +17374,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCreator: 0
-  startButton: {fileID: 1166776031}
-  cancelButton: {fileID: 1204753158}
-  leaveButton: {fileID: 1288549152}
-  platform1: {fileID: 322190497}
-  platform2: {fileID: 1065932961}
-  platform3: {fileID: 1992224909}
-  platform4: {fileID: 148724312}
-  Avatar1: {fileID: 1659842457}
-  Avatar2: {fileID: 2074149580}
-  Avatar3: {fileID: 1854141497}
-  Avatar4: {fileID: 1275879853}
-  Name1: {fileID: 916417228}
-  Name2: {fileID: 300742254}
-  Name3: {fileID: 814805658}
-  Name4: {fileID: 1821221019}
   RoomPanel: {fileID: 1864255819}
   AvatarPanel: {fileID: 1862719905}
   customize: {fileID: 1009344363}
@@ -17741,16 +17790,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60dc593db5534c4ba3b1f5ad9bb0f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lobbyConnectButton: {fileID: 2108694411}
-  lobbyPanel: {fileID: 1888692045}
-  mainPanel: {fileID: 1646211813}
-  playerNameInput: {fileID: 984144243}
   roomController: {fileID: 1918783606}
+  LobbyPanel: {fileID: 1888692045}
+  MainPanel: {fileID: 1646211813}
   RoomPanel: {fileID: 1864255819}
   codeDisplay: {fileID: 240493228}
-  joinButton: {fileID: 0}
-  Create: {fileID: 718161710}
   Join: {fileID: 1240463907}
+  Create: {fileID: 718161710}
   math: {fileID: 636207106}
   science: {fileID: 402941441}
   geog: {fileID: 1394718134}

@@ -13,7 +13,7 @@ public class AvatarController : MonoBehaviour
 
     public bool isCreator = false;
 
-    public Button startButton;
+    /*public Button startButton;
     public Button cancelButton;
     public Button leaveButton;
 
@@ -37,7 +37,7 @@ public class AvatarController : MonoBehaviour
     public TextMeshProUGUI Name3;
     public TextMeshProUGUI Name4;
 
-    private List<TextMeshProUGUI> Names = new List<TextMeshProUGUI>();
+    private List<TextMeshProUGUI> Names = new List<TextMeshProUGUI>();*/
 
     public GameObject RoomPanel;
     public GameObject AvatarPanel;
@@ -66,7 +66,8 @@ public class AvatarController : MonoBehaviour
 
     //Store User (username) of p1-4 and Character selection:
 
-    public static Dictionary<string, int> playerList = new Dictionary<string, int>();
+    private Dictionary<string, int> playerList = new Dictionary<string, int>();
+    
     public int maxPlayers = -1;
     private bool platformsInitialized = false;
 
@@ -84,6 +85,8 @@ public class AvatarController : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
 
+        playerList = LobbySetUp.LS.playerList;
+
         // Initialize Avatar Page:
 
         InitializeButtons();
@@ -92,7 +95,7 @@ public class AvatarController : MonoBehaviour
 
     private void Update()
     {
-        if (isCreator)
+        /* if (isCreator)
         {
             startButton.gameObject.SetActive(true);
             cancelButton.gameObject.SetActive(true);
@@ -131,7 +134,7 @@ public class AvatarController : MonoBehaviour
                 Avatars.Add(Avatar4);
                 Names.Add(Name4);
             }
-        }
+        } */
 
         if (selectionValid(curSelection))
         {
@@ -147,7 +150,7 @@ public class AvatarController : MonoBehaviour
 
     public void addPlayer(string newUsername, bool selfSync)
     {
-        playerList.Add(newUsername, -1);
+        LobbySetUp.LS.playerList.Add(newUsername, -1);
 
         PV.RPC("updateTotalUI", RpcTarget.All);
 
@@ -156,7 +159,7 @@ public class AvatarController : MonoBehaviour
             PV.RPC("updateAvatar", RpcTarget.All, Login.currentUser.username, curSelection);
         }
     }
-
+    
     [PunRPC]
     private void addP(string newUsername)
     {
@@ -169,19 +172,19 @@ public class AvatarController : MonoBehaviour
 
     public void removePlayer(string oldUsername)
     {
-        playerList.Remove(oldUsername);
+        LobbySetUp.LS.playerList.Remove(oldUsername);
 
         PV.RPC("updateTotalUI", RpcTarget.All);
         //PV.RPC("removeP", RpcTarget.All, oldUsername);
     }
-
+    
     [PunRPC]
     private void removeP(string oldUsername)
     {
         playerList.Remove(oldUsername);
 
         PV.RPC("updateTotalUI", RpcTarget.All);
-    }
+    } 
 
     //Handle Change of Avatars:
 
@@ -210,19 +213,36 @@ public class AvatarController : MonoBehaviour
     void updateTotalUI()
     {
         int i = 0;
-
-        foreach (KeyValuePair<string, int> player in playerList)
+        Debug.Log("update total ui");
+        if (LobbySetUp.LS.CurrentNames.Count > 0)
         {
-            // Set Name:
+            foreach (KeyValuePair<string, int> player in playerList)
+            {
+                // Set Name:
+                LobbySetUp.LS.CurrentNames[i].SetText(player.Key);
 
-            Names[i].SetText(player.Key);
+                // Set Avatar:
+                displayAvatar(LobbySetUp.LS.CurrentAvatars[i], player.Value);
 
-            // Set Avatar:
+                i++;
+            }
+            for (int j = i; j < LobbySetUp.LS.CurrentNames.Count; j++)
+            {
+                //Delete name
+                LobbySetUp.LS.CurrentNames[j].SetText("");
 
-            displayAvatar(Avatars[i], player.Value);
-
-            i++;
+                //Delete avatar
+                destroyAvatar(LobbySetUp.LS.CurrentAvatars[j]);
+            }
         }
+    }
+    
+    void destroyAvatar(Image avatar)
+    {
+        avatar.sprite = null;
+        Color c = avatar.color;
+        c.a = 0;
+        avatar.color = c;
     }
 
     void displayAvatar(Image avatar, int selection)

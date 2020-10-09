@@ -52,7 +52,7 @@ public class GameSetUp : MonoBehaviourPunCallbacks
         playerIndex = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % 4;
 
         string curUserName = PhotonNetwork.LocalPlayer.NickName;
-        int avatarSelection = AvatarController.playerList[curUserName];
+        int avatarSelection = LobbySetUp.LS.playerList[curUserName];
 
         print("Avatar Selection:" + avatarSelection);
 
