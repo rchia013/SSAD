@@ -60,6 +60,8 @@ MonoBehaviour:
   - setColor
   - findPlayers
   - curPlayerSetup
+  - initRoomSize
+  - doBoostJump
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

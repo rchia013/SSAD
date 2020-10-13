@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     float freeze = 1.4f;
     public ParticleSystem speedEffect;
     public ParticleSystem sizeEffect;
+    public ParticleSystem jumpEffect;
 
     // RESPAWN:
 
@@ -231,6 +232,11 @@ public class PlayerController : MonoBehaviour
         PV.RPC("doBoostSize", RpcTarget.All, enable);
     }
 
+    public void boostJump(bool enable)
+    {
+        PV.RPC("doBoostJump", RpcTarget.All, enable);
+    }
+
     [PunRPC]
     public void doBoostSpeed(bool enable)
     {
@@ -254,6 +260,19 @@ public class PlayerController : MonoBehaviour
         else
         {
             sizeEffect.Stop();
+        }
+    }
+
+    [PunRPC]
+    public void doBoostJump(bool enable)
+    {
+        if (enable)
+        {
+            jumpEffect.Play();
+        }
+        else
+        {
+            jumpEffect.Stop();
         }
     }
 

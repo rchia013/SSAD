@@ -195,11 +195,15 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
                 StartCoroutine("HighlightFadeOut");
 
                 PV.RPC("dropSpecBlock", RpcTarget.All);
-                yield return new WaitForSeconds(1);
 
-                print("Gone");
+                yield return new WaitForSeconds(3);
 
                 Destroy(transform.parent.gameObject);
+
+                if (!player.GetComponent<PlayerController>().respawning)
+                {
+                    player.GetComponent<PlayerController>().moveable = true;
+                }
 
                 break;
             }
