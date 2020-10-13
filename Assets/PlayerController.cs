@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     //ID
 
     public int playerIndex;
-    public string playerID;
     public string playerName;
     public int colorIndex;
 
@@ -46,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     // RESPAWN:
 
+    public bool respawning = false;
     public bool moveable = false;
     public float respawnThreshold;
 
@@ -164,6 +164,8 @@ public class PlayerController : MonoBehaviour
     {
         if (transform.position.y < respawnThreshold)
         {
+            respawning = true;
+
             print("drop");
 
             transform.position = respawnPoint;
@@ -215,6 +217,7 @@ public class PlayerController : MonoBehaviour
     void FinishRespawn()
     {
         moveable = true;
+        respawning = false;
         uiObject.SetActive(false);
     }
 

@@ -107,8 +107,6 @@ public class Countdown : MonoBehaviour
         }
 
         Destroy(countdown);
-        GameController.GetComponent<GameComplete>().display = true;
-        print("END!GAME");
     }
 
 

@@ -15,10 +15,10 @@ public class QuestionManager : MonoBehaviour
 
     bool ended;
 
-    Dictionary<string, int> P1 = new Dictionary<string, int>();
-    Dictionary<string, int> P2 = new Dictionary<string, int>();
-    Dictionary<string, int> P3 = new Dictionary<string, int>();
-    Dictionary<string, int> P4 = new Dictionary<string, int>();
+    public Dictionary<string, int> P1 = new Dictionary<string, int>();
+    public Dictionary<string, int> P2 = new Dictionary<string, int>();
+    public Dictionary<string, int> P3 = new Dictionary<string, int>();
+    public Dictionary<string, int> P4 = new Dictionary<string, int>();
 
     public List<Question> questions = new List<Question>();
 
@@ -110,24 +110,31 @@ public class QuestionManager : MonoBehaviour
         return questions[temp];
     }
 
-    public void recordResponse(int playerIndex, int questionNum, int response)
+    public void recordResponse(int playerIndex, int questionNum, int resp)
     {
+        print("Player:" + playerIndex);
+        print("Question: " + questionNum);
+        print("Response: ");
+        print(resp);
+
+        print("Finish Printing");
+
         switch (playerIndex)
         {
             case 0:
-                P1.Add(questionNum.ToString(), response);
+                P1.Add(questionNum.ToString(), resp);
                 break;
 
             case 1:
-                P2.Add(questionNum.ToString(), response);
+                P2.Add(questionNum.ToString(), resp);
                 break;
 
             case 2:
-                P3.Add(questionNum.ToString(), response);
+                P3.Add(questionNum.ToString(), resp);
                 break;
 
             case 3:
-                P4.Add(questionNum.ToString(), response);
+                P4.Add(questionNum.ToString(), resp);
                 break;
         }
     }

@@ -166,8 +166,11 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
                 yield return new WaitForSeconds(3);
 
                 Destroy(transform.parent.gameObject);
-
-                player.GetComponent<PlayerController>().moveable = true;
+                
+                if (!player.GetComponent<PlayerController>().respawning)
+                {
+                    player.GetComponent<PlayerController>().moveable = true;
+                }
                 
                 break;
             }
