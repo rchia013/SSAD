@@ -7,17 +7,18 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
 {
     // Active Block Generation Parameters:
 
-    public int cooldownAB = 10;
+    public int cooldownAB = 8;
     bool putActiveBlock1 = true;
     bool putActiveBlock2 = true;
     bool putActiveBlock3 = true;
     bool putActiveBlock4 = true;
 
-    public int cooldownSB = 20;
+    public int cooldownSB = 10;
     bool putSpecialBlock = true;
 
     bool power0used = false;
     bool power1used = false;
+    bool power2used = false;
 
 
     // Collection of Blocks
@@ -46,9 +47,11 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
 
     SpecialBlock power0Script = null;
     SpecialBlock power1Script = null;
+    SpecialBlock power2Script = null;
 
     int power0Num = -1;
     int power1Num = -1;
+    int power2Num = -1;
 
     int powerChoice = -1;
 
@@ -149,7 +152,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                     && temp != prevNum2 && temp != curNum2
                     && temp != prevNum3 && temp != curNum3
                     && temp != prevNum4 && temp != curNum4
-                    && temp != power1Num && temp != power0Num)
+                    && temp != power2Num && temp != power1Num && temp != power0Num)
                 {
                     PV.RPC("ActivateBlock", RpcTarget.All, temp, 1);
                 }
@@ -175,7 +178,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                     && temp != prevNum1 && temp != curNum1
                     && temp != prevNum3 && temp != curNum3
                     && temp != prevNum4 && temp != curNum4
-                    && temp != power1Num && temp != power0Num)
+                    && temp != power2Num && temp != power1Num && temp != power0Num)
                 {
                     PV.RPC("ActivateBlock", RpcTarget.All, temp, 2);
                 }
@@ -201,7 +204,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                     && temp != prevNum1 && temp != curNum1
                     && temp != prevNum2 && temp != curNum2
                     && temp != prevNum4 && temp != curNum4
-                    && temp != power1Num && temp != power0Num)
+                    && temp != power2Num && temp != power1Num && temp != power0Num)
                 {
                     PV.RPC("ActivateBlock", RpcTarget.All, temp, 3);
                 }
@@ -227,7 +230,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                     && temp != prevNum1 && temp != curNum1
                     && temp != prevNum2 && temp != curNum2
                     && temp != prevNum3 && temp != curNum3
-                    && temp != power1Num && temp != power0Num)
+                    && temp != power2Num && temp != power1Num && temp != power0Num)
                 {
 
                     PV.RPC("ActivateBlock", RpcTarget.All, temp, 4);
@@ -236,7 +239,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
         }
 
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1 &&
-            putSpecialBlock && blocks.Count > totalNumBlocks / 4 && !(power0used && power1used) &&
+            putSpecialBlock && blocks.Count > totalNumBlocks / 4 && !(power0used && power1used && power2used) &&
             ((player1 != null && player1.GetComponent<PlayerController>().moveable) ||
             (player2 != null && player2.GetComponent<PlayerController>().moveable) ||
             (player3 != null && player3.GetComponent<PlayerController>().moveable) ||
@@ -256,23 +259,61 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                     && temp != prevNum2 && temp != curNum2
                     && temp != prevNum3 && temp != curNum3
                     && temp != prevNum4 && temp != curNum4
-                    && temp != power1Num && temp != power0Num)
+                    && temp != power1Num && temp != power0Num && temp != power2Num)
                 {
                     newSpecNum = temp;
 
                     int powerChoice = -1;
 
-                    if (!power0used && !power1used)
+                    if (!power0used && !power1used && !power2used)
                     {
-                        powerChoice = Random.Range(0, 2);
+                        powerChoice = Random.Range(0, 3);
                     }
                     else
                     {
                         if (power0used)
-                            powerChoice = 1;
+                        {
+                            if (!power1used && !power2used)
+                                powerChoice = Random.Range(1, 3);
+
+                            else if (power1used)
+                                powerChoice = 2;
+
+                            else if (power2used)
+                                powerChoice = 1;
+                        }
 
                         else if (power1used)
-                            powerChoice = 0;
+                        {
+                            if (!power0used && !power2used)
+                            {
+                                powerChoice = Random.Range(0, 2);
+
+                                if (powerChoice == 1)
+                                {
+                                    powerChoice = 2;
+                                }
+                            }
+                                
+
+                            else if (power0used)
+                                powerChoice = 2;
+
+                            else if (power2used)
+                                powerChoice = 0;
+                        }
+
+                        else if (power2used)
+                        {
+                            if (!power0used && !power1used)
+                                powerChoice = Random.Range(0,2);
+
+                            else if (power0used)
+                                powerChoice = 1;
+
+                            else if (power1used)
+                                powerChoice = 0;
+                        }
                     }
 
                     PV.RPC("SpecialBlock", RpcTarget.All, newSpecNum, powerChoice);
@@ -388,6 +429,16 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             power1Num = blockIndex;
             power1used = true;
         }
+        else if (powerChoice == 2)
+        {
+            power2Script = block.transform.GetChild(0).gameObject.GetComponent<SpecialBlock>();
+            power2Script.choice = powerChoice;
+            power2Script.blockActivated = true;
+            power2Script.enabled = true;
+
+            power2Num = blockIndex;
+            power2used = true;
+        }
 
         if (powerChoice != -1)
         {
@@ -448,6 +499,18 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                 blocks.Remove(power1Num);
                 StartCoroutine(CooldownSB(false));
                 power1used = false;
+            }
+        }
+
+        if (blocks.ContainsKey(power2Num))
+        {
+            if (blocks[power2Num] == null)
+            {
+                // Remove destroyed blocks
+
+                blocks.Remove(power2Num);
+                StartCoroutine(CooldownSB(false));
+                power2used = false;
             }
         }
     }
@@ -530,6 +593,13 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                         power1used = false;
                         power1Script = null;
                         power1Num = -1;
+                    }
+
+                    if (powerNum == 2)
+                    {
+                        power2used = false;
+                        power2Script = null;
+                        power2Num = -1;
                     }
                 }
             }

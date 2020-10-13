@@ -7,7 +7,7 @@ public class BlueOnClick : MonoBehaviour
 {
     private Image image;
     private GameObject player;
-    public float duration = 4f;
+    public float duration = 7f;
     bool used = false;
 
     public int playerIndex;

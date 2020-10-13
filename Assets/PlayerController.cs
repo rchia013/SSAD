@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
         uiObject.SetActive(true);
         speedEffect.Pause();
         sizeEffect.Pause();
+        jumpEffect.Pause();
 
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();

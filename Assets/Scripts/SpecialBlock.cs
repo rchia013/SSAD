@@ -30,6 +30,7 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
 
     public GameObject powerup1;
     public GameObject powerup2;
+    public GameObject powerup3;
 
     public int choice = -1;
     private GameObject chosenPower = null;
@@ -71,6 +72,10 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
 
             case 1:
                 chosenPower = powerup2;
+                break;
+
+            case 2:
+                chosenPower = powerup3;
                 break;
 
             default:
