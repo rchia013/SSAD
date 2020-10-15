@@ -50692,8 +50692,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.08, y: 0.08, z: 0.08}
-  m_Center: {x: 0, y: 0.05, z: 0}
+  m_Size: {x: 0.08, y: 0.13, z: 0.08}
+  m_Center: {x: 0, y: 0.08, z: 0}
 --- !u!114 &5325333811285329666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50742,8 +50742,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.05
-  m_Height: 0.1
+  m_Radius: 0.04
+  m_Height: 0.08
   m_Direction: 1
   m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!114 &5325333811285329679
@@ -50791,7 +50791,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 0
-  playerID: 
   playerName: 
   colorIndex: 0
   controller: {fileID: 0}
@@ -50807,6 +50806,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   speedEffect: {fileID: 5323831353912481973}
   sizeEffect: {fileID: 5323831354191382621}
+  jumpEffect: {fileID: 0}
+  respawning: 0
   moveable: 0
   respawnThreshold: 0
   uiObject: {fileID: 0}
