@@ -249,19 +249,28 @@ public class AvatarController : MonoBehaviour
 
         if (avatarPath.Contains("Unknown"))
         {
+            avatar.rectTransform.localPosition = new Vector3(0, 7.4f, 0);
             avatar.rectTransform.sizeDelta = new Vector2(10, 12);
             avatar.color = Color.white;
         }
 
         else if (avatarPath.Contains("Mummy"))
         {
+            avatar.rectTransform.localPosition = new Vector3(0, 7.4f, 0);
             avatar.rectTransform.sizeDelta = new Vector2(15, 18);
             avatar.color = new Color(0.8f, 0.8f, 0.8f);
         }
         else if (avatarPath.Contains("Astronaut"))
         {
+            avatar.rectTransform.localPosition = new Vector3(0, 7.4f, 0);
             avatar.rectTransform.sizeDelta = new Vector2(17, 22);
             avatar.color = new Color(0.92f, 0.92f, 0.92f);
+        }
+        else if (avatarPath.Contains("Ball"))
+        {
+            avatar.rectTransform.localPosition = new Vector3(0, 5.5f, 0);
+            avatar.rectTransform.sizeDelta = new Vector2(14, 18);
+            avatar.color = new Color(0.78f, 0.78f, 0.78f);
         }
 
         avatar.sprite = Resources.Load<Sprite>(avatarPath);
@@ -437,7 +446,7 @@ public class AvatarController : MonoBehaviour
                 break;
 
             case 3:
-                avatarPath += "Knight_";
+                avatarPath += "Ball_";
                 break;
 
             default:
