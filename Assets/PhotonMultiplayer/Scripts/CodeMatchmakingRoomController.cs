@@ -25,6 +25,8 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
     private Button cancelButton;
     [SerializeField]
     private Button leaveButton;
+    [SerializeField]
+    private Button mapButton;
 
     public void Update()
     {
@@ -76,9 +78,11 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
         {
             startButton.gameObject.SetActive(true);
             cancelButton.gameObject.SetActive(true);
+            mapButton.gameObject.SetActive(true);
         }
         else
         {
+
             leaveButton.gameObject.SetActive(true);
         }
 

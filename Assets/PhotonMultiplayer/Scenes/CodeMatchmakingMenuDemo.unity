@@ -5376,12 +5376,12 @@ GameObject:
   - component: {fileID: 595656554}
   - component: {fileID: 595656553}
   m_Layer: 5
-  m_Name: Start (1)
+  m_Name: Choose Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &595656552
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17361,6 +17361,7 @@ MonoBehaviour:
   startButton: {fileID: 1166776031}
   cancelButton: {fileID: 1204753158}
   leaveButton: {fileID: 1288549152}
+  mapButton: {fileID: 595656553}
 --- !u!114 &1918783609
 MonoBehaviour:
   m_ObjectHideFlags: 0

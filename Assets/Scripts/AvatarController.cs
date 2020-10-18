@@ -166,8 +166,6 @@ public class AvatarController : MonoBehaviour
         playerList.Add(newUsername, -1);
 
         PV.RPC("updateTotalUI", RpcTarget.All);
-
-
     }
 
     public void removePlayer(string oldUsername)
