@@ -142,10 +142,21 @@ public class GameComplete : MonoBehaviour
 
         pointsAwarded *= QM.Difficulty;
 
-        // string urlPoints = ;
-        // RestClient.Post(url: urlPoints, ...);
-        // print("POSTED!!!!");
+        updateAchievementPoints(pointsAwarded);
 
+    }
+
+    void updateAchievementPoints(int achievementPoints)
+    {
+        Achievement playerinfo = new Achievement();
+        string playerurl = "https://quizguyz.firebaseio.com/Users/" + localID;
+        RestClient.Get(url: playerurl + ".json").Then(onResolved: response =>
+        {
+            playerinfo = JsonConvert.DeserializeObject<Achievement>(response.Text);
+            playerinfo.achievementPoints = playerinfo.achievementPoints + achievementPoints;
+            RestClient.Put(url: playerurl + "/achievementPoints.json", JsonConvert.SerializeObject(playerinfo.achievementPoints));
+        });
+        
     }
 
     void displayResults()
