@@ -229,7 +229,7 @@ public class AvatarController : MonoBehaviour
         {
             avatar.rectTransform.localPosition = new Vector3(0, 5.5f, 0);
             avatar.rectTransform.sizeDelta = new Vector2(14, 18);
-            avatar.color = new Color(0.78f, 0.78f, 0.78f);
+            avatar.color = new Color(0.85f, 0.85f, 0.85f);
         }
 
         avatar.sprite = Resources.Load<Sprite>(avatarPath);

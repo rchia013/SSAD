@@ -48,8 +48,6 @@ public class GameSetUp : MonoBehaviourPunCallbacks
     void Start()
     {
         mapIndex = MapController.mapIndex;
-        Category = MapController.Category;
-        Difficulty = MapController.Difficulty;
 
         ArenaCon.GetComponent<ArenaController>().setUpMap(mapIndex);
 

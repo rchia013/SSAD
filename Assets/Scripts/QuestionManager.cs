@@ -33,6 +33,9 @@ public class QuestionManager : MonoBehaviour
         Category = MapController.Category;
         Difficulty = MapController.Difficulty;
 
+        print("Cat: " + Category);
+        print("Diff: " + Difficulty);
+
         ended = false;
 
         string QuestionUrl = "https://quizguyz.firebaseio.com/Questions/";
@@ -66,10 +69,12 @@ public class QuestionManager : MonoBehaviour
             questions = JsonConvert.DeserializeObject<List<Question>>(response.Text);
 
             print("Added Question");
+
+            print("QUESTIONS count");
+            print(questions.Count);
         });
 
-        print("QUESTIONS count");
-        print(questions.Count);
+        
 
     }
 

@@ -50,7 +50,7 @@ public class MapController : MonoBehaviour
 
         if (PhotonNetwork.IsMasterClient)
         {
-            PV.RPC("setMapSettings", RpcTarget.All, mapIndex, CodeMatchmakingLobbyController.diff, CodeMatchmakingLobbyController.cat);
+            PV.RPC("setMapSettings", RpcTarget.All, mapIndex, CodeMatchmakingLobbyController.cat, CodeMatchmakingLobbyController.diff);
         }
         displaySelectedMap();
     }
