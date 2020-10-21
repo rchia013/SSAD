@@ -120,8 +120,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: OnClick, Assembly-CSharp
+      - m_Target: {fileID: -1682814163777195961}
+        m_TargetAssemblyTypeName: RedOnClick, Assembly-CSharp
         m_MethodName: Use
         m_Mode: 1
         m_Arguments:
@@ -144,3 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644274c027feec5478d7eba7856b1a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedIncrease: 2
+  duration: 4
+  playerIndex: 0

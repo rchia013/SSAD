@@ -15,6 +15,8 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
     public GameObject ArenaCon;
     public int mapIndex;
+    public int Category;
+    public int Difficulty;
 
     public Transform[] spawnPoints1;
     public Transform[] spawnPoints2;

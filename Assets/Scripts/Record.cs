@@ -10,12 +10,6 @@ public class Record
         private set;
     }
 
-    public int SessionID
-    {
-        get;
-        set;
-    }
-
     public int Difficulty
     {
         get;
@@ -47,16 +41,10 @@ public class Record
     }
 
 
-    //int ID;
-    //int Difficulty;
-    //int Cateogory;
-    //string Description public object MyProperty { get; set; }
-
     // Start is called before the first frame update
-    public Record(string datetime, int sessID, int diff, int cat, string playerName, int points, Dictionary<string, int> resp)
+    public Record(string datetime, int diff, int cat, string playerName, int points, Dictionary<string, int> resp)
     {
         this.DateTime = datetime;
-        this.SessionID = sessID;
         this.Difficulty = diff;
         this.Category = cat;
 

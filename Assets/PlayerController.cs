@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     //ID
 
     public int playerIndex;
-    public string playerID;
     public string playerName;
     public int colorIndex;
 
@@ -43,9 +42,11 @@ public class PlayerController : MonoBehaviour
     float freeze = 1.4f;
     public ParticleSystem speedEffect;
     public ParticleSystem sizeEffect;
+    public ParticleSystem jumpEffect;
 
     // RESPAWN:
 
+    public bool respawning = false;
     public bool moveable = false;
     public float respawnThreshold;
 
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
         uiObject.SetActive(true);
         speedEffect.Pause();
         sizeEffect.Pause();
+        jumpEffect.Pause();
 
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
@@ -164,6 +166,8 @@ public class PlayerController : MonoBehaviour
     {
         if (transform.position.y < respawnThreshold)
         {
+            respawning = true;
+
             print("drop");
 
             transform.position = respawnPoint;
@@ -215,6 +219,7 @@ public class PlayerController : MonoBehaviour
     void FinishRespawn()
     {
         moveable = true;
+        respawning = false;
         uiObject.SetActive(false);
     }
 
@@ -226,6 +231,11 @@ public class PlayerController : MonoBehaviour
     public void boostSize(bool enable)
     {
         PV.RPC("doBoostSize", RpcTarget.All, enable);
+    }
+
+    public void boostJump(bool enable)
+    {
+        PV.RPC("doBoostJump", RpcTarget.All, enable);
     }
 
     [PunRPC]
@@ -251,6 +261,19 @@ public class PlayerController : MonoBehaviour
         else
         {
             sizeEffect.Stop();
+        }
+    }
+
+    [PunRPC]
+    public void doBoostJump(bool enable)
+    {
+        if (enable)
+        {
+            jumpEffect.Play();
+        }
+        else
+        {
+            jumpEffect.Stop();
         }
     }
 

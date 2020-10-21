@@ -13,7 +13,7 @@ public class Countdown : MonoBehaviour
 {
 
     float currentTime = 0f;
-    float startingTime = 125.49999f;
+    public float startingTime = 125.49999f;
     float totalTime;
     double minutes;
     string min;
@@ -107,8 +107,6 @@ public class Countdown : MonoBehaviour
         }
 
         Destroy(countdown);
-        GameController.GetComponent<GameComplete>().display = true;
-        print("END!GAME");
     }
 
 

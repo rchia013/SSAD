@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class MapController : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class MapController : MonoBehaviour
 
     private bool mapSelected = false;
     public static int mapIndex = -1;
+    public static int Category;
+    public static int Difficulty;
 
     public GameObject MapPanel;
     public GameObject RoomPanel;
@@ -23,11 +26,14 @@ public class MapController : MonoBehaviour
     public Image MapDisplay;
     public Image MapBorder;
 
+    private PhotonView PV;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        PV = GetComponent<PhotonView>();
         InitializeToggles();
     }
 
@@ -41,6 +47,12 @@ public class MapController : MonoBehaviour
         {
             ConfirmMap.interactable = false;
         }
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PV.RPC("setMapSettings", RpcTarget.All, mapIndex, CodeMatchmakingLobbyController.cat, CodeMatchmakingLobbyController.diff);
+        }
+        displaySelectedMap();
     }
 
     private void InitializeToggles()
@@ -69,6 +81,7 @@ public class MapController : MonoBehaviour
                     toggles[i].interactable = false;
                 }
             }
+
             mapIndex = index;
             mapSelected = true;
         }
@@ -98,8 +111,17 @@ public class MapController : MonoBehaviour
         MapPanel.SetActive(false);
         RoomPanel.SetActive(true);
 
-        displaySelectedMap();
+        //displaySelectedMap();
     }
+
+    [PunRPC]
+    private void setMapSettings(int map, int cat, int diff)
+    {
+        mapIndex = map;
+        Category = cat;
+        Difficulty = diff;
+    }
+
 
     private void displaySelectedMap()
     {
@@ -117,5 +139,10 @@ public class MapController : MonoBehaviour
         }
 
         MapDisplay.sprite = Resources.Load<Sprite>(mapPath);
+    }
+
+    public void resetMap()
+    {
+        mapIndex = -1;
     }
 }

@@ -95,47 +95,6 @@ public class AvatarController : MonoBehaviour
 
     private void Update()
     {
-        /* if (isCreator)
-        {
-            startButton.gameObject.SetActive(true);
-            cancelButton.gameObject.SetActive(true);
-            leaveButton.gameObject.SetActive(false);
-        }
-        else
-        {
-            leaveButton.gameObject.SetActive(true);
-            startButton.gameObject.SetActive(false);
-            cancelButton.gameObject.SetActive(false);
-        }
-
-        if (maxPlayers != -1 && !platformsInitialized)
-        {
-            if (maxPlayers >= 1)
-            {
-                platform1.gameObject.SetActive(true);
-                Avatars.Add(Avatar1);
-                Names.Add(Name1);
-            }
-            if (maxPlayers >= 2)
-            {
-                platform2.gameObject.SetActive(true);
-                Avatars.Add(Avatar2);
-                Names.Add(Name2);
-            }
-            if (maxPlayers >= 3)
-            {
-                platform3.gameObject.SetActive(true);
-                Avatars.Add(Avatar3);
-                Names.Add(Name3);
-            }
-            if (maxPlayers >= 4)
-            {
-                platform4.gameObject.SetActive(true);
-                Avatars.Add(Avatar4);
-                Names.Add(Name4);
-            }
-        } */
-
         if (selectionValid(curSelection))
         {
             confirm.interactable = true;
@@ -166,8 +125,6 @@ public class AvatarController : MonoBehaviour
         playerList.Add(newUsername, -1);
 
         PV.RPC("updateTotalUI", RpcTarget.All);
-
-
     }
 
     public void removePlayer(string oldUsername)
@@ -251,19 +208,28 @@ public class AvatarController : MonoBehaviour
 
         if (avatarPath.Contains("Unknown"))
         {
+            avatar.rectTransform.localPosition = new Vector3(0, 7.4f, 0);
             avatar.rectTransform.sizeDelta = new Vector2(10, 12);
             avatar.color = Color.white;
         }
 
         else if (avatarPath.Contains("Mummy"))
         {
+            avatar.rectTransform.localPosition = new Vector3(0, 7.4f, 0);
             avatar.rectTransform.sizeDelta = new Vector2(15, 18);
             avatar.color = new Color(0.8f, 0.8f, 0.8f);
         }
         else if (avatarPath.Contains("Astronaut"))
         {
+            avatar.rectTransform.localPosition = new Vector3(0, 7.4f, 0);
             avatar.rectTransform.sizeDelta = new Vector2(17, 22);
             avatar.color = new Color(0.92f, 0.92f, 0.92f);
+        }
+        else if (avatarPath.Contains("Ball"))
+        {
+            avatar.rectTransform.localPosition = new Vector3(0, 5.5f, 0);
+            avatar.rectTransform.sizeDelta = new Vector2(14, 18);
+            avatar.color = new Color(0.85f, 0.85f, 0.85f);
         }
 
         avatar.sprite = Resources.Load<Sprite>(avatarPath);
@@ -439,7 +405,7 @@ public class AvatarController : MonoBehaviour
                 break;
 
             case 3:
-                avatarPath += "Knight_";
+                avatarPath += "Ball_";
                 break;
 
             default:

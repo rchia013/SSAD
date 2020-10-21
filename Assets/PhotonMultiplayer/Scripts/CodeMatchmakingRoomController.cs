@@ -3,6 +3,7 @@ using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
@@ -25,6 +26,8 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
     private Button cancelButton;
     [SerializeField]
     private Button leaveButton;
+    [SerializeField]
+    private Button mapButton;
 
     public void Update()
     {
@@ -63,7 +66,10 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
         LobbyPanel.SetActive(false);
         RoomPanel.SetActive(true);
 
-        playerCount.text = "Players: "+ PhotonNetwork.PlayerList.Length;
+        print("Player Count = " + PhotonNetwork.PlayerList.Length);
+
+        playerCount.text = "Players: " + PhotonNetwork.PlayerList.Length;
+
 
         for (int i = 0; i < PhotonNetwork.CurrentRoom.MaxPlayers; i++)
         {
@@ -76,10 +82,14 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
         {
             startButton.gameObject.SetActive(true);
             cancelButton.gameObject.SetActive(true);
+            mapButton.gameObject.SetActive(true);
+            mapButton.interactable = true;
         }
         else
         {
             leaveButton.gameObject.SetActive(true);
+            mapButton.gameObject.SetActive(true);
+            mapButton.interactable = false;
         }
 
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
@@ -100,6 +110,19 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
         playerCount.text = PhotonNetwork.PlayerList.Length + " Players";
 
         gameObject.GetComponent<AvatarController>().removePlayer(otherPlayer.NickName);
+    }
+
+    
+    public override void OnLeftRoom()
+    {
+        gameObject.SetActive(false);
+        playerCount.text = "0 Players";
+
+        gameObject.GetComponent<MapController>().resetMap();
+
+
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("CodeMatchMakingMenuDemo");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)

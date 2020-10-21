@@ -42,6 +42,11 @@ public class PickUp : MonoBehaviour
                     itemButton.GetComponent<RedOnClick>().playerIndex = playerIndex;
                 }
                 catch { }
+                try
+                {
+                    itemButton.GetComponent<BlueOnClick>().playerIndex = playerIndex;
+                }
+                catch { }
 
                 Instantiate(itemButton, inventory.slot.transform, false);
 

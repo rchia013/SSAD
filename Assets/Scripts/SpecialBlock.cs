@@ -30,6 +30,7 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
 
     public GameObject powerup1;
     public GameObject powerup2;
+    public GameObject powerup3;
 
     public int choice = -1;
     private GameObject chosenPower = null;
@@ -71,6 +72,10 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
 
             case 1:
                 chosenPower = powerup2;
+                break;
+
+            case 2:
+                chosenPower = powerup3;
                 break;
 
             default:
@@ -195,11 +200,15 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
                 StartCoroutine("HighlightFadeOut");
 
                 PV.RPC("dropSpecBlock", RpcTarget.All);
-                yield return new WaitForSeconds(1);
 
-                print("Gone");
+                yield return new WaitForSeconds(3);
 
                 Destroy(transform.parent.gameObject);
+
+                if (!player.GetComponent<PlayerController>().respawning)
+                {
+                    player.GetComponent<PlayerController>().moveable = true;
+                }
 
                 break;
             }
@@ -231,12 +240,15 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
                     }
 
                     PV.RPC("dropSpecBlock", RpcTarget.All);
-                    yield return new WaitForSeconds(1);
 
-                    print("Gone");
+                    yield return new WaitForSeconds(3);
 
                     Destroy(transform.parent.gameObject);
 
+                    if (!player.GetComponent<PlayerController>().respawning)
+                    {
+                        player.GetComponent<PlayerController>().moveable = true;
+                    }
                     break;
             }
 

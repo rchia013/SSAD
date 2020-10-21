@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Proyecto26;
 using Newtonsoft.Json;
-using UnityEditor;
+using System.Linq;
+using System;
 
 public class GameComplete : MonoBehaviour
 {
@@ -18,21 +18,19 @@ public class GameComplete : MonoBehaviour
 
     public static string localID;
 
-    private List<GameObject> players = new List<GameObject>();
+    private List<PlayerController> players = new List<PlayerController>();
     private List<Record> records = new List<Record>();
 
     private QuestionManager QM;
 
     public GameObject ResultsPage;
-    public bool display = false;
+    public bool rankProcessed = false;
 
     // Start is called before the first frame update
     void Start()
     {
         //HARD CODED:
         localID = Login.localid;
-        DateTime = null;
-        SessionID = 1234;
 
         // End Gameplay
 
@@ -49,7 +47,7 @@ public class GameComplete : MonoBehaviour
 
     private void Update()
     {
-        if (display)
+        if (rankProcessed)
         {
             // Display Ranking UI
 
@@ -67,7 +65,7 @@ public class GameComplete : MonoBehaviour
 
                 if (curPlayer != null)
                 {
-                    players.Add(curPlayer);
+                    players.Add(curPlayer.GetComponent<PlayerController>());
                 }
                 else
                 {
@@ -93,35 +91,72 @@ public class GameComplete : MonoBehaviour
 
     void createRecords()
     {
-        for (int i = 0; i < players.Count; i++)
-        {
-            //Record cur = new Record("now", 123,
-            //    QM.Difficulty, QM.Category,
-            //    players[i].GetComponent<PlayerController>().playerName,
-            //    players[i].GetComponent<PlayerController>().points,
-            //    QM.getResponses(i));
+        List<PlayerController> rankedPlayers = players.OrderByDescending(o => o.points).ToList();
 
-            Record cur = new Record("now", 123,
-                0, 0,
-                players[i].GetComponent<PlayerController>().playerName,
-                players[i].GetComponent<PlayerController>().getPoints(),
+        string dateTime = System.DateTime.Now.ToString("MM\\/dd\\/yyyy h\\:mm tt");
+
+        for (int i = 0; i < rankedPlayers.Count; i++)
+        {
+            Record cur = new Record(dateTime,
+                QM.Difficulty, QM.Category,
+                rankedPlayers[i].GetComponent<PlayerController>().playerName,
+                rankedPlayers[i].GetComponent<PlayerController>().getPoints(),
                 QM.getResponses(i));
 
             records.Add(cur);
 
-            print(cur.playerName);
-
-            uploadRecord(players[i].GetComponent<PlayerController>().playerID, cur);
+            if (Login.currentUser.username == rankedPlayers[i].GetComponent<PlayerController>().playerName)
+            {
+                uploadRecord(cur, i);
+            }
         }
+
+        rankProcessed = true;
     }
 
-    void uploadRecord(string playerID, Record record)
+    void uploadRecord(Record record, int rank)
     {
-
-        print("localID = " + localID);
-        string urlString = "https://quizguyz.firebaseio.com/Users/" + localID+"/Records.json";
-        RestClient.Post(url: urlString, JsonConvert.SerializeObject(record));
+        string urlRecord = "https://quizguyz.firebaseio.com/Users/" + localID+"/Records.json";
+        RestClient.Post(url: urlRecord, JsonConvert.SerializeObject(record));
         print("POSTED!!!!");
+
+        //ACHIEVEMENT POINTS CALCULATION:
+
+        int pointsAwarded = 0;
+
+        switch (rank)
+        {
+            case 0:
+                pointsAwarded = 10;
+                break;
+            case 1:
+                pointsAwarded = 7;
+                break;
+            case 2:
+                pointsAwarded = 4;
+                break;
+            case 3:
+                pointsAwarded = 1;
+                break;
+        }
+
+        pointsAwarded *= QM.Difficulty;
+
+        updateAchievementPoints(pointsAwarded);
+
+    }
+
+    void updateAchievementPoints(int achievementPoints)
+    {
+        Achievement playerinfo = new Achievement();
+        string playerurl = "https://quizguyz.firebaseio.com/Users/" + localID;
+        RestClient.Get(url: playerurl + ".json").Then(onResolved: response =>
+        {
+            playerinfo = JsonConvert.DeserializeObject<Achievement>(response.Text);
+            playerinfo.achievementPoints = playerinfo.achievementPoints + achievementPoints;
+            RestClient.Put(url: playerurl + "/achievementPoints.json", JsonConvert.SerializeObject(playerinfo.achievementPoints));
+        });
+        
     }
 
     void displayResults()

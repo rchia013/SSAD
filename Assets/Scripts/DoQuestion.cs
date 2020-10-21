@@ -40,7 +40,7 @@ public class DoQuestion : MonoBehaviour
     private QuestionManager QM;
 
     private Question question;
-    private int response;
+    
 
     // Start is called before the first frame update
 
@@ -61,6 +61,7 @@ public class DoQuestion : MonoBehaviour
 
         QM = GameObject.FindWithTag("GameController").GetComponent<QuestionManager>();
         timeLimit = QM.getTimeLimit();
+
         setupNewQuestion();
     }
 
@@ -97,6 +98,7 @@ public class DoQuestion : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
+            int index = i;
             switch (i)
             {
                 case 0:
@@ -114,11 +116,11 @@ public class DoQuestion : MonoBehaviour
             }
             if (correctOption == (i+1))
             {
-                buttons[i].onClick.AddListener(delegate { Correct(i); });
+                buttons[i].onClick.AddListener(delegate { Correct(index); });
             }
             else
             {
-                buttons[i].onClick.AddListener(delegate { Wrong(i); });
+                buttons[i].onClick.AddListener(delegate { Wrong(index); });
             }
             
         }
@@ -164,7 +166,10 @@ public class DoQuestion : MonoBehaviour
             yield return null;
         }
 
-        Unanswered();
+        if (!answered && !correct)
+        {
+            Unanswered();
+        }
     }
 
     private void resetButtons()
@@ -177,13 +182,10 @@ public class DoQuestion : MonoBehaviour
 
     void Correct(int index)
     {
+        print("Response: " + index);
+        QM.recordResponse(playerIndex, question.ID, index);
         print("Correct");
         resetButtons();
-
-        StartCoroutine("Disappear");
-
-        response = index;
-        recordResponse();
 
         if (pointsAwardable)
         {
@@ -194,16 +196,19 @@ public class DoQuestion : MonoBehaviour
 
         answered = true;
         correct = true;
+
+        StartCoroutine("Disappear");
     }
 
     void Wrong(int index)
     {
+        print("Response: " + index);
+        QM.recordResponse(playerIndex, question.ID, index);
+
         print("Wrong");
         resetButtons();
 
-        response = index;
-        recordResponse();
-
+       
         if (pointsAwardable)
         {
             int points = Mathf.FloorToInt(timeLimit / 3) * (-1);
@@ -219,11 +224,9 @@ public class DoQuestion : MonoBehaviour
 
     void Unanswered()
     {
+        QM.recordResponse(playerIndex, question.ID, -1);
         print("Not Answered");
         resetButtons();
-
-        response = -1;
-        recordResponse();
 
         answered = false;
         correct = false;
@@ -266,17 +269,13 @@ public class DoQuestion : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void recordResponse()
-    {
-        print("Player = " + playerIndex);
-        print("Q = " + question.ID);
-        print("Resp = " + response);
-        QM.recordResponse(playerIndex, question.ID, response);
-    }
+    //void recordResponse(int playerIndex, int questionID, int resp)
+    //{
+    //    QM.recordResponse(playerIndex, question.ID, resp);
+    //}
 
     void deactivateUI()
     {
-        //StartCoroutine("Disappear");
         gameObject.SetActive(false);   
     }
 }

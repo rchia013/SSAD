@@ -22,9 +22,7 @@ public class HighscoreTable : MonoBehaviour
     {
         print("UpdateEnd");
 
-        List<Record> SortedList = records.OrderBy(o => o.Points).ToList();
-
-        for (int i = 0; i < SortedList.Count; i++)
+        for (int i = 0; i < records.Count; i++)
         {
             print("Entry"+(i+1));
 
@@ -33,17 +31,19 @@ public class HighscoreTable : MonoBehaviour
             entryRectTransform.anchoredPosition = new Vector3(50, -templateHeight * i - 20, 0);
             entryTransform.gameObject.SetActive(true);
 
-            print(SortedList[i].playerName);
+            print(records[i].playerName);
 
             entryTransform.Find("Rank").GetComponent<TextMeshProUGUI>().text = (i+1).ToString();
-            entryTransform.Find("Name").GetComponent<TextMeshProUGUI>().text = SortedList[i].playerName;
-            entryTransform.Find("Points").GetComponent<TextMeshProUGUI>().text = SortedList[i].Points.ToString();
+            entryTransform.Find("Name").GetComponent<TextMeshProUGUI>().text = records[i].playerName;
+            entryTransform.Find("Points").GetComponent<TextMeshProUGUI>().text = records[i].Points.ToString();
         }
     }
 
     public void OnClickEnd()
     {
         SceneManager.LoadScene("Main Menu");
+        //SceneManager.UnloadSceneAsync("SampleScene");
+
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.Disconnect();
     }
