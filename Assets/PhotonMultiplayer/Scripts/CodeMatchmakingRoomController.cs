@@ -66,6 +66,8 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
         LobbyPanel.SetActive(false);
         RoomPanel.SetActive(true);
 
+        print("Player Count = " + PhotonNetwork.PlayerList.Length);
+
         playerCount.text = "Players: "+ PhotonNetwork.PlayerList.Length;
 
         for (int i = 0; i < PhotonNetwork.CurrentRoom.MaxPlayers; i++)
@@ -80,10 +82,13 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
             startButton.gameObject.SetActive(true);
             cancelButton.gameObject.SetActive(true);
             mapButton.gameObject.SetActive(true);
+            mapButton.interactable = true;
         }
         else
         {
             leaveButton.gameObject.SetActive(true);
+            mapButton.gameObject.SetActive(true);
+            mapButton.interactable = false;
         }
 
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
@@ -114,7 +119,7 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
 
         gameObject.GetComponent<MapController>().resetMap();
 
-        PhotonNetwork.LeaveRoom();
+
         PhotonNetwork.Disconnect();
         SceneManager.LoadScene("CodeMatchMakingMenuDemo");
     }
