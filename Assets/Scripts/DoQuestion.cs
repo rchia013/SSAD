@@ -61,6 +61,7 @@ public class DoQuestion : MonoBehaviour
 
         QM = GameObject.FindWithTag("GameController").GetComponent<QuestionManager>();
         timeLimit = QM.getTimeLimit();
+
         setupNewQuestion();
     }
 

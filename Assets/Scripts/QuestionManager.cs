@@ -30,15 +30,8 @@ public class QuestionManager : MonoBehaviour
     {
         // Initialize settings:
 
-        PV = GetComponent<PhotonView>();
-
-        if (PhotonNetwork.IsMasterClient)
-        {
-            Difficulty = CodeMatchmakingLobbyController.diff;
-            Category = CodeMatchmakingLobbyController.cat;
-
-            PV.RPC("masterSetQuestions", RpcTarget.All, Difficulty, Category);
-        }
+        Category = MapController.Category;
+        Difficulty = MapController.Difficulty;
 
         ended = false;
 
@@ -79,14 +72,6 @@ public class QuestionManager : MonoBehaviour
         print(questions.Count);
 
     }
-
-    [PunRPC]
-    private void masterSetQuestions(int diff, int cat)
-    {
-        Difficulty = diff;
-        Category = cat;
-    }
-
 
     public Question getRandomQuestion(int playerIndex)
     {

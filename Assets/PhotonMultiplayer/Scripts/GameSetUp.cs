@@ -15,6 +15,8 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
     public GameObject ArenaCon;
     public int mapIndex;
+    public int Category;
+    public int Difficulty;
 
     public Transform[] spawnPoints1;
     public Transform[] spawnPoints2;
@@ -46,6 +48,8 @@ public class GameSetUp : MonoBehaviourPunCallbacks
     void Start()
     {
         mapIndex = MapController.mapIndex;
+        Category = MapController.Category;
+        Difficulty = MapController.Difficulty;
 
         ArenaCon.GetComponent<ArenaController>().setUpMap(mapIndex);
 
