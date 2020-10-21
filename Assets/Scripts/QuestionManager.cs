@@ -5,6 +5,7 @@ using Proyecto26;
 using System;
 using System.Linq;
 using Newtonsoft.Json;
+using Photon.Pun;
 
 public class QuestionManager : MonoBehaviour
 {
@@ -22,13 +23,22 @@ public class QuestionManager : MonoBehaviour
 
     public List<Question> questions = new List<Question>();
 
+    private PhotonView PV;
+
     // Start is called before the first frame update
     void Start()
     {
         // Initialize settings:
 
-        Category = CodeMatchmakingLobbyController.cat;
-        Difficulty = CodeMatchmakingLobbyController.diff;
+        PV = GetComponent<PhotonView>();
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Difficulty = CodeMatchmakingLobbyController.diff;
+            Category = CodeMatchmakingLobbyController.cat;
+
+            PV.RPC("masterSetQuestions", RpcTarget.All, Difficulty, Category);
+        }
 
         ended = false;
 
@@ -69,6 +79,14 @@ public class QuestionManager : MonoBehaviour
         print(questions.Count);
 
     }
+
+    [PunRPC]
+    private void masterSetQuestions(int diff, int cat)
+    {
+        Difficulty = diff;
+        Category = cat;
+    }
+
 
     public Question getRandomQuestion(int playerIndex)
     {
