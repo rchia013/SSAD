@@ -95,47 +95,6 @@ public class AvatarController : MonoBehaviour
 
     private void Update()
     {
-        /* if (isCreator)
-        {
-            startButton.gameObject.SetActive(true);
-            cancelButton.gameObject.SetActive(true);
-            leaveButton.gameObject.SetActive(false);
-        }
-        else
-        {
-            leaveButton.gameObject.SetActive(true);
-            startButton.gameObject.SetActive(false);
-            cancelButton.gameObject.SetActive(false);
-        }
-
-        if (maxPlayers != -1 && !platformsInitialized)
-        {
-            if (maxPlayers >= 1)
-            {
-                platform1.gameObject.SetActive(true);
-                Avatars.Add(Avatar1);
-                Names.Add(Name1);
-            }
-            if (maxPlayers >= 2)
-            {
-                platform2.gameObject.SetActive(true);
-                Avatars.Add(Avatar2);
-                Names.Add(Name2);
-            }
-            if (maxPlayers >= 3)
-            {
-                platform3.gameObject.SetActive(true);
-                Avatars.Add(Avatar3);
-                Names.Add(Name3);
-            }
-            if (maxPlayers >= 4)
-            {
-                platform4.gameObject.SetActive(true);
-                Avatars.Add(Avatar4);
-                Names.Add(Name4);
-            }
-        } */
-
         if (selectionValid(curSelection))
         {
             confirm.interactable = true;

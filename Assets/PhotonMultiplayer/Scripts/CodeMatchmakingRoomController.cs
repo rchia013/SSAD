@@ -3,6 +3,7 @@ using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
@@ -82,7 +83,6 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
         }
         else
         {
-
             leaveButton.gameObject.SetActive(true);
         }
 
@@ -111,6 +111,12 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
     {
         gameObject.SetActive(false);
         playerCount.text = "0 Players";
+
+        gameObject.GetComponent<MapController>().resetMap();
+
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("CodeMatchMakingMenuDemo");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)

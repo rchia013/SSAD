@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class MapController : MonoBehaviour
 {
@@ -23,11 +24,14 @@ public class MapController : MonoBehaviour
     public Image MapDisplay;
     public Image MapBorder;
 
+    private PhotonView PV;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        PV = GetComponent<PhotonView>();
         InitializeToggles();
     }
 
@@ -41,6 +45,12 @@ public class MapController : MonoBehaviour
         {
             ConfirmMap.interactable = false;
         }
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PV.RPC("setMapIndex", RpcTarget.All, mapIndex);
+        }
+        displaySelectedMap();
     }
 
     private void InitializeToggles()
@@ -69,6 +79,7 @@ public class MapController : MonoBehaviour
                     toggles[i].interactable = false;
                 }
             }
+
             mapIndex = index;
             mapSelected = true;
         }
@@ -98,8 +109,15 @@ public class MapController : MonoBehaviour
         MapPanel.SetActive(false);
         RoomPanel.SetActive(true);
 
-        displaySelectedMap();
+        //displaySelectedMap();
     }
+
+    [PunRPC]
+    private void setMapIndex(int index)
+    {
+        mapIndex = index;
+    }
+
 
     private void displaySelectedMap()
     {
@@ -117,5 +135,10 @@ public class MapController : MonoBehaviour
         }
 
         MapDisplay.sprite = Resources.Load<Sprite>(mapPath);
+    }
+
+    public void resetMap()
+    {
+        mapIndex = -1;
     }
 }
