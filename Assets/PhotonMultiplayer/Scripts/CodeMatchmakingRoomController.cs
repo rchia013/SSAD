@@ -68,7 +68,8 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
 
         print("Player Count = " + PhotonNetwork.PlayerList.Length);
 
-        playerCount.text = "Players: "+ PhotonNetwork.PlayerList.Length;
+        playerCount.text = "Players: " + PhotonNetwork.PlayerList.Length;
+
 
         for (int i = 0; i < PhotonNetwork.CurrentRoom.MaxPlayers; i++)
         {

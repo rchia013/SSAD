@@ -252,6 +252,8 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     public void JoinRoomOnClick()
     {
         PhotonNetwork.JoinRoom(joinCode);
+        codeDisplay.text = joinCode;
+
         //if (!roomController.GetComponent<AvatarController>().isCreator)
         //{
         //    roomController.GetComponent<AvatarController>().isCreator = false;
