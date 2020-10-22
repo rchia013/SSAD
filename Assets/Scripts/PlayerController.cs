@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
+using Photon.Realtime;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPunCallbacks
 {
     //ID
 
@@ -61,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     // PHOTON:
 
-    public PhotonView PV;
+    private PhotonView PV;
 
 
     private void Start()
@@ -107,11 +108,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moveable)
+        if (PV.IsMine)
         {
-            Gravity();
-            Jumping();
-            Moving();
+            if (moveable)
+            {
+                Gravity();
+                Jumping();
+                Moving();
+            }
         }
     }
 
@@ -130,13 +134,15 @@ public class PlayerController : MonoBehaviour
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
 
             if (isGrounded)
-            {  
-                anim.SetBool("isWalking", true);
+            {
+                PV.RPC("setWalking", RpcTarget.All, true);
+                // anim.SetBool("isWalking", true);
             }
         }
         else
         {
-            anim.SetBool("isWalking", false);
+            PV.RPC("setWalking", RpcTarget.All, false);
+            // anim.SetBool("isWalking", false);
         }
 
     }
@@ -164,21 +170,25 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (transform.position.y < respawnThreshold)
-        {
-            respawning = true;
+        // if (PV.IsMine)
+       // {
+            if (transform.position.y < respawnThreshold)
+            {
+                respawning = true;
 
-            print("drop");
+                print("drop");
 
-            transform.position = respawnPoint;
-            moveable = false;
-            anim.SetBool("isWalking", false);
+                transform.position = respawnPoint;
+                moveable = false;
+                anim.SetBool("isWalking", false);
+                // PV.RPC("setWalking", RpcTarget.All, false);
 
-            //question.SetActive(false);
-            uiObject.SetActive(true);
+                //question.SetActive(false);
+                uiObject.SetActive(true);
 
-            StartCoroutine("Countdown");
-        }
+                StartCoroutine("Countdown");
+            }
+       //  }
     }
 
     IEnumerator Countdown()
@@ -236,6 +246,12 @@ public class PlayerController : MonoBehaviour
     public void boostJump(bool enable)
     {
         PV.RPC("doBoostJump", RpcTarget.All, enable);
+    }
+
+    [PunRPC]
+    public void setWalking(bool isWalking)
+    {
+        anim.SetBool("isWalking", isWalking);
     }
 
     [PunRPC]

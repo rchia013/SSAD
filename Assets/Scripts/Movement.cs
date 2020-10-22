@@ -70,7 +70,7 @@ public class Movement : MonoBehaviourPunCallbacks {
         PV = GetComponent<PhotonView>();
         pointsUIList = GameSetUp.GS.pointsUIList;
         points = 0;
-        PV.RPC("curPlayerSetup", RpcTarget.All, gameObject.tag, colorIndex, playerIndex, playerName);
+        // PV.RPC("curPlayerSetup", RpcTarget.All, gameObject.tag, colorIndex, playerIndex, playerName);
 
         //UI:
 
@@ -102,9 +102,9 @@ public class Movement : MonoBehaviourPunCallbacks {
     void curPlayerSetup(string tag, int color, int index, string name)
     {
         this.tag = tag;
-        this.colorIndex = color;
-        this.playerIndex = index;
-        this.playerName = name;
+        // this.colorIndex = color;
+        // this.playerIndex = index;
+        // this.playerName = name;
 
     }
 
@@ -113,6 +113,7 @@ public class Movement : MonoBehaviourPunCallbacks {
     {
         if (PV.IsMine) //added this
         {
+            Debug.Log("PV is mine!");
             if (moveable)
             {
 
@@ -154,34 +155,37 @@ public class Movement : MonoBehaviourPunCallbacks {
 
     void FixedUpdate()
     {
-        if (transform.position.y < respawnThreshold)
+        if (PV.IsMine)
         {
-            print("drop");
-
-            transform.position = respawnPoint;
-            moveable = false;
-            trail.Stop();
-            animator.enabled = false;
-
-            question.SetActive(false);
-            uiObject.SetActive(true);
-
-            StartCoroutine("Countdown");
-        }
-
-        if (jumping)
-        {
-            if (curJump < maxJump)
+            if (transform.position.y < respawnThreshold)
             {
-                controller.Move(new Vector3(0f, jumpInc, 0f));
-                curJump += jumpInc;
+                print("drop");
+
+                transform.position = respawnPoint;
+                moveable = false;
+                trail.Stop();
+                animator.enabled = false;
+
+                question.SetActive(false);
+                uiObject.SetActive(true);
+
+                StartCoroutine("Countdown");
             }
-            else
-            {   
-                jumping = false;
-                curJump = 0;
+
+            if (jumping)
+            {
+                if (curJump < maxJump)
+                {
+                    controller.Move(new Vector3(0f, jumpInc, 0f));
+                    curJump += jumpInc;
+                }
+                else
+                {
+                    jumping = false;
+                    curJump = 0;
+                }
             }
-        }    
+        }
     }
 
 

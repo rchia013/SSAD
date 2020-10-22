@@ -30,8 +30,8 @@ public class QuestionManager : MonoBehaviour
     {
         // Initialize settings:
 
-        Category = MapController.Category;
-        Difficulty = MapController.Difficulty;
+        Category = LobbySetUp.LS.category;
+        Difficulty = LobbySetUp.LS.difficulty;
 
         print("Cat: " + Category);
         print("Diff: " + Difficulty);

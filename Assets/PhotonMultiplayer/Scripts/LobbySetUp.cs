@@ -20,6 +20,11 @@ public class LobbySetUp : MonoBehaviour
 
     public Dictionary<string, int> playerList = new Dictionary<string, int>();
 
+    public int category;
+    public int difficulty;
+
+    public int mapIndex;
+
     private void OnEnable()
     {
         if (LobbySetUp.LS == null)

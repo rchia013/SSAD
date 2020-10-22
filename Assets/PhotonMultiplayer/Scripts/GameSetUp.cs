@@ -7,7 +7,7 @@ using Photon.Pun;
 using System;
 using System.IO;
 
-public class GameSetUp : MonoBehaviourPunCallbacks
+public class GameSetUp : MonoBehaviour
 {
     public static GameSetUp GS;
 
@@ -47,7 +47,7 @@ public class GameSetUp : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        mapIndex = MapController.mapIndex;
+        mapIndex = LobbySetUp.LS.mapIndex;
 
         ArenaCon.GetComponent<ArenaController>().setUpMap(mapIndex);
 

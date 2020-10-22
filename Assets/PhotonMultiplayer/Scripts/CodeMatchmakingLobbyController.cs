@@ -130,6 +130,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
         }
 
         print("Category = " + cat);
+        LobbySetUp.LS.category = cat;
     }
 
     void DiffClicked(int index)
@@ -160,6 +161,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
             diffChosen = false;
         }
         print("Difficulty = " + diff);
+        LobbySetUp.LS.difficulty = diff;
     }
 
 
