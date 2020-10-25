@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     // PHOTON:
 
-    private PhotonView PV;
+    public PhotonView PV;
 
 
     private void Start()

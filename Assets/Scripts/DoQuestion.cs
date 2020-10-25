@@ -55,7 +55,7 @@ public class DoQuestion : MonoBehaviour
 
         player = GameSetUp.GS.player;
         playerIndex = GameSetUp.GS.playerIndex;
-        PV = player.GetComponent<PhotonView>();
+        PV = player.GetComponent<PlayerController>().PV;
 
         // Setup Question Manager;
 
