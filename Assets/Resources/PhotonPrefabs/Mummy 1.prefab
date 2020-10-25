@@ -6141,7 +6141,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7746337887926063070}
-  - component: {fileID: 7746337887916744824}
   - component: {fileID: 8575892551675744337}
   - component: {fileID: 8575892551675744339}
   - component: {fileID: 8575892551675744340}
@@ -6149,7 +6148,8 @@ GameObject:
   - component: {fileID: 8950377238131392453}
   - component: {fileID: 4328240749044516072}
   - component: {fileID: 8575892550994861412}
-  - component: {fileID: 6122294137158235066}
+  - component: {fileID: 4946170572042664427}
+  - component: {fileID: 7566141802955380923}
   m_Layer: 0
   m_Name: Mummy 1
   m_TagString: Untagged
@@ -6180,25 +6180,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &7746337887916744824
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7746337887926096894}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
-  m_Controller: {fileID: 9100000, guid: 002cda23e8c1340d087ca3ef7b59e132, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!143 &8575892551675744337
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6295,7 +6276,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 6122294137158235066}
+  - {fileID: 4946170572042664427}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -6324,7 +6305,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
-  anim: {fileID: 7746337887916744824}
   speedEffect: {fileID: 8113011498021755854}
   sizeEffect: {fileID: 8707111235736909415}
   jumpEffect: {fileID: 6171252641578926564}
@@ -6335,7 +6315,7 @@ MonoBehaviour:
   question: {fileID: 0}
   countdown: {fileID: 0}
   points: 0
---- !u!114 &6122294137158235066
+--- !u!114 &4946170572042664427
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6350,6 +6330,25 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
+--- !u!95 &7566141802955380923
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7746337887926096894}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
+  m_Controller: {fileID: 9100000, guid: 002cda23e8c1340d087ca3ef7b59e132, type: 2}
+  m_CullingMode: 2
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8237498899105801364
 GameObject:
   m_ObjectHideFlags: 0

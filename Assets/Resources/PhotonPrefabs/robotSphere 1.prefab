@@ -55559,7 +55559,6 @@ MonoBehaviour:
   question: {fileID: 0}
   countdown: {fileID: 0}
   points: 0
-  PV: {fileID: 0}
 --- !u!1 &5325335645243087642
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
+using System;
 using Photon.Realtime;
 
 public class PlayerController : MonoBehaviourPunCallbacks
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     // ANIMATION:
 
-    public Animator anim;
+    // public Animator anim;
     float freeze = 1.4f;
     public ParticleSystem speedEffect;
     public ParticleSystem sizeEffect;
@@ -85,7 +86,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         jumpEffect.Pause();
 
         controller = GetComponent<CharacterController>();
-        anim = GetComponent<Animator>();
+        // anim = GetComponent<Animator>();
 
         respawnPoint = transform.position;
         respawnThreshold = respawnPoint.y - 3;
@@ -112,9 +113,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             if (moveable)
             {
+                Moving();
                 Gravity();
                 Jumping();
-                Moving();
             }
         }
     }
@@ -126,24 +127,25 @@ public class PlayerController : MonoBehaviourPunCallbacks
         direction = new Vector3(horizontal, 0f, vertical).normalized;
         if (direction.magnitude >= 0.1f)
         {
-
+            // anim.enabled = true;
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
-
+            /*
             if (isGrounded)
             {
                 PV.RPC("setWalking", RpcTarget.All, true);
                 // anim.SetBool("isWalking", true);
-            }
+            }*/
         }
-        else
+        /*else
         {
-            PV.RPC("setWalking", RpcTarget.All, false);
+             PV.RPC("setWalking", RpcTarget.All, false);
             // anim.SetBool("isWalking", false);
-        }
+             // anim.PlayInFixedTime("Move", -1, freeze);
+        }*/
 
     }
 
@@ -170,7 +172,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     void FixedUpdate()
     {
-        // if (PV.IsMine)
+       // if (PV.IsMine)
        // {
             if (transform.position.y < respawnThreshold)
             {
@@ -180,7 +182,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
                 transform.position = respawnPoint;
                 moveable = false;
-                anim.SetBool("isWalking", false);
+                // anim.SetBool("isWalking", false);
                 // PV.RPC("setWalking", RpcTarget.All, false);
 
                 //question.SetActive(false);
@@ -248,11 +250,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
         PV.RPC("doBoostJump", RpcTarget.All, enable);
     }
 
+    /*
     [PunRPC]
     public void setWalking(bool isWalking)
     {
         anim.SetBool("isWalking", isWalking);
-    }
+    }*/
 
     [PunRPC]
     public void doBoostSpeed(bool enable)
