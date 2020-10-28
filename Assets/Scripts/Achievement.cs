@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Achievement
 {
-    public string idToken;
+    public string username;
     public string localid;
     public int achievementPoints;
 }
