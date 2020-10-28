@@ -15,8 +15,8 @@ public class MapController : MonoBehaviour
 
     private bool mapSelected = false;
     public static int mapIndex = -1;
-    // public static int Category;
-    // public static int Difficulty;
+    public static int Category;
+    public static int Difficulty;
 
     public GameObject MapPanel;
     public GameObject RoomPanel;
@@ -47,11 +47,11 @@ public class MapController : MonoBehaviour
         {
             ConfirmMap.interactable = false;
         }
-        /*
+        
         if (PhotonNetwork.IsMasterClient)
         {
             PV.RPC("setMapSettings", RpcTarget.All, mapIndex, CodeMatchmakingLobbyController.cat, CodeMatchmakingLobbyController.diff);
-        }*/
+        }
         displaySelectedMap();
     }
 
@@ -110,19 +110,19 @@ public class MapController : MonoBehaviour
     {
         MapPanel.SetActive(false);
         RoomPanel.SetActive(true);
-        // PV.RPC("setMapSettings", RpcTarget.All, mapIndex, CodeMatchmakingLobbyController.cat, CodeMatchmakingLobbyController.diff);
+        PV.RPC("setMapSettings", RpcTarget.All, mapIndex, CodeMatchmakingLobbyController.cat, CodeMatchmakingLobbyController.diff);
         LobbySetUp.LS.mapIndex = mapIndex; 
-        //displaySelectedMap();
+        displaySelectedMap();
     }
 
-    /*
+    
     [PunRPC]
     private void setMapSettings(int map, int cat, int diff)
     {
         mapIndex = map;
         Category = cat;
         Difficulty = diff;
-    }*/
+    }
 
 
     private void displaySelectedMap()

@@ -47,7 +47,7 @@ public class GameSetUp : MonoBehaviour
 
     void Start()
     {
-        mapIndex = LobbySetUp.LS.mapIndex;
+        mapIndex = MapController.mapIndex;
 
         ArenaCon.GetComponent<ArenaController>().setUpMap(mapIndex);
 
