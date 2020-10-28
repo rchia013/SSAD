@@ -12,6 +12,7 @@ public class Achievement_controller : MonoBehaviour
     public GameObject Bronze;
     public GameObject Silver;
     public GameObject Gold;
+    public TextMeshProUGUI points;
     string localID = Login.localid;
 
     // Start is called before the first frame update
@@ -24,7 +25,8 @@ public class Achievement_controller : MonoBehaviour
             playerinfo = JsonConvert.DeserializeObject<Achievement>(response.Text);
             print("player points count = " + playerinfo.achievementPoints);
 
-            if(playerinfo.achievementPoints > 50 && playerinfo.achievementPoints < 100)
+            points.text = playerinfo.achievementPoints.ToString();
+            if (playerinfo.achievementPoints > 50 && playerinfo.achievementPoints < 100)
             {
                 Bronze.SetActive(true);
             }
@@ -40,6 +42,8 @@ public class Achievement_controller : MonoBehaviour
                 Silver.SetActive(true);
                 Gold.SetActive(true);
             }
+
+
         });
 
     }
