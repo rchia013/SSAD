@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 {
@@ -285,4 +286,11 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
         LobbyPanel.SetActive(false);
         PhotonNetwork.LeaveLobby();
     }
+
+    public void backMainMenuOnClick()
+    {
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("Main Menu");
+    }
+  
 }

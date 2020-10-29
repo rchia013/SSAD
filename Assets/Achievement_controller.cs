@@ -15,9 +15,9 @@ public class Achievement_controller : MonoBehaviour
     public GameObject Gold;
 
     public GameObject firstBar;
-    public GameObject secondBar;
 
     public TextMeshProUGUI points;
+    public TextMeshProUGUI nameBox;
     string localID = Login.localid;
 
     // Start is called before the first frame update
@@ -31,32 +31,30 @@ public class Achievement_controller : MonoBehaviour
             print("player points count = " + playerinfo.achievementPoints);
 
             points.text = playerinfo.achievementPoints.ToString();
-            if (playerinfo.achievementPoints > 50 && playerinfo.achievementPoints < 100)
-            {
-                Bronze.SetActive(true);
+            nameBox.text = playerinfo.username;
 
-                firstBar.GetComponent<Image>().fillAmount = ((float)playerinfo.achievementPoints - 50) / 50;
+            if (playerinfo.achievementPoints <= 300)
+            {
+                firstBar.GetComponent<Image>().fillAmount = ((float)playerinfo.achievementPoints / 300);
+            }
+            else
+            {
+                firstBar.GetComponent<Image>().fillAmount = 1;
             }
             
-            else if (playerinfo.achievementPoints > 100 && playerinfo.achievementPoints < 150)
-            {
-                Bronze.SetActive(true);
-                Silver.SetActive(true);
 
-                firstBar.GetComponent<Image>().fillAmount = 1;
-                secondBar.GetComponent<Image>().fillAmount = ((float)playerinfo.achievementPoints - 100) / 50;
-            }
-            else if (playerinfo.achievementPoints > 150)
+            if (playerinfo.achievementPoints >= 100)
             {
                 Bronze.SetActive(true);
+            }
+            if (playerinfo.achievementPoints >= 200)
+            {
                 Silver.SetActive(true);
+            }
+            if (playerinfo.achievementPoints >= 300)
+            {
                 Gold.SetActive(true);
-
-                firstBar.GetComponent<Image>().fillAmount = 1;
-                secondBar.GetComponent<Image>().fillAmount = 1;
             }
-
-
         });
 
     }
