@@ -11,7 +11,7 @@ public class HighscoreTable : MonoBehaviour
 {
     public Transform entryContainer;
     public Transform entryTemplate;
-    float templateHeight = 55f;
+    float templateHeight = 30f;
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class HighscoreTable : MonoBehaviour
 
             Transform entryTransform = Instantiate(entryTemplate, entryContainer);
             RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
-            entryRectTransform.anchoredPosition = new Vector3(50, -templateHeight * i - 20, 0);
+            entryRectTransform.anchoredPosition = new Vector3(-53, 10-(templateHeight * i), 0);
             entryTransform.gameObject.SetActive(true);
 
             print(records[i].playerName);

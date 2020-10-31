@@ -202,7 +202,7 @@ public class AvatarController : MonoBehaviour
         avatar.color = c;
     }
 
-    void displayAvatar(Image avatar, int selection)
+    public void displayAvatar(Image avatar, int selection)
     {
         String avatarPath = findAvatarPath(selection);
 

@@ -4,6 +4,9 @@ using Proyecto26;
 using Newtonsoft.Json;
 using System.Linq;
 using System;
+using UnityEngine.UI;
+using TMPro;
+using Photon.Pun;
 
 public class GameComplete : MonoBehaviour
 {
@@ -16,6 +19,7 @@ public class GameComplete : MonoBehaviour
     private GameObject player4;
     bool initialized = false;
 
+
     public static string localID;
 
     private List<PlayerController> players = new List<PlayerController>();
@@ -25,11 +29,30 @@ public class GameComplete : MonoBehaviour
 
     public GameObject ResultsPage;
     public bool rankProcessed = false;
+    bool highscoreDisplayUpdated = false;
+
+
+    //UI:
+
+    public Image avatar;
+    public TextMeshProUGUI rankDisplay;
+    public TextMeshProUGUI prevPoints;
+    public TextMeshProUGUI pointInc;
+    public TextMeshProUGUI afterPoints;
+
+    public GameObject Bronze;
+    public GameObject Silver;
+    public GameObject Gold;
+
+    public GameObject prevBar;
+    public GameObject afterBar;
+
+    //
+
 
     // Start is called before the first frame update
     void Start()
     {
-        //HARD CODED:
         localID = Login.localid;
 
         // End Gameplay
@@ -43,11 +66,17 @@ public class GameComplete : MonoBehaviour
         // Create Records
 
         createRecords();
+
+        //display User Avatar:
+        AvatarController AC = new AvatarController();
+
+        AC.displayAvatar(avatar, LobbySetUp.LS.playerList[PhotonNetwork.LocalPlayer.NickName]);
+
     }
 
     private void Update()
     {
-        if (rankProcessed)
+        if (rankProcessed && !highscoreDisplayUpdated)
         {
             // Display Ranking UI
 
@@ -124,6 +153,8 @@ public class GameComplete : MonoBehaviour
 
         int pointsAwarded = 0;
 
+        rankDisplay.text = (rank+1).ToString();
+
         switch (rank)
         {
             case 0:
@@ -152,17 +183,40 @@ public class GameComplete : MonoBehaviour
         string playerurl = "https://quizguyz.firebaseio.com/Users/" + localID;
         RestClient.Get(url: playerurl + ".json").Then(onResolved: response =>
         {
+            pointInc.text = "+" + achievementPoints.ToString();
+
+            //Get
             playerinfo = JsonConvert.DeserializeObject<Achievement>(response.Text);
+            prevPoints.text = playerinfo.achievementPoints.ToString();
+            prevBar.GetComponent<Image>().fillAmount = ((float)playerinfo.achievementPoints / 300);
+
+            //Update
             playerinfo.achievementPoints = playerinfo.achievementPoints + achievementPoints;
+            afterPoints.text = playerinfo.achievementPoints.ToString();
+            afterBar.GetComponent<Image>().fillAmount = ((float)playerinfo.achievementPoints / 300);
+
+            //Upload
             RestClient.Put(url: playerurl + "/achievementPoints.json", JsonConvert.SerializeObject(playerinfo.achievementPoints));
+
+            if (playerinfo.achievementPoints >= 100)
+            {
+                Bronze.SetActive(true);
+            }
+            if (playerinfo.achievementPoints >= 200)
+            {
+                Silver.SetActive(true);
+            }
+            if (playerinfo.achievementPoints >= 300)
+            {
+                Gold.SetActive(true);
+            }
         });
         
     }
 
     void displayResults()
     {
-        print("display Results");
-        print(records.Count);
+        highscoreDisplayUpdated = true;
 
         ResultsPage.GetComponent<HighscoreTable>().enabled = true;
 
