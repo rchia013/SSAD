@@ -55541,8 +55541,8 @@ MonoBehaviour:
   controller: {fileID: 0}
   speed: 4
   turnSmoothTime: 0.1
-  gravity: 9
-  jumpHeight: 1.5
+  gravity: 15
+  jumpHeight: 1
   groundCheck: {fileID: 5323831353483285900}
   groundDistance: 0.4
   groundMask:
@@ -55559,6 +55559,7 @@ MonoBehaviour:
   question: {fileID: 0}
   countdown: {fileID: 0}
   points: 0
+  PV: {fileID: 0}
 --- !u!1 &5325335645243087642
 GameObject:
   m_ObjectHideFlags: 0

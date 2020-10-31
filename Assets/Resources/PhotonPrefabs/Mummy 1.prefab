@@ -6298,13 +6298,14 @@ MonoBehaviour:
   controller: {fileID: 0}
   speed: 4
   turnSmoothTime: 0.1
-  gravity: 9
-  jumpHeight: 1.5
+  gravity: 20
+  jumpHeight: 0.5
   groundCheck: {fileID: 8575892552612877805}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 256
+  anim: {fileID: 0}
   speedEffect: {fileID: 8113011498021755854}
   sizeEffect: {fileID: 8707111235736909415}
   jumpEffect: {fileID: 6171252641578926564}
@@ -6315,6 +6316,7 @@ MonoBehaviour:
   question: {fileID: 0}
   countdown: {fileID: 0}
   points: 0
+  PV: {fileID: 0}
 --- !u!114 &4946170572042664427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6341,8 +6343,8 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
   m_Controller: {fileID: 9100000, guid: 002cda23e8c1340d087ca3ef7b59e132, type: 2}
-  m_CullingMode: 2
-  m_UpdateMode: 0
+  m_CullingMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
