@@ -5512,6 +5512,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
+  anim: {fileID: 0}
   speedEffect: {fileID: 8249751551255828532}
   sizeEffect: {fileID: 8124289070193356148}
   jumpEffect: {fileID: 5976434391081531576}
