@@ -65,6 +65,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     public PhotonView PV;
 
+    // Username
+    public GameObject username;
+
 
     private void Start()
     {
@@ -87,6 +90,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+        username.GetComponent<TextMesh>().text = playerName;
+
 
         respawnPoint = transform.position;
         respawnThreshold = respawnPoint.y - 3;
