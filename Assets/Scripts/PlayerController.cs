@@ -116,6 +116,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 Moving();
                 Gravity();
                 Jumping();
+                anim.applyRootMotion = false;
+            }
+            else if (!moveable)
+            {
+                anim.applyRootMotion = true;
             }
         }
     }
@@ -174,8 +179,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
        if (PV.IsMine)
         {
-            if (transform.position.y < respawnThreshold)
+            if (transform.position.y < respawnThreshold && !respawning)
             {
+                anim.applyRootMotion = false;
                 respawning = true;
 
                 print("drop");
