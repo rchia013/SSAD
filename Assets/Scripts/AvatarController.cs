@@ -316,7 +316,7 @@ public class AvatarController : MonoBehaviour
         if (index == 2)
         {
             blockChar2.SetActive(true);
-            char3.interactable = false;
+            char2.interactable = false;
         }
         else if (index == 3)
         {
