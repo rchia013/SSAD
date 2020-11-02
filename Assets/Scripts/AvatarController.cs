@@ -6,6 +6,8 @@ using TMPro;
 using System.Linq;
 using System;
 using Photon.Pun;
+using Proyecto26;
+using Newtonsoft.Json;
 using Photon.Realtime;
 
 public class AvatarController : MonoBehaviour
@@ -13,31 +15,7 @@ public class AvatarController : MonoBehaviour
 
     public bool isCreator = false;
 
-    /*public Button startButton;
-    public Button cancelButton;
-    public Button leaveButton;
 
-
-    //Room Page:
-
-    public Image platform1;
-    public Image platform2;
-    public Image platform3;
-    public Image platform4;
-
-    public Image Avatar1;
-    public Image Avatar2;
-    public Image Avatar3;
-    public Image Avatar4;
-
-    private List<Image> Avatars = new List<Image>();
-
-    public TextMeshProUGUI Name1;
-    public TextMeshProUGUI Name2;
-    public TextMeshProUGUI Name3;
-    public TextMeshProUGUI Name4;
-
-    private List<TextMeshProUGUI> Names = new List<TextMeshProUGUI>();*/
 
     public GameObject RoomPanel;
     public GameObject AvatarPanel;
@@ -48,6 +26,10 @@ public class AvatarController : MonoBehaviour
     public Toggle char1;
     public Toggle char2;
     public Toggle char3;
+
+    public GameObject blockChar2;
+    public GameObject blockChar3;
+
 
     private List<Toggle> toggles = new List<Toggle>();
 
@@ -87,10 +69,18 @@ public class AvatarController : MonoBehaviour
 
         playerList = LobbySetUp.LS.playerList;
 
-        // Initialize Avatar Page:
+        Achievement playerinfo = new Achievement();
+        string playerurl = "https://quizguyz.firebaseio.com/Users/" + Login.localid;
 
-        InitializeButtons();
-        InitializeToggles();
+        RestClient.Get(url: playerurl + ".json").Then(onResolved: response =>
+        {
+            //Get
+            playerinfo = JsonConvert.DeserializeObject<Achievement>(response.Text);
+
+            InitializeButtons();
+            InitializeToggles(playerinfo.achievementPoints);
+
+        });
     }
 
     private void Update()
@@ -290,11 +280,28 @@ public class AvatarController : MonoBehaviour
         }
     }
 
-    private void InitializeToggles()
+    private void InitializeToggles(int points)
     {
-        toggles.Add(char1);
-        toggles.Add(char2);
-        toggles.Add(char3);
+        if (points < 100)
+        {
+            toggles.Add(char1);
+            disableToggle(2);
+            disableToggle(3);
+        }
+        else if (points < 200)
+        {
+            toggles.Add(char1);
+            toggles.Add(char2);
+
+            disableToggle(3);
+        }
+        else
+        {
+            toggles.Add(char1);
+            toggles.Add(char2);
+            toggles.Add(char3);
+        }
+        
 
         for (int i = 0; i < toggles.Count; i++)
         {
@@ -302,6 +309,21 @@ public class AvatarController : MonoBehaviour
 
             toggles[i].onValueChanged.AddListener(delegate { CharClicked(index); });
         }
+    }
+
+    private void disableToggle(int index)
+    {
+        if (index == 2)
+        {
+            blockChar2.SetActive(true);
+            char3.interactable = false;
+        }
+        else if (index == 3)
+        {
+            blockChar3.SetActive(true);
+            char3.interactable = false;
+        }
+        
     }
 
     private void updateAvailableColors()
