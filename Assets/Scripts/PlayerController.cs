@@ -308,7 +308,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         Debug.Log(playerIndex);
 
         points += x;
-        pointsUIList[playerIndex].SetText("Points: " + points.ToString());
+        pointsUIList[playerIndex].SetText(points.ToString());
     }
 
     public int getPoints()

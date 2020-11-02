@@ -23,10 +23,6 @@ public class Countdown : MonoBehaviour
     bool ended;
 
     GameObject GameController;
-    private GameObject player1;
-    private GameObject player2;
-    private GameObject player3;
-    private GameObject player4;
 
     public Image bg;
 
