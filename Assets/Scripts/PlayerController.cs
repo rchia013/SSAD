@@ -131,17 +131,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 }
             }
         }
-        //else
-        //{
-        //    if (!moveable)
-        //    {
-        //        if (!anim.applyRootMotion)
-        //        {
-        //            //PV.RPC("setRootMotion", RpcTarget.All, true);
-        //            anim.applyRootMotion = true;
-        //        }
-        //    }
-        //}
     }
 
     void Moving()
@@ -152,8 +141,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         if (direction.magnitude >= 0.1f)
         {
-            PV.RPC("setRootMotion", RpcTarget.All, false);
-
             //anim.enabled = true;
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -165,8 +152,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
             {
                 PV.RPC("setWalking", RpcTarget.All, true);
             }
-
-            PV.RPC("setRootMotion", RpcTarget.All, true);
         }
         else
         {
@@ -278,13 +263,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
     [PunRPC]
     public void setRootMotion(bool set)
     {
-        anim.applyRootMotion = set;
+        GetComponent<Animator>().applyRootMotion = set;
     }
 
     [PunRPC]
     public void setWalking(bool isWalking)
     {
-        anim.SetBool("isWalking", isWalking);
+        GetComponent<Animator>().SetBool("isWalking", isWalking);
     }
 
     [PunRPC]
