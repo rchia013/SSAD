@@ -188,16 +188,16 @@ public class GameComplete : MonoBehaviour
 
         switch (rank)
         {
-            case 0:
+            case 1:
                 pointsAwarded = 10;
                 break;
-            case 1:
+            case 2:
                 pointsAwarded = 7;
                 break;
-            case 2:
+            case 3:
                 pointsAwarded = 4;
                 break;
-            case 3:
+            case 4:
                 pointsAwarded = 1;
                 break;
         }

@@ -296,6 +296,8 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
 
         rb.isKinematic = false;
 
+        parentBlock.GetComponent<BoxCollider>().enabled = false;
+
         removePowerUp(chosenPower);
     }
 }
