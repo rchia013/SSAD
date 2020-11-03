@@ -219,6 +219,8 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
         highlight.GetComponent<CapsuleCollider>().enabled = false;
 
         rb.isKinematic = false;
+
+        parentBlock.GetComponent<BoxCollider>().enabled = false;
     }
 
 

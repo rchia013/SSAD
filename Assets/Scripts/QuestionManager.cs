@@ -16,11 +16,7 @@ public class QuestionManager : MonoBehaviour
 
     bool ended;
 
-    public Dictionary<string, int> P1 = new Dictionary<string, int>();
-    public Dictionary<string, int> P2 = new Dictionary<string, int>();
-    public Dictionary<string, int> P3 = new Dictionary<string, int>();
-    public Dictionary<string, int> P4 = new Dictionary<string, int>();
-
+    public Dictionary<string, int> responses = new Dictionary<string, int>();
     public List<Question> questions = new List<Question>();
 
     private PhotonView PV;
@@ -54,7 +50,6 @@ public class QuestionManager : MonoBehaviour
             case 3:
                 QuestionUrl += "General/";
                 break;
-
         }
 
         QuestionUrl += (Difficulty).ToString();
@@ -65,42 +60,13 @@ public class QuestionManager : MonoBehaviour
 
         RestClient.Get(url: QuestionUrl).Then(onResolved: response =>
         {
-            print("Adding Question");
             questions = JsonConvert.DeserializeObject<List<Question>>(response.Text);
-
-            print("Added Question");
-
-            print("QUESTIONS count");
-            print(questions.Count);
         });
-
-        
-
     }
 
-    public Question getRandomQuestion(int playerIndex)
+    public Question getRandomQuestion()
     {
-        Dictionary<string, int> cur = null;
-        switch (playerIndex)
-        {
-            case 0:
-                cur = P1;
-                break;
-
-            case 1:
-                cur = P2;
-                break;
-
-            case 2:
-                cur = P3;
-                break;
-
-            case 3:
-                cur = P4;
-                break;
-        }
-
-        if (cur.Count == questions.Count)
+        if (responses.Count == questions.Count)
         {
             print("NO MORE QUESTIONS!");
 
@@ -110,7 +76,7 @@ public class QuestionManager : MonoBehaviour
         int tempQid = -1;
         int temp = -1;
 
-        while (tempQid == -1 || cur.ContainsKey(tempQid.ToString())) {
+        while (tempQid == -1 || responses.ContainsKey(tempQid.ToString())) {
             temp = UnityEngine.Random.Range(0, questions.Count);
             tempQid = questions[temp].ID;
         }
@@ -118,52 +84,14 @@ public class QuestionManager : MonoBehaviour
         return questions[temp];
     }
 
-    public void recordResponse(int playerIndex, int questionNum, int resp)
+    public void recordResponse(int questionNum, int resp)
     {
-        print("Player:" + playerIndex);
-        print("Question: " + questionNum);
-        print("Response: ");
-        print(resp);
-
-        print("Finish Printing");
-
-        switch (playerIndex)
-        {
-            case 0:
-                P1.Add(questionNum.ToString(), resp);
-                break;
-
-            case 1:
-                P2.Add(questionNum.ToString(), resp);
-                break;
-
-            case 2:
-                P3.Add(questionNum.ToString(), resp);
-                break;
-
-            case 3:
-                P4.Add(questionNum.ToString(), resp);
-                break;
-        }
+        responses.Add(questionNum.ToString(), resp);
     }
 
-    public Dictionary<string, int> getResponses(int playerIndex)
+    public Dictionary<string, int> getResponses()
     {
-        switch (playerIndex)
-        {
-            case 0:
-                return P1;
-
-            case 1:
-                return P2;
-
-            case 2:
-                return P3;
-
-            case 3:
-                return P4;
-        }
-        return null;
+        return responses;
     }
 
     public float getTimeLimit()

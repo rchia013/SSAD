@@ -124,20 +124,51 @@ public class GameComplete : MonoBehaviour
 
         string dateTime = System.DateTime.Now.ToString("MM\\/dd\\/yyyy h\\:mm tt");
 
+        bool tie = false;
+        int prevPoints = -1;
+        int offset = 0;
+        int rank;
+
         for (int i = 0; i < rankedPlayers.Count; i++)
         {
+            if (i > 0 && rankedPlayers[i].GetComponent<PlayerController>().getPoints() == prevPoints)
+            {
+                tie = true;
+                offset++;
+            }
+
+            else
+            {
+                tie = false;
+                offset = 0;
+            }
+
+            if (tie)
+            {
+                rank = i - offset + 1;
+            }
+            else
+            {
+                rank = i + 1;
+            }
+
             Record cur = new Record(dateTime,
                 QM.Difficulty, QM.Category,
                 rankedPlayers[i].GetComponent<PlayerController>().playerName,
                 rankedPlayers[i].GetComponent<PlayerController>().getPoints(),
-                QM.getResponses(i));
+                rank);
 
             records.Add(cur);
 
             if (Login.currentUser.username == rankedPlayers[i].GetComponent<PlayerController>().playerName)
             {
-                uploadRecord(cur, i);
+                cur.attachResponses(QM.getResponses());
+
+                uploadRecord(cur, rank);
             }
+
+            prevPoints = rankedPlayers[i].GetComponent<PlayerController>().getPoints();
+            tie = false;
         }
 
         rankProcessed = true;
@@ -157,16 +188,16 @@ public class GameComplete : MonoBehaviour
 
         switch (rank)
         {
-            case 0:
+            case 1:
                 pointsAwarded = 10;
                 break;
-            case 1:
+            case 2:
                 pointsAwarded = 7;
                 break;
-            case 2:
+            case 3:
                 pointsAwarded = 4;
                 break;
-            case 3:
+            case 4:
                 pointsAwarded = 1;
                 break;
         }
