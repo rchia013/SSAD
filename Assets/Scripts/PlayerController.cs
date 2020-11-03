@@ -114,11 +114,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.transform.position == Vector3.zero)
-        {
-            PV.RPC("setRootMotion", RpcTarget.All, true);
-        }
-
         if (PV.IsMine)
         {
             if (moveable)
