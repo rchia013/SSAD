@@ -137,8 +137,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             {
                 if (!anim.applyRootMotion)
                 {
-                    //PV.RPC("setRootMotion", RpcTarget.All, true);
-                    anim.applyRootMotion = true;
+                    PV.RPC("setRootMotion", RpcTarget.All, true);
                 }
             }
         }
