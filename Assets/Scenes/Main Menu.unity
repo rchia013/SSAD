@@ -1728,7 +1728,7 @@ GameObject:
   - component: {fileID: 396818928}
   - component: {fileID: 396818927}
   m_Layer: 5
-  m_Name: 300 Points
+  m_Name: 700 Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1773,7 +1773,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 300
+  m_text: 700
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9af9daf82bf688d499702340956d3fee, type: 2}
   m_sharedMaterial: {fileID: -7281290936051742389, guid: 9af9daf82bf688d499702340956d3fee,
@@ -6297,7 +6297,7 @@ RectTransform:
   m_GameObject: {fileID: 1193803037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
+  m_LocalScale: {x: 1.025, y: 1.1, z: 1}
   m_Children:
   - {fileID: 1298358599}
   - {fileID: 1275887718}
@@ -10323,7 +10323,7 @@ GameObject:
   - component: {fileID: 1748876966}
   - component: {fileID: 1748876965}
   m_Layer: 5
-  m_Name: 200 Points
+  m_Name: 500 Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10368,7 +10368,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 200
+  m_text: 500
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9af9daf82bf688d499702340956d3fee, type: 2}
   m_sharedMaterial: {fileID: -7281290936051742389, guid: 9af9daf82bf688d499702340956d3fee,
@@ -11925,7 +11925,7 @@ GameObject:
   - component: {fileID: 2039677882}
   - component: {fileID: 2039677881}
   m_Layer: 5
-  m_Name: 100 Points
+  m_Name: 250 Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11970,7 +11970,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 250
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9af9daf82bf688d499702340956d3fee, type: 2}
   m_sharedMaterial: {fileID: -7281290936051742389, guid: 9af9daf82bf688d499702340956d3fee,

@@ -282,13 +282,13 @@ public class AvatarController : MonoBehaviour
 
     private void InitializeToggles(int points)
     {
-        if (points < 100)
+        if (points < 250)
         {
             toggles.Add(char1);
             disableToggle(2);
             disableToggle(3);
         }
-        else if (points < 200)
+        else if (points < 500)
         {
             toggles.Add(char1);
             toggles.Add(char2);

@@ -33,9 +33,9 @@ public class Achievement_controller : MonoBehaviour
             points.text = playerinfo.achievementPoints.ToString();
             nameBox.text = playerinfo.username;
 
-            if (playerinfo.achievementPoints <= 300)
+            if (playerinfo.achievementPoints <= 750)
             {
-                firstBar.GetComponent<Image>().fillAmount = ((float)playerinfo.achievementPoints / 300);
+                firstBar.GetComponent<Image>().fillAmount = ((float)playerinfo.achievementPoints / 750);
             }
             else
             {
@@ -43,15 +43,15 @@ public class Achievement_controller : MonoBehaviour
             }
             
 
-            if (playerinfo.achievementPoints >= 100)
+            if (playerinfo.achievementPoints >= 250)
             {
                 Bronze.SetActive(true);
             }
-            if (playerinfo.achievementPoints >= 200)
+            if (playerinfo.achievementPoints >= 500)
             {
                 Silver.SetActive(true);
             }
-            if (playerinfo.achievementPoints >= 300)
+            if (playerinfo.achievementPoints >= 750)
             {
                 Gold.SetActive(true);
             }

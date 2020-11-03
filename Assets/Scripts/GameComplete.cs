@@ -219,25 +219,25 @@ public class GameComplete : MonoBehaviour
             //Get
             playerinfo = JsonConvert.DeserializeObject<Achievement>(response.Text);
             prevPoints.text = playerinfo.achievementPoints.ToString();
-            prevBar.GetComponent<Image>().fillAmount = ((float)playerinfo.achievementPoints / 300);
+            prevBar.GetComponent<Image>().fillAmount = ((float)playerinfo.achievementPoints / 750);
 
             //Update
             playerinfo.achievementPoints = playerinfo.achievementPoints + achievementPoints;
             afterPoints.text = playerinfo.achievementPoints.ToString();
-            afterBar.GetComponent<Image>().fillAmount = ((float)playerinfo.achievementPoints / 300);
+            afterBar.GetComponent<Image>().fillAmount = ((float)playerinfo.achievementPoints / 750);
 
             //Upload
             RestClient.Put(url: playerurl + "/achievementPoints.json", JsonConvert.SerializeObject(playerinfo.achievementPoints));
 
-            if (playerinfo.achievementPoints >= 100)
+            if (playerinfo.achievementPoints >= 250)
             {
                 Bronze.SetActive(true);
             }
-            if (playerinfo.achievementPoints >= 200)
+            if (playerinfo.achievementPoints >= 500)
             {
                 Silver.SetActive(true);
             }
-            if (playerinfo.achievementPoints >= 300)
+            if (playerinfo.achievementPoints >= 750)
             {
                 Gold.SetActive(true);
             }
