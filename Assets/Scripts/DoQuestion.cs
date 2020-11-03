@@ -132,7 +132,7 @@ public class DoQuestion : MonoBehaviour
     {
         if (QM != null)
         {
-            return QM.getRandomQuestion(playerIndex);
+            return QM.getRandomQuestion();
         }
         else
         {
@@ -183,7 +183,7 @@ public class DoQuestion : MonoBehaviour
     void Correct(int index)
     {
         print("Response: " + index);
-        QM.recordResponse(playerIndex, question.ID, index);
+        QM.recordResponse(question.ID, index);
         print("Correct");
         resetButtons();
 
@@ -203,7 +203,7 @@ public class DoQuestion : MonoBehaviour
     void Wrong(int index)
     {
         print("Response: " + index);
-        QM.recordResponse(playerIndex, question.ID, index);
+        QM.recordResponse(question.ID, index);
 
         print("Wrong");
         resetButtons();
@@ -224,7 +224,7 @@ public class DoQuestion : MonoBehaviour
 
     void Unanswered()
     {
-        QM.recordResponse(playerIndex, question.ID, -1);
+        QM.recordResponse(question.ID, -1);
         print("Not Answered");
         resetButtons();
 

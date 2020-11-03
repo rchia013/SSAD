@@ -33,7 +33,7 @@ public class HighscoreTable : MonoBehaviour
 
             print(records[i].playerName);
 
-            entryTransform.Find("Rank").GetComponent<TextMeshProUGUI>().text = (i+1).ToString();
+            entryTransform.Find("Rank").GetComponent<TextMeshProUGUI>().text = records[i].Rank.ToString();
             entryTransform.Find("Name").GetComponent<TextMeshProUGUI>().text = records[i].playerName;
             entryTransform.Find("Points").GetComponent<TextMeshProUGUI>().text = records[i].Points.ToString();
         }

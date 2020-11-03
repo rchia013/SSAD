@@ -35,6 +35,8 @@ public class MapController : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
         InitializeToggles();
+
+        resetMap();
     }
 
     private void Update()

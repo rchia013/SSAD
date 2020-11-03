@@ -34,6 +34,12 @@ public class Record
         private set;
     }
 
+    public int Rank
+    {
+        get;
+        private set;
+    }
+
     public Dictionary<string, int> Responses
     {
         get;
@@ -42,7 +48,7 @@ public class Record
 
 
     // Start is called before the first frame update
-    public Record(string datetime, int diff, int cat, string playerName, int points, Dictionary<string, int> resp)
+    public Record(string datetime, int diff, int cat, string playerName, int points, int rank)
     {
         this.DateTime = datetime;
         this.Difficulty = diff;
@@ -50,6 +56,11 @@ public class Record
 
         this.playerName = playerName;
         this.Points = points;
+        this.Rank = rank;
+    }
+
+    public void attachResponses(Dictionary<string, int> resp)
+    {
         this.Responses = resp;
     }
 }
