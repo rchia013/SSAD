@@ -13,7 +13,7 @@ public class Countdown : MonoBehaviour
 {
 
     float currentTime = 0f;
-    float startingTime = 125.49999f;
+    float startingTime = 80.49999f;
     float totalTime;
     double minutes;
     string min;
