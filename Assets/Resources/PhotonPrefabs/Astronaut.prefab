@@ -5507,7 +5507,7 @@ MonoBehaviour:
   speed: 4
   turnSmoothTime: 0.1
   gravity: 20
-  jumpHeight: 0.4
+  jumpHeight: 0.6
   groundCheck: {fileID: 8124289068446622756}
   groundDistance: 0.4
   groundMask:
