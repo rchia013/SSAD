@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public GameObject ProfilePanel;
     public GameObject LeaderboardPanel;
     public GameObject AchievementsPanel;
+    public GameObject InstructionPanel;
 
     public void playGame()
     {
@@ -53,6 +54,18 @@ public class MainMenu : MonoBehaviour
     public void CloseAchievementsOnClick()
     {
         AchievementsPanel.SetActive(false);
+        MenuPanel.SetActive(true);
+    }
+
+    public void OpenInstructionsOnClick()
+    {
+        InstructionPanel.SetActive(true);
+        MenuPanel.SetActive(false);
+    }
+
+    public void CloseInstructionsOnClick()
+    {
+        InstructionPanel.SetActive(false);
         MenuPanel.SetActive(true);
     }
 
