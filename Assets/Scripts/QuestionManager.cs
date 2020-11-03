@@ -19,6 +19,8 @@ public class QuestionManager : MonoBehaviour
     public Dictionary<string, int> responses = new Dictionary<string, int>();
     public List<Question> questions = new List<Question>();
 
+    public List<Question> backUpQBank = new List<Question>();
+
     private PhotonView PV;
 
     // Start is called before the first frame update
@@ -28,9 +30,6 @@ public class QuestionManager : MonoBehaviour
 
         Category = MapController.Category;
         Difficulty = MapController.Difficulty;
-
-        print("Cat: " + Category);
-        print("Diff: " + Difficulty);
 
         ended = false;
 
@@ -52,8 +51,21 @@ public class QuestionManager : MonoBehaviour
                 break;
         }
 
+        string backupURL = QuestionUrl;
+
         QuestionUrl += (Difficulty).ToString();
         QuestionUrl += ".json";
+
+        if (Difficulty == 1 || Difficulty == 3)
+        {
+            backupURL += "2";
+        }
+        else if (Difficulty == 2)
+        {
+            backupURL += "3";
+        }
+
+        backupURL += ".json";
 
         // PseudoCode: Get Category and Difficulty from Whichever manager;
         // PseudoCode: Create URL from below to collect correct collection of questions:
@@ -62,26 +74,43 @@ public class QuestionManager : MonoBehaviour
         {
             questions = JsonConvert.DeserializeObject<List<Question>>(response.Text);
         });
+
+        RestClient.Get(url: backupURL).Then(onResolved: response =>
+        {
+            backUpQBank = JsonConvert.DeserializeObject<List<Question>>(response.Text);
+        });
     }
 
     public Question getRandomQuestion()
     {
-        if (responses.Count == questions.Count)
+        if (responses.Count >= questions.Count)
         {
-            print("NO MORE QUESTIONS!");
+            print("Using Backup Questions");
 
-            return null;
+            int tempQid = -1;
+            int temp = -1;
+
+            while (tempQid == -1 || responses.ContainsKey(tempQid.ToString()))
+            {
+                temp = UnityEngine.Random.Range(0, backUpQBank.Count);
+                tempQid = backUpQBank[temp].ID;
+            }
+
+            return backUpQBank[temp];
         }
+        else
+        {
+            int tempQid = -1;
+            int temp = -1;
 
-        int tempQid = -1;
-        int temp = -1;
+            while (tempQid == -1 || responses.ContainsKey(tempQid.ToString()))
+            {
+                temp = UnityEngine.Random.Range(0, questions.Count);
+                tempQid = questions[temp].ID;
+            }
 
-        while (tempQid == -1 || responses.ContainsKey(tempQid.ToString())) {
-            temp = UnityEngine.Random.Range(0, questions.Count);
-            tempQid = questions[temp].ID;
+            return questions[temp];
         }
-
-        return questions[temp];
     }
 
     public void recordResponse(int questionNum, int resp)

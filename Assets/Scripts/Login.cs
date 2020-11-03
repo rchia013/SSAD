@@ -31,13 +31,8 @@ public class Login : MonoBehaviour
     
     public TextMeshProUGUI failLogin;
 
-    private void Start()
-    {
-
-    }
     private void Update()
     {
-        //print("signupsuccess in update = " + signUpSuccess);
         if (success == true && usernameGet)
         {
             loadScene();
@@ -128,12 +123,10 @@ public class Login : MonoBehaviour
 
     public void getUsername(string userid)
     { 
-        print("USERID! = " + userid); 
         RestClient.Get(url: "https://quizguyz.firebaseio.com/Users/" + userid + ".json").Then(onResolved: response =>
         {
             User user = JsonConvert.DeserializeObject<User>(response.Text);
             username = user.username;
-            print("username = " + username);
             currentUser = new User(username, localid);
             usernameGet = true;
         });     

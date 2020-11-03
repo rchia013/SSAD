@@ -102,7 +102,6 @@ public class BallMovement : MonoBehaviour
         {
             //anim.SetBool("Walk_Anim", false);
             // anim.SetBool("Open_Anim", false);
-            print("is not walking");
             anim.SetBool("isWalking", false);
         }
 
@@ -132,7 +131,6 @@ public class BallMovement : MonoBehaviour
     {
         if (transform.position.y < respawnThreshold)
         {
-            print("drop");
 
             transform.position = respawnPoint;
             moveable = false;

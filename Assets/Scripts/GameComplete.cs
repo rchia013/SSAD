@@ -102,7 +102,6 @@ public class GameComplete : MonoBehaviour
                 }
             }
 
-            print("Player List Size: " + players.Count);
             initialized = true;
         }
     }
@@ -178,7 +177,6 @@ public class GameComplete : MonoBehaviour
     {
         string urlRecord = "https://quizguyz.firebaseio.com/Users/" + localID+"/Records.json";
         RestClient.Post(url: urlRecord, JsonConvert.SerializeObject(record));
-        print("POSTED!!!!");
 
         //ACHIEVEMENT POINTS CALCULATION:
 

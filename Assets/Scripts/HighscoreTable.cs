@@ -20,18 +20,14 @@ public class HighscoreTable : MonoBehaviour
 
     public void endGameUpdateTable(List<Record> records)
     {
-        print("UpdateEnd");
 
         for (int i = 0; i < records.Count; i++)
         {
-            print("Entry"+(i+1));
 
             Transform entryTransform = Instantiate(entryTemplate, entryContainer);
             RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
             entryRectTransform.anchoredPosition = new Vector3(-53, 10-(templateHeight * i), 0);
             entryTransform.gameObject.SetActive(true);
-
-            print(records[i].playerName);
 
             entryTransform.Find("Rank").GetComponent<TextMeshProUGUI>().text = records[i].Rank.ToString();
             entryTransform.Find("Name").GetComponent<TextMeshProUGUI>().text = records[i].playerName;

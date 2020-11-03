@@ -55473,7 +55473,7 @@ GameObject:
   - component: {fileID: 5325333811285329678}
   - component: {fileID: 5323831353817831636}
   m_Layer: 0
-  m_Name: robotSphere 1
+  m_Name: robotSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55510,9 +55510,9 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: bff429107601444d59c67940e6ad78c4, type: 3}
   m_Controller: {fileID: 9100000, guid: 082710ee563de634cabe27db8d932f23, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -55652,7 +55652,7 @@ MonoBehaviour:
   speed: 4
   turnSmoothTime: 0.1
   gravity: 15
-  jumpHeight: 1
+  jumpHeight: 0.8
   groundCheck: {fileID: 5323831353483285900}
   groundDistance: 0.4
   groundMask:

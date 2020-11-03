@@ -240,11 +240,9 @@ public class AvatarController : MonoBehaviour
 
     public void ConfirmCharacterOnClick()
     {
-        print(curSelection);
-
         if (colorTaken[curSelection % 10] && ((curSelection % 10) != (playerList[Login.currentUser.username] % 10)))
         {
-            print("Color Taken!");
+            updateAvailableColors();
         }
         else
         {
@@ -267,8 +265,6 @@ public class AvatarController : MonoBehaviour
         buttons.Add(yellow);
         buttons.Add(purple);
         buttons.Add(brown);
-
-        print("Num Buttons: " + buttons.Count);
 
         for (int i = 0; i < buttons.Count; i++)
         {

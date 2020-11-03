@@ -130,7 +130,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
             catChosen = false;
         }
 
-        print("Category = " + cat);
+        
         LobbySetUp.LS.category = cat;
     }
 
@@ -161,7 +161,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
             diff = -1;
             diffChosen = false;
         }
-        print("Difficulty = " + diff);
+        
         LobbySetUp.LS.difficulty = diff;
     }
 
@@ -248,7 +248,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     public void OnCodeInputChanged(string code)
     {
-        print("Code = " + code);
+        
         joinCode = code;
     }
 
