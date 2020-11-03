@@ -56,6 +56,10 @@ public class GameSetUp : MonoBehaviour
         string curUserName = PhotonNetwork.LocalPlayer.NickName;
         int avatarSelection = LobbySetUp.LS.playerList[curUserName];
 
+        print("Avatar Selection:" + avatarSelection);
+
+
+
         Transform[] spawnPoints = null;
 
         switch (mapIndex)
@@ -85,7 +89,7 @@ public class GameSetUp : MonoBehaviour
         switch (avatarSelection / 10)
         {
             case 1:
-                avatarPath = "Mummy";
+                avatarPath = "Mummy 1";
                 break;
 
             case 2:
@@ -93,7 +97,7 @@ public class GameSetUp : MonoBehaviour
                 break;
 
             case 3:
-                avatarPath = "robotSphere";
+                avatarPath = "robotSphere 1";
                 break;
 
 
@@ -123,5 +127,7 @@ public class GameSetUp : MonoBehaviour
         player.GetComponent<PlayerController>().colorIndex = avatarSelection % 10;
 
         player.gameObject.tag = "Player" + (playerIndex + 1);
+
+        print(player.gameObject.tag);
     }
 }

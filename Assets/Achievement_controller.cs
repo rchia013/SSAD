@@ -28,6 +28,7 @@ public class Achievement_controller : MonoBehaviour
         RestClient.Get(url: playerurl + ".json").Then(onResolved: response =>
         {
             playerinfo = JsonConvert.DeserializeObject<Achievement>(response.Text);
+            print("player points count = " + playerinfo.achievementPoints);
 
             points.text = playerinfo.achievementPoints.ToString();
             nameBox.text = playerinfo.username;

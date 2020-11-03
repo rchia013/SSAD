@@ -59,11 +59,14 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        print("Joined room");
 
         GetComponent<AvatarController>().enabled = true;
 
         LobbyPanel.SetActive(false);
         RoomPanel.SetActive(true);
+
+        print("Player Count = " + PhotonNetwork.PlayerList.Length);
 
         playerCount.text = "Players: " + PhotonNetwork.PlayerList.Length;
 
@@ -133,7 +136,7 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
         {
             if (LobbySetUp.LS.playerList[PhotonNetwork.PlayerList[i].NickName] == -1)
             {
-                print("Everyone must select a Character!");
+                print("Everyone must Choose!");
                 return;
             }
         }

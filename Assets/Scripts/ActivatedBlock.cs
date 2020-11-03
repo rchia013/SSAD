@@ -102,6 +102,9 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
         question.SetActive(true);
 
         int counter = Mathf.RoundToInt(GameObject.FindWithTag("GameController").GetComponent<QuestionManager>().getTimeLimit());
+        
+        print("TIMELIMIT");
+        print(counter);
 
         bool moveableChanged = false;
 

@@ -116,26 +116,16 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (PV.IsMine)
         {
-            print(anim.applyRootMotion);
-
             if (moveable)
             {
                 Moving();
                 Gravity();
                 Jumping();
-
-                //if (anim.applyRootMotion)
-                //{
-                //    anim.applyRootMotion = false;
-                //}
-                
+                anim.applyRootMotion = false;
             }
-            else
+            else if (!moveable)
             {
-                if (!anim.applyRootMotion)
-                {
-                    anim.applyRootMotion = true;
-                }
+                anim.applyRootMotion = true;
             }
         }
     }
@@ -145,10 +135,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         direction = new Vector3(horizontal, 0f, vertical).normalized;
-
         if (direction.magnitude >= 0.1f)
         {
-            //anim.enabled = true;
+            anim.enabled = true;
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -158,12 +147,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
             if (isGrounded)
             {
                 PV.RPC("setWalking", RpcTarget.All, true);
+                anim.SetBool("isWalking", true);
             }
         }
         else
         {
-            PV.RPC("setWalking", RpcTarget.All, false);
-            //anim.PlayInFixedTime("Move", -1, freeze);
+             PV.RPC("setWalking", RpcTarget.All, false);
+             anim.SetBool("isWalking", false);
+             anim.PlayInFixedTime("Move", -1, freeze);
         }
 
     }
@@ -184,6 +175,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            print("Jump!");
             velocity.y = Mathf.Sqrt(jumpHeight * 2f * gravity);
         }
     }
@@ -194,12 +186,15 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             if (transform.position.y < respawnThreshold && !respawning)
             {
+                anim.applyRootMotion = false;
                 respawning = true;
+
+                print("drop");
 
                 transform.position = respawnPoint;
                 moveable = false;
-
-                PV.RPC("setWalking", RpcTarget.All, false);
+                 anim.SetBool("isWalking", false);
+                 PV.RPC("setWalking", RpcTarget.All, false);
 
                 question.SetActive(false);
                 uiObject.SetActive(true);

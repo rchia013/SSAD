@@ -182,7 +182,9 @@ public class DoQuestion : MonoBehaviour
 
     void Correct(int index)
     {
+        print("Response: " + index);
         QM.recordResponse(question.ID, index);
+        print("Correct");
         resetButtons();
 
         if (pointsAwardable)
@@ -200,8 +202,10 @@ public class DoQuestion : MonoBehaviour
 
     void Wrong(int index)
     {
+        print("Response: " + index);
         QM.recordResponse(question.ID, index);
 
+        print("Wrong");
         resetButtons();
 
        
@@ -221,6 +225,7 @@ public class DoQuestion : MonoBehaviour
     void Unanswered()
     {
         QM.recordResponse(question.ID, -1);
+        print("Not Answered");
         resetButtons();
 
         answered = false;
@@ -248,6 +253,8 @@ public class DoQuestion : MonoBehaviour
 
     IEnumerator Disappear()
     {
+        print("Disappear");
+
         Color color = background.color;
 
         for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / 0.75f)
