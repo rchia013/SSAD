@@ -131,17 +131,17 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 }
             }
         }
-        //else
-        //{
-        //    if (!moveable)
-        //    {
-        //        if (!anim.applyRootMotion)
-        //        {
-        //            //PV.RPC("setRootMotion", RpcTarget.All, true);
-        //            anim.applyRootMotion = true;
-        //        }
-        //    }
-        //}
+        else
+        {
+            if (!moveable)
+            {
+                if (!anim.applyRootMotion)
+                {
+                    //PV.RPC("setRootMotion", RpcTarget.All, true);
+                    anim.applyRootMotion = true;
+                }
+            }
+        }
     }
 
     void Moving()

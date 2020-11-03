@@ -47,8 +47,6 @@ public class GameSetUp : MonoBehaviour
 
     void Start()
     {
-        PhotonNetwork.AutomaticallySyncScene = true;
-
         mapIndex = MapController.mapIndex;
 
         ArenaCon.GetComponent<ArenaController>().setUpMap(mapIndex);
