@@ -116,25 +116,18 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (PV.IsMine)
         {
-            print(anim.applyRootMotion);
-
             if (moveable)
             {
                 Moving();
                 Gravity();
                 Jumping();
-
-                //if (anim.applyRootMotion)
-                //{
-                //    anim.applyRootMotion = false;
-                //}
-                
             }
             else
             {
                 if (!anim.applyRootMotion)
                 {
-                    anim.applyRootMotion = true;
+                    PV.RPC("setRootMotion", RpcTarget.All, true);
+                    //anim.applyRootMotion = true;
                 }
             }
         }
@@ -266,7 +259,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
         PV.RPC("doBoostJump", RpcTarget.All, enable);
     }
 
-    
+
+    [PunRPC]
+    public void setRootMotion(bool set)
+    {
+        anim.applyRootMotion = set;
+    }
+
     [PunRPC]
     public void setWalking(bool isWalking)
     {
