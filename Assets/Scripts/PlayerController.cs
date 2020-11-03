@@ -114,6 +114,15 @@ public class PlayerController : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
+        if (!moveable)
+        {
+            if (!anim.applyRootMotion)
+            {
+                PV.RPC("setRootMotion", RpcTarget.All, true);
+            }
+        }
+
+
         if (PV.IsMine)
         {
             if (moveable)
@@ -128,16 +137,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 {
                     PV.RPC("setRootMotion", RpcTarget.All, true);
                     //anim.applyRootMotion = true;
-                }
-            }
-        }
-        else
-        {
-            if (!moveable)
-            {
-                if (!anim.applyRootMotion)
-                {
-                    PV.RPC("setRootMotion", RpcTarget.All, true);
                 }
             }
         }
