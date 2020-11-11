@@ -3,143 +3,149 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+/// <summary>
+/// This script determines the activation of all player blocks and special blocks throughout the entire gameplay.
+/// It is assigned to the group of active blocks on each arena.
+/// It processes all logic required for the random assignment and reshuffling of blocks in the game;
+/// and activates the chosen blocks for their required function.
+/// </summary>
+
 public class ActivePlatform : MonoBehaviourPunCallbacks
 {
     // Active Block Generation Parameters:
-
     public int cooldownAB = 8;
     bool putActiveBlock1 = true;
     bool putActiveBlock2 = true;
     bool putActiveBlock3 = true;
     bool putActiveBlock4 = true;
 
+    // Special Block Generation Parameters:
     public int cooldownSB = 10;
     bool putSpecialBlock = true;
 
+    // Powerup Tracking:
     bool power0used = false;
     bool power1used = false;
     bool power2used = false;
 
-
     // Collection of Blocks
-
     public Dictionary<int, GameObject> blocks = new Dictionary<int, GameObject>();
     int totalNumBlocks;
 
-    // Current Records
-
+    // Current State and Record of active/special scripts and blocks
     ActivatedBlock ABscript1 = null;
-    ActivatedBlock ABscript2 = null;
-    ActivatedBlock ABscript3 = null;
-    ActivatedBlock ABscript4 = null;
-
     public int curNum1 = -1;
     public int prevNum1 = -1;
 
+    ActivatedBlock ABscript2 = null;
     public int curNum2 = -1;
     public int prevNum2 = -1;
 
+    ActivatedBlock ABscript3 = null;
     public int curNum3 = -1;
     public int prevNum3 = -1;
 
+    ActivatedBlock ABscript4 = null;
     public int curNum4 = -1;
     public int prevNum4 = -1;
 
     SpecialBlock power0Script = null;
-    SpecialBlock power1Script = null;
-    SpecialBlock power2Script = null;
-
     int power0Num = -1;
+
+    SpecialBlock power1Script = null;
     int power1Num = -1;
+
+    SpecialBlock power2Script = null;
     int power2Num = -1;
 
     int powerChoice = -1;
 
-    // Player:
-
+    // Information on ALL existing players in game:
     public GameObject player1;
     public GameObject player2;
     public GameObject player3;
     public GameObject player4;
-
     private List<GameObject> players = new List<GameObject>();
 
+
+    // Photon View
     private PhotonView PV;
 
-
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start is called before first frame update,
+    /// to initialize certain settings and paramters (mainly for the arena)
+    /// </summary>
+    
     void Start()
     {
         PV = GetComponent<PhotonView>();
-
         totalNumBlocks = transform.childCount;
-
         for (int i = 0; i < totalNumBlocks; i++)
         {
             blocks.Add(i, transform.GetChild(i).gameObject);
         }
     }
     
-    
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called every frame, and is the main function used to determine the arena behavior
+    /// </summary>
+
     void Update()
     {
+        // Players must be found at every frame, to avoid errors in cases where players leave mid game.
+        // If a player ceases to exist, his blocks will no longer appear.
         player1 = GameObject.FindWithTag("Player1");
-
         player2 = GameObject.FindWithTag("Player2");
-
         player3 = GameObject.FindWithTag("Player3");
-
         player4 = GameObject.FindWithTag("Player4");
 
+
+        // Updates blocks list if the previously assigned block has fallen/been destroyed. If not, it can be deactivated.
         if (blocks.ContainsKey(prevNum1))
         {
             if (blocks[prevNum1] == null)
             {
-                // Remove destroyed blocks
-
                 blocks.Remove(prevNum1);
             }
         }
-
         if (blocks.ContainsKey(prevNum2))
         {
             if (blocks[prevNum2] == null)
             {
-                // Remove destroyed blocks
-
                 blocks.Remove(prevNum2);
             }
         }
-
         if (blocks.ContainsKey(prevNum3))
         {
             if (blocks[prevNum3] == null)
             {
-                // Remove destroyed blocks
-
                 blocks.Remove(prevNum3);
             }
         }
-
         if (blocks.ContainsKey(prevNum4))
         {
             if (blocks[prevNum4] == null)
             {
-                // Remove destroyed blocks
-
                 blocks.Remove(prevNum4);
             }
         }
 
+
+        // Conducts randomization of blocks for the local player.
+        // Using this, each player in the game will calculate the block on the arena to be assigned to them.
+        // After it is calculated, a network event is called to ensure all players see the same block assigned to the particular player.
+
+        // Player 1:
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && player1 != null &&
             putActiveBlock1 && blocks.Count > totalNumBlocks / 4 && player1.GetComponent<PlayerController>().moveable)
         {
+            // Deactivate previous block if it has not been destroyed
             if (blocks.ContainsKey(prevNum1))
             {
                 PV.RPC("DeactivateBlock", RpcTarget.All, 1);
             }
 
+            // Block randomization and activation
             curNum1 = -1;
             int temp;
 
@@ -159,13 +165,16 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             }
         }
 
+        // Player 2:
         if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && player2 != null && putActiveBlock2 && blocks.Count > totalNumBlocks / 4 && player2.GetComponent<PlayerController>().moveable)
         {
+            // Deactivate previous block if it has not been destroyed
             if (blocks.ContainsKey(prevNum2))
             {
                 PV.RPC("DeactivateBlock", RpcTarget.All, 2);
             }
 
+            // Block randomization and activation
             curNum2 = -1;
             int temp;
 
@@ -185,13 +194,16 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             }
         }
 
+        // Player 3:
         if (PhotonNetwork.LocalPlayer.ActorNumber == 3 && player3 != null && putActiveBlock3 && blocks.Count > totalNumBlocks / 4 && player3.GetComponent<PlayerController>().moveable)
         {
+            // Deactivate previous block if it has not been destroyed
             if (blocks.ContainsKey(prevNum3))
             {
                 PV.RPC("DeactivateBlock", RpcTarget.All, 3);
             }
 
+            // Block randomization and activation
             curNum3 = -1;
             int temp;
 
@@ -211,13 +223,16 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             }
         }
 
+        // Player 4:
         if (PhotonNetwork.LocalPlayer.ActorNumber == 4 && player4 != null && putActiveBlock4 && blocks.Count > totalNumBlocks / 4 && player4.GetComponent<PlayerController>().moveable)
         {
+            // Deactivate previous block if it has not been destroyed
             if (blocks.ContainsKey(prevNum4))
             {
                 PV.RPC("DeactivateBlock", RpcTarget.All, 4);
             }
 
+            // Block randomization and activation
             curNum4 = -1;
             int temp;
 
@@ -238,6 +253,7 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             }
         }
 
+        // Special Block randomization and activation (only done by Host (player 1))
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1 &&
             putSpecialBlock && blocks.Count > totalNumBlocks / 4 && !(power0used && power1used && power2used) &&
             ((player1 != null && player1.GetComponent<PlayerController>().moveable) ||
@@ -246,8 +262,8 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
             (player4 != null && player4.GetComponent<PlayerController>().moveable)))
         {
 
+            // Block randomization and activation
             int newSpecNum = -1;
-
             int temp;
 
             while (newSpecNum == -1)
@@ -263,8 +279,8 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                 {
                     newSpecNum = temp;
 
+                    // Determines which powerup to use, depending on which are available
                     int powerChoice = -1;
-
                     if (!power0used && !power1used && !power2used)
                     {
                         powerChoice = Random.Range(0, 3);
@@ -324,13 +340,19 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
         }
     }
 
+    /// <summary>
+    /// This function is called to trigger a network event where a chosen block is activated for a particular player
+    /// </summary>
+    /// <param name="blockIndex"></param>
+    /// <param name="playerNum"></param>
+
     [PunRPC]
     void ActivateBlock(int blockIndex, int playerNum)
     {
 
         GameObject block = blocks[blockIndex];
 
-        // Activate Block
+        // Activate Block based on blockIndex and playerNum
 
         switch (playerNum)
         {
@@ -379,8 +401,6 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                 break;
         }
 
-        // Cooldown
-
         switch (playerNum)
         {
             case 1:
@@ -400,15 +420,23 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
                 break;
         }
 
+        // Initiate cooldown to determine when a certain player should be assigned a new block
         StartCoroutine(CooldownAB(playerNum));
 
     }
+
+    /// <summary>
+    /// This function is called to trigger a network event to activate a special block for all players
+    /// </summary>
+    /// <param name="blockIndex"></param>
+    /// <param name="powerChoice"></param>
 
     [PunRPC]
     void SpecialBlock(int blockIndex, int powerChoice)
     {
         GameObject block = blocks[blockIndex];
 
+        //Activates special block based on block and powerup chosen
         if (powerChoice == 0)
         {
             power0Script = block.transform.GetChild(0).gameObject.GetComponent<SpecialBlock>();
@@ -449,8 +477,12 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
         }
     }
 
-    [PunRPC]
 
+    /// <summary>
+    /// This function is called to trigger a network event to deactivate a particular player's block
+    /// </summary>
+    /// <param name="playerNum"></param>
+    [PunRPC]
     void DeactivateBlock(int playerNum)
     {
         ActivatedBlock curABScript = null;
@@ -476,6 +508,11 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
         curABScript.enabled = false;
     }
 
+
+    /// <summary>
+    /// FixedUpdate is called every frame to determine if the special blocks have been used and destroyed.
+    /// If so, the powerup can be reassigned to a new special block.
+    /// </summary>
     private void FixedUpdate()
     {
         if (blocks.ContainsKey(power0Num))
@@ -515,6 +552,13 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
         }
     }
 
+
+    /// <summary>
+    /// This function is used to track the time since a block has been activated for a particular user.
+    /// If the specified time is up, then a new block should be assigned to the user.
+    /// </summary>
+    /// <param name="playerNum"></param>
+    /// <returns></returns>
     IEnumerator CooldownAB(int playerNum)
     {
         int counter = cooldownAB;
@@ -552,6 +596,13 @@ public class ActivePlatform : MonoBehaviourPunCallbacks
         }
     }
 
+    /// <summary>
+    /// This function is used to track the amount of time since the last special block was assigned.
+    /// If the cooldown has passed, then a new special block can be assigned.
+    /// </summary>
+    /// <param name="initial"></param>
+    /// <param name="powerNum"></param>
+    /// <returns></returns>
     IEnumerator CooldownSB(bool initial, int powerNum = -1)
     {
         int counter = 0;
