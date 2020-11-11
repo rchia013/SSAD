@@ -276,7 +276,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     }
 
     /// <summary>
-    /// Boosts the speed of the player when the player uses the speed powerup.
+    /// Ensures that all players are able to see the boost speed powerup effect
     /// </summary>
     /// <param name="enable">if set to <c>true</c> [enable].</param>
     public void boostSpeed(bool enable)
@@ -285,7 +285,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     }
 
     /// <summary>
-    /// Boosts the size of the player when the player uses the size powerup.
+    /// Ensures that all players are able to see the boost size powerup effect
     /// </summary>
     /// <param name="enable">if set to <c>true</c> [enable].</param>
     public void boostSize(bool enable)
@@ -294,7 +294,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     }
 
     /// <summary>
-    /// Boosts the jump of the player when the player uses the jump powerup.
+    /// Ensures that all players are able to see the boost jump powerup effect
     /// </summary>
     /// <param name="enable">if set to <c>true</c> [enable].</param>
     public void boostJump(bool enable)
