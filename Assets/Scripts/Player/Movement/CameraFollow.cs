@@ -12,8 +12,7 @@ public class CameraFollow : MonoBehaviour
     public string playerTag;
     private Camera cam;
 
-    // Update is called once per frame
-
+    // Start is called before the first frame update
     private void Start()
     {
         cam = GetComponent<Camera>();
