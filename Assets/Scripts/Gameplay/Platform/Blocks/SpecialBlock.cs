@@ -5,13 +5,10 @@ using Photon.Pun;
 
 public class SpecialBlock : MonoBehaviourPunCallbacks
 {
-    public Material material4;
-    public Material material3;
-    public Material material2;
-    public Material material1;
-
     public Material activeMaterial;
     public Material originalMaterial;
+
+    TileColorController TCC;
 
     GameObject parentBlock;
     GameObject highlight;
@@ -46,6 +43,7 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
         // Find parent & components
 
         parentBlock = transform.parent.gameObject;
+        TCC = parentBlock.transform.parent.gameObject.GetComponent<TileColorController>();
 
         rend = parentBlock.GetComponent<MeshRenderer>();
         rb = parentBlock.GetComponent<Rigidbody>();
@@ -213,46 +211,35 @@ public class SpecialBlock : MonoBehaviourPunCallbacks
                 break;
             }
 
-            switch (counter)
+            if (counter > 4)
             {
-                case 4:
-                    materials[0] = material4;
-                    break;
-
-                case 3:
-                    materials[0] = material3;
-                    break;
-
-                case 2:
-                    materials[0] = material2;
-                    break;
-
-                case 1:
-                    materials[0] = material1;
-                    break;
-
-                case 0:
-
-                    if (question.GetComponent<DoQuestion>().answered == false)
-                    {
-                        removePowerUp(chosenPower);
-                        StartCoroutine("HighlightFadeOut");
-                    }
-
-                    PV.RPC("dropSpecBlock", RpcTarget.All);
-
-                    yield return new WaitForSeconds(3);
-
-                    Destroy(transform.parent.gameObject);
-
-                    if (!player.GetComponent<PlayerController>().respawning)
-                    {
-                        player.GetComponent<PlayerController>().moveable = true;
-                    }
-                    break;
+                //
             }
+            else if (counter > 0)
+            {
+                materials[0] = TCC.getCountdownMaterial(counter);
+                rend.materials = materials;
+            }
+            else
+            {
+                if (question.GetComponent<DoQuestion>().answered == false)
+                {
+                    removePowerUp(chosenPower);
+                    StartCoroutine("HighlightFadeOut");
+                }
 
-            rend.materials = materials;
+                PV.RPC("dropSpecBlock", RpcTarget.All);
+
+                yield return new WaitForSeconds(3);
+
+                Destroy(transform.parent.gameObject);
+
+                if (!player.GetComponent<PlayerController>().respawning)
+                {
+                    player.GetComponent<PlayerController>().moveable = true;
+                }
+                break;
+            }
         }
     }
 
