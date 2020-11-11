@@ -182,7 +182,7 @@ public class GameComplete : MonoBehaviour
 
         int pointsAwarded = 0;
 
-        rankDisplay.text = (rank+1).ToString();
+        rankDisplay.text = (rank).ToString();
 
         switch (rank)
         {
