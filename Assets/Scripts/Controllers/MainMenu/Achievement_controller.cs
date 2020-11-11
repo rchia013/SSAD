@@ -12,16 +12,16 @@ using UnityEngine.UI;
 /// </summary>
 public class Achievement_controller : MonoBehaviour
 {
-    //List that stores the users information
+    // List that stores the users information
     public List<Achievement> playerinfo = new List<Achievement>();
 
-    //The Badges that the players will be able to get
+    // The Badges that the players will be able to get
     public GameObject Bronze;
     public GameObject Silver;
     public GameObject Gold;
     public GameObject firstBar;
 
-    //Text that displays the user's points and username
+    // Text that displays the user's points and username
     public TextMeshProUGUI points;
     public TextMeshProUGUI nameBox;
     string localID = Login.localid;
