@@ -8,32 +8,34 @@ using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 
+/// <summary>
+/// This script is used to determine the required processing when the game ends.
+/// It consolidates all player points and responses;
+/// It creates records for each player and ranks them, to be displayed by the game results table
+/// It also uploads all records and updates player points at the end of the game
+/// </summary>
 public class GameComplete : MonoBehaviour
 {
-    private string DateTime;
-    private int SessionID;
-
-    private GameObject player1;
-    private GameObject player2;
-    private GameObject player3;
-    private GameObject player4;
+    // boolean to track whether player information is initialized
     bool initialized = false;
 
-
+    // tracks local player
     public static string localID;
 
+    // Information regarding all players
     private List<PlayerController> players = new List<PlayerController>();
     private List<Record> records = new List<Record>();
 
+    // Question Manager for responses
     private QuestionManager QM;
 
+    // Parameters related to game results UI
     public GameObject ResultsPage;
     public bool rankProcessed = false;
     bool highscoreDisplayUpdated = false;
 
 
-    //UI:
-
+    //UI elements:
     public Image avatar;
     public TextMeshProUGUI rankDisplay;
     public TextMeshProUGUI prevPoints;
@@ -47,16 +49,15 @@ public class GameComplete : MonoBehaviour
     public GameObject prevBar;
     public GameObject afterBar;
 
-    //
 
-
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start function is called when the game ends, to immobilize all players and process their records.
+    /// </summary>
     void Start()
     {
         localID = Login.localid;
 
         // End Gameplay
-
         initializePlayers();
         stopMoving();
 
@@ -64,25 +65,30 @@ public class GameComplete : MonoBehaviour
         QM.setEnded();
 
         // Create Records
-
         createRecords();
 
         //display User Avatar:
         AvatarController AC = new AvatarController();
-
         AC.displayAvatar(avatar, LobbySetUp.LS.playerList[PhotonNetwork.LocalPlayer.NickName]);
-
     }
+
+    /// <summary>
+    /// Update is called once per frame, and updates the UI (one time only) once the required records are processed
+    /// </summary>
 
     private void Update()
     {
         if (rankProcessed && !highscoreDisplayUpdated)
         {
             // Display Ranking UI
-
             displayResults();
         }
     }
+
+
+    /// <summary>
+    /// This function is called to obtain information regarding all players in the game
+    /// </summary>
 
     void initializePlayers()
     {
@@ -101,10 +107,13 @@ public class GameComplete : MonoBehaviour
                     break;
                 }
             }
-
             initialized = true;
         }
     }
+
+    /// <summary>
+    /// This function is called to immobilize all players at the end of the game
+    /// </summary>
 
     public void stopMoving()
     {
@@ -114,15 +123,22 @@ public class GameComplete : MonoBehaviour
                 players[i].GetComponent<PlayerController>().moveable = false;
           
             }
-        
     }
+
+    /// <summary>
+    /// This function is called to process the attributes and repsonses of each player, and create the necessary records
+    /// It also ranks the records (including cases where there are ties), for further processing and displaying
+    /// </summary>
 
     void createRecords()
     {
+        // Sort players by descending points
         List<PlayerController> rankedPlayers = players.OrderByDescending(o => o.points).ToList();
 
+        // Obtain system time for records
         string dateTime = System.DateTime.Now.ToString("MM\\/dd\\/yyyy h\\:mm tt");
 
+        // Calculate rankings of players (to account for ties)
         bool tie = false;
         int prevPoints = -1;
         int offset = 0;
@@ -151,6 +167,7 @@ public class GameComplete : MonoBehaviour
                 rank = i + 1;
             }
 
+            // Create record for players storing all game related information
             Record cur = new Record(dateTime,
                 QM.Difficulty, QM.Category,
                 rankedPlayers[i].GetComponent<PlayerController>().playerName,
@@ -159,6 +176,8 @@ public class GameComplete : MonoBehaviour
 
             records.Add(cur);
 
+            // If the current player is the local player, upload record (with player responses) to database.
+            // Essentially, each player only uploads their own record, to avoid duplicates.
             if (Login.currentUser.username == rankedPlayers[i].GetComponent<PlayerController>().playerName)
             {
                 cur.attachResponses(QM.getResponses());
@@ -173,17 +192,21 @@ public class GameComplete : MonoBehaviour
         rankProcessed = true;
     }
 
+    /// <summary>
+    /// This function is called to upload a given record (belonigng to local player) to the database
+    /// </summary>
+    /// <param name="record"></param>
+    /// <param name="rank"></param>
+
     void uploadRecord(Record record, int rank)
     {
+        // Upload record
         string urlRecord = "https://quizguyz.firebaseio.com/Users/" + localID+"/Records.json";
         RestClient.Post(url: urlRecord, JsonConvert.SerializeObject(record));
 
-        //ACHIEVEMENT POINTS CALCULATION:
-
+        // Calculate achievement points to be awarded based on rank
         int pointsAwarded = 0;
-
         rankDisplay.text = (rank).ToString();
-
         switch (rank)
         {
             case 1:
@@ -199,12 +222,17 @@ public class GameComplete : MonoBehaviour
                 pointsAwarded = 1;
                 break;
         }
-
         pointsAwarded *= QM.Difficulty;
 
         updateAchievementPoints(pointsAwarded);
 
     }
+
+    /// <summary>
+    /// This function is called to update the local player's achievement points based on rank, in the database
+    /// It also allows the UI to display the achievement points progress of the player
+    /// </summary>
+    /// <param name="achievementPoints"></param>
 
     void updateAchievementPoints(int achievementPoints)
     {
@@ -243,14 +271,15 @@ public class GameComplete : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// This function is called to display all game results on the UI at the end of the game, but only after all records are processed.
+    /// </summary>
+
     void displayResults()
     {
         highscoreDisplayUpdated = true;
-
         ResultsPage.GetComponent<HighscoreTable>().enabled = true;
-
         ResultsPage.GetComponent<HighscoreTable>().endGameUpdateTable(records);
-
         ResultsPage.SetActive(true);
     }
 }
