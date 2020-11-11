@@ -7,20 +7,23 @@ using Photon.Pun;
 using System;
 using Photon.Realtime;
 
+/// <summary>
+/// This class handles the movement of the characters
+/// </summary>
 public class PlayerController : MonoBehaviourPunCallbacks
 {
-    //ID
+    // Parameters that define ID of the players
 
     public int playerIndex;
     public string playerName;
     public int colorIndex;
 
-    // START COUNTDOWN:
+    // Parameters that starts the countdown when the player enters the game
 
     bool start = true;
     Vector3 respawnPoint;
 
-    // MOVEMENT:
+    // Parameters for the players movement
 
     public CharacterController controller;
     Vector3 direction;
@@ -32,13 +35,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public float jumpHeight = 3.0f;
     private bool jumping = false;
 
-    //Check for gravity
+    // Parameters that checks for gravity
+
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     private bool isGrounded;
 
-    // ANIMATION:
+    // Parameters that handles the animation of the characters
 
     public Animator anim;
     float freeze = 1.4f;
@@ -46,7 +50,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public ParticleSystem sizeEffect;
     public ParticleSystem jumpEffect;
 
-    // RESPAWN:
+    // Parameters for when the player is respawninig
 
     public bool respawning = false;
     public bool moveable = false;
@@ -56,7 +60,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public GameObject question;
     public TextMeshProUGUI countdown;
 
-    // POINTS:
+    // Parameters for the players points
 
     public int points;
     TextMeshProUGUI[] pointsUIList;
@@ -65,7 +69,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     public PhotonView PV;
 
-    // Username
+    // The players username
+
     public GameObject username;
 
 
@@ -78,7 +83,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         points = 0;
         PV.RPC("curPlayerSetup", RpcTarget.All, gameObject.tag, colorIndex, playerIndex, playerName);
 
-        //UI:
+        //UI of the overall gameplay:
 
         uiObject = GameSetUp.GS.uiObject;
         countdown = GameSetUp.GS.countdown;
@@ -116,6 +121,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (PV.IsMine)
         {
+            // Controls the logic if moveable = true
             if (moveable)
             {
                 Moving();
@@ -130,13 +136,20 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
     }
 
+    /// <summary>
+    /// Function that moves the character.
+    /// </summary>
     void Moving()
     {
+        //Parameters for Moving the character
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+        // If WASD or Arrow keys are pressed
         if (direction.magnitude >= 0.1f)
         {
+            // Move the character
             anim.enabled = true;
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -144,6 +157,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
             
+            // Checks if the player is in contact with the ground.
             if (isGrounded)
             {
                 PV.RPC("setWalking", RpcTarget.All, true);
@@ -159,30 +173,44 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     }
 
+    /// <summary>
+    /// Gravity of the character.
+    /// </summary>
     void Gravity()
     {
+        // Parameter to check if the character is in contact with the ground.
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -1f;
         }
+
+        //Ensures that the player falls if not in contact with the ground.
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
     }
 
+    /// <summary>
+    /// Jumping of the character
+    /// </summary>
     void Jumping()
     {
+        //If Spacebar is pressed and the character is in contact with the ground
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            // Jumps by increasing the player's y-parameter
             velocity.y = Mathf.Sqrt(jumpHeight * 2f * gravity);
         }
     }
-
+    /// <summary>
+    /// Handles the respawning of the character.
+    /// </summary>
     void FixedUpdate()
     {
        if (PV.IsMine)
         {
+            // If the player falls beyond a certain threshold, respawns the character
             if (transform.position.y < respawnThreshold && !respawning)
             {
                 anim.applyRootMotion = false;
@@ -200,7 +228,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
             }
          }
     }
-
+    /// <summary>
+    /// Countdowns for the players respawning time.
+    /// </summary>
     IEnumerator Countdown()
     {
         int counter = 3;
@@ -235,7 +265,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
         FinishRespawn();
     }
-
+    /// <summary>
+    /// Handles the controls once the player has finished respawning.
+    /// </summary>
     void FinishRespawn()
     {
         moveable = true;
@@ -243,28 +275,47 @@ public class PlayerController : MonoBehaviourPunCallbacks
         uiObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Boosts the speed of the player when the player uses the speed powerup.
+    /// </summary>
+    /// <param name="enable">if set to <c>true</c> [enable].</param>
     public void boostSpeed(bool enable)
     {
         PV.RPC("doBoostSpeed", RpcTarget.All, enable);
     }
 
+    /// <summary>
+    /// Boosts the size of the player when the player uses the size powerup.
+    /// </summary>
+    /// <param name="enable">if set to <c>true</c> [enable].</param>
     public void boostSize(bool enable)
     {
         PV.RPC("doBoostSize", RpcTarget.All, enable);
     }
 
+    /// <summary>
+    /// Boosts the jump of the player when the player uses the jump powerup.
+    /// </summary>
+    /// <param name="enable">if set to <c>true</c> [enable].</param>
     public void boostJump(bool enable)
     {
         PV.RPC("doBoostJump", RpcTarget.All, enable);
     }
 
-    
+    /// <summary>
+    /// Sets the walking animation of the character.
+    /// </summary>
+    /// <param name="isWalking">if set to <c>true</c> [is walking].</param>
     [PunRPC]
     public void setWalking(bool isWalking)
     {
         anim.SetBool("isWalking", isWalking);
     }
 
+    /// <summary>
+    /// Enables the speed boost effect when the player uses the speed powerup.
+    /// </summary>
+    /// <param name="enable">if set to <c>true</c> [enable].</param>
     [PunRPC]
     public void doBoostSpeed(bool enable)
     {
@@ -277,7 +328,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
             speedEffect.Stop();
         }
     }
-
+    /// <summary>
+    /// Enables the size boost effect when the player uses the size powerup.
+    /// </summary>
+    /// <param name="enable">if set to <c>true</c> [enable].</param>
     [PunRPC]
     public void doBoostSize(bool enable)
     {
@@ -290,7 +344,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
             sizeEffect.Stop();
         }
     }
-
+    /// <summary>
+    /// Enables the jump boost effect when the player uses the jump powerup.
+    /// </summary>
+    /// <param name="enable">if set to <c>true</c> [enable].</param>
     [PunRPC]
     public void doBoostJump(bool enable)
     {
@@ -304,6 +361,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
     }
 
+    /// <summary>
+    /// Changes the points of the player.
+    /// </summary>
+    /// <param name="playerIndex">Index of the player.</param>
+    /// <param name="x">The x.</param>
     [PunRPC]
     public void ChangePoints(int playerIndex, int x)
     {
@@ -312,6 +374,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
         pointsUIList[playerIndex].SetText(points.ToString());
     }
 
+    /// <summary>
+    /// Gets the points.
+    /// </summary>
+    /// <returns> Points </returns>
     public int getPoints()
     {
         return points;
