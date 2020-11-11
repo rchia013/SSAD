@@ -5,13 +5,14 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using Photon.Pun;
-using System;
 using Photon.Realtime;
 
-
+/// <summary>
+/// This class handles the length(time) of the game.
+/// </summary>
 public class Countdown : MonoBehaviour
 {
-
+    // Parameters for the timer
     float currentTime = 0f;
     float startingTime = 90.49999f;
     float totalTime;
@@ -24,12 +25,11 @@ public class Countdown : MonoBehaviour
 
     GameObject GameController;
 
+    // UI of the timer 
     public Image bg;
-
-
     [SerializeField] TextMeshProUGUI countdown;
 
-
+    // Start is called before the first frame update
     private void Start()
     {
 
@@ -42,12 +42,14 @@ public class Countdown : MonoBehaviour
         GameController = GameObject.FindWithTag("GameController");
     }
 
+    // Update is called once per frame.
     private void Update()
     {
 
         StartCoroutine(Delay());
         if (started)
         {
+            // Reduces the timer's value by 1 every second
             if (currentTime >= 10)
             {
                 currentTime -= 1 * Time.deltaTime;
@@ -55,6 +57,7 @@ public class Countdown : MonoBehaviour
                 countdown.color = Color.white;
                 countdown.text = timeToString(currentTime);
             }
+            // If time remaining is < 10s, change the timer UI text colour to red
             else if (currentTime < 10 && currentTime > 0)
             {
                 currentTime -= 1 * Time.deltaTime;
@@ -64,6 +67,7 @@ public class Countdown : MonoBehaviour
 
                 countdown.fontSize = getFontSize(currentTime);
             }
+            // Once the timer has reached 0
             else if (currentTime <= 0)
             {
                 countdown.fontSize = 60;
@@ -82,12 +86,19 @@ public class Countdown : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Delays this instance.
+    /// </summary>
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(3);
         started = true;
     }
 
+    /// <summary>
+    /// Logic of the players once timer has reached 0.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator EndGame()
     {
         GameController.GetComponent<GameComplete>().stopMoving();
@@ -107,7 +118,11 @@ public class Countdown : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// Converts the time from an Integer to a String.
+    /// </summary>
+    /// <param name="time">The time.</param>
+    /// <returns></returns>
     string timeToString(float time)
     {
         if (currentTime > 60)
@@ -134,6 +149,10 @@ public class Countdown : MonoBehaviour
         return "GAME OVER";
     }
 
+    /// <summary>
+    /// Gets the size of the font.
+    /// </summary>
+    /// <param name="time">The time.</param>
     int getFontSize(float time)
     {
         float perc = time % 1;

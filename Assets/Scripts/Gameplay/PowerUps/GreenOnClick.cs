@@ -4,14 +4,17 @@ using System.ComponentModel;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// This class handles the logic when the player uses a size powerup
+/// </summary>
 public class GreenOnClick : MonoBehaviour
 {
+    // Parameters for the powerup
     private Image image;
-    
     private GameObject player;
     private Collider coll;
 
+    // Parameters for the size increment
     private float _currentScale;
     private float TargetScale;
     private float InitScale;
@@ -21,12 +24,12 @@ public class GreenOnClick : MonoBehaviour
     private float _dx;
     private bool _upScale = true;
     public float duration = 4f;
-
     public int playerIndex;
-
     bool used = false;
-
     Vector3 originalScale;
+
+
+    // Start is called before the first frame update
     private void Start()
     {
         string playerTag = "Player" + playerIndex;
@@ -35,6 +38,7 @@ public class GreenOnClick : MonoBehaviour
         image = gameObject.GetComponent<Image>();
     }
 
+    // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.Z))
@@ -43,8 +47,12 @@ public class GreenOnClick : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function is called when the player uses the powerup.
+    /// </summary>
     public void Use()
     {
+        // Ensures that the player is not currently using any powerup
         if (!used)
         {
             used = true;
@@ -53,8 +61,10 @@ public class GreenOnClick : MonoBehaviour
             StartCoroutine("PowerUp");
         }
     }
-    
 
+    /// <summary>
+    /// Increses the size of the character when the player uses the size powerup.
+    /// </summary>
     private IEnumerator PowerUp()
     {
         PlayerController stats = player.GetComponent<PlayerController>();
@@ -63,8 +73,9 @@ public class GreenOnClick : MonoBehaviour
         InitScale = player.transform.localScale.x;
         TargetScale = InitScale * 2;
         _currentScale = InitScale;
-
         _dx = (TargetScale - InitScale) / FramesCount;
+
+        // Increases the scale of the character from initial scale to the target scale
         while (_upScale)
         {
             stats.speed = 2;
@@ -84,7 +95,7 @@ public class GreenOnClick : MonoBehaviour
 
         yield return new WaitForSeconds(duration);
 
-
+        // Returns the size of the character back to normal.
         while (!_upScale )
         {
             _currentScale -= _dx;
@@ -99,6 +110,7 @@ public class GreenOnClick : MonoBehaviour
         }
         stats.speed += 2;
 
+        // Destroys the powerup in the players inventory
         Destroy(gameObject);
     }
 }

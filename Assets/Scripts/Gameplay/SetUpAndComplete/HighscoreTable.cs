@@ -7,17 +7,20 @@ using TMPro;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// This class handles the logic behind the highscore table UI at the end of every game.
+/// </summary>
 public class HighscoreTable : MonoBehaviour
 {
+    // Parameters for the entries in the highscore table
     public Transform entryContainer;
     public Transform entryTemplate;
     float templateHeight = 30f;
 
-    private void Awake()
-    {
-        //entryTemplate.gameObject.SetActive(false);
-    }
-
+    /// <summary>
+    /// Updates the table at the end of the game.
+    /// </summary>
+    /// <param name="records">The records.</param>
     public void endGameUpdateTable(List<Record> records)
     {
         for (int i = 0; i < records.Count; i++)
@@ -33,11 +36,12 @@ public class HighscoreTable : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the player clicks 'Done' on the highscore table UI.
+    /// </summary>
     public void OnClickEnd()
     {
         SceneManager.LoadScene("Main Menu");
-        //SceneManager.UnloadSceneAsync("SampleScene");
-
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.Disconnect();
     }
