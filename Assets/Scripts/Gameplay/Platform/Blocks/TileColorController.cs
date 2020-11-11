@@ -2,16 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This script is assigned to the group of active blocks within each arena.
+/// It holds different materials, which correspond to each player's tile colors, as well as the tile colors for the countdown before the tile drops.
+/// Activated and Special Blocks can call the functions in this script to obtain the material which should be displayed, based on the scenario.
+/// </summary>
+
 public class TileColorController : MonoBehaviour
 {
-    // Countdown materials
+    // materials 1-4 store the Countdown Materials
 
     public Material material4;
     public Material material3;
     public Material material2;
     public Material material1;
 
-    // Tile Materials
+    // activeMaterials 1-6 store Player Tile Materials
 
     public Material activeMaterial1;
     public Material activeMaterial2;
@@ -19,6 +25,13 @@ public class TileColorController : MonoBehaviour
     public Material activeMaterial4;
     public Material activeMaterial5;
     public Material activeMaterial6;
+
+
+    /// <summary>
+    /// returns material to be displayed by blocks based on time remaining (int num) for question countdown
+    /// </summary>
+    /// <param name="num"></param>
+    /// <returns></returns>
 
     public Material getCountdownMaterial(int num)
     {
@@ -36,6 +49,12 @@ public class TileColorController : MonoBehaviour
 
         return null;
     }
+
+    /// <summary>
+    /// returns material to be displayed by blocks based on the colorIndex (int colorIndex) of the player the block is assigned to
+    /// </summary>
+    /// <param name="colorIndex"></param>
+    /// <returns></returns>
 
     public Material getTileMaterial(int colorIndex)
     {

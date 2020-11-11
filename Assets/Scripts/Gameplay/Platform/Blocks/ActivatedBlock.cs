@@ -5,104 +5,126 @@ using TMPro;
 using UnityEngine.UI;
 using Photon.Pun;
 
+/// <summary>
+/// This script is assigned to the active pad on each active block, to determine its behavior when it is assigned to a particular player.
+/// </summary>
+
 public class ActivatedBlock : MonoBehaviourPunCallbacks
 {
+
+    // original inactive block material
     public Material originalMaterial;
 
+    // TileColorController class to determine Player Block and Countdown materials
     TileColorController TCC;
 
+    // Parent Block and Components
     GameObject parentBlock;
     GameObject highlight;
-
     MeshRenderer rend;
     Rigidbody rb;
 
+    // Booleans for Behavior
     public bool blockActivated = false;
     bool questionActivated = false;
+
+    // Player Information
     public int playerIndex;
     public int colorIndex;
     string playerTag;
-
     GameObject player;
+
+    // Question
     GameObject question;
 
+    // Photon View
     PhotonView PV;
 
-
-
+    /// <summary>
+    /// This function is called each time the ActivatedBlock script is enabled by the Platform
+    /// It obtains references to necessary components on the parent block to be changed.
+    /// It intiializes the Block to reflect the color of the Player assigned
+    /// </summary>
     private void OnEnable()
     {
         PV = GetComponent<PhotonView>();
-        parentBlock = transform.parent.gameObject;
-        TCC = parentBlock.transform.parent.gameObject.GetComponent<TileColorController>();
-
-        rend = parentBlock.GetComponent<MeshRenderer>();
-        rb = parentBlock.GetComponent<Rigidbody>();
-
-        highlight = parentBlock.transform.GetChild(1).gameObject;
-
-        rb.isKinematic = true;
-
-        Material[] materials = rend.materials;
-
-        materials[0] = TCC.getTileMaterial(colorIndex);
-
-        rend.materials = materials;
-
         gameObject.tag = "Question";
 
-        playerTag = "Player" + playerIndex;
+        // Get Parent Block and Components
+        parentBlock = transform.parent.gameObject;
+        TCC = parentBlock.transform.parent.gameObject.GetComponent<TileColorController>();
+        rend = parentBlock.GetComponent<MeshRenderer>();
+        rb = parentBlock.GetComponent<Rigidbody>();
+        highlight = parentBlock.transform.GetChild(1).gameObject;
 
+        // Ensures Parent Block does not fall
+        rb.isKinematic = true;
+
+        // Lifts parent block up for it to be noticed by players
         parentBlock.transform.Translate(Vector3.up * .15f);
+
+        // Intializes parent block color based on player assigned
+        Material[] materials = rend.materials;
+        materials[0] = TCC.getTileMaterial(colorIndex);
+        rend.materials = materials;
+
+        // Initializes playerTag to identify correct Player
+        playerTag = "Player" + playerIndex;
     }
+
+    /// <summary>
+    /// This function is called when the correct player enters the trigger zone on the block.
+    /// It activates the question and allows the player to earn points by answering the question
+    /// </summary>
+    /// <param name="other"></param>
 
     private void OnTriggerEnter(Collider other)
     {
+        // Conditions to ensure the right player is activating the block
         if (other.gameObject.tag == playerTag & !questionActivated & blockActivated)
         {
+            // obtain player references
             player = other.gameObject;
             question = player.GetComponent<PlayerController>().question;
 
-            // 1. Start Block
-
-            // a. Move Parent
-
+            // Move Block down for visual effect
             parentBlock.transform.Translate(Vector3.down * 0.1f);
             questionActivated = true;
 
-            // b. Activate Highlight
-
+            // Activate Highlight and disable collisions for current player
             highlight.GetComponent<MeshRenderer>().enabled = true;
             StartCoroutine("HighlightFadeIn");
 
             Physics.IgnoreCollision(player.GetComponent<CharacterController>(), highlight.GetComponent<CapsuleCollider>(), true);
             Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), highlight.GetComponent<CapsuleCollider>(), true);
-
             highlight.GetComponent<CapsuleCollider>().enabled = true;
 
-            // 2. Restrict Player
-
+            // Restrict Player
             player.GetComponent<PlayerController>().moveable = false;
 
-            // 4. Start Question
-
+            // Start Question
             StartCoroutine("Question");
         }
     }
 
+    /// <summary>
+    /// This function is called to activate the Question UI when the player activates the block
+    /// </summary>
+    /// <returns></returns>
+
     IEnumerator Question()
     {
-        // Determines Question Time
-
+        // Initialize Question settings
         question.GetComponent<DoQuestion>().answered = false;
         question.GetComponent<DoQuestion>().correct = false;
         question.GetComponent<DoQuestion>().pointsAwardable = true;
         question.GetComponent<DoQuestion>().playerTag = playerTag;
 
+        // Set UI active
         question.SetActive(true);
 
+        // Initialize and begin question counter
         int counter = Mathf.RoundToInt(GameObject.FindWithTag("GameController").GetComponent<QuestionManager>().getTimeLimit());
-        
         bool moveableChanged = false;
 
         while (counter > 0)
@@ -113,8 +135,7 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
 
             var materials = rend.materials;
 
-            // Case 1: 
-
+            // Case 1: Player answers correctly
             if (question.GetComponent<DoQuestion>().answered == true && question.GetComponent<DoQuestion>().correct == true)
             {
                 if (!moveableChanged)
@@ -129,22 +150,22 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
              
             }
 
+            // Case 2: Player answers wrongly
             else if (question.GetComponent<DoQuestion>().answered == true && question.GetComponent<DoQuestion>().correct == false)
             {
                 StartCoroutine("HighlightFadeOut");
-
                 PV.RPC("dropBlock", RpcTarget.All);
-
                 yield return new WaitForSeconds(3);
-
                 Destroy(transform.parent.gameObject);
 
+                // Avoids bug where player is stuck because he fails to drop properly
                 if (!player.GetComponent<PlayerController>().respawning)
                 {
                     player.GetComponent<PlayerController>().moveable = true;
                 }
             }
 
+            // Handles color change for final seconds
             if (counter > 4)
             {
                 //
@@ -156,17 +177,17 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
             }
             else
             {
+                // Case 3: Player does not answer question
                 if (question.GetComponent<DoQuestion>().answered == false)
                 {
                     StartCoroutine("HighlightFadeOut");
                 }
 
                 PV.RPC("dropBlock", RpcTarget.All);
-
                 yield return new WaitForSeconds(3);
-
                 Destroy(transform.parent.gameObject);
-                
+
+                // Avoids bug where player is stuck because he fails to drop properly
                 if (!player.GetComponent<PlayerController>().respawning)
                 {
                     player.GetComponent<PlayerController>().moveable = true;
@@ -176,6 +197,11 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
             }
         }
     }
+
+    /// <summary>
+    /// This function is called to activate the Highlight and allow visual of it fading in
+    /// </summary>
+    /// <returns></returns>
 
     IEnumerator HighlightFadeIn()
     {
@@ -192,6 +218,11 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
         }
     }
 
+    /// <summary>
+    /// This function is called to deactive Highlight and allow visual of it fading out
+    /// </summary>
+    /// <returns></returns>
+
     IEnumerator HighlightFadeOut()
     {
         MeshRenderer highlightRend = highlight.GetComponent<MeshRenderer>();
@@ -207,6 +238,11 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
         }
     }
 
+    /// <summary>
+    /// This function is called to drop the block.
+    /// A network event is called to ensure all players see that the block drops.
+    /// </summary>
+
     [PunRPC]
     void dropBlock()
     {
@@ -220,7 +256,10 @@ public class ActivatedBlock : MonoBehaviourPunCallbacks
         parentBlock.GetComponent<BoxCollider>().enabled = false;
     }
 
-
+    /// <summary>
+    /// This function is called when the player block expires and reshuffles.
+    /// The block is reset to its inactive state.
+    /// </summary>
 
     private void OnDisable()
     {
