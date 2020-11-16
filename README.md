@@ -2,7 +2,7 @@
 
 Hi! This is our game for CZ3003 Software System Analysis and Design. 
 
-#How to Play
+## How to Play
 
 1. Sign Up/Log in
 2. Read the "How to Play" instructions before clicking "Play"
