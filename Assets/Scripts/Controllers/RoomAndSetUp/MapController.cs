@@ -6,6 +6,7 @@ using Photon.Pun;
 
 public class MapController : MonoBehaviour
 {
+    // Toggles to select map
     public Toggle map1;
     public Toggle map2;
     public Toggle map3;
@@ -15,6 +16,8 @@ public class MapController : MonoBehaviour
 
     private bool mapSelected = false;
     public static int mapIndex = -1;
+
+    // Variables storing the category and difficulty of the room
     public static int Category;
     public static int Difficulty;
 
@@ -39,6 +42,11 @@ public class MapController : MonoBehaviour
         resetMap();
     }
 
+    /// <summary>
+    ///  Update is called every frame and checks if a map has been selected. 
+    ///  If a map has been selected, set the confirm button to be interactable
+    ///  Display the selected map
+    /// </summary>
     private void Update()
     {
         if (mapSelected)
@@ -49,14 +57,12 @@ public class MapController : MonoBehaviour
         {
             ConfirmMap.interactable = false;
         }
-        
-        if (PhotonNetwork.IsMasterClient)
-        {
-            PV.RPC("setMapSettings", RpcTarget.All, mapIndex, CodeMatchmakingLobbyController.cat, CodeMatchmakingLobbyController.diff);
-        }
         displaySelectedMap();
     }
 
+    /// <summary>
+    /// INitialise the toggles to be able to enable the player to select the map
+    /// </summary>
     private void InitializeToggles()
     {
         toggles.Add(map1);
@@ -72,6 +78,12 @@ public class MapController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This function will be called when a map has been selected, which will disable the
+    /// other map toggles. To select another map, the player has to click on the current map
+    /// toggle (to unselect it) before selecting the other map.
+    /// </summary>
+    /// <param name="index"></param>
     void MapClicked(int index)
     {
         if (!mapSelected)
@@ -102,12 +114,19 @@ public class MapController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This displays the map panel when the host clicks on the customize map button
+    /// </summary>
     public void CustomizeMapOnClick()
     {
         RoomPanel.SetActive(false);
         MapPanel.SetActive(true);
     }
 
+    /// <summary>
+    /// After confirming the map, the panels are set to inactive and active respectively to transition back to the main room page
+    /// PV.RPC calls the PunRPC function setMapSettings
+    /// </summary>
     public void ConfirmMapOnClick()
     {
         MapPanel.SetActive(false);
@@ -117,7 +136,13 @@ public class MapController : MonoBehaviour
         displaySelectedMap();
     }
 
-    
+    /// <summary>
+    /// This sets the map settings for other clients in the room as well.
+    /// PunRPC is enables method-calls on remote clients in the same room.
+    /// </summary>
+    /// <param name="map"></param>
+    /// <param name="cat"></param>
+    /// <param name="diff"></param>
     [PunRPC]
     private void setMapSettings(int map, int cat, int diff)
     {
@@ -126,7 +151,9 @@ public class MapController : MonoBehaviour
         Difficulty = diff;
     }
 
-
+    /// <summary>
+    /// This loads the picture of the selected map and displays it
+    /// </summary>
     private void displaySelectedMap()
     {
         string mapPath = "";

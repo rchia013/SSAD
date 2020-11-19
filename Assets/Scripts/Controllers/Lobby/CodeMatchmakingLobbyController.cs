@@ -26,14 +26,13 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     private string roomName;
     private int roomSize = -1;
 
-    // Buttons
+    // Join/Create buttons
     [SerializeField]
     private Button Join;
     [SerializeField]
     private Button Create;
 
-    // UI:
-
+    // Category buttons
     public Button math;
     public Button science;
     public Button geog;
@@ -43,6 +42,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     private bool catChosen = false;
     public static int cat;
 
+    // Difficulty buttons
     public Button easy;
     public Button medium;
     public Button hard;
@@ -51,11 +51,18 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     private bool diffChosen = false;
     public static int diff;
 
+    /// <summary>
+    /// Start is called before first frame update,
+    /// Sets the LobbyPanel to inactive
+    /// </summary>
     private void Start()
     {
         LobbyPanel.SetActive(false);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     private void Update()
     {
         if (catChosen && diffChosen && roomSize > 1 && roomSize <= 4)

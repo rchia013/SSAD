@@ -155,13 +155,14 @@ public class CodeMatchmakingRoomController : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("CodeMatchMakingMenuDemo");
     }
     /// <summary>
-    /// This is a callback function provided in the MonoBehaviourPunCallbacks class  provided by PUN 2 
+    /// This is a callback function provided in the MonoBehaviourPunCallbacks class provided by PUN 2 
     /// Called when a previous OpJoinRoom call failed on the server
     /// </summary>
     /// <param name="returnCode"></param>
     /// <param name="message"></param>
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
+
         Debug.Log(message);
     }
 
