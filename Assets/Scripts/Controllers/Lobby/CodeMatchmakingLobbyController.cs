@@ -6,6 +6,11 @@ using TMPro;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// This script processes all logic related to the lobby.
+/// It is assigned to the CodeMatchmakingLobbyController game object.
+/// It controls the logic of players creating a room or joining a room from the lobby.
+/// </summary>
 public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 {
     public GameObject roomController;
@@ -51,6 +56,14 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     private bool diffChosen = false;
     public static int diff;
 
+    // Error message text
+    [SerializeField]
+    private TextMeshProUGUI errorMessage;
+
+    // Error message times
+    private float timeToAppear = 2f;
+    private float timeWhenDisappear;
+
     /// <summary>
     /// Start is called before first frame update,
     /// Sets the LobbyPanel to inactive
@@ -61,10 +74,15 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     }
 
     /// <summary>
-    /// 
+    /// Update is called every frame
+    /// Checks if room options are valid and a room can be created
+    /// Checks if there is room code input and the player can attempt to join a room
+    /// Handles error message when player fails to join a room
     /// </summary>
     private void Update()
     {
+        // If category and difficulty is chosen and a valid room size is entered,
+        // set create button to interactable so it can be clicked
         if (catChosen && diffChosen && roomSize > 1 && roomSize <= 4)
         {
             Create.interactable = true;
@@ -74,6 +92,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
             Create.interactable = false;
         }
 
+        // If room code is not null or empty, set join button to interactable so it can be clicked
         if (joinCode != null && joinCode != "")
         {
             Join.interactable = true;
@@ -81,6 +100,12 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
         else
         {
             Join.interactable = false;
+        }
+        // Checks if the error message is currently showing and has not been shown for more than 2 seconds
+        if (errorMessage.gameObject.activeSelf && (Time.time >= timeWhenDisappear))
+        {
+            // Disable the text so it is hidden
+            errorMessage.gameObject.SetActive(false);
         }
     }
 
@@ -113,7 +138,8 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     }
 
     /// <summary>
-    /// When a category is selected, 
+    /// When a category is selected,  the other categories cannot be selected.
+    /// To select another category, the player must click on the current one to deselect it first.
     /// </summary>
     /// <param name="index"></param>
     void CatClicked(int index)
@@ -148,7 +174,7 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     /// <summary>
     /// When a difficuly is selected, the other difficulty levels cannot be selected.
-    /// To select another difficulty level, you must click on the current one to unselect it first.
+    /// To select another difficulty level, the player must click on the current one to deselect it first.
     /// </summary>
     /// <param name="index"></param>
     void DiffClicked(int index)
@@ -198,16 +224,6 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby();
 
         PhotonNetwork.NickName = Login.currentUser.username;
-    }
-
-    /// <summary>
-    /// Join lobby when clicked. Set the panels accordingly.
-    /// </summary>
-    public void JoinLobbyOnClick()
-    {
-        MainPanel.SetActive(false);
-        LobbyPanel.SetActive(true);
-        PhotonNetwork.JoinLobby();
     }
 
     /// <summary>
@@ -263,21 +279,18 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     }
 
     /// <summary>
-    /// Cancels the room when clicked.
+    /// This is a callback function provided in the MonoBehaviourPunCallbacks class provided by PUN 2 
+    /// Called when a previous OnJoinRoom call failed on the server
     /// </summary>
-    public void CancelRoomOnClick()
+    /// <param name="returnCode"></param>
+    /// <param name="message"></param>
+    public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        // This requests each player client to disconnect if the requesting user is the master client.
-        if (PhotonNetwork.IsMasterClient)
-        {
-            foreach (Player player in PhotonNetwork.PlayerList)
-            {
-                PhotonNetwork.CloseConnection(player);
-            }
-        }
-        // Leave the current room and return to the Master Server where you can join or create rooms
-        PhotonNetwork.LeaveRoom();
-        RoomPanel.SetActive(false);
+        // Sets the error message when join room fails
+        errorMessage.gameObject.SetActive(true);
+        errorMessage.text = message;
+        timeWhenDisappear = Time.time + timeToAppear;
+        Debug.Log(message);
     }
 
     // This is a function that is called when the code player by the input changes and updates the variable.
@@ -296,38 +309,11 @@ public class CodeMatchmakingLobbyController : MonoBehaviourPunCallbacks
     }
 
     /// <summary>
-    /// Leaves the room when clicked
+    /// Goes back to main menu screen
     /// </summary>
-    public void LeaveRoomOnClick()
-    {
-        // Checks whether the player is in the room, if so,
-        // Leave the current room and return to the Master Server where you can join or create rooms
-        if (PhotonNetwork.InRoom)
-        {
-            PhotonNetwork.LeaveRoom();
-        }
-    }
-
-    /// <summary>
-    /// This is a callback function provided in the MonoBehaviourPunCallbacks class provided by PUN 2 
-    /// Called when the local user/client left a room, so the game's logic can clean up it's internal state.
-    /// </summary>
-    public override void OnLeftRoom()
-    {
-        RoomPanel.SetActive(false);
-    }
-
-    public void MatchmakingCancelOnClick()
-    {
-        MainPanel.SetActive(false);
-        LobbyPanel.SetActive(false);
-        PhotonNetwork.LeaveLobby();
-    }
-
     public void backMainMenuOnClick()
     {
         PhotonNetwork.Disconnect();
         SceneManager.LoadScene("Main Menu");
     }
-  
 }

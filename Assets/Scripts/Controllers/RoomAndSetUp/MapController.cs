@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 
+/// <summary>
+/// This script processes all logic related to map selection of the host of the room
+/// </summary>
 public class MapController : MonoBehaviour
 {
     // Toggles to select map
@@ -14,6 +17,7 @@ public class MapController : MonoBehaviour
 
     private List<Toggle> toggles = new List<Toggle>();
 
+    // Variables to store map settings
     private bool mapSelected = false;
     public static int mapIndex = -1;
 
@@ -21,19 +25,22 @@ public class MapController : MonoBehaviour
     public static int Category;
     public static int Difficulty;
 
+    // Stores the UI panels
     public GameObject MapPanel;
     public GameObject RoomPanel;
 
+    // Button to confirm map selected
     public Button ConfirmMap;
 
+    // Image that renders display of map
     public Image MapDisplay;
     public Image MapBorder;
 
     private PhotonView PV;
 
-
-
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start is called before the first frame update to initialise variables
+    /// </summary>
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -44,8 +51,8 @@ public class MapController : MonoBehaviour
 
     /// <summary>
     ///  Update is called every frame and checks if a map has been selected. 
-    ///  If a map has been selected, set the confirm button to be interactable
-    ///  Display the selected map
+    ///  If a map has been selected, set the confirm button to be interactable and
+    ///  display the selected map
     /// </summary>
     private void Update()
     {
@@ -138,7 +145,7 @@ public class MapController : MonoBehaviour
 
     /// <summary>
     /// This sets the map settings for other clients in the room as well.
-    /// PunRPC is enables method-calls on remote clients in the same room.
+    /// PunRPC enables method-calls on remote clients in the same room.
     /// </summary>
     /// <param name="map"></param>
     /// <param name="cat"></param>
@@ -172,6 +179,9 @@ public class MapController : MonoBehaviour
         MapDisplay.sprite = Resources.Load<Sprite>(mapPath);
     }
 
+    /// <summary>
+    /// Resets the map
+    /// </summary>
     public void resetMap()
     {
         mapIndex = -1;

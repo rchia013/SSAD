@@ -10,19 +10,19 @@ using Proyecto26;
 using Newtonsoft.Json;
 using Photon.Realtime;
 
+/// <summary>
+/// This script processes all logic related to avatar selection of the player in the room
+/// </summary>
 public class AvatarController : MonoBehaviour
 {
 
     public bool isCreator = false;
 
-
-
+    // Panels
     public GameObject RoomPanel;
     public GameObject AvatarPanel;
-    public Button customize;
 
-    //Customize Page:
-
+    // Character toggles
     public Toggle char1;
     public Toggle char2;
     public Toggle char3;
@@ -33,6 +33,7 @@ public class AvatarController : MonoBehaviour
 
     private List<Toggle> toggles = new List<Toggle>();
 
+    // Color buttons
     public Button blue;
     public Button pink;
     public Button green;
@@ -44,9 +45,11 @@ public class AvatarController : MonoBehaviour
 
     private Dictionary<int, bool> colorTaken = new Dictionary<int, bool>();
 
+    // Control buttons
     public Button confirm;
+    public Button customize;
 
-    //Store User (username) of p1-4 and Character selection:
+    //Store User (username) of p1-4 and Character selection
 
     private Dictionary<string, int> playerList = new Dictionary<string, int>();
     
@@ -54,7 +57,7 @@ public class AvatarController : MonoBehaviour
     private bool platformsInitialized = false;
 
 
-    // Current User Info:
+    // Current User Info
 
     private int curSelection;
     public Image curAvatar;
@@ -63,26 +66,35 @@ public class AvatarController : MonoBehaviour
 
     public PhotonView PV;
 
+    /// <summary>
+    /// This function is called when the object becomes enabled and active.
+    /// </summary>
     private void OnEnable()
     {
         PV = GetComponent<PhotonView>();
 
         playerList = LobbySetUp.LS.playerList;
 
+        // Connects to the database
         Achievement playerinfo = new Achievement();
         string playerurl = "https://quizguyz.firebaseio.com/Users/" + Login.localid;
 
         RestClient.Get(url: playerurl + ".json").Then(onResolved: response =>
         {
-            //Get
+            //Get information of each player (Achievement points)
             playerinfo = JsonConvert.DeserializeObject<Achievement>(response.Text);
 
+            //Initialise the buttons and toggles
             InitializeButtons();
             InitializeToggles(playerinfo.achievementPoints);
 
         });
     }
 
+    /// <summary>
+    /// This function is called every every frame
+    /// Checks if the user has selected a valid combination of character + color
+    /// </summary>
     private void Update()
     {
         if (selectionValid(curSelection))
@@ -95,10 +107,14 @@ public class AvatarController : MonoBehaviour
         }
     }
 
-    //Handle change of Players:
-
+    /// <summary>
+    /// This function is called to add player data and called when a player is joins the room
+    /// </summary>
+    /// <param name="newUsername"></param>
+    /// <param name="selfSync"></param>
     public void addPlayer(string newUsername, bool selfSync)
     {
+        // Updates player list
         LobbySetUp.LS.playerList.Add(newUsername, -1);
 
         PV.RPC("updateTotalUI", RpcTarget.All);
@@ -108,45 +124,38 @@ public class AvatarController : MonoBehaviour
             PV.RPC("updateAvatar", RpcTarget.All, Login.currentUser.username, curSelection);
         }
     }
-    
-    [PunRPC]
-    private void addP(string newUsername)
-    {
-        playerList.Add(newUsername, -1);
 
-        PV.RPC("updateTotalUI", RpcTarget.All);
-    }
-
+    /// <summary>
+    /// This function is called to remove player data and called when a player leaves the room
+    /// </summary>
+    /// <param name="oldUsername"></param>
     public void removePlayer(string oldUsername)
     {
+        // Updates player list
         LobbySetUp.LS.playerList.Remove(oldUsername);
 
         PV.RPC("updateTotalUI", RpcTarget.All);
-        //PV.RPC("removeP", RpcTarget.All, oldUsername);
     }
-    
-    [PunRPC]
-    private void removeP(string oldUsername)
-    {
-        playerList.Remove(oldUsername);
 
-        PV.RPC("updateTotalUI", RpcTarget.All);
-    } 
-
-    //Handle Change of Avatars:
-
+    /// <summary>
+    /// Updates the avatar selected by the player (Character + color)
+    /// </summary>
+    /// <param name="userName"></param>
+    /// <param name="picIndex"></param>
     [PunRPC]
     public void updateAvatar(string userName, int picIndex)
     {
+        // Sets the previous color index chosen to be no longer taken
         if (playerList[userName] != -1)
         {
             int oldColorIndex = playerList[userName] % 10;
             colorTaken[oldColorIndex] = false;
 
         }
-
+        // Sets the avatar selected by the player
         playerList[userName] = picIndex;
 
+        // Sets the current color index chosen to be taken
         int colorIndex = picIndex % 10;
         colorTaken[colorIndex] = true;
 
@@ -154,14 +163,17 @@ public class AvatarController : MonoBehaviour
     }
 
 
-    //Handle any state Change to UI:
-
+    /// <summary>
+    /// This function handles any state change to the room UI (When players join/leave the room)
+    /// PunRPC enables method-calls on remote clients in the same room.
+    /// </summary>
     [PunRPC]
     void updateTotalUI()
     {
         int i = 0;
         if (LobbySetUp.LS.CurrentNames.Count > 0)
         {
+            // For every player in the player list, set their names and display their avatar
             foreach (KeyValuePair<string, int> player in playerList)
             {
                 // Set Name:
@@ -172,6 +184,7 @@ public class AvatarController : MonoBehaviour
 
                 i++;
             }
+            // For every subsequent slot (empty as no player yet), set their name to empty and delete their avatar
             for (int j = i; j < LobbySetUp.LS.CurrentNames.Count; j++)
             {
                 //Delete name
@@ -183,6 +196,10 @@ public class AvatarController : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Destroys the avatar by setting sprite to null and color to transparent
+    /// </summary>
+    /// <param name="avatar"></param>
     void destroyAvatar(Image avatar)
     {
         avatar.sprite = null;
@@ -191,6 +208,11 @@ public class AvatarController : MonoBehaviour
         avatar.color = c;
     }
 
+    /// <summary>
+    /// Displays avatar based on the player's selection
+    /// </summary>
+    /// <param name="avatar"></param>
+    /// <param name="selection"></param>
     public void displayAvatar(Image avatar, int selection)
     {
         String avatarPath = findAvatarPath(selection);
@@ -224,10 +246,13 @@ public class AvatarController : MonoBehaviour
         avatar.sprite = Resources.Load<Sprite>(avatarPath);
     }
 
-    // Page Navigation:
-
+    
+    /// <summary>
+    /// Activated when the player clicks on the 'Customize' button
+    /// </summary>
     public void CustomizeCharacterOnClick()
     {
+        // Brings the player to the avatar panel
         RoomPanel.SetActive(false);
         AvatarPanel.SetActive(true);
 
@@ -237,6 +262,9 @@ public class AvatarController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Activated when the player confirms the character chosen
+    /// </summary>
     public void ConfirmCharacterOnClick()
     {
         if (colorTaken[curSelection % 10] && ((curSelection % 10) != (playerList[Login.currentUser.username] % 10)))
@@ -245,17 +273,19 @@ public class AvatarController : MonoBehaviour
         }
         else
         {
+            // Brings the player back to the room panel
             AvatarPanel.SetActive(false);
             RoomPanel.SetActive(true);
 
-
+            // Updates the avatar selected by the player for all clients in the room
             PV.RPC("updateAvatar", RpcTarget.All, Login.currentUser.username, curSelection);
         }
     }
 
 
-    //Initialize Buttons/Toggles:
-
+    /// <summary>
+    /// This initialises the buttons of the colours that can be selected by the player
+    /// </summary>
     private void InitializeButtons()
     {
         buttons.Add(blue);
@@ -275,6 +305,11 @@ public class AvatarController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Initialises the character toggles for the player to select
+    /// The characters that can be selected by the player depends on the achivement points the player has
+    /// </summary>
+    /// <param name="points"></param>
     private void InitializeToggles(int points)
     {
         if (points < 250)
@@ -306,6 +341,10 @@ public class AvatarController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Blocks the characters that cannot be chosen by the player
+    /// </summary>
+    /// <param name="index"></param>
     private void disableToggle(int index)
     {
         if (index == 2)
@@ -321,6 +360,9 @@ public class AvatarController : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Sets the colors that are available to be selected
+    /// </summary>
     private void updateAvailableColors()
     {
         for (int i = 0; i < buttons.Count; i++)
@@ -336,8 +378,10 @@ public class AvatarController : MonoBehaviour
         }
     }
 
-    //Button/Toggle Handling (Color + Character):
-
+    /// <summary>
+    /// Activated when the player clicks on a character
+    /// </summary>
+    /// <param name="index"></param>
     void CharClicked(int index)
     {
         if (!charSelected)
@@ -368,8 +412,13 @@ public class AvatarController : MonoBehaviour
         displayAvatar(curAvatar, curSelection);
     }
 
+    /// <summary>
+    /// Activated when the player clicks on a color
+    /// </summary>
+    /// <param name="index"></param>
     void ColorClicked(int index)
     {
+        // When the player selects a color
         if (!colorSelected)
         {           
             for (int i = 0; i < buttons.Count; i++)
@@ -384,6 +433,7 @@ public class AvatarController : MonoBehaviour
             colorSelected = true;
         }
 
+        // When the player deselects a color
         else
         {
             updateAvailableColors();
@@ -395,6 +445,11 @@ public class AvatarController : MonoBehaviour
         displayAvatar(curAvatar, curSelection);
     }
 
+    /// <summary>
+    /// Sets the avatar path based on the colour and character they chose
+    /// </summary>
+    /// <param name="selection"></param>
+    /// <returns></returns>
     private string findAvatarPath(int selection)
     {
         if (selection == -1)
@@ -461,8 +516,14 @@ public class AvatarController : MonoBehaviour
         return avatarPath;
     }
 
+    /// <summary>
+    /// Checks if selection is valid (character + color)
+    /// </summary>
+    /// <param name="sel"></param>
+    /// <returns></returns>
     private bool selectionValid(int sel)
     {
+        // sel/10 represents the chosen character, sel%10 represents the chosen color
         if ((sel/10)>=1 && (sel % 10) >= 1)
         {
             return true;
